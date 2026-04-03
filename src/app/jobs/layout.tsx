@@ -1,0 +1,45 @@
+import { redirect } from 'next/navigation';
+import Link from 'next/link';
+import { createClient } from '@/lib/supabase/server';
+import StaffMinimalHeader from '@/components/layout/StaffMinimalHeader';
+import SidebarFooter from '@/components/layout/SidebarFooter';
+
+export default async function JobsLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) redirect('/login');
+
+  const role = (user.user_metadata?.role as string) || 'nurse';
+  if (!['nurse', 'jobs_admin', 'admin'].includes(role)) {
+    redirect('/login');
+  }
+
+  return (
+    <div className="dash-app">
+      <StaffMinimalHeader />
+      <div className="dash-layout dash-layout--app">
+        <aside className="dash-sidebar">
+          <div className="dash-sidebar__head">
+            <p className="dash-sidebar__title">Staff</p>
+            <h2 className="dash-sidebar__heading">Jobs</h2>
+          </div>
+
+          <nav>
+            <Link href="/jobs/dashboard" className="dash-nav-link">
+              Dashboard
+            </Link>
+          </nav>
+
+          <SidebarFooter />
+        </aside>
+
+        <div className="dash-main">{children}</div>
+      </div>
+    </div>
+  );
+}
