@@ -12,7 +12,7 @@ interface RichTextEditorProps {
   placeholder?: string;
 }
 
-function MenuBar({ editor }: { editor: ReturnType<typeof useEditor> }) {
+function MenuBar({ editor }: { editor: ReturnType<typeof useEditor> | null }) {
   if (!editor) return null;
 
   const btnStyle = (active: boolean): React.CSSProperties => ({
