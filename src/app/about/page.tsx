@@ -472,10 +472,10 @@ export default function AboutPage() {
       {/* 4. DR. HILL CINEMATIC SECTION */}
       <section id="dr-hill" className="cin-section-about">
         <Image
-          src="/images/about-1.jpg"
+          src="/images/dr-hill-new.jpg"
           alt="Dr. Michael Hill"
           fill
-          style={{ objectFit: "cover", objectPosition: "left top" }}
+          style={{ objectFit: "cover", objectPosition: "20% top" }}
         />
         <div className="cin-grad-about" />
         <div

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -21,16 +22,48 @@ export async function POST(request: Request) {
       );
     }
 
+    const submittedAt = new Date().toISOString();
+
+    const dbInsert = supabaseAdmin.from("contact_submissions").insert({
+      first_name: firstName.trim(),
+      last_name: lastName.trim(),
+      email: email.trim(),
+      phone: body.phone?.trim() || null,
+      organization: organization.trim(),
+      role: body.role || null,
+      service: body.service || null,
+      message: body.message?.trim() || null,
+      newsletter: body.newsletter === "yes",
+      submitted_at: submittedAt,
+    });
+
     const webhookUrl = process.env.POWER_AUTOMATE_WEBHOOK_URL;
 
-    if (webhookUrl) {
-      const res = await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
+    const webhookCall = webhookUrl
+      ? fetch(webhookUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...body, submitted_at: submittedAt }),
+        })
+      : Promise.resolve(null);
 
-      if (!res.ok) {
+    const [dbResult, webhookResult] = await Promise.allSettled([dbInsert, webhookCall]);
+
+    if (dbResult.status === "rejected" || (dbResult.status === "fulfilled" && dbResult.value.error)) {
+      const err = dbResult.status === "rejected" ? dbResult.reason : dbResult.value.error;
+      console.error("Supabase insert failed:", err);
+    }
+
+    if (webhookUrl) {
+      if (webhookResult.status === "rejected") {
+        console.error("Webhook error:", webhookResult.reason);
+        return NextResponse.json(
+          { error: "Failed to submit your inquiry. Please try again later." },
+          { status: 502 },
+        );
+      }
+      const res = webhookResult.value as Response | null;
+      if (res && !res.ok) {
         console.error("Webhook error: HTTP", res.status);
         return NextResponse.json(
           { error: "Failed to submit your inquiry. Please try again later." },

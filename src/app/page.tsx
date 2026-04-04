@@ -383,7 +383,7 @@ export default function Home() {
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/index-37.jpg"
+          src="/images/dr-hill-new.jpg"
           alt="Dr. Michael Hill"
           style={{
             position: "absolute",
@@ -391,7 +391,7 @@ export default function Home() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            objectPosition: "left top",
+            objectPosition: "20% top",
             display: "block",
           }}
         />

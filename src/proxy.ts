@@ -32,12 +32,18 @@ export default async function proxy(request: NextRequest) {
     }
   );
 
-  const { data: { user } } = await supabase.auth.getUser();
   const { pathname } = request.nextUrl;
-
   const isProtected = PROTECTED_PREFIXES.some((p) => pathname.startsWith(p));
 
   if (isProtected) {
+    let user = null;
+    try {
+      const { data } = await supabase.auth.getUser();
+      user = data.user;
+    } catch {
+      // Auth error — treat as unauthenticated
+    }
+
     if (!user) {
       const url = request.nextUrl.clone();
       url.pathname = '/login';
