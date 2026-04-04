@@ -173,7 +173,7 @@ interface ProviderCard {
 
 const PROVIDER_CASES: ProviderCard[] = [
   {
-    hospital: "Southern Region Integrated Health System",
+    hospital: "Southern US Regional Integrated Health System",
     tagline: "Emergency Department Transformation & Capacity Optimization",
     challenge:
       "Lack of inpatient bed capacity, ED inefficiencies, and long wait times eroding patient volume and satisfaction.",
@@ -187,7 +187,7 @@ const PROVIDER_CASES: ProviderCard[] = [
     href: "/case-studies/thp",
     dataRegion: "texas",
     dataService: "ed-transformation",
-    dataTitle: "Southern Region Integrated Health System",
+    dataTitle: "Southern US Regional Integrated Health System",
     dataDate: "2023-06-01",
   },
   {
@@ -219,7 +219,7 @@ const PROVIDER_CASES: ProviderCard[] = [
     metrics: [
       { value: "94%", label: "Fewer Left Untreated" },
       { value: "+33%", label: "Monthly ED Volume" },
-      { value: "Top Q", label: "Patient Experience" },
+      { value: "Top Quartile", label: "Patient Experience" },
     ],
     href: "/case-studies/shmc",
     dataRegion: "regional",
@@ -228,7 +228,7 @@ const PROVIDER_CASES: ProviderCard[] = [
     dataDate: "2021-04-01",
   },
   {
-    hospital: "Faith-Based Non-Profit Community Hospital",
+    hospital: "West Coast Faith-Based Non-Profit",
     desc: "~278-Bed Integrated Community Hospital \u00a0\u00b7\u00a0 Regional Care Network Affiliate \u00a0\u00b7\u00a0 Transfer-Dependent Network Hospital",
     tagline: "LOS Reduction & Transfer Capacity Optimization",
     challenge:
@@ -243,7 +243,7 @@ const PROVIDER_CASES: ProviderCard[] = [
     href: "/case-studies/srm",
     dataRegion: "california",
     dataService: "los-reduction",
-    dataTitle: "Faith-Based Non-Profit Community Hospital",
+    dataTitle: "West Coast Faith-Based Non-Profit",
     dataDate: "2022-02-01",
   },
 ];
@@ -264,76 +264,76 @@ interface PayorCard {
 const PAYOR_CASES: PayorCard[] = [
   {
     title: "EMTALA Medical Necessity & Post-Stabilization Admissions",
-    representation: "Payor \u2014 National Healthcare Law Group",
+    representation: "Payor - National Healthcare Law Group",
     scope: "Retained by a national healthcare law group to serve as the medical expert in a payor\u2019s defense during a coordinated arbitration proceeding before the American Arbitration Association (AAA). Reviewed approximately 950 hospital admissions and authored a comprehensive expert report addressing medical necessity, post-stabilization inpatient admissions, and EMTALA obligations. Prepared and delivered expert rebuttal to the opposing hospital\u2019s clinical arguments.",
     metrics: [
       { value: "950", label: "Admissions Reviewed" },
       { value: "3-Day", label: "Arbitration" },
       { value: "AAA", label: "Forum" },
     ],
-    caseRef: "AAA Coordinated Arbitration Proceeding \u2014 California Medical Necessity Review",
+    caseRef: "AAA Coordinated Arbitration Proceeding - California Medical Necessity Review",
     counsel: "National Healthcare Law Group",
     dataDtype: "medical-necessity",
     dataDate: "2022-01-01",
   },
   {
     title: "Claims Reimbursement Appropriateness Dispute",
-    representation: "Payor \u2014 Regional Healthcare Law Firm",
+    representation: "Payor - Regional Healthcare Law Firm",
     scope: "Engaged as the medical expert by a regional healthcare law firm representing a payor in an arbitration proceeding before the American Arbitration Association (AAA). Reviewed 138 disputed claims, produced a detailed expert report, appeared as a testifying expert at arbitration, and authored rebuttal of the opposing hospital\u2019s expert opinions.",
     metrics: [
       { value: "138", label: "Claims Reviewed" },
       { value: "AAA", label: "Forum" },
       { value: "Payor", label: "Represented" },
     ],
-    caseRef: "AAA Arbitration Proceeding \u2014 Claims Reimbursement Review",
+    caseRef: "AAA Arbitration Proceeding - Claims Reimbursement Review",
     counsel: "Regional Healthcare Law Firm",
     dataDtype: "payment-dispute",
     dataDate: "2021-01-01",
   },
   {
     title: "Medical Necessity, NICU Care Levels & Claims Reimbursement",
-    representation: "Payor \u2014 Southwest Regional Law Firm",
+    representation: "Payor - Southwest Regional Law Firm",
     scope: "Retained as the medical expert by a southwest regional law firm representing a payor in an arbitration before the American Arbitration Association (AAA). Reviewed 230 patient cases, authored medical summaries for each, produced a comprehensive expert report, and appeared for expert deposition.",
     metrics: [
       { value: "230", label: "Patients Reviewed" },
       { value: "AAA", label: "Forum" },
       { value: "Payor", label: "Represented" },
     ],
-    caseRef: "AAA Arbitration Proceeding \u2014 NICU Medical Necessity Review",
+    caseRef: "AAA Arbitration Proceeding - NICU Medical Necessity Review",
     counsel: "Southwest Regional Law Firm",
     dataDtype: "medical-necessity",
     dataDate: "2022-01-01",
   },
   {
     title: "ED Claim Authorizations, DRG Downgrades & Excessive Charge Denials",
-    representation: "Payor \u2014 National Healthcare Law Group",
+    representation: "Payor - National Healthcare Law Group",
     scope: "Retained as the medical expert by a national healthcare law group representing a payor in an arbitration before the American Health Lawyers Association (AHLA). Reviewed 172 disputed claims spanning ED authorizations, down codes and DRG downgrades, pre-payment reviews, and excessive charge adjudications. Produced expert report and prepared for expert testimony.",
     metrics: [
       { value: "172", label: "Claims Reviewed" },
       { value: "AHLA", label: "Forum" },
       { value: "Payor", label: "Represented" },
     ],
-    caseRef: "AHLA Arbitration Proceeding \u2014 ED Authorization & DRG Review",
+    caseRef: "AHLA Arbitration Proceeding - ED Authorization & DRG Review",
     counsel: "National Healthcare Law Group",
     dataDtype: "payment-dispute",
     dataDate: "2023-01-01",
   },
   {
-    title: "High-Dollar Outlier Claim Adjudication \u2014 Managed Medicaid",
-    representation: "Payor \u2014 Florida Healthcare Law Firm",
+    title: "High-Dollar Outlier Claim Adjudication - Managed Medicaid",
+    representation: "Payor - Florida Healthcare Law Firm",
     scope: "Retained as the medical expert by a Florida healthcare law firm representing a payor in an administrative proceeding before AHCA. Produced expert report covering clinical medical necessity, line-item bill analysis, clinical summary, and rebuttal addressing the payor\u2019s adjudication of a high-dollar outlier claim under a managed Medicaid contract.",
     metrics: [
       { value: "Outlier", label: "Claim Complexity" },
       { value: "AHCA", label: "Forum" },
       { value: "Payor", label: "Represented" },
     ],
-    caseRef: "AHCA Administrative Proceeding \u2014 Outlier Claim Adjudication",
+    caseRef: "AHCA Administrative Proceeding - Outlier Claim Adjudication",
     counsel: "Florida Healthcare Law Firm",
     dataDtype: "medical-necessity",
     dataDate: "2026-01-01",
   },
   {
-    title: "Corporate Integrity Agreement \u2014 IRO Review",
+    title: "Corporate Integrity Agreement - IRO Review",
     tagline: "Independent Review Organization Physician UM Leadership",
     representation: "Payor (Corporate Integrity Agreement)",
     scope: "Appointed Physician UM Leader under a Corporate Integrity Agreement for Independent Review Organization (IRO). Responsibilities encompassed claims review, physician arrangement review, quality assurance, physician training and education, and investigative oversight across a nationwide portfolio.",
@@ -342,13 +342,13 @@ const PAYOR_CASES: PayorCard[] = [
       { value: "Nationwide", label: "Scope" },
       { value: "UM Lead", label: "Role" },
     ],
-    caseRef: "Corporate Integrity Agreement \u2014 Independent Review Organization (IRO)",
+    caseRef: "Corporate Integrity Agreement - Independent Review Organization (IRO)",
     counsel: "Independent Review Organization",
     dataDtype: "utilization-mgmt",
     dataDate: "2020-01-01",
   },
   {
-    title: "No-Fault Auto Insurance \u2014 Emergency Medical Condition Determination",
+    title: "No-Fault Auto Insurance - Emergency Medical Condition Determination",
     representation: "Florida Auto Insurance Carrier",
     scope: "Retained by a Florida auto insurance carrier to serve as the medical expert in a \u201cNo Fault\u201d statute review. Produced an expert report and comprehensive claim summary addressing the determination of an Emergency Medical Condition (EMC) under Florida No-Fault Insurance law.",
     metrics: [
@@ -356,7 +356,7 @@ const PAYOR_CASES: PayorCard[] = [
       { value: "EMC", label: "Determination" },
       { value: "Auto Carrier", label: "Represented" },
     ],
-    caseRef: "Florida Auto Insurance \u2014 No Fault Statute Expert Review",
+    caseRef: "Florida Auto Insurance - No Fault Statute Expert Review",
     counsel: "Florida Auto Insurance Carrier (In-House Counsel)",
     dataDtype: "auto-insurance",
     dataDate: "2023-06-01",
@@ -694,7 +694,7 @@ export default function CaseStudiesTabs() {
                     </div>
                     <div className="cc-body">
                       <div className="cc-section">
-                        <div className="cc-section-label">Representation</div>
+                        <div className="cc-section-label" style={{ color: "#C8102E" }}>Payor Type</div>
                         <div
                           className="cc-section-text"
                           style={{ fontWeight: 700, color: "#1B2A5B" }}
@@ -703,7 +703,7 @@ export default function CaseStudiesTabs() {
                         </div>
                       </div>
                       <div className="cc-section">
-                        <div className="cc-section-label">Scope of Work</div>
+                        <div className="cc-section-label" style={{ color: "#C8102E" }}>Scope of Work</div>
                         <div className="cc-section-text">{card.scope}</div>
                       </div>
                       <div className="cc-metrics">
@@ -715,7 +715,7 @@ export default function CaseStudiesTabs() {
                         ))}
                       </div>
                       <div className="cc-section" style={{ marginTop: 12 }}>
-                        <div className="cc-section-label">Case Reference</div>
+                        <div className="cc-section-label" style={{ color: "#C8102E" }}>Case Reference</div>
                         <div
                           className="cc-section-text"
                           style={{ fontSize: ".88rem", color: "#5A6E8A", fontStyle: "italic" }}
@@ -724,7 +724,7 @@ export default function CaseStudiesTabs() {
                         </div>
                       </div>
                       <div className="cc-section">
-                        <div className="cc-section-label">Legal Counsel</div>
+                        <div className="cc-section-label" style={{ color: "#C8102E" }}>Legal Counsel</div>
                         <div
                           className="cc-section-text"
                           style={{ fontWeight: 600, color: "#1B2A5B" }}

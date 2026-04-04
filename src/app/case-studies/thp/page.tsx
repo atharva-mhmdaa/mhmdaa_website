@@ -3,9 +3,9 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title:
-    "Client Case Study: Southern Region Integrated Health System — MHMDAA",
+    "Client Case Study: Southern US Regional Integrated Health System — MHMDAA",
   description:
-    "Emergency department transformation and capacity optimization at Southern Region Integrated Health System.",
+    "Emergency department transformation and capacity optimization at Southern US Regional Integrated Health System.",
 };
 
 export default function THPCaseStudy() {
@@ -18,7 +18,7 @@ export default function THPCaseStudy() {
       <div className="cs-eyebrow">Client Case Study</div>
 
       <h1 className="cs-title">
-        Southern Region Integrated Health System
+        Southern US Regional Integrated Health System
       </h1>
       <h2 className="cs-subtitle">
         Emergency Department Transformation &amp; Capacity Optimization

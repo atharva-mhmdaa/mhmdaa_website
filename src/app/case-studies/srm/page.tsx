@@ -3,9 +3,9 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title:
-    "Client Case Study: Faith-Based Non-Profit Community Hospital — MHMDAA",
+    "Client Case Study: West Coast Faith-Based Non-Profit — MHMDAA",
   description:
-    "LOS reduction and transfer capacity optimization at a faith-based non-profit community hospital.",
+    "LOS reduction and transfer capacity optimization at a West Coast faith-based non-profit.",
 };
 
 export default function SRMCaseStudy() {
@@ -18,7 +18,7 @@ export default function SRMCaseStudy() {
       <div className="cs-eyebrow">Client Case Study</div>
 
       <h1 className="cs-title">
-        Faith-Based Non-Profit Community Hospital
+        West Coast Faith-Based Non-Profit
       </h1>
       <h2 className="cs-subtitle">
         LOS Reduction &amp; Transfer Capacity Optimization
