@@ -37,18 +37,28 @@ export default async function proxy(request: NextRequest) {
 
   if (isProtected) {
     let user = null;
+    let clearAuthCookies = false;
     try {
-      const { data } = await supabase.auth.getUser();
+      const { data, error } = await supabase.auth.getUser();
       user = data.user;
+      if (error) {
+        clearAuthCookies = true;
+      }
     } catch {
-      // Auth error — treat as unauthenticated
+      clearAuthCookies = true;
     }
 
     if (!user) {
       const url = request.nextUrl.clone();
       url.pathname = '/login';
       url.search = '';
-      return NextResponse.redirect(url);
+      const redirectResponse = NextResponse.redirect(url);
+      if (clearAuthCookies) {
+        request.cookies.getAll()
+          .filter(({ name }) => name.startsWith('sb-'))
+          .forEach(({ name }) => redirectResponse.cookies.delete(name));
+      }
+      return redirectResponse;
     }
 
     const role = (user.user_metadata?.role as string) || 'nurse';
