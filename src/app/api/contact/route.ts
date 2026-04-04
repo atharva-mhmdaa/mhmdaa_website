@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { supabaseAdmin } from "@/lib/supabase/admin";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -24,7 +24,7 @@ export async function POST(request: Request) {
 
     const submittedAt = new Date().toISOString();
 
-    const dbInsert = supabaseAdmin.from("contact_submissions").insert({
+    const dbInsert = getSupabaseAdmin().from("contact_submissions").insert({
       first_name: firstName.trim(),
       last_name: lastName.trim(),
       email: email.trim(),
