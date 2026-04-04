@@ -81,68 +81,94 @@ export default async function PayorServicePage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* ── BREADCRUMB ────────────────────────────────────── */}
-      <div
-        style={{
-          background: "var(--off)",
-          borderBottom: "1px solid var(--border)",
-          padding: "14px 32px",
-        }}
-      >
-        <nav
-          style={{
-            maxWidth: 1280,
-            margin: "0 auto",
-            fontSize: ".9rem",
-            color: "var(--mg)",
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-            flexWrap: "wrap",
-          }}
-        >
-          <Link
-            href="/"
-            style={{ color: "var(--navy)", textDecoration: "none", fontWeight: 500 }}
-          >
-            Home
-          </Link>
-          <span style={{ opacity: 0.4 }}>›</span>
-          <Link
-            href="/payor-services"
-            style={{ color: "var(--navy)", textDecoration: "none", fontWeight: 500 }}
-          >
-            Services for Payors
-          </Link>
-          <span style={{ opacity: 0.4 }}>›</span>
-          <span style={{ fontWeight: 600 }}>{service.title}</span>
-        </nav>
-      </div>
+      {/* ── SERVICE CATEGORY NAV ──────────────────────────── */}
+      <nav className="svc-breadcrumb-nav" aria-label="Payor service navigation">
+        <div className="svc-breadcrumb-inner">
+          {payorServices.map((s) => (
+            <Link
+              key={s.slug}
+              href={`/payor-services/${s.slug}`}
+              className={`svc-breadcrumb-item${s.slug === slug ? " active" : ""}`}
+            >
+              {s.shortTitle}
+            </Link>
+          ))}
+        </div>
+      </nav>
+
+      {/* ── INFO STRIP ────────────────────────────────────── */}
+      {service.infoText && (
+        <div style={{ background: "#1B2A5B", borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "10px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.55)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span style={{ fontSize: ".92rem", color: "rgba(255,255,255,0.72)" }}>{service.infoText}</span>
+          </div>
+          <div style={{ background: "#e53e3e", color: "#fff", fontSize: ".68rem", fontWeight: 800, letterSpacing: ".12em", textTransform: "uppercase", padding: "6px 14px", borderRadius: 5, whiteSpace: "nowrap", flexShrink: 0 }}>{service.infoBadge ?? "PROACTIVE, NOT REACTIVE"}</div>
+        </div>
+      )}
+
+      {/* ── OUR PROCESS ───────────────────────────────────── */}
+      {service.processSteps && service.processSteps.length > 0 && (
+        <section className="section" style={{ background: "var(--off)", padding: "80px 32px" }}>
+          <div className="sc">
+            <div className="sec-header c">
+              <div className="sec-label">Our Process</div>
+              <h2 className="sec-title">How We Support <em>Our Clients</em></h2>
+              <p className="sec-sub" style={{ marginLeft: "auto", marginRight: "auto" }}>
+                Our approach relies on a comprehensive, multi-step process rooted in Reliable Care Organization (RCO) principles.
+              </p>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 22 }}>
+              {service.processSteps.map((step, i) => (
+                <div
+                  key={step.title}
+                  className="card"
+                  style={{ borderTop: `4px solid ${i % 2 === 0 ? "#2A3F7A" : "#C8102E"}`, padding: "28px 26px" }}
+                >
+                  <div style={{ fontSize: ".75rem", fontWeight: 700, letterSpacing: ".13em", textTransform: "uppercase" as const, color: i % 2 === 0 ? "#2A3F7A" : "#C8102E", marginBottom: 10 }}>
+                    {step.title}
+                  </div>
+                  <p style={{ fontSize: "1.04rem", color: "#5A6E8A", lineHeight: 1.72 }}>{step.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── FEATURE CARDS ─────────────────────────────────── */}
-      <section className="section">
+      <section className="section" style={{ background: "#fff" }}>
         <div className="sc">
           <div className="sec-header c">
             <div className="sec-label">Key Service Components</div>
             <h2 className="sec-title">{service.title}</h2>
+            {service.featuresSub && (
+              <p className="sec-sub" style={{ marginLeft: "auto", marginRight: "auto" }}>{service.featuresSub}</p>
+            )}
           </div>
-          <div className="card-grid-2">
+          <div className="feats-grid">
             {service.features.map((f, i) => (
-              <div className="feat" key={f.title}>
-                <div
-                  className="feat-icon"
-                  style={{
-                    background: featureColors[i % featureColors.length].bg,
-                    color: featureColors[i % featureColors.length].color,
-                    fontWeight: 800,
-                    fontSize: "1.1rem",
-                  }}
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </div>
-                <div>
-                  <h4>{f.title}</h4>
-                  <p>{f.desc}</p>
+              <div className="feat-card" key={f.title}>
+                {f.image && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={f.image} alt={f.title} className="fc-img" />
+                )}
+                {!f.image && (
+                  <div
+                    className="feat-icon"
+                    style={{
+                      background: featureColors[i % featureColors.length].bg,
+                      color: featureColors[i % featureColors.length].color,
+                      fontWeight: 800,
+                      fontSize: "1.1rem",
+                    }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </div>
+                )}
+                <div className="fc-body">
+                  <div className="fc-title">{f.title}</div>
+                  <p className="fc-desc">{f.desc}</p>
                 </div>
               </div>
             ))}

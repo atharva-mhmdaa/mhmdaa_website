@@ -439,30 +439,60 @@ export const providerServices: ProviderService[] = [
         description:
           "Our team equips and trains clinical staff to execute timely conversion from Observation to Inpatient status conversions, reducing technical denials that arise from status conversion delays.",
         icon: "navy",
+        image: "/images/service-concurrent-review-89.png",
+        bullets: [
+          "Staff education on observation-to-inpatient conversion protocols",
+          "Payor notification procedures integrated into workflow",
+          "Prevention of technical denials related to status delays",
+        ],
       },
       {
         title: "18-Hour Milestone",
         description:
           "Implementation of earlier structured 18-hour status reviews ensure timely level-of-care reassessment and compliance with Payor notification requirements. This milestone-driven approach supports accurate status determination and defensible documentation.",
         icon: "red",
+        image: "/images/service-concurrent-review-90.png",
+        bullets: [
+          "Automated alerts at 18-hour observation threshold",
+          "Timely Payor notification within required regulatory timeframes",
+          "Comprehensive audit trail to support compliance and appeals",
+        ],
       },
       {
         title: "Early Discharge & Transition Planning Alignment",
         description:
           "Discharge planning is initiated at the point of admission to ensure transition of care documentation aligns with the Two-Midnight benchmark. This proactive approach supports accurate status justification and reduces length-of-stay\u2013related denials.",
         icon: "teal",
+        image: "/images/service-concurrent-review-91.png",
+        bullets: [
+          "Discharge planning protocols initiated at admission",
+          "Documentation aligned with Two-Midnight criteria and expected length of stay (LOS)",
+          "Reduction of denials associated with extended or unsupported stays",
+        ],
       },
       {
         title: "Objective Clinical Documentation",
         description:
           "Integrate vital signs, imaging, and laboratory results throughout the patient\u2019s stay to justify continued inpatient necessity.",
         icon: "green",
+        image: "/images/service-concurrent-review-92.png",
+        bullets: [
+          "Integration of vitals monitoring data",
+          "Imaging and lab result correlation with clinical status",
+          "Documentation of clinical acuity and progression over time",
+        ],
       },
       {
         title: "Evidence-Based Clinical Criteria",
         description:
           "Utilize evidence-based criteria to justify inpatient status determination, ensuring medical decision-making is supported by current clinical guidelines.",
         icon: "purple",
+        image: "/images/service-concurrent-review-93.png",
+        bullets: [
+          "Application of InterQual and Milliman (MCG) guidelines for level-of-care determination",
+          "Documentation aligned with objective, evidence-based clinical criteria",
+          "Compliance with CMS admission standards and regulatory expectations",
+        ],
       },
     ],
     prevSlug: "p2p",
@@ -505,18 +535,39 @@ export const providerServices: ProviderService[] = [
         description:
           "We prioritize Clinical Documentation Improvement (CDI) focus on DRGs with significant downgrade exposure and high-risk outpatient procedures prone to audit review.",
         icon: "navy",
+        image: "/images/service-coding-86.png",
+        bullets: [
+          "Analysis of high-risk DRG categories for downgrade exposure",
+          "Identification of procedures with elevated audit risk",
+          "Targeted physician education on documentation requirements",
+          "Query development for ambiguous clinical indicators",
+        ],
       },
       {
         title: "Quality Audits",
         description:
           "Perform regular internal reviews to identify trends in incorrect coding before claims are finalized.",
         icon: "red",
+        image: "/images/service-coding-87.png",
+        bullets: [
+          "Systematic internal coding audits across all departments",
+          "Identification of coding error patterns and trends",
+          "Root cause analysis of recurring coding issues",
+          "Corrective action plan development and monitoring",
+        ],
       },
       {
         title: "Claim Scrubber Integration",
         description:
           "Using advanced technology, we catch CCI violations and MUE before claim submission, coupled with monthly physician and coder education.",
         icon: "teal",
+        image: "/images/service-coding-88.png",
+        bullets: [
+          "Automated CCI violation detection and resolution",
+          "MUE editing to prevent bundling denials",
+          "Pre-submission claim scrubbing workflow",
+          "Monthly education sessions for physicians and coders",
+        ],
       },
     ],
     prevSlug: "concurrent-review",
@@ -531,7 +582,7 @@ export const providerServices: ProviderService[] = [
       "Optimize first-pass payment rates with automated 835 remittance processing and clean claim monitoring.",
     heroDescription:
       "Our claim submission methodology centers on proactive charge-level auditing and advanced automation to optimize first-pass payment rates. We combine rigorous pre-submission compliance checks with automated 835 remittance processing to identify and resolve systemic billing issues immediately. This ensures that every submitted claim is accurate, compliant with specific payor requirements, and primed for seamless reimbursement.",
-    heroImage: "/images/service-claim-submission-84.png",
+    heroImage: "/images/service-claim-submission-hero2.png",
     tileImage: "/images/index-24.png",
     features: [
       {
@@ -539,12 +590,26 @@ export const providerServices: ProviderService[] = [
         description:
           "Monitor the percentage of claims paid on the first pass to ensure submission accuracy and identify systemic issues.",
         icon: "navy",
+        image: "/images/service-claim-submission-84.png",
+        bullets: [
+          "First-pass payment rate tracking and benchmarking",
+          "Root cause analysis of claim rejections and denials",
+          "Identification of submission accuracy gaps",
+          "Payor-specific submission requirement management",
+        ],
       },
       {
         title: "835 Remittance Automation",
         description:
           "Automatically pull Remark and Reason codes into a workflow dashboard for immediate action, eliminating manual processing delays.",
         icon: "red",
+        image: "/images/service-claim-submission-85.png",
+        bullets: [
+          "Automated 835 EDI file processing and parsing",
+          "Remark and Reason code extraction and categorization",
+          "Real-time workflow dashboard for claims monitoring",
+          "Automated alerts for high-priority denials",
+        ],
       },
     ],
     prevSlug: "coding",
@@ -559,38 +624,98 @@ export const providerServices: ProviderService[] = [
       "Initial denial rate targets under 5%, categorization matrices, root cause analysis, denial task forces, and strategic Payor collaboration through Joint Operating Committees.",
     heroDescription:
       "Our denial management methodology provides a comprehensive, cross-departmental framework designed to keep initial denial rates under 5%. By leveraging robust categorization matrices, targeted root cause analysis, and strategic Payor collaboration through Joint Operating Committees (JOCs), we systematically identify and resolve bottlenecks. This proactive approach ensures continuous feedback loops and optimal revenue protection across the entire claim lifecycle.",
-    heroImage: "/images/service-denial-management-94.png",
+    heroImage: "/images/service-denial-management-hero.png",
     tileImage: "/images/index-25.png",
+    processSteps: [
+      {
+        title: "Categorize & Analyze",
+        description:
+          "We utilize a Categorization Matrix to sort denials into distinct buckets for targeted resolution: Clinical (medical necessity challenges), Administrative (missing documentation or authorization issues), and Technical (claims processing errors or format violations).",
+      },
+      {
+        title: "Track & Benchmark",
+        description:
+          "We establish baseline performance benchmarks by individual health plan and utilize real-time performance dashboards, deploying dollar-stratified action plans that prioritize high-impact denials.",
+      },
+      {
+        title: "Root Cause Analysis",
+        description:
+          "We systematically track specific \"Red Flag\" categories to identify the source of the denial, focusing heavily on 2-Midnight Rule violations, post-acute care transition delays, and 30-day readmission patterns by Payor.",
+      },
+      {
+        title: "Mobilize & Educate",
+        description:
+          "We establish a Denial Task Force that conducts weekly meetings with front-end, clinical, and coding departments, ensuring cross-departmental workflow optimization and strict accountability tracking.",
+      },
+      {
+        title: "Collaborate & Escalate",
+        description:
+          "We drive strategic Payor collaboration by establishing monthly Joint Operating Committees (JOCs) to align clinical expectations and utilize direct escalation pathways with major health plans to achieve batch resolution of recurring administrative issues.",
+      },
+    ],
+    featuresSectionTitle: "Denial Management",
+    featuresSectionSub:
+      "Initial denial rate targets under 5%, categorization matrices, root cause analysis, denial task forces, and strategic Payor collaboration through Joint Operating Committees.",
     features: [
       {
         title: "Performance Metrics",
         description:
           "Maintain an initial denial rate target of less than 5% per Payor with stratified action plans based on total dollars.",
         icon: "navy",
+        image: "/images/service-denial-management-94.png",
+        bullets: [
+          "Baseline performance benchmarking by individual health plan",
+          "Dollar-stratified action plans for high-impact denials",
+          "Real-time performance dashboards and trend analysis",
+        ],
       },
       {
         title: "Categorization Matrix",
         description:
           "Sort denials into Clinical, Administrative, and Technical buckets for targeted resolution.",
         icon: "red",
+        image: "/images/service-denial-management-95.png",
+        bullets: [
+          "Clinical denials: Medical necessity challenges",
+          "Administrative denials: Missing documentation or authorization issues",
+          "Technical denials: Claims processing errors or format violations",
+        ],
       },
       {
         title: "Root Cause Analysis",
         description:
           "Track specific 'Red Flag' categories such as 2-Midnight Rule violations, post-acute care delays, and 30-day readmissions by Payor.",
         icon: "teal",
+        image: "/images/service-denial-management-96.png",
+        bullets: [
+          "2-Midnight Rule compliance tracking and violation alerts",
+          "Post-acute care transition delay identification",
+          "30-day readmission pattern analysis by Payor",
+        ],
       },
       {
         title: "Denial Task Force",
         description:
           "Conduct weekly meetings with front-end, clinical, and coding departments to develop implementation plans and close feedback loops.",
         icon: "green",
+        image: "/images/service-denial-management-97.png",
+        bullets: [
+          "Cross-departmental workflow optimization",
+          "Targeted education and feedback for front-end staff",
+          "Documented action items with accountability tracking",
+        ],
       },
       {
         title: "Strategic Payor Collaboration",
         description:
           "Establish monthly Joint Operating Committees (JOCs) to discuss systemic denial trends and align clinical expectations.",
         icon: "purple",
+        image: "/images/service-denial-management-98.png",
+        bullets: [
+          "Direct escalation pathways with major health plans",
+          "Systemic denial trend discussion and analysis",
+          "Batch resolution of recurring administrative issues",
+        ],
       },
     ],
     prevSlug: "claim-submission",
@@ -605,7 +730,7 @@ export const providerServices: ProviderService[] = [
       "Personalized clinical narratives and evidence-based policy cross-referencing to overturn denials.",
     heroDescription:
       "Our appeal letter methodology focuses on constructing winning rebuttals by replacing generic templates with highly personalized clinical narratives tailored to each patient\u2019s unique presentation and extenuating circumstances. We strategically shift the burden of proof back to the Payor by explicitly documenting the physician\u2019s clinical judgment and expectation of care at the time of admission. By integrating objective data and cross-referencing restrictive policies against established guidelines, we work to establish undeniable medical necessity and effectively challenge the denial.",
-    heroImage: "/images/service-appeals-75.png",
+    heroImage: "/images/service-appeals-hero.png",
     tileImage: "/images/index-26.png",
     features: [
       {
@@ -613,24 +738,48 @@ export const providerServices: ProviderService[] = [
         description:
           "Replace generic templates with letters tailored to individual patient presentations, including extenuating circumstances.",
         icon: "navy",
+        image: "/images/service-appeals-75.png",
+        bullets: [
+          "Custom appeal letters drafted for every unique encounter",
+          "Integration of complex medical histories and nuanced details",
+          "Compelling narrative structure establishing medical necessity",
+        ],
       },
       {
         title: "Data Integration",
         description:
           "Directly cite vitals, lab results, intensity of services, and imaging that justify the inpatient definition based on evidence-based criteria.",
         icon: "red",
+        image: "/images/service-appeals-76.png",
+        bullets: [
+          "Vital sign trends demonstrating clinical acuity",
+          "Lab result abnormalities supporting inpatient level of care",
+          "Imaging findings corroborating clinical presentation",
+        ],
       },
       {
         title: "Burden of Proof",
         description:
           "Shift the burden of proof back to the Payor by explicitly documenting the physician\u2019s expectation of care at the time of admission.",
         icon: "teal",
+        image: "/images/service-appeals-77.png",
+        bullets: [
+          "Documentation of physician\u2019s clinical judgment at admission",
+          "Evidence-based criteria citations for level of care",
+          "Direct challenges to the Payor\u2019s alternative interpretation of evidence",
+        ],
       },
       {
         title: "Policy Cross-Referencing",
         description:
           "Quote specific Payor policies, CMS guidelines, or evidence-based criteria that the denial contradicts.",
         icon: "green",
+        image: "/images/service-appeals-78.png",
+        bullets: [
+          "Direct citations of restrictive policy language",
+          "CMS guidelines and Medicare Local Coverage Determinations",
+          "NCCN and specialty society guidelines alignment",
+        ],
       },
     ],
     prevSlug: "denial-management",
@@ -645,7 +794,7 @@ export const providerServices: ProviderService[] = [
       "Comprehensive litigation support grounded in clinical, contractual, and regulatory expertise.",
     heroDescription:
       "Our Litigation and Expert Support methodology provides comprehensive defense against systemic payor processing failures and improper claims handling practices. Grounded in clinical, contractual, and regulatory expertise, we utilize forensic analysis and physician-led reviews to challenge overpayment demands and validate contract compliance. This approach systematically evaluates network agreements, audit methodologies, and regulatory frameworks to ensure robust protection against improper extrapolation and prompt-pay violations.",
-    heroImage: "/images/service-litigation-99.png",
+    heroImage: "/images/service-litigation-hero.png",
     tileImage: "/images/index-27.png",
     features: [
       {
@@ -653,24 +802,48 @@ export const providerServices: ProviderService[] = [
         description:
           "Evaluate network agreements for adherence to prompt-pay statutes and the No Surprises Act (NSA).",
         icon: "navy",
+        image: "/images/service-litigation-99.png",
+        bullets: [
+          "Contract compliance analysis against applicable federal and state statutes",
+          "Prompt-pay requirement validation and supporting documentation",
+          "No Surprises Act (NSA) compliance assessment and gap identification",
+        ],
       },
       {
         title: "SIU and Audit Defense",
         description:
           "Analyze the statistical validity of SIU audits and challenge overpayment demands based on improper extrapolation.",
         icon: "red",
+        image: "/images/service-litigation-100.png",
+        bullets: [
+          "Statistical validity assessment of SIU audit methodologies",
+          "Sampling methodology review and validation",
+          "Overpayment demand analysis and reduction negotiation",
+        ],
       },
       {
         title: "Expert Witness Testimony",
         description:
           "Provide physician-led expert testimony rooted in operational experience regarding systemic Payor processing gaps.",
         icon: "teal",
+        image: "/images/service-litigation-101.png",
+        bullets: [
+          "Expert witness qualification, report development, and testimony preparation",
+          "Analysis and testimony regarding systemic Payor processing and reimbursement failures",
+          "Benchmarking against industry standards and regulatory expectations",
+        ],
       },
       {
         title: "Regulatory Complaint Response Support",
         description:
           "Provide strategic consulting support in the development of comprehensive regulatory complaint submissions addressing improper claims handling practices, ensuring alignment with regulatory standards and facilitating escalation to state insurance commissions and oversight bodies.",
         icon: "green",
+        image: "/images/service-litigation-102.png",
+        bullets: [
+          "Complaint documentation aligned with regulatory and compliance standards",
+          "State insurance commission filing preparation",
+          "Prompt-pay statute violation documentation",
+        ],
       },
     ],
     prevSlug: "appeals",
