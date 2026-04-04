@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
 import type { Metadata } from 'next';
+import JobApplicationForm from '@/components/forms/JobApplicationForm';
 
 export const revalidate = 0;
 
@@ -111,22 +112,18 @@ export default async function JobPostingPage({ params }: Props) {
       {/* Body */}
       <section className="jd-content">
         <div className="jd-content__inner">
-          {/* Apply CTA */}
+          {/* Apply CTA — scrolls to form */}
           <div className="jd-apply-band">
             <div>
               <div className="jd-apply-band__heading">
                 Interested in This Role?
               </div>
               <p className="jd-apply-band__sub">
-                Send your details to get started. No portal, just email.
+                Complete the application form below — no email required.
               </p>
             </div>
-            <a
-              href={`mailto:info@mhmdaa.com?subject=Application – ${encodeURIComponent(job.title)}`}
-              className="btn-p"
-              style={{ background: '#C8102E', borderColor: '#C8102E', whiteSpace: 'nowrap' }}
-            >
-              Apply via Email &rarr;
+            <a href="#apply-form" className="btn-p" style={{ background: '#C8102E', borderColor: '#C8102E', whiteSpace: 'nowrap' }}>
+              Apply Now &darr;
             </a>
           </div>
 
@@ -154,31 +151,13 @@ export default async function JobPostingPage({ params }: Props) {
             </div>
           )}
 
-          {/* Bottom CTA */}
-          <div className="jd-bottom-cta">
-            <h3 className="jd-bottom-cta__heading">
-              Ready to Make an Impact?
-            </h3>
-            <p className="jd-bottom-cta__text">
-              To apply, email{' '}
-              <a
-                href={`mailto:info@mhmdaa.com?subject=Application – ${job.title}`}
-                style={{ color: '#2A3F7A', fontWeight: 700 }}
-              >
-                info@mhmdaa.com
-              </a>
-            </p>
-            <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a
-                href={`mailto:info@mhmdaa.com?subject=Application – ${job.title}`}
-                className="btn-p"
-              >
-                Apply via Email &rarr;
-              </a>
-              <Link href="/careers" className="btn-o">
-                View All Openings
-              </Link>
-            </div>
+          {/* Application Form */}
+          <JobApplicationForm jobId={job.id} jobTitle={job.title} />
+
+          <div style={{ textAlign: 'center', marginTop: '32px' }}>
+            <Link href="/careers" className="btn-o">
+              View All Openings
+            </Link>
           </div>
         </div>
       </section>

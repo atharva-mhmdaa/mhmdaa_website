@@ -182,7 +182,7 @@ export default function NewJobPosting() {
         </div>
 
         <p style={{ fontSize: '.88rem', color: '#64748b', marginBottom: '20px', borderLeft: '3px solid #e2e8f0', paddingLeft: '14px' }}>
-          All published postings automatically end with &ldquo;To apply, email info@mhmdaa.com&rdquo;.
+          Published postings include an application form where candidates can apply directly on the careers page.
         </p>
 
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>

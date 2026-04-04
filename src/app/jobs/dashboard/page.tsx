@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/server';
+import { getSupabaseAdmin } from '@/lib/supabase/admin';
 
 export const metadata = { title: 'Jobs Dashboard — MHMDAA' };
 
@@ -25,8 +26,25 @@ export default async function JobsDashboard() {
     if (data) jobs = data;
   }
 
+  // Fetch applicant counts per job via admin client
+  const applicantCounts: Record<string, number> = {};
+  if (jobs.length > 0) {
+    const admin = getSupabaseAdmin();
+    const { data: counts } = await admin
+      .from('job_applications')
+      .select('job_posting_id')
+      .in('job_posting_id', jobs.map((j) => j.id));
+
+    if (counts) {
+      for (const row of counts) {
+        applicantCounts[row.job_posting_id] = (applicantCounts[row.job_posting_id] ?? 0) + 1;
+      }
+    }
+  }
+
   const published = jobs.filter((j) => j.is_published).length;
   const drafts = jobs.filter((j) => !j.is_published).length;
+  const totalApplicants = Object.values(applicantCounts).reduce((a, b) => a + b, 0);
 
   const hasJobs = jobs.length > 0;
 
@@ -60,6 +78,10 @@ export default async function JobsDashboard() {
             <div className="dash-stat-card__value dash-stat-card__value--draft">{drafts}</div>
             <div className="dash-stat-card__label">Drafts</div>
           </div>
+          <div className="dash-card dash-stat-card">
+            <div className="dash-stat-card__value" style={{ color: '#2A3F7A' }}>{totalApplicants}</div>
+            <div className="dash-stat-card__label">Applicants</div>
+          </div>
         </div>
       )}
 
@@ -86,33 +108,53 @@ export default async function JobsDashboard() {
                 <th>Department</th>
                 <th>Location</th>
                 <th>Status</th>
+                <th>Applicants</th>
                 <th>Created</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              {jobs.map((job) => (
-                <tr key={job.id}>
-                  <td style={{ fontWeight: 600 }}>{job.title}</td>
-                  <td>{job.department || '—'}</td>
-                  <td>{job.location || '—'}</td>
-                  <td>
-                    <span
-                      className={`dash-badge ${job.is_published ? 'published' : 'draft'}`}
-                    >
-                      {job.is_published ? 'Published' : 'Draft'}
-                    </span>
-                  </td>
-                  <td style={{ fontSize: '.88rem', color: '#64748b' }}>
-                    {new Date(job.created_at).toLocaleDateString()}
-                  </td>
-                  <td>
-                    <Link href={`/jobs/jobs/${job.id}/edit`} className="dash-table-link">
-                      Edit
-                    </Link>
-                  </td>
-                </tr>
-              ))}
+              {jobs.map((job) => {
+                const count = applicantCounts[job.id] ?? 0;
+                return (
+                  <tr key={job.id}>
+                    <td style={{ fontWeight: 600 }}>{job.title}</td>
+                    <td>{job.department || '—'}</td>
+                    <td>{job.location || '—'}</td>
+                    <td>
+                      <span className={`dash-badge ${job.is_published ? 'published' : 'draft'}`}>
+                        {job.is_published ? 'Published' : 'Draft'}
+                      </span>
+                    </td>
+                    <td>
+                      <Link
+                        href={`/jobs/jobs/${job.id}/applicants`}
+                        className="applicants-count-link"
+                        title="View applicants"
+                      >
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                          <circle cx="9" cy="7" r="4" />
+                          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                        {count} {count === 1 ? 'applicant' : 'applicants'}
+                      </Link>
+                    </td>
+                    <td style={{ fontSize: '.88rem', color: '#64748b' }}>
+                      {new Date(job.created_at).toLocaleDateString()}
+                    </td>
+                    <td style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                      <Link href={`/jobs/jobs/${job.id}/edit`} className="dash-table-link">
+                        Edit
+                      </Link>
+                      <Link href={`/jobs/jobs/${job.id}/applicants`} className="dash-table-link">
+                        Applicants
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         )}
