@@ -49,27 +49,34 @@ export async function POST(request: Request) {
 
     const [dbResult, webhookResult] = await Promise.allSettled([dbInsert, webhookCall]);
 
-    if (dbResult.status === "rejected" || (dbResult.status === "fulfilled" && dbResult.value.error)) {
+    const dbFailed =
+      dbResult.status === "rejected" ||
+      (dbResult.status === "fulfilled" && dbResult.value.error);
+
+    if (dbFailed) {
       const err = dbResult.status === "rejected" ? dbResult.reason : dbResult.value.error;
       console.error("Supabase insert failed:", err);
     }
 
+    let webhookFailed = false;
     if (webhookUrl) {
       if (webhookResult.status === "rejected") {
+        webhookFailed = true;
         console.error("Webhook error:", webhookResult.reason);
-        return NextResponse.json(
-          { error: "Failed to submit your inquiry. Please try again later." },
-          { status: 502 },
-        );
+      } else {
+        const res = webhookResult.value as Response | null;
+        if (res && !res.ok) {
+          webhookFailed = true;
+          console.error("Webhook error: HTTP", res.status);
+        }
       }
-      const res = webhookResult.value as Response | null;
-      if (res && !res.ok) {
-        console.error("Webhook error: HTTP", res.status);
-        return NextResponse.json(
-          { error: "Failed to submit your inquiry. Please try again later." },
-          { status: 502 },
-        );
-      }
+    }
+
+    if (dbFailed && webhookFailed) {
+      return NextResponse.json(
+        { error: "Failed to submit your inquiry. Please try again later." },
+        { status: 502 },
+      );
     }
 
     return NextResponse.json({ success: true });
