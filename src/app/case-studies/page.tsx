@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { createClient } from "@/lib/supabase/server";
 import CaseStudiesTabs from "@/components/ui/CaseStudiesTabs";
+import type { CaseStudyListRow } from "@/components/ui/CaseStudiesTabs";
 
 export const metadata: Metadata = {
   title: "Case Studies",
@@ -8,7 +10,28 @@ export const metadata: Metadata = {
     "Explore real results from hospitals nationwide — ER redesigns, revenue cycle transformations, and enterprise-wide operations improvements.",
 };
 
-export default function CaseStudiesPage() {
+export default async function CaseStudiesPage() {
+  let caseStudies: CaseStudyListRow[] = [];
+
+  try {
+    const supabase = await createClient();
+    const { data } = await supabase
+      .from("case_studies")
+      .select(
+        "kind, title, slug, subtitle, description, challenge, solution, results, metrics, card_challenge, card_solution, card_metrics, region, service_type, published_at, payor_dispute_type, payor_representation, payor_scope, payor_case_ref, payor_counsel",
+      )
+      .eq("is_published", true)
+      .order("published_at", { ascending: false });
+    if (data) {
+      caseStudies = data.map((row) => ({
+        ...row,
+        kind: row.kind === "payor" ? "payor" : "provider",
+      })) as CaseStudyListRow[];
+    }
+  } catch {
+    // Table or columns missing — empty state until migrations are applied
+  }
+
   return (
     <>
       <section className="cases-hero">
@@ -66,7 +89,7 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      <CaseStudiesTabs />
+      <CaseStudiesTabs caseStudies={caseStudies} />
     </>
   );
 }

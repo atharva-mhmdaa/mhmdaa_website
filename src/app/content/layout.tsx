@@ -37,7 +37,10 @@ export default async function ContentLayout({
 
           <nav>
             <Link href="/content/dashboard" className="dash-nav-link">
-              Dashboard
+              Blog Posts
+            </Link>
+            <Link href="/content/case-studies" className="dash-nav-link">
+              Case Studies
             </Link>
           </nav>
 

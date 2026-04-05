@@ -156,7 +156,7 @@ function PayorCTA() {
   );
 }
 
-/* ─── Provider data ─── */
+/* ─── Provider / Payor card shapes (built from Supabase rows) ─── */
 interface ProviderCard {
   hospital: string;
   desc?: string;
@@ -171,85 +171,8 @@ interface ProviderCard {
   dataDate: string;
 }
 
-const PROVIDER_CASES: ProviderCard[] = [
-  {
-    hospital: "Southern US Regional Integrated Health System",
-    tagline: "Emergency Department Transformation & Capacity Optimization",
-    challenge:
-      "Lack of inpatient bed capacity, ED inefficiencies, and long wait times eroding patient volume and satisfaction.",
-    solution:
-      "MHMDAA redesigned patient care processes end-to-end, building a collaborative operational culture that aligned clinical and administrative leadership.",
-    metrics: [
-      { value: "20%", label: "LOS Reduction" },
-      { value: "4.2d", label: "Inpatient LOS" },
-      { value: "95th+", label: "Satisfaction %ile" },
-    ],
-    href: "/case-studies/thp",
-    dataRegion: "texas",
-    dataService: "ed-transformation",
-    dataTitle: "Southern US Regional Integrated Health System",
-    dataDate: "2023-06-01",
-  },
-  {
-    hospital: "Pacific Northwest Magnet-Designated Medical Center",
-    desc: "~300\u2013400 Bed \u00a0\u00b7\u00a0 Level II Trauma Center \u00a0\u00b7\u00a0 High-Volume Emergency Department",
-    tagline: "Functional Capacity Expansion & Patient Flow Optimization",
-    challenge:
-      "Unprecedented service demands across three primary sectors with urgent need to reduce LOS and cut throughput times for admission and discharge.",
-    solution:
-      "Deployed MHMDAA\u2019s proprietary Accountable Hospital Operations prototype to re-engineer patient flow from front door through discharge.",
-    metrics: [
-      { value: "100+", label: "New Functional Beds" },
-      { value: "64%", label: "Faster ED Access" },
-      { value: "+16%", label: "Annual ED Volume" },
-    ],
-    href: "/case-studies/sjh",
-    dataRegion: "pacific-northwest",
-    dataService: "capacity-expansion",
-    dataTitle: "Pacific Northwest Magnet-Designated Medical Center",
-    dataDate: "2022-09-01",
-  },
-  {
-    hospital: "Leading Pediatric & Adult Regional Medical Center",
-    tagline: "Enterprise-Wide Hospital Operations Redesign",
-    challenge:
-      "Low patient satisfaction, ambulance diversion, low reimbursement, and uncompensated care \u2014 systemic dysfunction spanning ED, inpatient, and perioperative services.",
-    solution:
-      "Multi-year broad-scale redesign of ED, inpatient, and perioperative operations with front-line staff, supported by innovative technology systems for transparency and accountability.",
-    metrics: [
-      { value: "94%", label: "Fewer Left Untreated" },
-      { value: "+33%", label: "Monthly ED Volume" },
-      { value: "Top Quartile", label: "Patient Experience" },
-    ],
-    href: "/case-studies/shmc",
-    dataRegion: "regional",
-    dataService: "operations-redesign",
-    dataTitle: "Leading Pediatric & Adult Regional Medical Center",
-    dataDate: "2021-04-01",
-  },
-  {
-    hospital: "West Coast Faith-Based Non-Profit",
-    desc: "~278-Bed Integrated Community Hospital \u00a0\u00b7\u00a0 Regional Care Network Affiliate \u00a0\u00b7\u00a0 Transfer-Dependent Network Hospital",
-    tagline: "LOS Reduction & Transfer Capacity Optimization",
-    challenge:
-      "High inpatient LOS, ED crowding, and an inability to accept external transfers due to persistent capacity constraints in this 278-bed faith-based institution.",
-    solution:
-      "Hospital Collaborative Care engagement \u2014 comprehensive integrated approach with hospitalists and specialists to drive AM discharge culture and restore transfer capacity.",
-    metrics: [
-      { value: "0.75d", label: "IP LOS Reduction" },
-      { value: "54%+", label: "AM Discharge Orders" },
-      { value: "+25%", label: "Transfers Accepted" },
-    ],
-    href: "/case-studies/srm",
-    dataRegion: "california",
-    dataService: "los-reduction",
-    dataTitle: "West Coast Faith-Based Non-Profit",
-    dataDate: "2022-02-01",
-  },
-];
-
-/* ─── Payor data ─── */
 interface PayorCard {
+  slug: string;
   title: string;
   tagline?: string;
   representation: string;
@@ -260,108 +183,6 @@ interface PayorCard {
   dataDtype: string;
   dataDate: string;
 }
-
-const PAYOR_CASES: PayorCard[] = [
-  {
-    title: "EMTALA Medical Necessity & Post-Stabilization Admissions",
-    representation: "Payor - National Healthcare Law Group",
-    scope: "Retained by a national healthcare law group to serve as the medical expert in a payor\u2019s defense during a coordinated arbitration proceeding before the American Arbitration Association (AAA). Reviewed approximately 950 hospital admissions and authored a comprehensive expert report addressing medical necessity, post-stabilization inpatient admissions, and EMTALA obligations. Prepared and delivered expert rebuttal to the opposing hospital\u2019s clinical arguments.",
-    metrics: [
-      { value: "950", label: "Admissions Reviewed" },
-      { value: "3-Day", label: "Arbitration" },
-      { value: "AAA", label: "Forum" },
-    ],
-    caseRef: "AAA Coordinated Arbitration Proceeding - California Medical Necessity Review",
-    counsel: "National Healthcare Law Group",
-    dataDtype: "medical-necessity",
-    dataDate: "2022-01-01",
-  },
-  {
-    title: "Claims Reimbursement Appropriateness Dispute",
-    representation: "Payor - Regional Healthcare Law Firm",
-    scope: "Engaged as the medical expert by a regional healthcare law firm representing a payor in an arbitration proceeding before the American Arbitration Association (AAA). Reviewed 138 disputed claims, produced a detailed expert report, appeared as a testifying expert at arbitration, and authored rebuttal of the opposing hospital\u2019s expert opinions.",
-    metrics: [
-      { value: "138", label: "Claims Reviewed" },
-      { value: "AAA", label: "Forum" },
-      { value: "Payor", label: "Represented" },
-    ],
-    caseRef: "AAA Arbitration Proceeding - Claims Reimbursement Review",
-    counsel: "Regional Healthcare Law Firm",
-    dataDtype: "payment-dispute",
-    dataDate: "2021-01-01",
-  },
-  {
-    title: "Medical Necessity, NICU Care Levels & Claims Reimbursement",
-    representation: "Payor - Southwest Regional Law Firm",
-    scope: "Retained as the medical expert by a southwest regional law firm representing a payor in an arbitration before the American Arbitration Association (AAA). Reviewed 230 patient cases, authored medical summaries for each, produced a comprehensive expert report, and appeared for expert deposition.",
-    metrics: [
-      { value: "230", label: "Patients Reviewed" },
-      { value: "AAA", label: "Forum" },
-      { value: "Payor", label: "Represented" },
-    ],
-    caseRef: "AAA Arbitration Proceeding - NICU Medical Necessity Review",
-    counsel: "Southwest Regional Law Firm",
-    dataDtype: "medical-necessity",
-    dataDate: "2022-01-01",
-  },
-  {
-    title: "ED Claim Authorizations, DRG Downgrades & Excessive Charge Denials",
-    representation: "Payor - National Healthcare Law Group",
-    scope: "Retained as the medical expert by a national healthcare law group representing a payor in an arbitration before the American Health Lawyers Association (AHLA). Reviewed 172 disputed claims spanning ED authorizations, down codes and DRG downgrades, pre-payment reviews, and excessive charge adjudications. Produced expert report and prepared for expert testimony.",
-    metrics: [
-      { value: "172", label: "Claims Reviewed" },
-      { value: "AHLA", label: "Forum" },
-      { value: "Payor", label: "Represented" },
-    ],
-    caseRef: "AHLA Arbitration Proceeding - ED Authorization & DRG Review",
-    counsel: "National Healthcare Law Group",
-    dataDtype: "payment-dispute",
-    dataDate: "2023-01-01",
-  },
-  {
-    title: "High-Dollar Outlier Claim Adjudication - Managed Medicaid",
-    representation: "Payor - Florida Healthcare Law Firm",
-    scope: "Retained as the medical expert by a Florida healthcare law firm representing a payor in an administrative proceeding before AHCA. Produced expert report covering clinical medical necessity, line-item bill analysis, clinical summary, and rebuttal addressing the payor\u2019s adjudication of a high-dollar outlier claim under a managed Medicaid contract.",
-    metrics: [
-      { value: "Outlier", label: "Claim Complexity" },
-      { value: "AHCA", label: "Forum" },
-      { value: "Payor", label: "Represented" },
-    ],
-    caseRef: "AHCA Administrative Proceeding - Outlier Claim Adjudication",
-    counsel: "Florida Healthcare Law Firm",
-    dataDtype: "medical-necessity",
-    dataDate: "2026-01-01",
-  },
-  {
-    title: "Corporate Integrity Agreement - IRO Review",
-    tagline: "Independent Review Organization Physician UM Leadership",
-    representation: "Payor (Corporate Integrity Agreement)",
-    scope: "Appointed Physician UM Leader under a Corporate Integrity Agreement for Independent Review Organization (IRO). Responsibilities encompassed claims review, physician arrangement review, quality assurance, physician training and education, and investigative oversight across a nationwide portfolio.",
-    metrics: [
-      { value: "IRO", label: "Designation" },
-      { value: "Nationwide", label: "Scope" },
-      { value: "UM Lead", label: "Role" },
-    ],
-    caseRef: "Corporate Integrity Agreement - Independent Review Organization (IRO)",
-    counsel: "Independent Review Organization",
-    dataDtype: "utilization-mgmt",
-    dataDate: "2020-01-01",
-  },
-  {
-    title: "No-Fault Auto Insurance - Emergency Medical Condition Determination",
-    representation: "Florida Auto Insurance Carrier",
-    scope: "Retained by a Florida auto insurance carrier to serve as the medical expert in a \u201cNo Fault\u201d statute review. Produced an expert report and comprehensive claim summary addressing the determination of an Emergency Medical Condition (EMC) under Florida No-Fault Insurance law.",
-    metrics: [
-      { value: "No-Fault", label: "Statute" },
-      { value: "EMC", label: "Determination" },
-      { value: "Auto Carrier", label: "Represented" },
-    ],
-    caseRef: "Florida Auto Insurance - No Fault Statute Expert Review",
-    counsel: "Florida Auto Insurance Carrier (In-House Counsel)",
-    dataDtype: "auto-insurance",
-    dataDate: "2023-06-01",
-  },
-];
 
 /* ─── Filter chip definitions ─── */
 const PROVIDER_SERVICE_CHIPS = [
@@ -406,8 +227,75 @@ function NoResults() {
   );
 }
 
+/* ─── Case study row from Supabase (provider + payor) ─── */
+export type CaseStudyKind = "provider" | "payor";
+
+export interface CaseStudyListRow {
+  kind: CaseStudyKind | null;
+  title: string;
+  slug: string;
+  subtitle: string | null;
+  description: string | null;
+  challenge: string | null;
+  solution: string | null;
+  results: string | null;
+  metrics: { value: string; label: string }[];
+  card_challenge: string | null;
+  card_solution: string | null;
+  card_metrics: { value: string; label: string }[] | null;
+  region: string | null;
+  service_type: string | null;
+  published_at: string | null;
+  payor_dispute_type: string | null;
+  payor_representation: string | null;
+  payor_scope: string | null;
+  payor_case_ref: string | null;
+  payor_counsel: string | null;
+}
+
+function plain(html: string | null) {
+  return html ? html.replace(/<[^>]*>/g, "").slice(0, 200) : "";
+}
+
+function rowToProvider(row: CaseStudyListRow): ProviderCard {
+  return {
+    hospital: row.title,
+    desc: row.description ?? undefined,
+    tagline: row.subtitle ?? "",
+    challenge: row.card_challenge ?? plain(row.challenge),
+    solution: row.card_solution ?? plain(row.solution),
+    metrics: row.card_metrics ?? row.metrics ?? [],
+    href: `/case-studies/${row.slug}`,
+    dataRegion: row.region ?? "other",
+    dataService: row.service_type ?? "other",
+    dataTitle: row.title,
+    dataDate: row.published_at?.slice(0, 10) ?? new Date().toISOString().slice(0, 10),
+  };
+}
+
+function rowToPayor(row: CaseStudyListRow): PayorCard {
+  const scopeHtml = row.payor_scope ?? "";
+  const scopeText = plain(scopeHtml);
+  return {
+    slug: row.slug,
+    title: row.title,
+    tagline: row.subtitle ?? undefined,
+    representation: row.payor_representation ?? "",
+    scope: scopeText,
+    metrics: row.metrics ?? [],
+    caseRef: row.payor_case_ref ?? "",
+    counsel: row.payor_counsel ?? "",
+    dataDtype: row.payor_dispute_type ?? "other",
+    dataDate: row.published_at?.slice(0, 10) ?? new Date().toISOString().slice(0, 10),
+  };
+}
+
 /* ─── Main component ─── */
-export default function CaseStudiesTabs() {
+export default function CaseStudiesTabs({
+  caseStudies = [],
+}: {
+  caseStudies?: CaseStudyListRow[];
+}) {
   const [activeTab, setActiveTab] = useState<"provider" | "payor">("provider");
 
   // Provider filters
@@ -420,10 +308,25 @@ export default function CaseStudiesTabs() {
   const [paySort, setPaySort] = useState("default");
   const [payDtype, setPayDtype] = useState("all");
 
+  const providerRows = useMemo(
+    () => caseStudies.filter((r) => r.kind !== "payor"),
+    [caseStudies],
+  );
+
+  const payorRows = useMemo(
+    () => caseStudies.filter((r) => r.kind === "payor"),
+    [caseStudies],
+  );
+
   /* ── Provider filtered/sorted list ── */
+  const allProviders = useMemo(
+    () => providerRows.map(rowToProvider),
+    [providerRows],
+  );
+
   const filteredProviders = useMemo(() => {
     const q = provSearch.toLowerCase();
-    let list = PROVIDER_CASES.filter((c) => {
+    let list = allProviders.filter((c) => {
       const svcOk = provService === "all" || c.dataService === provService;
       const searchOk =
         !q ||
@@ -440,12 +343,13 @@ export default function CaseStudiesTabs() {
       list = [...list].sort((a, b) => a.dataTitle.localeCompare(b.dataTitle));
     }
     return list;
-  }, [provSearch, provSort, provService]);
+  }, [provSearch, provSort, provService, allProviders]);
 
   /* ── Payor filtered/sorted list ── */
   const filteredPayors = useMemo(() => {
     const q = paySearch.toLowerCase();
-    let list = PAYOR_CASES.filter((c) => {
+    const payorCards = payorRows.map(rowToPayor);
+    let list = payorCards.filter((c) => {
       const dtOk = payDtype === "all" || c.dataDtype === payDtype;
       const searchOk =
         !q ||
@@ -458,7 +362,7 @@ export default function CaseStudiesTabs() {
       list = [...list].sort((a, b) => a.title.localeCompare(b.title));
     }
     return list;
-  }, [paySearch, paySort, payDtype]);
+  }, [paySearch, paySort, payDtype, payorRows]);
 
   /* Observe .reveal elements inside this component */
   const containerRef = useRef<HTMLDivElement>(null);
@@ -675,7 +579,7 @@ export default function CaseStudiesTabs() {
               <div className="pay-grid cc-grid">
                 {filteredPayors.map((card) => (
                   <div
-                    key={card.title}
+                    key={card.slug}
                     className="pay-card cc-card reveal"
                     data-dtype={card.dataDtype}
                     data-title={card.title}
@@ -694,7 +598,7 @@ export default function CaseStudiesTabs() {
                     </div>
                     <div className="cc-body">
                       <div className="cc-section">
-                        <div className="cc-section-label" style={{ color: "#C8102E" }}>Payor Type</div>
+                        <div className="cc-section-label" style={{ color: "#C8102E" }}>Representation</div>
                         <div
                           className="cc-section-text"
                           style={{ fontWeight: 700, color: "#1B2A5B" }}
@@ -731,6 +635,11 @@ export default function CaseStudiesTabs() {
                         >
                           {card.counsel}
                         </div>
+                      </div>
+                      <div className="cc-footer" style={{ marginTop: 8 }}>
+                        <Link href={`/case-studies/${card.slug}`} className="btn-p" style={{ background: "linear-gradient(135deg,#0ea5e9,#0284c7)" }}>
+                          Read Full Case Study &rarr;
+                        </Link>
                       </div>
                     </div>
                   </div>

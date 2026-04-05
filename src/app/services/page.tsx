@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import CTABand from "@/components/ui/CTABand";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
+import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import { providerServices } from "@/data/provider-services";
 
 export const metadata: Metadata = {
@@ -12,11 +13,11 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { num: "190", suffix: "+", label: "National Clients\nServed", color: "#C8102E" },
-  { num: "100", suffix: "+", label: "Hospital Projects\nCompleted", color: "#C8102E" },
-  { num: "30", suffix: "+", label: "Years of Consulting\nExperience", color: "#C8102E" },
-  { num: "50", suffix: "+", label: "Clinical Documentation Improvement (CDI) Programs\nDeployed", color: "#C8102E" },
-  { num: "24", suffix: "+", label: "UM Programs\nDeployed", color: "#C8102E" },
+  { target: 190, label: "National Clients\nServed" },
+  { target: 100, label: "Hospital Projects\nCompleted" },
+  { target: 30, label: "Years of Consulting\nExperience" },
+  { target: 50, label: "Clinical Documentation Improvement (CDI) Programs\nDeployed" },
+  { target: 24, label: "UM Programs\nDeployed" },
 ];
 
 const pillars = [
@@ -118,19 +119,31 @@ export default function ServicesPage() {
       </section>
 
       {/* Stats Strip */}
-      <section className="stats-strip">
+      <div className="stats-strip">
+        <div className="stats-hdr">
+          <div className="stats-hdr-lbl">&#9679;&nbsp;&nbsp;Proven Impact</div>
+        </div>
         <div className="stats-strip-inner">
-          {stats.map((s) => (
-            <div key={s.label} className="ss-item" style={{ "--sc": s.color } as React.CSSProperties}>
-              <div className="ss-num">
-                {s.num}
-                <span className="ss-plus">{s.suffix}</span>
+          {stats.map((s, i) => (
+            <RevealOnScroll key={i}>
+              <div className="ss-item" style={{ "--sc": "#C8102E" } as React.CSSProperties}>
+                <div className="ss-num">
+                  <AnimatedCounter target={s.target} />
+                  <span className="ss-plus">+</span>
+                </div>
+                <div className="ss-label">
+                  {s.label.split("\n").map((line, j) => (
+                    <span key={j}>
+                      {line}
+                      {j < s.label.split("\n").length - 1 && <br />}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className="ss-label">{s.label}</div>
-            </div>
+            </RevealOnScroll>
           ))}
         </div>
-      </section>
+      </div>
 
       {/* How We Partner */}
       <section className="section" style={{ background: "#fff" }}>
