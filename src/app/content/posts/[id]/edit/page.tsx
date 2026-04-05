@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, KeyboardEvent } from 'react';
+import { useState, useEffect, useRef, useCallback, KeyboardEvent } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -22,11 +22,11 @@ export default function EditBlogPost() {
   const [title, setTitle] = useState('');
   const [excerpt, setExcerpt] = useState('');
 
-  // Existing cover image from DB
   const [existingCoverUrl, setExistingCoverUrl] = useState<string | null>(null);
-  // New image the user picked
   const [newImageFile, setNewImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [imagePosition, setImagePosition] = useState(50);
+  const [isDraggingPosition, setIsDraggingPosition] = useState(false);
 
   const [existingPdfUrl, setExistingPdfUrl] = useState<string | null>(null);
   const [existingPdfName, setExistingPdfName] = useState<string>('');
@@ -38,6 +38,7 @@ export default function EditBlogPost() {
 
   const pdfRef = useRef<HTMLInputElement>(null);
   const imageRef = useRef<HTMLInputElement>(null);
+  const previewContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     async function loadPost() {
@@ -57,6 +58,7 @@ export default function EditBlogPost() {
       setTitle(data.title);
       setExcerpt(data.excerpt || '');
       setExistingCoverUrl(data.cover_image_url || null);
+      setImagePosition(data.cover_image_position ?? 50);
       setExistingPdfUrl(data.pdf_url || null);
       if (data.pdf_url) {
         const parts = data.pdf_url.split('/');
@@ -99,6 +101,31 @@ export default function EditBlogPost() {
   function removeTag(t: string) {
     setTags((prev) => prev.filter((x) => x !== t));
   }
+
+  const handlePositionDrag = useCallback((clientY: number) => {
+    const el = previewContainerRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const pct = Math.max(0, Math.min(100, ((clientY - rect.top) / rect.height) * 100));
+    setImagePosition(Math.round(pct));
+  }, []);
+
+  useEffect(() => {
+    if (!isDraggingPosition) return;
+    const onMove = (e: MouseEvent) => { e.preventDefault(); handlePositionDrag(e.clientY); };
+    const onTouchMove = (e: TouchEvent) => { handlePositionDrag(e.touches[0].clientY); };
+    const onUp = () => setIsDraggingPosition(false);
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+    window.addEventListener('touchmove', onTouchMove);
+    window.addEventListener('touchend', onUp);
+    return () => {
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseup', onUp);
+      window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('touchend', onUp);
+    };
+  }, [isDraggingPosition, handlePositionDrag]);
 
   async function handleSave(publish: boolean) {
     if (!title.trim()) { setError('Title is required.'); return; }
@@ -157,6 +184,7 @@ export default function EditBlogPost() {
         slug,
         excerpt: excerpt.trim() || null,
         cover_image_url: coverImageUrl,
+        cover_image_position: imagePosition,
         pdf_url: pdfUrl,
         tags: tags.length > 0 ? tags : null,
         is_published: publish,
@@ -267,11 +295,25 @@ export default function EditBlogPost() {
           </span>
 
           {previewSrc && (
-            <div style={{ position: 'relative', marginTop: 8, marginBottom: 8, borderRadius: 10, overflow: 'hidden', border: '1px solid #e2e8f0', maxHeight: 180 }}>
-              <Image src={previewSrc} alt="Cover preview" width={800} height={180}
-                style={{ width: '100%', height: 180, objectFit: 'cover', display: 'block' }} />
-              <button type="button" onClick={clearNewImage}
-                style={{ position: 'absolute', top: 8, right: 8, background: 'rgba(0,0,0,.55)', border: 'none', color: '#fff', borderRadius: '50%', width: 28, height: 28, cursor: 'pointer', fontSize: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div
+              ref={previewContainerRef}
+              onMouseDown={(e) => { e.preventDefault(); setIsDraggingPosition(true); handlePositionDrag(e.clientY); }}
+              onTouchStart={(e) => { setIsDraggingPosition(true); handlePositionDrag(e.touches[0].clientY); }}
+              style={{ position: 'relative', marginTop: 8, marginBottom: 8, borderRadius: 10, overflow: 'hidden', border: '1px solid #e2e8f0', height: 180, cursor: 'ns-resize', userSelect: 'none' }}
+            >
+              <Image src={previewSrc} alt="Cover preview" width={800} height={400}
+                draggable={false}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: `center ${imagePosition}%`, display: 'block', pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', pointerEvents: 'none', opacity: isDraggingPosition ? 1 : 0, transition: 'opacity .15s', background: 'rgba(0,0,0,.25)' }}>
+                <span style={{ background: 'rgba(0,0,0,.7)', color: '#fff', fontSize: '.78rem', fontWeight: 600, padding: '4px 12px', borderRadius: 6 }}>
+                  {imagePosition}%
+                </span>
+              </div>
+              <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, padding: '6px 10px', background: 'linear-gradient(transparent, rgba(0,0,0,.5))', display: 'flex', alignItems: 'center', justifyContent: 'space-between', pointerEvents: 'none' }}>
+                <span style={{ color: 'rgba(255,255,255,.85)', fontSize: '.75rem', fontWeight: 500 }}>Drag to adjust focal point</span>
+              </div>
+              <button type="button" onClick={(e) => { e.stopPropagation(); clearNewImage(); }}
+                style={{ position: 'absolute', top: 8, right: 8, background: 'rgba(0,0,0,.55)', border: 'none', color: '#fff', borderRadius: '50%', width: 28, height: 28, cursor: 'pointer', fontSize: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2 }}>
                 ×
               </button>
             </div>

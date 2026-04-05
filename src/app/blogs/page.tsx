@@ -47,12 +47,12 @@ const BLOG_TOPICS = [
 ];
 
 export default async function BlogsPage() {
-  let dynamicPosts: { id: string; title: string; slug: string; excerpt: string | null; published_at: string | null; pdf_url: string | null; tags: string[] | null; cover_image_url: string | null }[] = [];
+  let dynamicPosts: { id: string; title: string; slug: string; excerpt: string | null; published_at: string | null; pdf_url: string | null; tags: string[] | null; cover_image_url: string | null; cover_image_position: number | null }[] = [];
   try {
     const supabase = await createClient();
     const { data } = await supabase
       .from('blog_posts')
-      .select('id, title, slug, excerpt, published_at, pdf_url, tags, cover_image_url')
+      .select('id, title, slug, excerpt, published_at, pdf_url, tags, cover_image_url, cover_image_position')
       .eq('is_published', true)
       .order('published_at', { ascending: false });
     if (data) dynamicPosts = data;

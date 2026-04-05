@@ -12,6 +12,7 @@ interface DynamicPost {
   pdf_url: string | null;
   tags: string[] | null;
   cover_image_url: string | null;
+  cover_image_position: number | null;
 }
 
 interface BlogsContentProps {
@@ -85,7 +86,7 @@ export default function BlogsContent({ dynamicPosts }: BlogsContentProps) {
                       alt={post.title}
                       width={600}
                       height={375}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: `center ${post.cover_image_position ?? 50}%`, display: 'block' }}
                     />
                   ) : (
                     <div style={{
