@@ -84,63 +84,63 @@ const payorServices: ServiceTile[] = [
     title: "Two Midnight Rule Compliance",
     desc: "Review clinical documentation for admission status decisions that align with Two Midnight Rule compliance and coverage criteria.",
     href: "/payor-services/two-midnight",
-    img: "/images/index-28.jpg",
+    img: "/images/payor-tile-01-two-midnight.png",
   },
   {
     num: "02",
     title: "Inpatient vs. Observation Determination",
     desc: "Apply rigorous threshold analysis to ensure clinical evidence at admission accurately supports an inpatient level of care.",
     href: "/payor-services/inpatient-obs",
-    img: "/images/index-29.jpg",
+    img: "/images/payor-tile-02-inpatient-obs.png",
   },
   {
     num: "03",
     title: "DRG Clinical Validation",
     desc: "Identify unsupported comorbidities and sequencing discrepancies to ensure reimbursement reflects actual acuity and resource utilization.",
     href: "/payor-services/drg-validation",
-    img: "/images/index-30.jpg",
+    img: "/images/payor-tile-03-drg-validation.png",
   },
   {
     num: "04",
     title: "ED Facility Methodology Review",
     desc: "Evaluate ED facility billing to ensure E&M level assignments reflect clinical complexity and meet payor methodology standards.",
     href: "/payor-services/ed-facility",
-    img: "/images/index-31.jpg",
+    img: "/images/payor-tile-04-ed-facility.png",
   },
   {
     num: "05",
     title: "Line-Item Coding Compliance",
     desc: "Audit procedure and diagnosis codes at the claim level to detect unbundling, upcoding, and documentation mismatches.",
     href: "/payor-services/line-item",
-    img: "/images/index-32.jpg",
+    img: "/images/payor-tile-05-line-item.png",
   },
   {
     num: "06",
     title: "Provider Dispute & Appeal Support",
     desc: "Construct clinically and contractually grounded responses to provider disputes with documented review rationale.",
     href: "/payor-services/dispute-appeal",
-    img: "/images/index-33.jpg",
+    img: "/images/payor-tile-06-dispute-appeal.png",
   },
   {
     num: "07",
     title: "Expert Medical Opinion Reports",
     desc: "Deliver specialist-authored medical opinions to resolve complex coverage and necessity disputes with clinical authority.",
     href: "/payor-services/expert-opinions",
-    img: "/images/index-34.jpg",
+    img: "/images/payor-tile-07-expert-opinions.png",
   },
   {
     num: "08",
     title: "Rebuttal Reports & Deposition Support",
     desc: "Counter adverse clinical determinations with evidence-based rebuttal reports prepared by board-certified physicians.",
     href: "/payor-services/rebuttal",
-    img: "/images/index-35.jpg",
+    img: "/images/payor-tile-08-rebuttal.png",
   },
   {
     num: "09",
     title: "Demonstratives & Litigation Support",
     desc: "Develop visual exhibits and expert narratives that translate complex clinical records into clear, compelling litigation support.",
     href: "/payor-services/demonstratives",
-    img: "/images/index-36.jpg",
+    img: "/images/payor-tile-09-demonstratives.png",
   },
 ];
 
@@ -163,7 +163,6 @@ function TileGrid({ services }: { services: ServiceTile[] }) {
             sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw"
           />
           <div className="svc-tile-overlay" />
-          <div className="svc-tile-num">{svc.num}</div>
           <div className="svc-tile-body">
             <div className="svc-tile-title">{svc.title}</div>
             <p className="svc-tile-desc">{svc.desc}</p>

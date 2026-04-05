@@ -843,7 +843,6 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             >
               <span className="svc-nav-dir">← Previous Service</span>
               <span className="svc-nav-title">
-                <span className="svc-nav-num">{prevSvc.number}</span>
                 {prevSvc.shortTitle}
               </span>
             </Link>
@@ -858,7 +857,6 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             >
               <span className="svc-nav-dir">Next Service →</span>
               <span className="svc-nav-title">
-                <span className="svc-nav-num">{nextSvc.number}</span>
                 {nextSvc.shortTitle}
               </span>
             </Link>

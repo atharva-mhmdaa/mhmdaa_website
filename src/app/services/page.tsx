@@ -280,7 +280,6 @@ export default function ServicesPage() {
                     sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw"
                   />
                   <div className="svc-tile-overlay" />
-                  <span className="svc-tile-num">Service {svc.number}</span>
                   <div className="svc-tile-body">
                     <div className="svc-tile-title">{svc.title}</div>
                     <div className="svc-tile-desc">{svc.description}</div>
