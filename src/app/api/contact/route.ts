@@ -39,11 +39,16 @@ export async function POST(request: Request) {
 
     const webhookUrl = process.env.POWER_AUTOMATE_WEBHOOK_URL;
 
+    const webhookBody = { ...body, submitted_at: submittedAt };
+    if (webhookBody.phone) {
+      webhookBody.phone = ` ${webhookBody.phone.trim()}`;
+    }
+
     const webhookCall = webhookUrl
       ? fetch(webhookUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...body, submitted_at: submittedAt }),
+          body: JSON.stringify(webhookBody),
         })
       : Promise.resolve(null);
 
