@@ -8,9 +8,9 @@ interface CTABandProps {
 }
 
 export default function CTABand({
-  heading = "Start The Conversation With Our Experts",
+  heading = "Start a Conversation With Our Experts",
   description,
-  buttonText = "Start The Conversation →",
+  buttonText = "Get in touch",
   buttonHref = "/contact",
 }: CTABandProps) {
   return (

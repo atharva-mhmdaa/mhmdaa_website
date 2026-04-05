@@ -177,7 +177,7 @@ export const payorServices: PayorService[] = [
       "Michael Hill MD and Associates — ED Facility Methodology Review: Evaluate internal policies and clinical documentation to align hospital billing with national standards, ensuring that every facility level assignment is proportionate to the patient\u2019s clinical presentation.",
     heroDescription:
       "Evaluate internal policies and clinical documentation to align hospital billing with national standards, ensuring that every facility level assignment is proportionate to the patient\u2019s clinical presentation.",
-    heroImage: "/images/payor-ed-facility-hero.png",
+    heroImage: "/images/payor-ed-facility-hero-v2.png",
     processSteps: [
       {
         title: "Analyze",
@@ -227,7 +227,7 @@ export const payorServices: PayorService[] = [
       "Michael Hill MD and Associates — Line-Item Coding Compliance: Establish an error-resistant quality gate within the revenue cycle to align claim submissions with actual care delivered, ensuring clinical-to-financial precision and preventing revenue leakage.",
     heroDescription:
       "Establish an error-resistant quality gate within the revenue cycle to align claim submissions with actual care delivered, ensuring clinical-to-financial precision and preventing revenue leakage.",
-    heroImage: "/images/payor-line-item-hero.png",
+    heroImage: "/images/payor-line-item-hero-v2.png",
     infoText: "Every charge must reflect a documented clinical event — no exceptions.",
     infoBadge: "ZERO REVENUE LEAKAGE",
     processSteps: [

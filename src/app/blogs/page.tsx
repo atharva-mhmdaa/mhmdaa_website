@@ -152,9 +152,9 @@ export default async function BlogsPage() {
       </section>
 
       <CTABand
-        heading="Start The Conversation With Our Experts"
+        heading="Start a Conversation With Our Experts"
         description="Partner with MHMDAA&#x2019;s physician-led team and take the first decisive step toward building a denial-resilient, financially sustainable hospital operation."
-        buttonText="Start The Conversation →"
+        buttonText="Get in touch"
         buttonHref="/contact"
       />
     </>

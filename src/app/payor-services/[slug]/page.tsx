@@ -53,7 +53,6 @@ export default async function PayorServicePage({ params }: PageProps) {
       >
         <div className="sd-hgrid">
           <div>
-            <div className="sd-num">Payor Service {service.number} of 09</div>
             <h1 className="sd-title">{service.title}</h1>
             <p className="sd-desc">{service.heroDescription}</p>
             <Link href="/payor-services" className="sd-hero-cta">
@@ -215,7 +214,7 @@ export default async function PayorServicePage({ params }: PageProps) {
                   color: "var(--mg)",
                 }}
               >
-                ← Previous Service
+                ← Previous
               </span>
               <span style={{ fontSize: "1.05rem", fontWeight: 600, color: "var(--navy)" }}>
                 {prev.title}
@@ -258,7 +257,7 @@ export default async function PayorServicePage({ params }: PageProps) {
                   color: "var(--mg)",
                 }}
               >
-                Next Service →
+                Next →
               </span>
               <span style={{ fontSize: "1.05rem", fontWeight: 600, color: "var(--navy)" }}>
                 {next.title}
@@ -274,7 +273,7 @@ export default async function PayorServicePage({ params }: PageProps) {
       <CTABand
         heading="Ready to Strengthen Your Position?"
         description="Partner with MHMDAA's physician-led team to build defensible, evidence-based processes that withstand scrutiny at every level."
-        buttonText="Start The Conversation →"
+        buttonText="Get in touch"
         buttonHref="/contact"
       />
     </>

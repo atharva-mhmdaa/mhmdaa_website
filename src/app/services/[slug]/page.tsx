@@ -65,7 +65,6 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       >
         <div className="sd-hgrid">
           <div>
-            <div className="sd-num">Service {svc.number} of 09</div>
             <h1 className="sd-title">{svc.title}</h1>
             <p className="sd-desc">{svc.heroDescription}</p>
             <Link href="/services" className="sd-hero-cta">
@@ -105,7 +104,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="ig-wrap">
           <div className="ig-header" role="button" aria-label="Claim Submission service overview">
             <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
-              <span className="ig-badge">006 — At a Glance</span>
+              <span className="ig-badge">At a Glance</span>
               <span className="ig-title">Claim Submission — Service Overview</span>
             </div>
           </div>
@@ -208,7 +207,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="ig-wrap">
           <div className="ig-header" role="button" aria-label="Coding service overview">
             <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
-              <span className="ig-badge">005 — At a Glance</span>
+              <span className="ig-badge">At a Glance</span>
               <span className="ig-title">Coding &amp; Clinical Documentation Improvement (CDI) — Service Overview</span>
             </div>
           </div>
@@ -276,7 +275,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="ig-wrap">
           <div className="ig-header" role="button" aria-label="Litigation & Expert Support service overview">
             <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
-              <span className="ig-badge">009 — At a Glance</span>
+              <span className="ig-badge">At a Glance</span>
               <span className="ig-title">Litigation &amp; Expert Support — Overview</span>
             </div>
           </div>
@@ -357,7 +356,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="ig-wrap">
           <div className="ig-header" role="button" aria-label="Appeal Letter Writing service overview">
             <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
-              <span className="ig-badge">008 — At a Glance</span>
+              <span className="ig-badge">At a Glance</span>
               <span className="ig-title">Appeal Letter Writing — Service Overview</span>
             </div>
           </div>
@@ -433,7 +432,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="ig-wrap">
           <div className="ig-header" role="button" aria-label="Denial Management service overview">
             <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
-              <span className="ig-badge">007 — At a Glance</span>
+              <span className="ig-badge">At a Glance</span>
               <span className="ig-title">Revenue Denial Management — Service Overview</span>
             </div>
           </div>
@@ -524,7 +523,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="ig-wrap">
           <div className="ig-header" role="button" aria-label="Concurrent Review service overview">
             <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
-              <span className="ig-badge">004 — At a Glance</span>
+              <span className="ig-badge">At a Glance</span>
               <span className="ig-title">Concurrent Review — Service Overview</span>
             </div>
           </div>
@@ -815,7 +814,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 
       {/* CTA Band */}
       <CTABand
-        heading="Start The Conversation With Our Experts"
+        heading="Start a Conversation With Our Experts"
         description="Partner with MHMDAA's physician-led team and take the first decisive step toward building a denial-resilient, financially sustainable hospital operation."
       />
 
@@ -841,7 +840,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               href={`/services/${prevSvc.slug}`}
               className="svc-nav-link"
             >
-              <span className="svc-nav-dir">← Previous Service</span>
+              <span className="svc-nav-dir">← Previous</span>
               <span className="svc-nav-title">
                 {prevSvc.shortTitle}
               </span>
@@ -855,7 +854,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               className="svc-nav-link"
               style={{ textAlign: "right" }}
             >
-              <span className="svc-nav-dir">Next Service →</span>
+              <span className="svc-nav-dir">Next →</span>
               <span className="svc-nav-title">
                 {nextSvc.shortTitle}
               </span>

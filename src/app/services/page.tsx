@@ -372,7 +372,7 @@ export default function ServicesPage() {
 
       {/* CTA Band */}
       <CTABand
-        heading="Start The Conversation With Our Experts"
+        heading="Start a Conversation With Our Experts"
         description="Partner with MHMDAA's physician-led team and take the first decisive step toward building a denial-resilient, financially sustainable hospital operation."
       />
     </>

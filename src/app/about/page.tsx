@@ -1144,7 +1144,7 @@ export default function AboutPage() {
 
       {/* 10. CTA BAND */}
       <CTABand
-        description="Partner with MHMDAA\u2019s physician-led team and take the first decisive step toward building a denial-resilient, financially sustainable hospital operation."
+        description="Partner with MHMDAA's physician-led team and take the first decisive step toward building a denial-resilient, financially sustainable hospital operation."
       />
     </>
   );

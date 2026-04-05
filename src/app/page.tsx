@@ -71,7 +71,7 @@ export default function Home() {
             </ul>
             <div className="hero-btns">
               <Link href="/contact" className="btn-p">
-                Start The Conversation &rarr;
+                Get in touch
               </Link>
             </div>
           </div>
@@ -793,7 +793,7 @@ export default function Home() {
 
       {/* ══ SECTION 8: CTA BAND ══════════════════════════════ */}
       <CTABand
-        heading="Start The Conversation With Our Experts"
+        heading="Start a Conversation With Our Experts"
         description="Partner with MHMDAA&rsquo;s physician-led team and take the first decisive step toward building a denial-resilient, financially sustainable hospital operation."
       />
     </>
