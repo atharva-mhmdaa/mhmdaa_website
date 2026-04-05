@@ -31,6 +31,13 @@ const SERVICE_TYPE_OPTIONS = [
   { value: 'other', label: 'Other' },
 ];
 
+const PAYOR_DISPUTE_OPTIONS = [
+  { value: 'payment-dispute', label: 'Payment Dispute' },
+  { value: 'medical-necessity', label: 'Medical Necessity' },
+  { value: 'utilization-mgmt', label: 'Utilization Management' },
+  { value: 'auto-insurance', label: 'Auto Insurance' },
+];
+
 interface Metric {
   value: string;
   label: string;
@@ -42,6 +49,7 @@ export default function NewCaseStudy() {
   const [uploadingImage, setUploadingImage] = useState(false);
   const [error, setError] = useState('');
 
+  const [kind, setKind] = useState<'provider' | 'payor'>('provider');
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
   const [description, setDescription] = useState('');
@@ -53,6 +61,12 @@ export default function NewCaseStudy() {
   const [metrics, setMetrics] = useState<Metric[]>([{ value: '', label: '' }]);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+
+  const [payorRepresentation, setPayorRepresentation] = useState('');
+  const [payorScope, setPayorScope] = useState('');
+  const [payorCaseRef, setPayorCaseRef] = useState('');
+  const [payorCounsel, setPayorCounsel] = useState('');
+  const [payorDisputeType, setPayorDisputeType] = useState('');
 
   const imageRef = useRef<HTMLInputElement>(null);
 
@@ -76,8 +90,11 @@ export default function NewCaseStudy() {
 
   async function handleSubmit(publish: boolean) {
     if (!title.trim()) { setError('Title is required.'); return; }
-    if (!challenge.trim() && !solution.trim()) {
+    if (kind === 'provider' && !challenge.trim() && !solution.trim()) {
       setError('Please fill in at least the Challenge or Solution section.'); return;
+    }
+    if (kind === 'payor' && !payorScope.trim()) {
+      setError('Please fill in the Scope of Work.'); return;
     }
 
     setSaving(true);
@@ -111,26 +128,39 @@ export default function NewCaseStudy() {
       coverImageUrl = imgUrl.publicUrl;
     }
 
-    const slug = slugify(title, { lower: true, strict: true });
+    const slug = kind === 'payor'
+      ? `payor-${slugify(title, { lower: true, strict: true })}`
+      : slugify(title, { lower: true, strict: true });
     const cleanMetrics = metrics.filter((m) => m.value.trim() && m.label.trim());
 
-    const { error: insertError } = await supabase.from('case_studies').insert({
+    const row: Record<string, unknown> = {
       author_id: user.id,
-      kind: 'provider',
+      kind,
       title: title.trim(),
       slug,
       subtitle: subtitle.trim() || null,
-      description: description.trim() || null,
-      region: region || null,
-      service_type: serviceType || null,
-      challenge: challenge || null,
-      solution: solution || null,
-      results: results || null,
       metrics: cleanMetrics.length > 0 ? cleanMetrics : [],
       cover_image_url: coverImageUrl,
       is_published: publish,
       published_at: publish ? new Date().toISOString() : null,
-    });
+    };
+
+    if (kind === 'provider') {
+      row.description = description.trim() || null;
+      row.region = region || null;
+      row.service_type = serviceType || null;
+      row.challenge = challenge || null;
+      row.solution = solution || null;
+      row.results = results || null;
+    } else {
+      row.payor_dispute_type = payorDisputeType || null;
+      row.payor_representation = payorRepresentation.trim() || null;
+      row.payor_scope = payorScope || null;
+      row.payor_case_ref = payorCaseRef.trim() || null;
+      row.payor_counsel = payorCounsel.trim() || null;
+    }
+
+    const { error: insertError } = await supabase.from('case_studies').insert(row);
 
     if (insertError) {
       setError(insertError.message);
@@ -154,9 +184,47 @@ export default function NewCaseStudy() {
         ← Back to Case Studies
       </Link>
 
-      <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.6rem', fontWeight: 700, color: '#2A3F7A', marginBottom: '28px' }}>
+      <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.6rem', fontWeight: 700, color: '#2A3F7A', marginBottom: '20px' }}>
         New Case Study
       </h1>
+
+      {/* Kind selector */}
+      <div style={{ display: 'flex', gap: '8px', marginBottom: '24px' }}>
+        <button
+          type="button"
+          onClick={() => setKind('provider')}
+          style={{
+            padding: '10px 24px',
+            borderRadius: '10px',
+            fontWeight: 700,
+            fontSize: '.92rem',
+            fontFamily: 'inherit',
+            cursor: 'pointer',
+            border: kind === 'provider' ? '2px solid #2A3F7A' : '1.5px solid #e2e8f0',
+            background: kind === 'provider' ? 'rgba(42,63,122,.07)' : '#fff',
+            color: kind === 'provider' ? '#2A3F7A' : '#5A6E8A',
+          }}
+        >
+          Provider Case Study
+        </button>
+        <button
+          type="button"
+          onClick={() => setKind('payor')}
+          style={{
+            padding: '10px 24px',
+            borderRadius: '10px',
+            fontWeight: 700,
+            fontSize: '.92rem',
+            fontFamily: 'inherit',
+            cursor: 'pointer',
+            border: kind === 'payor' ? '2px solid #0284c7' : '1.5px solid #e2e8f0',
+            background: kind === 'payor' ? 'rgba(2,132,199,.07)' : '#fff',
+            color: kind === 'payor' ? '#0284c7' : '#5A6E8A',
+          }}
+        >
+          Payor Case Study
+        </button>
+      </div>
 
       {error && (
         <div style={{ background: 'rgba(200,16,46,.08)', border: '1px solid rgba(200,16,46,.2)', color: '#C8102E', padding: '10px 14px', borderRadius: '8px', fontSize: '.9rem', marginBottom: '18px' }}>
@@ -167,70 +235,105 @@ export default function NewCaseStudy() {
       <div className="dash-card">
         {/* Title */}
         <div className="fg" style={{ marginBottom: '16px' }}>
-          <label htmlFor="cs-title">Hospital / Organization Name *</label>
+          <label htmlFor="cs-title">{kind === 'payor' ? 'Case Title *' : 'Hospital / Organization Name *'}</label>
           <input id="cs-title" type="text" value={title} onChange={(e) => setTitle(e.target.value)}
-            placeholder="e.g. West Coast Faith-Based Non-Profit" />
-          <span className="fg-hint">The main heading shown on the card and detail page.</span>
+            placeholder={kind === 'payor' ? 'e.g. EMTALA Medical Necessity & Post-Stabilization Admissions' : 'e.g. Faith-Based Non-Profit Community Hospital'} />
+          <span className="fg-hint">{kind === 'payor' ? 'Shown as the headline on the payor card and detail page.' : 'The main heading shown on the card and detail page.'}</span>
         </div>
 
         {/* Subtitle */}
         <div className="fg" style={{ marginBottom: '16px' }}>
-          <label htmlFor="cs-subtitle">Engagement Tagline</label>
+          <label htmlFor="cs-subtitle">{kind === 'payor' ? 'Tagline (optional)' : 'Engagement Tagline'}</label>
           <input id="cs-subtitle" type="text" value={subtitle} onChange={(e) => setSubtitle(e.target.value)}
-            placeholder="e.g. LOS Reduction & Transfer Capacity Optimization" />
-          <span className="fg-hint">A short tagline describing the type of engagement.</span>
+            placeholder={kind === 'payor' ? 'e.g. Independent Review Organization Physician UM Leadership' : 'e.g. LOS Reduction & Transfer Capacity Optimization'} />
+          <span className="fg-hint">{kind === 'payor' ? 'Optional subtitle below the title on the card.' : 'A short tagline describing the type of engagement.'}</span>
         </div>
 
-        {/* Description */}
-        <div className="fg" style={{ marginBottom: '16px' }}>
-          <label htmlFor="cs-desc">Description (optional)</label>
-          <input id="cs-desc" type="text" value={description} onChange={(e) => setDescription(e.target.value)}
-            placeholder="e.g. ~278-Bed Integrated Community Hospital · Regional Care Network" />
-          <span className="fg-hint">Bed count, hospital type, or other brief descriptor.</span>
-        </div>
+        {/* ── Provider-specific fields ── */}
+        {kind === 'provider' && (
+          <>
+            <div className="fg" style={{ marginBottom: '16px' }}>
+              <label htmlFor="cs-desc">Description (optional)</label>
+              <input id="cs-desc" type="text" value={description} onChange={(e) => setDescription(e.target.value)}
+                placeholder="e.g. ~278-Bed Integrated Community Hospital · Regional Care Network" />
+              <span className="fg-hint">Bed count, hospital type, or other brief descriptor.</span>
+            </div>
 
-        {/* Region + Service Type row */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
-          <div className="fg">
-            <label htmlFor="cs-region">Region</label>
-            <select id="cs-region" value={region} onChange={(e) => setRegion(e.target.value)}>
-              <option value="">Select region…</option>
-              {REGION_OPTIONS.map((r) => (
-                <option key={r} value={r.toLowerCase().replace(/\s+/g, '-')}>{r}</option>
-              ))}
-            </select>
-          </div>
-          <div className="fg">
-            <label htmlFor="cs-service">Service Type</label>
-            <select id="cs-service" value={serviceType} onChange={(e) => setServiceType(e.target.value)}>
-              <option value="">Select type…</option>
-              {SERVICE_TYPE_OPTIONS.map((s) => (
-                <option key={s.value} value={s.value}>{s.label}</option>
-              ))}
-            </select>
-          </div>
-        </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+              <div className="fg">
+                <label htmlFor="cs-region">Region</label>
+                <select id="cs-region" value={region} onChange={(e) => setRegion(e.target.value)}>
+                  <option value="">Select region…</option>
+                  {REGION_OPTIONS.map((r) => (
+                    <option key={r} value={r.toLowerCase().replace(/\s+/g, '-')}>{r}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="fg">
+                <label htmlFor="cs-service">Service Type</label>
+                <select id="cs-service" value={serviceType} onChange={(e) => setServiceType(e.target.value)}>
+                  <option value="">Select type…</option>
+                  {SERVICE_TYPE_OPTIONS.map((s) => (
+                    <option key={s.value} value={s.value}>{s.label}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
 
-        {/* The Challenge */}
-        <div className="fg" style={{ marginBottom: '16px' }}>
-          <label>The Challenge *</label>
-          <span className="fg-hint">Describe the hospital&apos;s key challenges. Use bold/italic for emphasis.</span>
-          <RichTextEditor content={challenge} onChange={setChallenge} placeholder="Describe the challenge the hospital was facing…" />
-        </div>
+            <div className="fg" style={{ marginBottom: '16px' }}>
+              <label>The Challenge *</label>
+              <span className="fg-hint">Describe the hospital&apos;s key challenges. Use bold/italic for emphasis.</span>
+              <RichTextEditor content={challenge} onChange={setChallenge} placeholder="Describe the challenge the hospital was facing…" />
+            </div>
 
-        {/* The Solution */}
-        <div className="fg" style={{ marginBottom: '16px' }}>
-          <label>The Solution *</label>
-          <span className="fg-hint">Explain MHMDAA&apos;s approach and solution.</span>
-          <RichTextEditor content={solution} onChange={setSolution} placeholder="Describe the solution implemented…" />
-        </div>
+            <div className="fg" style={{ marginBottom: '16px' }}>
+              <label>The Solution *</label>
+              <span className="fg-hint">Explain MHMDAA&apos;s approach and solution.</span>
+              <RichTextEditor content={solution} onChange={setSolution} placeholder="Describe the solution implemented…" />
+            </div>
 
-        {/* The Results */}
-        <div className="fg" style={{ marginBottom: '16px' }}>
-          <label>The Results</label>
-          <span className="fg-hint">Summarize measurable outcomes and impact.</span>
-          <RichTextEditor content={results} onChange={setResults} placeholder="Describe the results and outcomes…" />
-        </div>
+            <div className="fg" style={{ marginBottom: '16px' }}>
+              <label>The Results</label>
+              <span className="fg-hint">Summarize measurable outcomes and impact.</span>
+              <RichTextEditor content={results} onChange={setResults} placeholder="Describe the results and outcomes…" />
+            </div>
+          </>
+        )}
+
+        {/* ── Payor-specific fields ── */}
+        {kind === 'payor' && (
+          <>
+            <div className="fg" style={{ marginBottom: '16px' }}>
+              <label htmlFor="cs-pdtype">Dispute Type</label>
+              <select id="cs-pdtype" value={payorDisputeType} onChange={(e) => setPayorDisputeType(e.target.value)}>
+                <option value="">Select type…</option>
+                {PAYOR_DISPUTE_OPTIONS.map((o) => (
+                  <option key={o.value} value={o.value}>{o.label}</option>
+                ))}
+              </select>
+            </div>
+            <div className="fg" style={{ marginBottom: '16px' }}>
+              <label htmlFor="cs-prep">Representation</label>
+              <input id="cs-prep" type="text" value={payorRepresentation} onChange={(e) => setPayorRepresentation(e.target.value)}
+                placeholder="e.g. Payor — National Healthcare Law Group" />
+            </div>
+            <div className="fg" style={{ marginBottom: '16px' }}>
+              <label>Scope of Work *</label>
+              <span className="fg-hint">Describe the expert engagement. Use bold/italic as needed.</span>
+              <RichTextEditor content={payorScope} onChange={setPayorScope} placeholder="Describe scope of expert engagement…" />
+            </div>
+            <div className="fg" style={{ marginBottom: '16px' }}>
+              <label htmlFor="cs-pref">Case Reference</label>
+              <input id="cs-pref" type="text" value={payorCaseRef} onChange={(e) => setPayorCaseRef(e.target.value)}
+                placeholder="e.g. AAA Coordinated Arbitration Proceeding — California Medical Necessity Review" />
+            </div>
+            <div className="fg" style={{ marginBottom: '16px' }}>
+              <label htmlFor="cs-pcounsel">Legal Counsel</label>
+              <input id="cs-pcounsel" type="text" value={payorCounsel} onChange={(e) => setPayorCounsel(e.target.value)}
+                placeholder="e.g. National Healthcare Law Group" />
+            </div>
+          </>
+        )}
 
         {/* Key Metrics */}
         <div className="fg" style={{ marginBottom: '16px' }}>

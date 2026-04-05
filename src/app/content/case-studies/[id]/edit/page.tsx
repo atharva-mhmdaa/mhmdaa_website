@@ -179,6 +179,7 @@ export default function EditCaseStudy() {
         : slugify(title, { lower: true, strict: true });
 
     const baseUpdate = {
+      kind: studyKind,
       title: title.trim(),
       slug: nextSlug,
       subtitle: subtitle.trim() || null,
@@ -258,18 +259,51 @@ export default function EditCaseStudy() {
         ← Back to Case Studies
       </Link>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '28px', flexWrap: 'wrap', gap: '12px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
         <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.6rem', fontWeight: 700, color: '#2A3F7A' }}>
           Edit Case Study
-          {studyKind === 'payor' && (
-            <span style={{ display: 'block', fontSize: '.85rem', fontWeight: 600, color: '#0284c7', marginTop: 6 }}>
-              Payor / expert witness entry
-            </span>
-          )}
         </h1>
         <button type="button" onClick={handleDelete} disabled={deleting}
           style={{ background: 'none', border: '1px solid rgba(200,16,46,.3)', color: '#C8102E', padding: '8px 18px', borderRadius: '8px', fontSize: '.88rem', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>
           {deleting ? 'Deleting…' : 'Delete'}
+        </button>
+      </div>
+
+      {/* Kind selector */}
+      <div style={{ display: 'flex', gap: '8px', marginBottom: '24px' }}>
+        <button
+          type="button"
+          onClick={() => setStudyKind('provider')}
+          style={{
+            padding: '10px 24px',
+            borderRadius: '10px',
+            fontWeight: 700,
+            fontSize: '.92rem',
+            fontFamily: 'inherit',
+            cursor: 'pointer',
+            border: studyKind === 'provider' ? '2px solid #2A3F7A' : '1.5px solid #e2e8f0',
+            background: studyKind === 'provider' ? 'rgba(42,63,122,.07)' : '#fff',
+            color: studyKind === 'provider' ? '#2A3F7A' : '#5A6E8A',
+          }}
+        >
+          Provider Case Study
+        </button>
+        <button
+          type="button"
+          onClick={() => setStudyKind('payor')}
+          style={{
+            padding: '10px 24px',
+            borderRadius: '10px',
+            fontWeight: 700,
+            fontSize: '.92rem',
+            fontFamily: 'inherit',
+            cursor: 'pointer',
+            border: studyKind === 'payor' ? '2px solid #0284c7' : '1.5px solid #e2e8f0',
+            background: studyKind === 'payor' ? 'rgba(2,132,199,.07)' : '#fff',
+            color: studyKind === 'payor' ? '#0284c7' : '#5A6E8A',
+          }}
+        >
+          Payor Case Study
         </button>
       </div>
 
@@ -374,8 +408,9 @@ export default function EditCaseStudy() {
               </select>
             </div>
             <div className="fg" style={{ marginBottom: '16px' }}>
-              <label htmlFor="cs-prep">Payor type / representation</label>
-              <input id="cs-prep" type="text" value={payorRepresentation} onChange={(e) => setPayorRepresentation(e.target.value)} />
+              <label htmlFor="cs-prep">Representation</label>
+              <input id="cs-prep" type="text" value={payorRepresentation} onChange={(e) => setPayorRepresentation(e.target.value)}
+                placeholder="e.g. Payor — National Healthcare Law Group" />
             </div>
             <div className="fg" style={{ marginBottom: '16px' }}>
               <label>Scope of work</label>
