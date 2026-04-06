@@ -1028,7 +1028,10 @@ details[open] .ig-lbl-open { display: inline }
   .form-row { grid-template-columns: 1fr }
   .contact-hero { padding: 170px 20px 70px }
   .about-hero { padding: 170px 20px 70px }
-  .svc-hero { padding: 170px 20px 70px }
+  .svc-hero { padding: 90px 20px 48px }
+  .svc-hero .btn-p { display: flex; justify-content: center; width: fit-content; margin-left: auto; margin-right: auto }
+  .blue-highlight-box { flex-direction: column; align-items: stretch; text-align: center }
+  .blue-highlight-box > div:first-child { display: flex !important; justify-content: center; align-items: center; margin-left: auto; margin-right: auto }
   .cases-hero { padding: 170px 20px 70px }
   .blogs-hero { padding: 170px 20px 70px }
   .cc-grid { grid-template-columns: 1fr }
@@ -1161,7 +1164,7 @@ details[open] .ig-lbl-open { display: inline }
   .blog-topic-grid { grid-template-columns: 1fr }
   .qnav-row1 { flex-direction: column; align-items: stretch }
   .qnav-sort-wrap { width: 100%; justify-content: space-between }
-  .footer-grid { grid-template-columns: 1fr; gap: 0 }
+  .footer-grid { grid-template-columns: 1fr; gap: 0; margin-bottom: 0 }
   .footer-inner { padding: 40px 20px 0 }
   .footer-bottom { padding: 18px 20px 22px; flex-direction: column; align-items: center; text-align: center; gap: 14px }
   .footer-divider { padding: 0 20px }
@@ -1174,7 +1177,7 @@ details[open] .ig-lbl-open { display: inline }
 
   /* Link columns — horizontal 2-col grid */
   .fc { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,.08) }
-  .fc:last-child { border-bottom: none; padding-bottom: 28px }
+  .fc:last-child { border-bottom: none; padding-bottom: 16px }
   .fc h5 { font-size: .78rem; margin-bottom: 14px }
   .fc a { font-size: .88rem; margin-bottom: 8px }
 
@@ -1243,7 +1246,7 @@ details[open] .ig-lbl-open { display: inline }
   .sd-hero { padding: 150px 16px 56px }
   .contact-hero { padding: 150px 16px 56px }
   .about-hero { padding: 150px 16px 56px }
-  .svc-hero { padding: 150px 16px 56px }
+  .svc-hero { padding: 80px 16px 40px }
   .cases-hero { padding: 150px 16px 56px }
   .payor-hero { padding: 150px 16px 56px }
   .cred-bar-inner { gap: 8px }
@@ -1303,6 +1306,7 @@ details[open] .ig-lbl-open { display: inline }
 }
 
 @media (max-width: 400px) {
+  .svc-hero { padding: 76px 14px 36px }
   .nav-top { padding: 8px 56px 6px 12px }
   .nav-logo img { height: 50px !important }
   .nav-logo > span { padding: 2px 5px !important }

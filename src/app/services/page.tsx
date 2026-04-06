@@ -16,48 +16,48 @@ const stats = [
   { target: 190, label: "National Clients\nServed" },
   { target: 100, label: "Hospital Projects\nCompleted" },
   { target: 30, label: "Years of Consulting\nExperience" },
-  { target: 50, label: "Clinical Documentation Improvement (CDI) Programs\nDeployed" },
   { target: 24, label: "UM Programs\nDeployed" },
+  { target: 50, label: "Clinical Documentation Improvement\nPrograms Deployed" },
 ];
 
 const pillars = [
   {
-    step: "01 — Front-End Strategy",
+    step: "01 - Front-End Strategy",
     title: "Admission Status Integrity",
     description:
       "Eliminating preventable denials by aligning clinical documentation with Payor criteria and regulatory standards at admission to ensure accurate status determinations and timely notification.",
     borderColor: "var(--navy)",
   },
   {
-    step: "02 — Revenue Protection",
+    step: "02 - Revenue Protection",
     title: "Concurrent Review & Clinical Documentation Improvement (CDI)",
     description:
       "Clinical oversight and physician coaching to ensure documentation specificity and coding accuracy, capturing true severity of illness and preventing adverse DRG reclassification before claims are submitted.",
     borderColor: "var(--red)",
   },
   {
-    step: "03 — Tactical Defense",
+    step: "03 - Tactical Defense",
     title: "Peer-to-Peer & Denial Management",
     description:
       "Leveraging timely physician-to-physician advocacy and evidence-based clinical appeals to challenge algorithmic denials, navigating complex comorbidities and medical necessity to secure revenue reversal.",
     borderColor: "var(--navy)",
   },
   {
-    step: "04 — Long-Term Risk Mitigation",
+    step: "04 - Long-Term Risk Mitigation",
     title: "Litigation & Regulatory Support",
     description:
       "Strategic defense by serving as clinical expert witness and analyzing denial patterns to combat unfair Payor practices, ensuring legal compliance and stronger leverage during contract negotiations.",
     borderColor: "var(--red)",
   },
   {
-    step: "05 — Coverage & Eligibility Assurance",
+    step: "05 - Coverage & Eligibility Assurance",
     title: "Coverage & Eligibility Assurance",
     description:
       "Proactively identifying primary and secondary Payor responsibility through rigorous verification. Our physician-led team resolves inter-plan liability disputes and prevents claim rejections caused by coverage sequencing errors.",
     borderColor: "var(--navy)",
   },
   {
-    step: "06 — High-Cost Device Recovery",
+    step: "06 - High-Cost Device Recovery",
     title: "High-Cost Implant Recovery",
     description:
       "Securing appropriate reimbursement for high-cost surgical implants and devices through prospective authorization and contract analysis, verifying implant authorization is aligned with the planned surgical procedure. Our team defends against retrospective downgrades and recovers underpayments on device-intensive DRGs.",
@@ -162,6 +162,7 @@ export default function ServicesPage() {
           {/* Blue highlight box */}
           <RevealOnScroll>
             <div
+              className="blue-highlight-box"
               style={{
                 background: "var(--navy)",
                 borderRadius: 16,
@@ -193,7 +194,7 @@ export default function ServicesPage() {
                   Advancing Patient Care Through Operational Excellence
                 </div>
                 <p style={{ fontSize: "1.04rem", color: "rgba(255,255,255,.88)", lineHeight: 1.8, margin: 0 }}>
-                  Our services enhance both clinical and operational performance — supporting appropriate level-of-care decisions, improving documentation integrity, and reducing unnecessary delays that impact patient care. This allows providers to focus on what matters most: delivering safe, efficient, and effective care.
+                  Our services enhance both clinical and operational performance, supporting appropriate level-of-care decisions, improving documentation integrity, and reducing unnecessary delays that impact patient care. This allows providers to focus on what matters most: delivering safe, efficient, and effective care.
                 </p>
               </div>
             </div>
