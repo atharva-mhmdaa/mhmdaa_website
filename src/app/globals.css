@@ -1143,13 +1143,8 @@ details[open] .ig-lbl-open { display: inline }
   .hero-bullets { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 24px }
   .hero-bullets li { flex-direction: column; gap: 3px; font-size: .82rem; background: rgba(5,12,40,.82); border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 12px 14px; position: relative; overflow: hidden }
   .hero-bullets li::before { display: none }
-  .hero-bullets li::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 12px 0 0 12px }
-  .hero-bullets li:nth-child(1)::after { background: #C8102E }
-  .hero-bullets li:nth-child(2)::after { background: #3b82f6 }
-  .hero-bullets li:nth-child(3)::after { background: #34d399 }
-  .hero-bullets li:nth-child(4)::after { background: #fbbf24 }
+  .hero-bullets li::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 12px 0 0 12px; background: rgba(255,255,255,.4) }
   .hero-bullets li:nth-child(5) { grid-column: 1 / -1 }
-  .hero-bullets li:nth-child(5)::after { background: #a78bfa }
   .hb-label { min-width: 0; font-size: .68rem; color: rgba(255,255,255,.55); letter-spacing: .08em; text-transform: uppercase; font-weight: 700; margin-bottom: 2px }
   .hb-value { font-size: .84rem; color: #fff; line-height: 1.4; font-weight: 600 }
   .svc-grid3 { grid-template-columns: 1fr }
