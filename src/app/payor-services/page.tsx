@@ -74,17 +74,17 @@ const whyCards = [
     p2: "Every deliverable is audit- and litigation-ready, supporting adjudication and providing defensible, physician-authored analyses for payors in the event of disputes.",
   },
   {
-    accent: "linear-gradient(90deg,#C8102E,#e8334a)",
-    iconBg: "rgba(200,16,46,.08)",
-    iconStroke: "#C8102E",
+    accent: "linear-gradient(90deg,#1B2A5B,#2A3F7A)",
+    iconBg: "rgba(27,42,91,.08)",
+    iconStroke: "#2A3F7A",
     title: "Strict\nPolicy Alignment",
     p1: "MHMDAA reviews are cross-referenced against payor-specific policies, contractual obligations, and CMS regulations. Our team maintains fluency in the criteria engines and coverage frameworks used by major payors\u2014including UnitedHealth, Cigna, BCBS, Molina, and AmeriHealth\u2014grounding every determination in precise case standards.",
     p2: "This policy-anchored approach eliminates ambiguity and fuels fewer appeals. By explicitly referencing governing criteria, denials become structurally harder to overturn. Payors benefit from airtight determinations that protect adjudication integrity and reduce downstream vulnerability.",
   },
   {
-    accent: "linear-gradient(90deg,#1B2A5B,#2A3F7A)",
-    iconBg: "rgba(27,42,91,.08)",
-    iconStroke: "#2A3F7A",
+    accent: "linear-gradient(90deg,#C8102E,#e8334a)",
+    iconBg: "rgba(200,16,46,.08)",
+    iconStroke: "#C8102E",
     title: "Repeatable\nMethodology",
     p1: "MHMDAA applies a consistent, evidence-anchored framework to every case. By following standardized clinical abstraction protocols, we ensure uniform structure and quality across all reviews. This disciplined approach builds institutional trust, guaranteeing the same rigor for every case regardless of volume or complexity.",
     p2: "This consistency reduces QA overhead and enables scalable deployment during high-volume periods. Standardized protocols also generate a reliable audit trail, allowing payors to demonstrate process integrity to regulators and counsel with confidence.",
@@ -308,6 +308,7 @@ export default function PayorServicesPage() {
                   }}
                 />
                 <div
+                  className="why-card-icon"
                   style={{
                     width: 52,
                     height: 52,
@@ -387,7 +388,7 @@ export default function PayorServicesPage() {
               </p>
 
               {/* Target KPIs */}
-              <div style={{ fontSize: ".9rem", fontWeight: 700, letterSpacing: ".13em", textTransform: "uppercase", color: "var(--mg)", marginBottom: 10 }}>Target KPIs</div>
+              <div style={{ fontSize: ".9rem", fontWeight: 700, letterSpacing: ".1em", color: "var(--mg)", marginBottom: 10 }}>Target KPIs</div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 14, marginBottom: 28 }}>
                 <div style={{ background: "var(--off)", border: "1px solid var(--border)", borderRadius: 12, padding: "16px 12px", textAlign: "center" }}>
                   <div style={{ fontSize: "1.6rem", fontWeight: 900, color: "var(--navy)" }}>85%</div>
@@ -491,7 +492,7 @@ export default function PayorServicesPage() {
                 Commercial and government Payors, Medicare Advantage plans, Third-Party Administrators (TPAs), and legal counsel engaged in healthcare disputes.
               </p>
             </div>
-            <h4 style={{ fontSize: "1.08rem", fontWeight: 700, color: "var(--navy)", marginBottom: 14 }}>When to Engage MHMDAA:</h4>
+            <h4 className="who-serve-heading" style={{ fontSize: "1.08rem", fontWeight: 700, color: "var(--navy)", marginBottom: 14 }}>When to Engage MHMDAA</h4>
             <div className="who-serve-list">
               {[
                 "Denial defense requiring credible, evidence-based testimony on clinical decisions",
