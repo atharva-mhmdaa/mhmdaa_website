@@ -30,7 +30,9 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [fontSize, setFontSize] = useState(FONT_BASE);
+  const [navHeight, setNavHeight] = useState(60);
   const hamRef = useRef<HTMLButtonElement>(null);
+  const navElRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const stored = localStorage.getItem("mhm_fs");
@@ -58,15 +60,19 @@ export default function Navbar() {
     const btn = hamRef.current;
     if (!btn) return;
     let touchHandled = false;
+    const toggle = () => {
+      if (navElRef.current) setNavHeight(navElRef.current.getBoundingClientRect().height);
+      setMobileOpen((o) => !o);
+    };
     const onTouch = (e: Event) => {
       e.preventDefault();
       touchHandled = true;
-      setMobileOpen((o) => !o);
+      toggle();
     };
     const onClick = (e: Event) => {
       if (touchHandled) { touchHandled = false; return; }
       e.preventDefault();
-      setMobileOpen((o) => !o);
+      toggle();
     };
     btn.addEventListener("touchstart", onTouch, { passive: false });
     btn.addEventListener("click", onClick);
@@ -88,33 +94,40 @@ export default function Navbar() {
     [fontSize]
   );
 
-  const navbarRef = useCallback(
-    (node: HTMLElement | null) => {
-      if (!node || !mobileOpen) return;
-    },
-    [mobileOpen]
-  );
+  const navbarRef = useCallback((node: HTMLElement | null) => {
+    navElRef.current = node;
+    if (node) setNavHeight(node.getBoundingClientRect().height);
+  }, []);
+
+  useEffect(() => {
+    const update = () => {
+      if (navElRef.current) setNavHeight(navElRef.current.getBoundingClientRect().height);
+    };
+    window.addEventListener("resize", update);
+    update();
+    return () => window.removeEventListener("resize", update);
+  }, [scrolled]);
 
   const mobileStyle: React.CSSProperties | undefined = mobileOpen
     ? {
         display: "flex",
         flexDirection: "column",
         position: "fixed",
-        top: "60px",
+        top: `${navHeight}px`,
         right: 0,
-        left: "auto",
-        width: "260px",
-        background: "rgba(27,42,91,.98)",
-        padding: "18px 20px 24px",
+        left: 0,
+        width: "100%",
+        background: "rgba(10,20,55,.97)",
+        padding: "16px 24px 28px",
         gap: "4px",
         zIndex: 999,
-        backdropFilter: "blur(20px)",
-        borderTop: "1px solid rgba(255,255,255,.1)",
-        borderLeft: "1px solid rgba(255,255,255,.1)",
-        boxShadow: "-4px 8px 32px rgba(0,0,0,.4)",
-        maxHeight: "calc(100vh - 60px)",
+        backdropFilter: "blur(24px)",
+        WebkitBackdropFilter: "blur(24px)",
+        borderTop: "1px solid rgba(255,255,255,.12)",
+        boxShadow: "0 16px 48px rgba(0,0,0,.5)",
+        maxHeight: `calc(100vh - ${navHeight}px)`,
         overflowY: "auto",
-        borderRadius: "0 0 0 14px",
+        borderRadius: "0 0 18px 18px",
       }
     : undefined;
 
@@ -123,12 +136,21 @@ export default function Navbar() {
         display: "flex",
         flexDirection: "column",
         width: "100%",
-        gap: "4px",
-        alignItems: "flex-end",
+        gap: "2px",
+        alignItems: "stretch",
       }
     : undefined;
 
   return (
+    <>
+      {mobileOpen && (
+        <div
+          className="nav-backdrop"
+          style={{ top: `${navHeight}px` }}
+          onClick={() => setMobileOpen(false)}
+          aria-hidden="true"
+        />
+      )}
     <nav
       className={`navbar${scrolled ? " scrolled" : ""}`}
       id="nb"
@@ -240,5 +262,6 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
+    </>
   );
 }

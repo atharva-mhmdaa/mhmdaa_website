@@ -50,6 +50,8 @@ body {
 ::-webkit-scrollbar-thumb { background: #2A3F7A; border-radius: 3px }
 
 /* ── NAV ──────────────────────────────────────────────────── */
+.nav-backdrop { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 998; background: rgba(5,10,30,.75); backdrop-filter: blur(28px) saturate(0.4); -webkit-backdrop-filter: blur(28px) saturate(0.4); animation: fadeIn .2s ease }
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
 .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(27,42,91,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.08); transition: box-shadow .3s }
 .nav-top {
   max-width: 1400px; margin: 0 auto; padding: 18px 36px 14px;
@@ -926,15 +928,25 @@ details[open] .ig-lbl-open { display: inline }
 @media (max-width: 1100px) { .team-grid { grid-template-columns: repeat(2,1fr) } .values-careers { grid-template-columns: repeat(2,1fr) } }
 @media (max-width: 1000px) { .nav-links a { font-size: .82rem; padding: 6px 10px } }
 @media (max-width: 900px) {
-  .hero-inner { grid-template-columns: 1fr; padding: 170px 20px 48px; gap: 28px }
-  .hero-card { display: block; margin-top: 0; border-radius: 18px }
-  .hrc-body { min-height: 380px }
+  .hero-inner { grid-template-columns: 1fr; padding: 110px 20px 48px; gap: 28px }
+  .hero-badge { background: none !important; border: none !important; border-radius: 0 !important; border-left: 3px solid #C8102E !important; padding: 0 0 0 10px !important; letter-spacing: .1em; color: rgba(255,255,255,.8) !important }
+  .hero-card { display: block; margin-top: 0; border-radius: 18px; overflow: hidden }
+  .hrc-tabs { border-radius: 0 }
+  .hrc-body { min-height: 0 !important; height: auto !important; overflow: visible !important }
+  .hrc-pane { position: static !important; opacity: 0; pointer-events: none; height: 0; overflow: hidden; padding: 0 !important }
+  .hrc-pane.active { opacity: 1; pointer-events: all; height: auto; overflow: visible; padding: 20px 16px 18px !important }
   .hrc-tab { font-size: .72rem; padding: 12px 4px 10px }
-  .hfc-name { font-size: .92rem }
-  .hfc-desc { font-size: .78rem }
-  .hrc-ph-title { font-size: .98rem }
-  .hrc-stat-num { font-size: 2.4rem }
-  .hrc-stat-label { font-size: .78rem }
+  .hero-carousel-dots { display: none }
+  .hfc-grid { grid-template-columns: 1fr 1fr; gap: 8px }
+  .hfc-card { padding: 14px 12px 12px }
+  .hfc-icon-wrap { width: 28px; height: 28px; margin-bottom: 8px }
+  .hfc-name { font-size: .88rem }
+  .hfc-desc { font-size: .76rem; line-height: 1.45 }
+  .hrc-ph-title { font-size: .96rem; margin-bottom: 10px }
+  .hrc-cta-row { padding: 9px 12px }
+  .hrc-stat-num { font-size: 2.2rem }
+  .hrc-stat-label { font-size: .76rem }
+  .hrc-stat-card { padding: 16px 10px }
   .hero-h1 { font-size: clamp(2rem,6vw,3rem) }
   .hero-p { font-size: 1.05rem }
   .hero-btns { flex-direction: column; gap: 10px }
@@ -1031,6 +1043,12 @@ details[open] .ig-lbl-open { display: inline }
   .nav-links { display: none }
   .ham { display: flex }
   .nav-top { justify-content: flex-start; padding: 8px 64px 6px 16px; overflow: visible !important }
+  .nav-bottom .nav-links { display: flex !important }
+  .nav-bottom .nav-links a { font-size: 1rem; font-weight: 500; color: rgba(255,255,255,.8); padding: 13px 18px; border-radius: 10px; border-bottom: 1px solid rgba(255,255,255,.07); text-align: left; display: block; width: 100% }
+  .nav-bottom .nav-links a:last-child { border-bottom: none }
+  .nav-bottom .nav-links a.active, .nav-bottom .nav-links a:hover { background: rgba(255,255,255,.08); color: #fff }
+  .nav-bottom .nav-links a::after { display: none }
+  .nav-bottom .nav-cta { margin-top: 10px; text-align: center; padding: 14px 18px !important; font-size: 1rem !important; border-radius: 12px !important; animation: none; display: block; width: 100% }
   .nav-logo img { height: 87px !important; transition: height .3s ease }
   .nav-logo > span { padding: 4px 8px !important }
   .nav-bottom { display: none }
@@ -1090,18 +1108,29 @@ details[open] .ig-lbl-open { display: inline }
   .cta-btns .btn-p, .cta-btns .btn-o { width: 100%; justify-content: center }
   .sec-label { font-size: .78rem }
   .btn-p, .btn-o { padding: 12px 22px; font-size: .97rem }
-  .hero-inner { padding: 150px 16px 40px; gap: 22px }
+  .hero-inner { padding: 100px 16px 40px; gap: 22px }
+  .hero-carousel-dots { display: none }
+  .hero-badge { font-size: .7rem; padding: 0; background: none !important; border: none !important; border-radius: 0 !important; border-left: 3px solid #C8102E !important; padding-left: 10px !important; letter-spacing: .1em; color: rgba(255,255,255,.8) !important; margin-bottom: 16px }
   .hero-h1 { font-size: clamp(1.8rem,7vw,2.5rem) }
-  .hrc-body { min-height: 340px }
-  .hfc-grid { gap: 7px }
-  .hfc-card { padding: 12px 10px 10px }
-  .hrc-stat-num { font-size: 2rem }
+  .hfc-grid { gap: 6px }
+  .hfc-card { padding: 11px 9px 10px }
+  .hfc-name { font-size: .82rem }
+  .hfc-desc { font-size: .72rem }
+  .hrc-stat-num { font-size: 1.8rem }
+  .hrc-stat-card { padding: 14px 8px }
   .hero-p { font-size: .97rem; margin-bottom: 20px }
   .hero-bullets { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 24px }
-  .hero-bullets li { flex-direction: column; gap: 2px; font-size: .82rem; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; padding: 10px 12px }
+  .hero-bullets li { flex-direction: column; gap: 3px; font-size: .82rem; background: rgba(5,12,40,.82); border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 12px 14px; position: relative; overflow: hidden }
   .hero-bullets li::before { display: none }
-  .hb-label { min-width: 0; font-size: .72rem; color: #C8102E; letter-spacing: .06em; text-transform: uppercase; font-weight: 800 }
-  .hb-value { font-size: .82rem; color: rgba(255,255,255,.85); line-height: 1.45 }
+  .hero-bullets li::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 12px 0 0 12px }
+  .hero-bullets li:nth-child(1)::after { background: #C8102E }
+  .hero-bullets li:nth-child(2)::after { background: #3b82f6 }
+  .hero-bullets li:nth-child(3)::after { background: #34d399 }
+  .hero-bullets li:nth-child(4)::after { background: #fbbf24 }
+  .hero-bullets li:nth-child(5) { grid-column: 1 / -1 }
+  .hero-bullets li:nth-child(5)::after { background: #a78bfa }
+  .hb-label { min-width: 0; font-size: .68rem; color: rgba(255,255,255,.55); letter-spacing: .08em; text-transform: uppercase; font-weight: 700; margin-bottom: 2px }
+  .hb-value { font-size: .84rem; color: #fff; line-height: 1.4; font-weight: 600 }
   .svc-grid3 { grid-template-columns: 1fr }
   .svc-grid-home { grid-template-columns: 1fr; gap: 14px }
   .svc-tile { aspect-ratio: 16/10 }
@@ -1112,10 +1141,15 @@ details[open] .ig-lbl-open { display: inline }
   .stats-strip { padding: 28px 16px }
   .stats-hdr { margin-bottom: 32px }
   .stats-hdr-lbl { font-size: .95rem }
-  .ss-num { font-size: 2.2rem }
-  .ss-item { padding: 28px 14px 24px }
-  .why-adv-grid { grid-template-columns: 1fr; gap: 14px }
-  .adv-card { padding: 20px 16px }
+  .stats-strip-inner { gap: 10px }
+  .stats-strip-inner > *:nth-child(5) { grid-column: 1 / -1 }
+  .ss-num { font-size: 2.4rem }
+  .ss-item { padding: 24px 16px 20px; border-radius: 16px }
+  .ss-label { font-size: .7rem }
+  .why-adv-grid { grid-template-columns: 1fr; gap: 10px; margin-bottom: 0 }
+  .adv-card { padding: 18px 16px }
+  .adv-rule { margin-top: 12px }
+  .section-why-choose { padding-bottom: 24px !important }
   .adv-icon { width: 40px; height: 40px; border-radius: 10px; margin-bottom: 10px }
   .adv-icon svg { width: 20px; height: 20px }
   .adv-title { font-size: .95rem }
@@ -1175,14 +1209,14 @@ details[open] .ig-lbl-open { display: inline }
   .section { padding: 40px 14px }
   .sec-header { margin-bottom: 28px }
   .stats-grid { grid-template-columns: 1fr !important }
-  .hero-badge { font-size: .72rem; padding: 5px 12px }
-  .hero-bullets li { font-size: .8rem; padding: 8px 10px }
-  .hb-label { font-size: .68rem }
-  .hb-value { font-size: .78rem }
-  .stats-strip-inner { grid-template-columns: 1fr 1fr }
+  .hero-bullets li { padding: 10px 12px }
+  .hb-label { font-size: .65rem }
+  .hb-value { font-size: .8rem }
+  .stats-strip-inner { grid-template-columns: 1fr 1fr; gap: 8px }
+  .stats-strip-inner > *:nth-child(5) { grid-column: 1 / -1 }
   .ss-num { font-size: 2rem }
-  .ss-item { padding: 22px 12px 20px; border-radius: 14px }
-  .ss-label { font-size: .68rem }
+  .ss-item { padding: 20px 12px 18px; border-radius: 14px }
+  .ss-label { font-size: .66rem }
   .pg-3, .pg-2 { gap: 14px }
 }
 
