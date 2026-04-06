@@ -395,13 +395,28 @@ footer::after { content: ''; position: absolute; top: 0; right: -200px; width: 6
 .about-quote-box { background: rgba(255,255,255,.06); border-left: 3px solid #C8102E; padding: 20px 22px; border-radius: 0 10px 10px 0; margin: 24px 0 }
 .about-quote-box p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: rgba(255,255,255,.82); line-height: 1.7 }
 
+/* ── ABOUT MISSION SECTION ──────────────────────────────── */
+.mission-section { padding: 72px 32px !important }
+.mission-sec-header { margin-bottom: 48px }
+.mission-card { padding: 40px 44px; margin-bottom: 20px }
+.mission-card p { font-size: 1rem; line-height: 1.85 }
+.mission-card blockquote p { font-size: 1.1rem; line-height: 1.88 }
+
 /* ── CINEMATIC BIO SECTIONS ─────────────────────────────── */
 .cin-section-about { position: relative; min-height: 700px; overflow: hidden }
-.cin-grad-about { position: absolute; inset: 0; background: linear-gradient(to right,rgba(10,20,55,0) 30%,rgba(10,20,55,.78) 52%,rgba(10,20,55,.97) 68%,rgba(10,20,55,1) 100%) }
+.cin-about-photo-wrap { position: absolute; inset: 0; overflow: hidden }
+.cin-about-photo-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover }
+.cin-grad-about { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to right,rgba(10,20,55,0) 30%,rgba(10,20,55,.78) 52%,rgba(10,20,55,.97) 68%,rgba(10,20,55,1) 100%) }
+.cin-grad-bottom-about { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top,rgba(10,20,55,.5) 0%,transparent 30%) }
+.cin-mobile-overlay-about { display: none }
 .cin-inner-about { position: relative; z-index: 2; max-width: 1280px; margin: 0 auto; padding: 90px 36px; display: flex; justify-content: flex-end }
 .cin-content-about { max-width: 560px; width: 100% }
 .cin-stats-about { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 30px }
 .cin-btns-about { display: flex; gap: 12px; flex-wrap: wrap }
+/* Mobile bio block — hidden on desktop, shown on mobile */
+.cin-bio-mobile-about { display: none; background: rgba(10,20,55,1); padding: 32px 20px 48px; color: rgba(255,255,255,.82) }
+.cin-bio-mobile-about p { font-size: .9rem; line-height: 1.8; margin-bottom: 16px }
+.cin-bio-mobile-about p strong { color: rgba(255,255,255,.92) }
 .ab-stat-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin-bottom: 26px }
 .ab-stat { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 19px; text-align: center }
 .ab-stat-num { font-size: 2.15rem; font-weight: 800; color: #fff; line-height: 1 }
@@ -1016,14 +1031,30 @@ details[open] .ig-lbl-open { display: inline }
   .why-payors-2col { grid-template-columns: 1fr !important; gap: 20px !important }
   .process-grid { grid-template-columns: 1fr 1fr }
   .values-grid { grid-template-columns: 1fr 1fr }
+  .vc-desc { text-align: left }
   #perfGrid { grid-template-columns: repeat(2,1fr) !important; gap: 18px !important }
   .pg-3 { grid-template-columns: 1fr 1fr }
   .pg-2 { grid-template-columns: 1fr }
-  .cin-section-about { min-height: auto !important }
-  .cin-grad-about { background: linear-gradient(to bottom,rgba(10,20,55,0) 0%,rgba(10,20,55,.1) 28%,rgba(10,20,55,.88) 50%,rgba(10,20,55,.98) 64%,rgba(10,20,55,1) 100%) !important }
-  .cin-section-about > img { object-position: center top !important }
-  .cin-inner-about { justify-content: center !important; padding: 210px 20px 52px !important }
-  .cin-content-about { max-width: 100% !important }
+  .mission-section { padding: 52px 20px !important }
+  .mission-sec-header { margin-bottom: 28px !important }
+  .mission-card { padding: 28px 24px; margin-bottom: 16px }
+  /* About cinematic sections — same right-panel pattern as home page */
+  .cin-section-about { min-height: 420px !important; display: block !important }
+  .cin-about-photo-wrap { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; overflow: hidden }
+  /* Right-to-left gradient: face visible on left, dark panel on right */
+  .cin-grad-about { background: linear-gradient(to right, rgba(10,20,55,.02) 0%, rgba(10,20,55,.45) 36%, rgba(10,20,55,.92) 56%, rgba(10,20,55,1) 76%) !important; position: absolute !important; inset: 0 !important; z-index: 1 }
+  .cin-grad-bottom-about { display: none }
+  /* Overlay: right-aligned, text in right 55% only */
+  .cin-mobile-overlay-about { display: flex !important; flex-direction: column; justify-content: center; align-items: flex-start; position: absolute; top: 0; bottom: 0; right: 0; width: 57%; z-index: 2; padding: 20px 16px 20px 10px }
+  .cin-mob-badge { display: inline-flex; align-items: center; background: rgba(200,16,46,.25); border: 1px solid rgba(200,16,46,.5); color: #f87171; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; margin-bottom: 8px; width: fit-content }
+  .cin-mob-name { font-family: 'Playfair Display', serif; font-size: clamp(1.15rem,4vw,1.6rem); font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 4px }
+  .cin-mob-name em { font-style: italic; color: #93c5fd }
+  .cin-mob-sub { font-size: .7rem; color: rgba(255,255,255,.65); margin-bottom: 12px; line-height: 1.4 }
+  .cin-mob-quote { border-left: 2px solid #C8102E; padding: 8px 12px; background: rgba(255,255,255,.06); backdrop-filter: blur(8px); border-radius: 0 8px 8px 0 }
+  .cin-mob-quote p { font-size: .72rem; font-style: italic; color: rgba(255,255,255,.88); line-height: 1.6; margin: 0 0 5px }
+  .cin-mob-quote cite { font-size: .64rem; color: rgba(255,255,255,.58); font-style: normal; font-weight: 600 }
+  .cin-inner-about-desktop { display: none !important }
+  .cin-bio-mobile-about { display: block !important }
   .ab-stat-grid { grid-template-columns: repeat(2,1fr) }
   .careers-hero { padding: 170px 20px 70px }
   .careers-why-grid { grid-template-columns: 1fr !important; gap: 36px !important }
@@ -1089,8 +1120,11 @@ details[open] .ig-lbl-open { display: inline }
   .fb-tagline { max-width: 100% }
   .team-grid { grid-template-columns: repeat(2,1fr); gap: 12px }
   .team-photo { height: 160px }
-  .team-info { padding: 10px 8px 14px }
-  .cin-inner-about { padding: 180px 20px 48px !important }
+  .team-info { padding: 10px 10px 14px; text-align: left }
+  .team-name { font-size: 1rem; text-align: center }
+  .team-role { font-size: .82rem; text-align: center }
+  .team-cred { font-size: .78rem; margin-bottom: 8px; text-align: center }
+  .team-desc { font-size: .82rem; line-height: 1.58; text-align: left }
   .cin-section-home { min-height: 400px !important }
   .cin-content-home { max-width: 58% !important; width: 58% !important }
 }
@@ -1176,6 +1210,11 @@ details[open] .ig-lbl-open { display: inline }
   .ap-card { padding: 18px 14px }
   .ap-title { font-size: .95rem }
   .ap-desc { font-size: .9rem }
+  .mission-section { padding: 40px 16px !important }
+  .mission-sec-header { margin-bottom: 22px !important }
+  .mission-card { padding: 20px 16px; border-radius: 14px !important; margin-bottom: 14px }
+  .mission-card p { font-size: .93rem }
+  .mission-card blockquote p { font-size: .93rem !important }
   .sd-hero { padding: 150px 16px 56px }
   .contact-hero { padding: 150px 16px 56px }
   .about-hero { padding: 150px 16px 56px }
@@ -1186,15 +1225,22 @@ details[open] .ig-lbl-open { display: inline }
   .cb-item { font-size: .88rem }
   .why-payors-2col { grid-template-columns: 1fr !important; gap: 16px !important }
   .values-grid { grid-template-columns: 1fr }
+  .vc-desc { text-align: left }
   .process-grid { grid-template-columns: 1fr }
   .pg-3 { grid-template-columns: 1fr }
   #perfGrid { grid-template-columns: 1fr !important; gap: 14px !important }
   .team-grid { grid-template-columns: repeat(2,1fr); gap: 8px }
   .team-photo { height: 130px }
-  .cin-inner-about { padding: 150px 16px 44px !important }
-  .cin-stats-about { grid-template-columns: 1fr 1fr !important }
-  .cin-btns-about { flex-direction: column }
-  .cin-btns-about a { width: 100%; justify-content: center; text-align: center }
+  .team-name { font-size: .92rem }
+  .team-role { font-size: .76rem }
+  .team-cred { font-size: .72rem }
+  .team-desc { font-size: .78rem; text-align: left }
+  .cin-section-about { min-height: 360px !important }
+  .cin-mobile-overlay-about { width: 60%; padding: 16px 14px 16px 8px }
+  .cin-mob-name { font-size: clamp(1rem,5vw,1.35rem) }
+  .cin-mob-sub { font-size: .65rem }
+  .cin-mob-quote p { font-size: .68rem }
+  .cin-bio-mobile-about p { font-size: .88rem }
   .cin-section-home { min-height: 380px !important }
   .cin-content-home { max-width: 62% !important; width: 62% !important }
   .cin-desktop-header h2 { font-size: 1.15rem !important }
