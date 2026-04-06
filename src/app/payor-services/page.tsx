@@ -1,3 +1,4 @@
+import React from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -185,7 +186,7 @@ export default function PayorServicesPage() {
               and litigation.
             </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 24 }}>
+          <div className="pillars-grid">
             {pillars.map((p, i) => (
               <div
                 key={p.title}
@@ -207,7 +208,7 @@ export default function PayorServicesPage() {
                     marginBottom: 8,
                   }}
                 >
-                  {p.num} &mdash; {p.label}
+                  {p.num} - {p.label}
                 </div>
                 <h3
                   style={{
@@ -263,7 +264,7 @@ export default function PayorServicesPage() {
       </section>
 
       {/* ── WHY PAYORS CHOOSE US ──────────────────────────── */}
-      <section className="section" style={{ background: "#2A3F7A", padding: "96px 32px" }}>
+      <section className="section why-payors-section" style={{ background: "#2A3F7A", padding: "96px 32px" }}>
         <div className="sc">
           <div className="sec-header c" style={{ marginBottom: 56 }}>
             <div className="sec-label" style={{ color: "#f87171" }}>
@@ -284,6 +285,7 @@ export default function PayorServicesPage() {
             {whyCards.map((w) => (
               <div
                 key={w.title}
+                className="why-card"
                 style={{
                   background: "#fff",
                   border: "1px solid rgba(255,255,255,.08)",
@@ -362,10 +364,10 @@ export default function PayorServicesPage() {
       </section>
 
       {/* ── ACCELERATED P2P — PAYOR PERSPECTIVE ─────────── */}
-      <section className="section" style={{ background: "#fff", padding: "96px 32px", position: "relative", overflow: "hidden" }}>
+      <section className="section p2p-section" style={{ background: "#fff", padding: "96px 32px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: -80, right: -120, width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle,rgba(200,16,46,.04) 0%,transparent 70%)", pointerEvents: "none" }} />
         <div className="sc">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }}>
+          <div className="p2p-layout" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }}>
 
             {/* LEFT: Content */}
             <div>
@@ -378,10 +380,10 @@ export default function PayorServicesPage() {
                 Reviews
               </h2>
               <p style={{ fontSize: "1.15rem", color: "var(--mg)", lineHeight: 1.85, marginBottom: 20 }}>
-                When providers initiate an Accelerated Peer-to-Peer (AP2P) review to challenge a denial, Payors need a physician reviewer who can articulate the clinical rationale with the same rigor that will hold up in arbitration or court. MHMDAA deploys board-certified specialists &mdash; matched rank-for-rank to the requesting provider &mdash; to defend clinically sound denial decisions, within 24 hours of specialist request, 7 days/week.
+                When providers initiate an Accelerated Peer-to-Peer (AP2P) review to challenge a denial, Payors need a physician reviewer who can articulate the clinical rationale with the same rigor that will hold up in arbitration or court. MHMDAA deploys board-certified specialists matched rank-for-rank to the requesting provider to defend clinically sound denial decisions, within 24 hours of specialist request, 7 days/week.
               </p>
               <p style={{ fontSize: "1.15rem", color: "var(--mg)", lineHeight: 1.85, marginBottom: 24 }}>
-                Our physicians don&rsquo;t simply recite policy language. They engage in substantive clinical dialogue, referencing evidence-based criteria, admission standards, and nationally recognized clinical guidelines to uphold the original determination &mdash; while creating a fully documented record for downstream litigation readiness.
+                Our physicians don&rsquo;t simply recite policy language. They engage in substantive clinical dialogue, referencing evidence-based criteria, admission standards, and nationally recognized clinical guidelines to uphold the original determination, while creating a fully documented record for downstream litigation readiness.
               </p>
 
               {/* Target KPIs */}
@@ -481,43 +483,29 @@ export default function PayorServicesPage() {
       {/* ── WHO WE SERVE / USE CASES ─────────────────────── */}
       <section className="section">
         <div className="sc">
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
-
-            {/* LEFT: Image */}
-            <div style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 8px 32px rgba(10,31,61,.12)" }}>
-              <Image
-                src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80"
-                alt="Healthcare payor consulting team"
-                width={800}
-                height={600}
-                style={{ width: "100%", height: "auto", display: "block" }}
-              />
-            </div>
-
-            {/* RIGHT: Content */}
-            <div>
+          <div className="who-we-serve-inner">
+            <div className="sec-header c" style={{ marginBottom: 32 }}>
               <div className="sec-label">Engagement &amp; Use Cases</div>
               <h2 className="sec-title">Who We <em>Serve</em></h2>
-              <p style={{ fontSize: "1.15rem", color: "var(--mg)", lineHeight: 1.85, marginBottom: 24 }}>
+              <p style={{ fontSize: "1.15rem", color: "var(--mg)", lineHeight: 1.85, maxWidth: 680, margin: "0 auto" }}>
                 Commercial and government Payors, Medicare Advantage plans, Third-Party Administrators (TPAs), and legal counsel engaged in healthcare disputes.
               </p>
-              <h4 style={{ fontSize: "1.08rem", fontWeight: 700, color: "var(--navy)", marginBottom: 14 }}>When to Engage MHMDAA:</h4>
-              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                {[
-                  "Denial defense requiring credible, evidence-based testimony on clinical decisions",
-                  "Claims requiring Clinical Validation Audits, DRG Downgrades, Line Item Claim Analysis, and ED Facility Level Assignment Reviews",
-                  "Level-of-care analysis and validation of clinical severity requirements",
-                  "Claim disputes requiring clinical evidence for reimbursement",
-                  "Alignment of clinical reality with administrative accuracy",
-                ].map((item) => (
-                  <div key={item} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: 14, background: "var(--off)", borderRadius: 10, border: "1px solid var(--border)" }}>
-                    <span style={{ color: "var(--red)", fontWeight: 800, fontSize: "1.22rem", lineHeight: 1 }}>&#10003;</span>
-                    <p style={{ fontSize: "1.04rem", color: "var(--dg)", margin: 0, lineHeight: 1.65 }}>{item}</p>
-                  </div>
-                ))}
-              </div>
             </div>
-
+            <h4 style={{ fontSize: "1.08rem", fontWeight: 700, color: "var(--navy)", marginBottom: 14 }}>When to Engage MHMDAA:</h4>
+            <div className="who-serve-list">
+              {[
+                "Denial defense requiring credible, evidence-based testimony on clinical decisions",
+                "Claims requiring Clinical Validation Audits, DRG Downgrades, Line Item Claim Analysis, and ED Facility Level Assignment Reviews",
+                "Level-of-care analysis and validation of clinical severity requirements",
+                "Claim disputes requiring clinical evidence for reimbursement",
+                "Alignment of clinical reality with administrative accuracy",
+              ].map((item) => (
+                <div key={item} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: 14, background: "var(--off)", borderRadius: 10, border: "1px solid var(--border)" }}>
+                  <span style={{ color: "var(--red)", fontWeight: 800, fontSize: "1.22rem", lineHeight: 1 }}>&#10003;</span>
+                  <p style={{ fontSize: "1.04rem", color: "var(--dg)", margin: 0, lineHeight: 1.65 }}>{item}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -539,12 +527,22 @@ export default function PayorServicesPage() {
               overflow: "hidden",
             }}
           >
-            {steps.map((s) => (
-              <div className="process-step" key={s.num}>
-                <div className="ps-num">{s.num}</div>
-                <h4 className="ps-title">{s.title}</h4>
-                <p className="ps-desc">{s.desc}</p>
-              </div>
+            {steps.map((s, i) => (
+              <React.Fragment key={s.num}>
+                <div className="process-step">
+                  <div className="ps-num">{s.num}</div>
+                  <h4 className="ps-title">{s.title}</h4>
+                  <p className="ps-desc">{s.desc}</p>
+                </div>
+                {i < steps.length - 1 && (
+                  <div className="ps-arrow" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C8102E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="12" y1="5" x2="12" y2="19" />
+                      <polyline points="19 12 12 19 5 12" />
+                    </svg>
+                  </div>
+                )}
+              </React.Fragment>
             ))}
           </div>
         </div>
