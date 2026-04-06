@@ -75,7 +75,7 @@ body {
 .nav-links a.active::after { transform: scaleX(1) }
 .nav-cta { background: var(--red) !important; color: #fff !important; font-weight: 600 !important; padding: 8px 18px !important; border-radius: 8px !important; animation: borderPulse 2.5s ease infinite }
 .nav-cta:hover { background: #a50d24 !important; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(200,16,46,.4) !important }
-.ham { border: none; background: none; display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; position: absolute; right: 20px; top: 50%; transform: translateY(-50%) }
+.ham { border: none; background: none; display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 12px; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); z-index: 10; -webkit-tap-highlight-color: transparent; touch-action: manipulation; min-width: 48px; min-height: 48px; align-items: center; justify-content: center }
 .ham span { width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all .3s }
 
 /* ── SECTION ─────────────────────────────────────────────── */
@@ -92,11 +92,11 @@ body {
 .sec-header.c:hover .sec-label::before { width: 36px }
 
 /* ── BUTTONS ─────────────────────────────────────────────── */
-.btn-p { display: inline-flex; align-items: center; gap: 8px; background: var(--red); color: #fff; font-size: 1.05rem; font-weight: 600; padding: 15px 30px; border-radius: 10px; text-decoration: none; transition: all .28s; box-shadow: 0 4px 20px rgba(200,16,46,.3); border: none; cursor: pointer; font-family: inherit; position: relative; overflow: hidden }
+.btn-p { display: inline-flex; align-items: center; gap: 8px; background: var(--red); color: #fff; font-size: 1.05rem; font-weight: 600; padding: 15px 30px; border-radius: 10px; text-decoration: none; transition: all .28s; box-shadow: 0 4px 20px rgba(200,16,46,.3); border: none; cursor: pointer; font-family: inherit; position: relative; overflow: hidden; -webkit-tap-highlight-color: transparent; touch-action: manipulation }
 .btn-p::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0); transition: background .2s }
 .btn-p:hover::after { background: rgba(255,255,255,.12) }
 .btn-p:hover { background: #a50d24; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(200,16,46,.45) }
-.btn-o { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--navy); font-size: 1.05rem; font-weight: 500; padding: 15px 30px; border-radius: 10px; text-decoration: none; border: 1.5px solid var(--border); transition: all .25s }
+.btn-o { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--navy); font-size: 1.05rem; font-weight: 500; padding: 15px 30px; border-radius: 10px; text-decoration: none; border: 1.5px solid var(--border); transition: all .25s; -webkit-tap-highlight-color: transparent; touch-action: manipulation }
 .btn-o:hover { background: var(--lg); border-color: rgba(26,74,138,.3) }
 .btn-o.wh { color: #fff; border-color: rgba(255,255,255,.3) }
 .btn-o.wh:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.5) }
@@ -208,6 +208,12 @@ footer::after { content: ''; position: absolute; top: 0; right: -200px; width: 6
 .reveal-l { transform: translateX(-24px) }
 .reveal-r { transform: translateX(24px) }
 .reveal.v, .reveal-l.v, .reveal-r.v { opacity: 1; transform: none }
+@media (hover: none) and (pointer: coarse) {
+  .reveal, .reveal-l, .reveal-r { opacity: 1 !important; transform: none !important; transition: none !important }
+}
+@media (max-width: 1024px) and (any-pointer: coarse) {
+  .reveal, .reveal-l, .reveal-r { opacity: 1 !important; transform: none !important; transition: none !important }
+}
 .reveal-anim { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s cubic-bezier(.34,1.56,.64,1) }
 .reveal-anim.visible { opacity: 1; transform: translateY(0) }
 .reveal-l-anim { opacity: 0; transform: translateX(-32px); transition: opacity .7s ease, transform .7s cubic-bezier(.34,1.56,.64,1) }
@@ -228,7 +234,7 @@ footer::after { content: ''; position: absolute; top: 0; right: -200px; width: 6
 
 /* ── APPROACH TABS ───────────────────────────────────────── */
 .appr-tabs { display: flex; justify-content: center; gap: 0; margin: 0 auto 36px; background: var(--off); border: 1px solid var(--border); border-radius: 12px; padding: 4px; width: fit-content }
-.appr-tab { padding: 10px 32px; border-radius: 9px; font-size: .95rem; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; border: none; background: transparent; color: #5A6E8A; transition: all .25s; letter-spacing: -.01em; line-height: 1.2 }
+.appr-tab { padding: 10px 32px; border-radius: 9px; font-size: .95rem; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; border: none; background: transparent; color: #5A6E8A; transition: all .25s; letter-spacing: -.01em; line-height: 1.2; -webkit-tap-highlight-color: transparent; touch-action: manipulation }
 .appr-tab.active { background: #2A3F7A; color: #fff; box-shadow: 0 2px 12px rgba(42,63,122,.25) }
 .appr-tab:hover:not(.active) { color: #2A3F7A; background: rgba(42,63,122,.06) }
 .appr-panel { display: none }
@@ -259,6 +265,11 @@ footer::after { content: ''; position: absolute; top: 0; right: -200px; width: 6
 .svc-tile:hover .svc-tile-desc { max-height: 120px; opacity: 1 }
 .svc-tile-cta { display: inline-flex; align-items: center; gap: 7px; font-size: .86rem; font-weight: 600; color: #fff; background: #C8102E; padding: 7px 16px; border-radius: 8px; margin-top: 14px; opacity: 0; transform: translateY(10px); transition: opacity .4s ease .1s, transform .4s ease .1s }
 .svc-tile:hover .svc-tile-cta { opacity: 1; transform: translateY(0) }
+
+/* ── SERVICE GRID HOME ───────────────────────────────────── */
+.svc-grid-home { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px }
+.svc-tab-row { display: flex; justify-content: center; gap: 10px; margin-bottom: 36px }
+.svc-tab-btn-home { padding: 10px 28px; border-radius: 100px; border: 2px solid var(--navy); font-size: .9rem; font-weight: 700; cursor: pointer; transition: all .2s; letter-spacing: .04em; font-family: inherit; -webkit-tap-highlight-color: transparent; touch-action: manipulation }
 
 /* ── SERVICE DETAIL HERO ─────────────────────────────────── */
 .sd-hero { padding: 220px 32px 90px; position: relative; overflow: hidden }
@@ -336,7 +347,33 @@ footer::after { content: ''; position: absolute; top: 0; right: -200px; width: 6
 .founder-section::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px); background-size: 60px 60px; pointer-events: none }
 .founder-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: .9fr 1fr; gap: 72px; align-items: center; position: relative; z-index: 1 }
 
+/* ── FOUNDER MOBILE BIO BLOCK ────────────────────────────── */
+.cin-bio-mobile { display: none; background: rgba(10,20,55,1); padding: 32px 20px 48px; color: rgba(255,255,255,.82) }
+.cin-bio-mobile p { font-size: .9rem; line-height: 1.8; margin-bottom: 16px }
+.cin-bio-mobile p strong { color: rgba(255,255,255,.92) }
+.cin-bio-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px }
+.cin-bio-pills span { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.78); font-size: .78rem; font-weight: 600; padding: 5px 12px; border-radius: 100px }
+.cin-bio-stats { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin-bottom: 28px }
+.cin-bio-stat { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 16px 10px; text-align: center }
+.cin-bio-stat-num { font-size: 1.5rem; font-weight: 800; color: #fff; line-height: 1 }
+.cin-bio-stat-lbl { font-size: .72rem; color: rgba(255,255,255,.65); margin-top: 5px; line-height: 1.3 }
+.cin-bio-btns { display: flex; flex-direction: column; gap: 12px }
+.cin-bio-btns a { width: 100%; justify-content: center; text-align: center }
+
+/* ── CIN-SECTION HOME (founder) base classes ────────────── */
+.cin-section-home { position: relative; overflow: hidden }
+.cin-photo-wrap { position: absolute; inset: 0 }
+.cin-grad-home { position: absolute; inset: 0 }
+.cin-grad-bottom { position: absolute; inset: 0 }
+.cin-inner-home { position: relative; z-index: 2; display: flex }
+.cin-content-home { width: 100% }
+.cin-mobile-overlay { display: none }
+.cin-mobile-badge { display: none }
+.cin-mobile-name { display: none }
+.cin-mobile-sub { display: none }
+
 /* ── PERFORMANCE CARDS ───────────────────────────────────── */
+.perf-grid-home { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; max-width: 1100px; margin: 0 auto 16px }
 .perf-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 36px 28px 32px; display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; box-shadow: 0 2px 12px rgba(27,42,91,.06) }
 .perf-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(27,42,91,.12); border-color: #c7d3e8 }
 .perf-icon-wrap { width: 68px; height: 68px; border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 22px; flex-shrink: 0 }
@@ -889,22 +926,69 @@ details[open] .ig-lbl-open { display: inline }
 @media (max-width: 1100px) { .team-grid { grid-template-columns: repeat(2,1fr) } .values-careers { grid-template-columns: repeat(2,1fr) } }
 @media (max-width: 1000px) { .nav-links a { font-size: .82rem; padding: 6px 10px } }
 @media (max-width: 900px) {
-  .hero-inner { grid-template-columns: 1fr; padding: 170px 20px 70px; gap: 0 }
-  .hero-card { display: none }
+  .hero-inner { grid-template-columns: 1fr; padding: 170px 20px 48px; gap: 28px }
+  .hero-card { display: block; margin-top: 0; border-radius: 18px }
+  .hrc-body { min-height: 380px }
+  .hrc-tab { font-size: .72rem; padding: 12px 4px 10px }
+  .hfc-name { font-size: .92rem }
+  .hfc-desc { font-size: .78rem }
+  .hrc-ph-title { font-size: .98rem }
+  .hrc-stat-num { font-size: 2.4rem }
+  .hrc-stat-label { font-size: .78rem }
   .hero-h1 { font-size: clamp(2rem,6vw,3rem) }
+  .hero-p { font-size: 1.05rem }
   .hero-btns { flex-direction: column; gap: 10px }
   .hero-btns a { width: 100%; justify-content: center; text-align: center }
-  .why-adv-grid { grid-template-columns: 1fr 1fr }
+  .hero-bullets li { font-size: .97rem }
+  .hb-label { min-width: 130px; font-size: .92rem }
+  .why-adv-grid { grid-template-columns: 1fr 1fr; gap: 16px }
+  .adv-card { padding: 24px 20px }
+  .adv-icon { width: 46px; height: 46px; margin-bottom: 14px }
+  .adv-title { font-size: 1.02rem }
+  .adv-desc { font-size: .97rem }
   .approach-grid { grid-template-columns: 1fr 1fr }
   .founder-grid { grid-template-columns: 1fr }
   .stats-strip-inner { grid-template-columns: repeat(3,1fr) }
   .stats-strip { padding: 28px 20px }
   .svc-grid3 { grid-template-columns: 1fr 1fr }
+  .svc-grid-home { grid-template-columns: repeat(2,1fr); gap: 16px }
+  .svc-tile { aspect-ratio: 4/3 }
   .sd-hgrid { grid-template-columns: 1fr }
   .sd-hero { padding: 170px 20px 70px }
   .svc-nav-link { min-width: 0; flex: 1 }
   .engage-grid { grid-template-columns: 1fr; gap: 36px }
   .cg { grid-template-columns: 1fr }
+  /* full-bleed: photo fills section, text overlaid on right */
+  .cin-section-home { min-height: 420px !important; display: block !important }
+  .cin-photo-wrap { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; overflow: hidden }
+  .cin-photo-wrap img { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: 20% center !important }
+  .cin-grad-home { background: linear-gradient(to right, rgba(10,20,55,.05) 0%, rgba(10,20,55,.5) 38%, rgba(10,20,55,.92) 58%, rgba(10,20,55,1) 78%) !important; position: absolute !important; inset: 0 !important; height: 100% !important; z-index: 1 }
+  .cin-grad-bottom { background: linear-gradient(to top, rgba(10,20,55,.5) 0%, transparent 30%) !important; position: absolute !important; inset: 0 !important; z-index: 1 }
+  .cin-mobile-overlay { display: none !important }
+  /* inner: full absolute, right-aligned, only show badge+name+quote */
+  .cin-inner-home { position: absolute !important; inset: 0 !important; background: none !important; justify-content: flex-end !important; align-items: center !important; padding: 20px !important; z-index: 2 !important; max-width: 100% !important; margin: 0 !important; width: 100% !important; display: flex !important }
+  .cin-content-home { max-width: 55% !important; width: 55% !important }
+  /* show only badge+name+quote */
+  .cin-content-home .cin-desktop-header { display: block !important }
+  .cin-desktop-header h2 { font-size: 1.3rem !important; margin-bottom: 4px !important }
+  .cin-desktop-header > div { margin-bottom: 10px !important }
+  .cin-desktop-header p { font-size: .74rem !important; margin-bottom: 0 !important; line-height: 1.4 }
+  .cin-content-home blockquote { display: block !important; padding: 10px 12px !important; margin: 12px 0 0 !important }
+  .cin-content-home blockquote p { font-size: .76rem !important; line-height: 1.55 !important }
+  .cin-content-home blockquote p:last-child { font-size: .68rem !important; margin-top: 6px }
+  .cin-bio-mobile { display: block !important }
+  /* hide inline bio/pills/stats/buttons inside the overlay content */
+  .cin-content-home > div > p { display: none !important }
+  .cin-content-home > div > div:not(.cin-desktop-header) { display: none !important }
+  .cin-btns { display: none !important }
+  .cin-stats { display: none !important }
+  .cin-btns { flex-direction: column !important }
+  .cin-btns a { width: 100%; justify-content: center; text-align: center }
+  .perf-grid-home { grid-template-columns: repeat(2,1fr); gap: 18px }
+  .perf-card { padding: 28px 20px; border-radius: 16px }
+  .perf-icon-wrap { width: 56px; height: 56px; margin-bottom: 16px }
+  .perf-card-title { font-size: 1rem }
+  .perf-card-desc { font-size: .86rem }
   .form-row { grid-template-columns: 1fr }
   .contact-hero { padding: 170px 20px 70px }
   .about-hero { padding: 170px 20px 70px }
@@ -946,14 +1030,30 @@ details[open] .ig-lbl-open { display: inline }
   .navbar.scrolled .nav-logo img { height: 44px !important }
   .nav-links { display: none }
   .ham { display: flex }
-  .nav-top { justify-content: flex-start; padding: 8px 64px 6px 16px }
+  .nav-top { justify-content: flex-start; padding: 8px 64px 6px 16px; overflow: visible !important }
   .nav-logo img { height: 87px !important; transition: height .3s ease }
   .nav-logo > span { padding: 4px 8px !important }
   .nav-bottom { display: none }
   .section { padding: 64px 20px }
   .sec-header { margin-bottom: 36px }
+  .sec-title { font-size: clamp(1.8rem,5vw,2.6rem) }
+  .sec-sub { font-size: 1.02rem }
+  .appr-tabs { width: fit-content; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; justify-content: center; margin-left: auto; margin-right: auto }
+  .appr-tabs::-webkit-scrollbar { display: none }
+  .appr-tab { padding: 9px 20px; font-size: .88rem; white-space: nowrap }
+  .ap-card { padding: 20px 16px }
+  .ap-num { width: 32px; height: 32px; font-size: .95rem; margin-bottom: 10px }
+  .ap-title { font-size: 1rem; margin-bottom: 6px }
+  .ap-desc { font-size: .93rem }
+  .adv-card { padding: 22px 18px }
+  .adv-icon { width: 42px; height: 42px; border-radius: 11px; margin-bottom: 12px }
+  .adv-icon svg { width: 22px; height: 22px }
+  .adv-title { font-size: .98rem; margin-bottom: 6px }
+  .adv-desc { font-size: .93rem; line-height: 1.65 }
   .cta-band { padding: 56px 20px }
   .cta-btns { flex-wrap: wrap; gap: 10px }
+  .cta-inner h2 { font-size: clamp(1.6rem,5vw,2.4rem) }
+  .cta-inner p { font-size: 1.02rem }
   .stats-grid { grid-template-columns: repeat(2,1fr) }
   .stat-box { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08) }
   .stats-bar { padding: 40px 20px }
@@ -972,6 +1072,8 @@ details[open] .ig-lbl-open { display: inline }
   .team-photo { height: 160px }
   .team-info { padding: 10px 8px 14px }
   .cin-inner-about { padding: 180px 20px 48px !important }
+  .cin-section-home { min-height: 400px !important }
+  .cin-content-home { max-width: 58% !important; width: 58% !important }
 }
 
 @media (max-width: 560px) {
@@ -988,12 +1090,42 @@ details[open] .ig-lbl-open { display: inline }
   .cta-btns .btn-p, .cta-btns .btn-o { width: 100%; justify-content: center }
   .sec-label { font-size: .78rem }
   .btn-p, .btn-o { padding: 12px 22px; font-size: .97rem }
-  .hero-inner { padding: 150px 16px 56px }
+  .hero-inner { padding: 150px 16px 40px; gap: 22px }
   .hero-h1 { font-size: clamp(1.8rem,7vw,2.5rem) }
+  .hrc-body { min-height: 340px }
+  .hfc-grid { gap: 7px }
+  .hfc-card { padding: 12px 10px 10px }
+  .hrc-stat-num { font-size: 2rem }
+  .hero-p { font-size: .97rem; margin-bottom: 20px }
+  .hero-bullets { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 24px }
+  .hero-bullets li { flex-direction: column; gap: 2px; font-size: .82rem; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; padding: 10px 12px }
+  .hero-bullets li::before { display: none }
+  .hb-label { min-width: 0; font-size: .72rem; color: #C8102E; letter-spacing: .06em; text-transform: uppercase; font-weight: 800 }
+  .hb-value { font-size: .82rem; color: rgba(255,255,255,.85); line-height: 1.45 }
   .svc-grid3 { grid-template-columns: 1fr }
+  .svc-grid-home { grid-template-columns: 1fr; gap: 14px }
+  .svc-tile { aspect-ratio: 16/10 }
+  .svc-tile-body { padding: 6px 18px 6px; bottom: -18px }
+  .svc-tile-title { font-size: .95rem }
+  .svc-tab-btn-home { padding: 9px 20px; font-size: .84rem }
   .stats-strip-inner { grid-template-columns: 1fr 1fr }
-  .why-adv-grid { grid-template-columns: 1fr }
+  .stats-strip { padding: 28px 16px }
+  .stats-hdr { margin-bottom: 32px }
+  .stats-hdr-lbl { font-size: .95rem }
+  .ss-num { font-size: 2.2rem }
+  .ss-item { padding: 28px 14px 24px }
+  .why-adv-grid { grid-template-columns: 1fr; gap: 14px }
+  .adv-card { padding: 20px 16px }
+  .adv-icon { width: 40px; height: 40px; border-radius: 10px; margin-bottom: 10px }
+  .adv-icon svg { width: 20px; height: 20px }
+  .adv-title { font-size: .95rem }
+  .adv-desc { font-size: .9rem }
   .approach-grid { grid-template-columns: 1fr }
+  .appr-tabs { padding: 3px }
+  .appr-tab { padding: 8px 16px; font-size: .84rem }
+  .ap-card { padding: 18px 14px }
+  .ap-title { font-size: .95rem }
+  .ap-desc { font-size: .9rem }
   .sd-hero { padding: 150px 16px 56px }
   .contact-hero { padding: 150px 16px 56px }
   .about-hero { padding: 150px 16px 56px }
@@ -1013,18 +1145,44 @@ details[open] .ig-lbl-open { display: inline }
   .cin-stats-about { grid-template-columns: 1fr 1fr !important }
   .cin-btns-about { flex-direction: column }
   .cin-btns-about a { width: 100%; justify-content: center; text-align: center }
+  .cin-section-home { min-height: 380px !important }
+  .cin-content-home { max-width: 62% !important; width: 62% !important }
+  .cin-desktop-header h2 { font-size: 1.15rem !important }
+  .cin-content-home blockquote p { font-size: .72rem !important }
+  .cin-stats { grid-template-columns: repeat(2,1fr) !important }
+  .perf-grid-home { grid-template-columns: 1fr; gap: 14px }
+  .perf-card { padding: 24px 18px; border-radius: 14px }
+  .perf-icon-wrap { width: 50px; height: 50px; border-radius: 14px; margin-bottom: 14px }
+  .perf-card-title { font-size: .95rem }
+  .perf-card-desc { font-size: .84rem }
   .cs-tab-bar-inner { padding: 0 16px }
   .cs-tab-btn { padding: 14px 12px; font-size: .88rem }
   .cc-body { padding: 22px 20px 18px }
   .cc-header { padding: 24px 20px 20px }
 }
 
+@media (max-width: 480px) {
+  .nav-logo img { height: 60px !important }
+  .nav-logo > span { padding: 3px 6px !important }
+  .navbar.scrolled .nav-logo img { height: 38px !important }
+}
+
 @media (max-width: 400px) {
   .nav-top { padding: 8px 56px 6px 12px }
+  .nav-logo img { height: 50px !important }
+  .nav-logo > span { padding: 2px 5px !important }
+  .navbar.scrolled .nav-logo img { height: 34px !important }
   .section { padding: 40px 14px }
   .sec-header { margin-bottom: 28px }
   .stats-grid { grid-template-columns: 1fr !important }
   .hero-badge { font-size: .72rem; padding: 5px 12px }
+  .hero-bullets li { font-size: .8rem; padding: 8px 10px }
+  .hb-label { font-size: .68rem }
+  .hb-value { font-size: .78rem }
+  .stats-strip-inner { grid-template-columns: 1fr 1fr }
+  .ss-num { font-size: 2rem }
+  .ss-item { padding: 22px 12px 20px; border-radius: 14px }
+  .ss-label { font-size: .68rem }
   .pg-3, .pg-2 { gap: 14px }
 }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -30,6 +30,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [fontSize, setFontSize] = useState(FONT_BASE);
+  const hamRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const stored = localStorage.getItem("mhm_fs");
@@ -52,6 +53,28 @@ export default function Navbar() {
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    const btn = hamRef.current;
+    if (!btn) return;
+    let touchHandled = false;
+    const onTouch = (e: Event) => {
+      e.preventDefault();
+      touchHandled = true;
+      setMobileOpen((o) => !o);
+    };
+    const onClick = (e: Event) => {
+      if (touchHandled) { touchHandled = false; return; }
+      e.preventDefault();
+      setMobileOpen((o) => !o);
+    };
+    btn.addEventListener("touchstart", onTouch, { passive: false });
+    btn.addEventListener("click", onClick);
+    return () => {
+      btn.removeEventListener("touchstart", onTouch);
+      btn.removeEventListener("click", onClick);
+    };
+  }, []);
 
   const adjFont = useCallback(
     (d: number) => {
@@ -170,8 +193,8 @@ export default function Navbar() {
         </div>
 
         <button
+          ref={hamRef}
           className="ham"
-          onClick={() => setMobileOpen((o) => !o)}
           aria-label="Toggle navigation"
           type="button"
         >

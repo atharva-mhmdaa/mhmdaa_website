@@ -378,43 +378,58 @@ export default function Home() {
 
       {/* ══ SECTION 6: MEET THE FOUNDER ══════════════════════ */}
       <section
-        className="cin-section"
+        className="cin-section cin-section-home"
         style={{ position: "relative", minHeight: 600, overflow: "hidden" }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/dr-hill-new.jpg"
-          alt="Dr. Michael Hill"
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "20% top",
-            display: "block",
-          }}
-        />
-        <div
-          className="cin-grad-r"
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(to right,rgba(10,20,55,0) 35%,rgba(10,20,55,.78) 55%,rgba(10,20,55,.97) 72%,rgba(10,20,55,1) 100%)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(to top,rgba(10,20,55,.5) 0%,transparent 30%)",
-          }}
-        />
+        {/* Photo + overlays wrapped together */}
+        <div className="cin-photo-wrap">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/dr-hill-new.jpg"
+            alt="Dr. Michael Hill"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "20% top",
+              display: "block",
+            }}
+          />
+          <div
+            className="cin-grad-r cin-grad-home"
+            style={{
+              position: "absolute",
+              inset: 0,
+              background:
+                "linear-gradient(to right,rgba(10,20,55,0) 35%,rgba(10,20,55,.78) 55%,rgba(10,20,55,.97) 72%,rgba(10,20,55,1) 100%)",
+            }}
+          />
+          <div
+            className="cin-grad-bottom"
+            style={{
+              position: "absolute",
+              inset: 0,
+              background:
+                "linear-gradient(to top,rgba(10,20,55,.5) 0%,transparent 30%)",
+            }}
+          />
+
+          {/* Mobile-only: badge + name + quote overlaid on bottom of photo */}
+          <div className="cin-mobile-overlay">
+            <div className="cin-mobile-badge">Our Founder</div>
+            <div className="cin-mobile-name">Michael Hill, <em>MD</em></div>
+            <div className="cin-mobile-sub">Founder &amp; CEO &nbsp;&middot;&nbsp; UCLA-Trained Emergency Physician</div>
+            <div className="cin-quote-mobile">
+              <p>&ldquo;In an era of friction between automated Payor denials and provider over-coding, MHMDAA serves as the essential clinical intermediary. Our physician-led framework delivers the defensible evidence required to secure compliance and revenue in 2026.&rdquo;</p>
+              <cite>— Michael Hill, MD &nbsp;&middot;&nbsp; Founder &amp; CEO</cite>
+            </div>
+          </div>
+        </div>
 
         <div
-          className="cin-inner"
+          className="cin-inner cin-inner-home"
           style={{
             position: "relative",
             zIndex: 2,
@@ -425,52 +440,54 @@ export default function Home() {
             justifyContent: "flex-end",
           }}
         >
-          <div className="cin-content" style={{ maxWidth: 540, width: "100%" }}>
+          <div className="cin-content cin-content-home" style={{ maxWidth: 540, width: "100%" }}>
             <RevealOnScroll direction="right">
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  background: "rgba(200,16,46,.2)",
-                  border: "1px solid rgba(200,16,46,.45)",
-                  color: "#f87171",
-                  fontSize: ".8rem",
-                  fontWeight: 700,
-                  letterSpacing: ".14em",
-                  textTransform: "uppercase",
-                  padding: "5px 14px",
-                  borderRadius: 100,
-                  marginBottom: 20,
-                }}
-              >
-                Our Founder
+              <div className="cin-desktop-header">
+                <div
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                    background: "rgba(200,16,46,.2)",
+                    border: "1px solid rgba(200,16,46,.45)",
+                    color: "#f87171",
+                    fontSize: ".8rem",
+                    fontWeight: 700,
+                    letterSpacing: ".14em",
+                    textTransform: "uppercase",
+                    padding: "5px 14px",
+                    borderRadius: 100,
+                    marginBottom: 20,
+                  }}
+                >
+                  Our Founder
+                </div>
+                <h2
+                  style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: "clamp(2rem,3.2vw,3rem)",
+                    fontWeight: 700,
+                    color: "#fff",
+                    lineHeight: 1.15,
+                    marginBottom: 6,
+                  }}
+                >
+                  Michael Hill,{" "}
+                  <em style={{ fontStyle: "italic", color: "#93c5fd" }}>MD</em>
+                </h2>
+                <p
+                  style={{
+                    fontSize: "1.04rem",
+                    color: "rgba(255,255,255,.78)",
+                    marginBottom: 22,
+                    letterSpacing: ".04em",
+                  }}
+                >
+                  Founder &amp; CEO &nbsp;&middot;&nbsp; Residency UCLA-Trained
+                  Emergency Physician &nbsp;&middot;&nbsp; UC Irvine School of
+                  Medicine
+                </p>
               </div>
-              <h2
-                style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: "clamp(2rem,3.2vw,3rem)",
-                  fontWeight: 700,
-                  color: "#fff",
-                  lineHeight: 1.15,
-                  marginBottom: 6,
-                }}
-              >
-                Michael Hill,{" "}
-                <em style={{ fontStyle: "italic", color: "#93c5fd" }}>MD</em>
-              </h2>
-              <p
-                style={{
-                  fontSize: "1.04rem",
-                  color: "rgba(255,255,255,.78)",
-                  marginBottom: 22,
-                  letterSpacing: ".04em",
-                }}
-              >
-                Founder &amp; CEO &nbsp;&middot;&nbsp; Residency UCLA-Trained
-                Emergency Physician &nbsp;&middot;&nbsp; UC Irvine School of
-                Medicine
-              </p>
 
               <blockquote
                 style={{
@@ -667,6 +684,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ══ MOBILE-ONLY: Founder bio below the cinematic section ══ */}
+      <div className="cin-bio-mobile">
+        <p>Dr. Hill is a residency-trained emergency physician with <strong>30+ years</strong> of healthcare consulting experience. A former <strong>Managing Director at Navigant Consulting</strong> and operator of a 52-hospital, 250-physician emergency medicine group, he has directed 100+ national hospital engagements with annual revenue outcomes of <strong>$5M&ndash;$28M per initiative</strong>. Dr. Hill has worked with more than <strong>80 Case Management Departments</strong>, including operational redesign and training of case managers and physicians on inpatient status determination, developed and deployed Clinical Documentation Improvement (CDI) training programs for physicians, coders, and utilization managers, and designed and deployed <strong>14 utilization management programs</strong> across North America.</p>
+        <p>As a <strong>clinical expert witness in 125+ arbitrations and litigations</strong>, Dr. Hill has testified on over <strong>12,500 claims</strong> spanning medical necessity, ICD-10/DRG coding, EMTALA, and denial management, representing both Payors and health systems before AAA, AHLA, and federal courts nationwide.</p>
+        <div className="cin-bio-pills">
+          {["ACEP National Steering Committee","Past President, CA-ACEP","IHI & Joint Commission Speaker","RWJ Patient Flow Advisor","UCSF Asst. Professor"].map((c) => (
+            <span key={c}>{c}</span>
+          ))}
+        </div>
+        <div className="cin-bio-stats">
+          {[{n:"12,500+",l:"Claims Reviewed"},{n:"125+",l:"Lead Testifying Expert"},{n:"250+",l:"Expert Depositions"},{n:"30+",l:"Years Consulting"}].map((s) => (
+            <div key={s.n} className="cin-bio-stat">
+              <div className="cin-bio-stat-num">{s.n}</div>
+              <div className="cin-bio-stat-lbl">{s.l}</div>
+            </div>
+          ))}
+        </div>
+        <div className="cin-bio-btns">
+          <Link href="/about#dr-hill" className="btn-p">Full Biography &rarr;</Link>
+          <Link href="/contact" className="btn-o wh">Contact Our Team</Link>
+        </div>
+      </div>
+
       {/* ══ SECTION 7: PERFORMANCE ASSESSMENT ════════════════ */}
       <section className="section" style={{ background: "var(--off)" }}>
         <div className="sc">
@@ -686,15 +726,7 @@ export default function Home() {
             </div>
           </RevealOnScroll>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3,1fr)",
-              gap: 24,
-              maxWidth: 1100,
-              margin: "0 auto 16px",
-            }}
-          >
+          <div className="perf-grid-home">
             {[
               {
                 bg: "rgba(200,16,46,.08)",

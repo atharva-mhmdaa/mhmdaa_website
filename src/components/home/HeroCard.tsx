@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 
 const tabs = ["For Providers", "For Payors", "Our Impact"] as const;
@@ -104,6 +104,9 @@ const tabColors = ["#C8102E", "#34d399", "#fbbf24"];
 
 export default function HeroCard() {
   const [active, setActive] = useState(0);
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const activeRef = useRef(active);
+  activeRef.current = active;
 
   const next = useCallback(() => {
     setActive((prev) => (prev + 1) % tabs.length);
@@ -114,15 +117,31 @@ export default function HeroCard() {
     return () => clearInterval(id);
   }, [next]);
 
+  useEffect(() => {
+    const container = tabsRef.current;
+    if (!container) return;
+    const buttons = container.querySelectorAll<HTMLButtonElement>("button[data-idx]");
+    let touchHandled = false;
+    const cleanups: Array<() => void> = [];
+    buttons.forEach((btn) => {
+      const idx = parseInt(btn.getAttribute("data-idx") ?? "0", 10);
+      const onTouch = (e: Event) => { e.preventDefault(); touchHandled = true; setActive(idx); };
+      const onClick = () => { if (touchHandled) { touchHandled = false; return; } setActive(idx); };
+      btn.addEventListener("touchstart", onTouch, { passive: false });
+      btn.addEventListener("click", onClick);
+      cleanups.push(() => { btn.removeEventListener("touchstart", onTouch); btn.removeEventListener("click", onClick); });
+    });
+    return () => cleanups.forEach((fn) => fn());
+  }, []);
+
   return (
-    <div className="hero-card" style={{ marginTop: 20 }}>
-      <div className="hrc-tabs">
+    <div className="hero-card" style={{ marginTop: 0 }}>
+      <div className="hrc-tabs" ref={tabsRef}>
         {tabs.map((label, i) => (
           <button
             key={i}
             className={`hrc-tab${i === active ? " active" : ""}`}
             data-idx={i}
-            onClick={() => setActive(i)}
           >
             {label}
           </button>

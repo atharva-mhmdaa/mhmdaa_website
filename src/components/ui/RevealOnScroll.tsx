@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 interface RevealOnScrollProps {
   children: ReactNode;
@@ -20,10 +20,17 @@ export default function RevealOnScroll({
   direction = "up",
 }: RevealOnScrollProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const [animClass, setAnimClass] = useState("");
 
   useEffect(() => {
+    const isTouch =
+      "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    if (isTouch) return;
+
     const el = ref.current;
     if (!el) return;
+
+    setAnimClass(directionClass[direction]);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -35,11 +42,15 @@ export default function RevealOnScroll({
       { threshold: 0.08 },
     );
 
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+    const raf = requestAnimationFrame(() => observer.observe(el));
 
-  const cls = [directionClass[direction], className].filter(Boolean).join(" ");
+    return () => {
+      cancelAnimationFrame(raf);
+      observer.disconnect();
+    };
+  }, [direction]);
+
+  const cls = [animClass, className].filter(Boolean).join(" ");
 
   return (
     <div ref={ref} className={cls}>

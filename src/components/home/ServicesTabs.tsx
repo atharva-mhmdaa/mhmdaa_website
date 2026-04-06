@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -146,14 +146,7 @@ const payorServices: ServiceTile[] = [
 
 function TileGrid({ services }: { services: ServiceTile[] }) {
   return (
-    <div
-      className="svc-grid"
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
-        gap: 20,
-      }}
-    >
+    <div className="svc-grid-home">
       {services.map((svc) => (
         <Link key={svc.num} href={svc.href} className="svc-tile">
           <Image
@@ -176,51 +169,63 @@ function TileGrid({ services }: { services: ServiceTile[] }) {
 
 export default function ServicesTabs() {
   const [activeTab, setActiveTab] = useState<"prov" | "payor">("prov");
+  const provRef = useRef<HTMLButtonElement>(null);
+  const payorRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const provBtn = provRef.current;
+    const payorBtn = payorRef.current;
+    if (!provBtn || !payorBtn) return;
+
+    let touchHandled = false;
+    const makeTouchHandler = (tab: "prov" | "payor") => (e: Event) => {
+      e.preventDefault();
+      touchHandled = true;
+      setActiveTab(tab);
+    };
+    const makeClickHandler = (tab: "prov" | "payor") => (e: Event) => {
+      if (touchHandled) { touchHandled = false; return; }
+      e.preventDefault();
+      setActiveTab(tab);
+    };
+
+    const provTouch = makeTouchHandler("prov");
+    const provClick = makeClickHandler("prov");
+    const payorTouch = makeTouchHandler("payor");
+    const payorClick = makeClickHandler("payor");
+
+    provBtn.addEventListener("touchstart", provTouch, { passive: false });
+    provBtn.addEventListener("click", provClick);
+    payorBtn.addEventListener("touchstart", payorTouch, { passive: false });
+    payorBtn.addEventListener("click", payorClick);
+
+    return () => {
+      provBtn.removeEventListener("touchstart", provTouch);
+      provBtn.removeEventListener("click", provClick);
+      payorBtn.removeEventListener("touchstart", payorTouch);
+      payorBtn.removeEventListener("click", payorClick);
+    };
+  }, []);
 
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: 10,
-          marginBottom: 36,
-        }}
-      >
+      <div className="svc-tab-row">
         <button
-          onClick={() => setActiveTab("prov")}
+          ref={provRef}
+          className="svc-tab-btn-home"
           style={{
-            padding: "10px 28px",
-            borderRadius: 100,
-            border: "2px solid var(--navy)",
-            background:
-              activeTab === "prov" ? "var(--navy)" : "transparent",
+            background: activeTab === "prov" ? "var(--navy)" : "transparent",
             color: activeTab === "prov" ? "#fff" : "var(--navy)",
-            fontSize: ".9rem",
-            fontWeight: 700,
-            cursor: "pointer",
-            transition: "all .2s",
-            letterSpacing: ".04em",
-            fontFamily: "inherit",
           }}
         >
           For Providers
         </button>
         <button
-          onClick={() => setActiveTab("payor")}
+          ref={payorRef}
+          className="svc-tab-btn-home"
           style={{
-            padding: "10px 28px",
-            borderRadius: 100,
-            border: "2px solid var(--navy)",
-            background:
-              activeTab === "payor" ? "var(--navy)" : "transparent",
+            background: activeTab === "payor" ? "var(--navy)" : "transparent",
             color: activeTab === "payor" ? "#fff" : "var(--navy)",
-            fontSize: ".9rem",
-            fontWeight: 700,
-            cursor: "pointer",
-            transition: "all .2s",
-            letterSpacing: ".04em",
-            fontFamily: "inherit",
           }}
         >
           For Payors
