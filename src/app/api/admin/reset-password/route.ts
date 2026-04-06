@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
+export const dynamic = 'force-dynamic';
+
 const ADMIN_SECRET = process.env.ADMIN_SECRET;
 
 export async function POST(request: Request) {
