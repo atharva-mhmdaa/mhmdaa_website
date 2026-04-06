@@ -198,16 +198,16 @@ export default function Navbar() {
               justifyContent: "center",
               width: "48px",
               height: "48px",
-              background: "rgba(255,255,255,.12)",
+              background: "transparent",
               borderRadius: "8px",
               transition: "background .2s",
               textDecoration: "none",
             }}
             onMouseOver={(e) =>
-              (e.currentTarget.style.background = "rgba(255,255,255,.22)")
+              (e.currentTarget.style.background = "rgba(255,255,255,.12)")
             }
             onMouseOut={(e) =>
-              (e.currentTarget.style.background = "rgba(255,255,255,.12)")
+              (e.currentTarget.style.background = "transparent")
             }
           >
             <LinkedInIcon />
