@@ -23,7 +23,7 @@ export default function Home() {
         <div className="hero-inner" style={{ position: "relative", zIndex: 3 }}>
           <div className="hero-text">
             <div className="hero-badge">
-              &#9679; Physician-Led Hospital Operations Consulting
+              Physician-Led Hospital Operations Consulting
             </div>
             <h1 className="hero-h1">
               Transforming Hospital Revenue Integrity

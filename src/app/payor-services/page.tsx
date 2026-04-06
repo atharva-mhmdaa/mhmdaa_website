@@ -104,23 +104,7 @@ export default function PayorServicesPage() {
       {/* ── HERO ──────────────────────────────────────────── */}
       <section className="payor-hero">
         <div style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              background: "rgba(200,16,46,.18)",
-              border: "1px solid rgba(200,16,46,.38)",
-              color: "#f87171",
-              fontSize: ".84rem",
-              fontWeight: 700,
-              letterSpacing: ".12em",
-              textTransform: "uppercase",
-              padding: "6px 18px",
-              borderRadius: 100,
-              marginBottom: 24,
-            }}
-          >
+          <div className="hero-badge">
             Payor Services
           </div>
           <h1

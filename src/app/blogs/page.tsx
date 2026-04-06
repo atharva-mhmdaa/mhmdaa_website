@@ -65,23 +65,7 @@ export default async function BlogsPage() {
       {/* Hero */}
       <section className="blogs-hero">
         <div style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              background: "rgba(192,32,26,.18)",
-              border: "1px solid rgba(192,32,26,.35)",
-              color: "#f87171",
-              fontSize: ".82rem",
-              fontWeight: 700,
-              letterSpacing: ".12em",
-              textTransform: "uppercase",
-              padding: "6px 14px",
-              borderRadius: 100,
-              marginBottom: 20,
-            }}
-          >
+          <div className="hero-badge">
             Insights &amp; Blogs
           </div>
           <h1

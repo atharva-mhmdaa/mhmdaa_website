@@ -150,23 +150,7 @@ export default function AboutPage() {
       {/* 1. ABOUT HERO */}
       <div className="about-hero">
         <div className="about-hero-inner">
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              background: "rgba(192,32,26,.18)",
-              border: "1px solid rgba(192,32,26,.35)",
-              color: "#f87171",
-              fontSize: ".82rem",
-              fontWeight: 700,
-              letterSpacing: ".1em",
-              textTransform: "uppercase",
-              padding: "6px 14px",
-              borderRadius: "100px",
-              marginBottom: "20px",
-            }}
-          >
+          <div className="hero-badge">
             About Us
           </div>
           <h1

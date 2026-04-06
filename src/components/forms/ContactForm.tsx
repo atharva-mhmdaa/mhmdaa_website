@@ -88,28 +88,28 @@ export default function ContactForm() {
       <div className="form-row">
         <div className="fg">
           <label htmlFor="firstName">First Name *</label>
-          <input id="firstName" name="firstName" type="text" required placeholder="John" />
+          <input id="firstName" name="firstName" type="text" required />
         </div>
         <div className="fg">
           <label htmlFor="lastName">Last Name *</label>
-          <input id="lastName" name="lastName" type="text" required placeholder="Smith" />
+          <input id="lastName" name="lastName" type="text" required />
         </div>
       </div>
 
       <div className="form-row">
         <div className="fg">
           <label htmlFor="email">Email *</label>
-          <input id="email" name="email" type="email" required placeholder="john@hospital.com" />
+          <input id="email" name="email" type="email" required />
         </div>
         <div className="fg">
           <label htmlFor="phone">Phone</label>
-          <input id="phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" />
+          <input id="phone" name="phone" type="tel" />
         </div>
       </div>
 
       <div className="fg">
         <label htmlFor="organization">Organization *</label>
-        <input id="organization" name="organization" type="text" required placeholder="Hospital or Health System Name" />
+        <input id="organization" name="organization" type="text" required />
       </div>
 
       <div className="form-row">
@@ -143,7 +143,7 @@ export default function ContactForm() {
 
       <div className="fg">
         <label htmlFor="message">Message</label>
-        <textarea id="message" name="message" placeholder="Tell us about your organization's challenges and how we can help..." />
+        <textarea id="message" name="message" />
       </div>
 
       <label style={{ display: "flex", alignItems: "flex-start", gap: 10, cursor: "pointer", marginTop: 4, marginBottom: 2 }}>

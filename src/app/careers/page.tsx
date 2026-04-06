@@ -77,23 +77,7 @@ export default async function CareersPage() {
       {/* Hero */}
       <section className="careers-hero">
         <div className="ch-wrap">
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              background: "rgba(192,32,26,.18)",
-              border: "1px solid rgba(192,32,26,.35)",
-              color: "#f87171",
-              fontSize: ".82rem",
-              fontWeight: 700,
-              letterSpacing: ".12em",
-              textTransform: "uppercase",
-              padding: "6px 14px",
-              borderRadius: 100,
-              marginBottom: 20,
-            }}
-          >
+          <div className="hero-badge">
             Careers
           </div>
           <h1

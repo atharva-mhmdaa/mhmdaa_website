@@ -118,6 +118,7 @@ function PayorCTA() {
           </Link>
         </div>
         <div
+          className="pay-cta-stats"
           style={{
             display: "flex",
             flexWrap: "wrap",
@@ -387,13 +388,15 @@ export default function CaseStudiesTabs({
             className={`cs-tab-btn${activeTab === "provider" ? " active" : ""}`}
             onClick={() => setActiveTab("provider")}
           >
-            🏠 Provider Case Studies
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "currentColor", flexShrink: 0, display: "inline-block" }} />
+            Provider Case Studies
           </button>
           <button
             className={`cs-tab-btn${activeTab === "payor" ? " active" : ""}`}
             onClick={() => setActiveTab("payor")}
           >
-            ⚖️ Payor Case Studies
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "currentColor", flexShrink: 0, display: "inline-block" }} />
+            Payor Case Studies
           </button>
         </div>
       </div>
@@ -435,16 +438,18 @@ export default function CaseStudiesTabs({
                 </span>
               </div>
               <div className="qnav-row2">
-                <span className="qnav-filter-label">Service:</span>
-                {PROVIDER_SERVICE_CHIPS.map((chip) => (
-                  <button
-                    key={chip.filter}
-                    className={`qnav-chip${provService === chip.filter ? " active" : ""}`}
-                    onClick={() => setProvService(chip.filter)}
-                  >
-                    {chip.label}
-                  </button>
-                ))}
+                <span className="qnav-filter-label">Service</span>
+                <div className="qnav-row2-chips">
+                  {PROVIDER_SERVICE_CHIPS.map((chip) => (
+                    <button
+                      key={chip.filter}
+                      className={`qnav-chip${provService === chip.filter ? " active" : ""}`}
+                      onClick={() => setProvService(chip.filter)}
+                    >
+                      {chip.label}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -547,16 +552,18 @@ export default function CaseStudiesTabs({
                 </span>
               </div>
               <div className="qnav-row2">
-                <span className="qnav-filter-label">Dispute Type:</span>
-                {PAYOR_DTYPE_CHIPS.map((chip) => (
-                  <button
-                    key={chip.filter}
-                    className={`qnav-chip${payDtype === chip.filter ? " active" : ""}`}
-                    onClick={() => setPayDtype(chip.filter)}
-                  >
-                    {chip.label}
-                  </button>
-                ))}
+                <span className="qnav-filter-label">Dispute Type</span>
+                <div className="qnav-row2-chips">
+                  {PAYOR_DTYPE_CHIPS.map((chip) => (
+                    <button
+                      key={chip.filter}
+                      className={`qnav-chip${payDtype === chip.filter ? " active" : ""}`}
+                      onClick={() => setPayDtype(chip.filter)}
+                    >
+                      {chip.label}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

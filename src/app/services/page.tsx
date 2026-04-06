@@ -80,11 +80,7 @@ export default function ServicesPage() {
       <section className="svc-hero">
         <div style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
           <RevealOnScroll>
-            <div
-              className="hero-badge"
-              style={{ marginBottom: 20 }}
-            >
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#f87171" }} />
+            <div className="hero-badge">
               Services for Providers
             </div>
             <h1

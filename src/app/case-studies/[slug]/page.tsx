@@ -68,7 +68,7 @@ export default async function DynamicCaseStudyPage({ params }: Props) {
 
   if (isPayor) {
     return (
-      <div className="cs-page" style={{ paddingTop: 220 }}>
+      <div className="cs-page">
         <Link href="/case-studies" className="cs-back">
           ← Back to Case Studies
         </Link>
@@ -131,7 +131,7 @@ export default async function DynamicCaseStudyPage({ params }: Props) {
   }
 
   return (
-    <div className="cs-page" style={{ paddingTop: 220 }}>
+    <div className="cs-page">
       <Link href="/case-studies" className="cs-back">
         ← Back to Case Studies
       </Link>
