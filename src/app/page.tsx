@@ -730,9 +730,12 @@ export default function Home() {
                 bg: "rgba(200,16,46,.08)",
                 stroke: "#C8102E",
                 icon: (
-                  <svg width="28" height="28" fill="none" stroke="#C8102E" strokeWidth="1.8" viewBox="0 0 24 24">
-                    <path d="M12 8v4l3 3" />
-                    <circle cx="12" cy="12" r="10" />
+                  /* Denied document: file with an X */
+                  <svg width="28" height="28" fill="none" stroke="#C8102E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="9.5" y1="12.5" x2="14.5" y2="17.5" />
+                    <line x1="14.5" y1="12.5" x2="9.5" y2="17.5" />
                   </svg>
                 ),
                 title: "High Denial Rates",
@@ -742,9 +745,14 @@ export default function Home() {
                 bg: "rgba(52,211,153,.12)",
                 stroke: "#34d399",
                 icon: (
-                  <svg width="28" height="28" fill="none" stroke="#34d399" strokeWidth="1.8" viewBox="0 0 24 24">
-                    <path d="M3 3v18h18" />
-                    <path d="M7 16l4-8 4 4 5-9" />
+                  /* Dollar sign leaking / draining out */
+                  <svg width="28" height="28" fill="none" stroke="#34d399" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <circle cx="12" cy="10" r="7" />
+                    <line x1="12" y1="1" x2="12" y2="3" />
+                    <line x1="12" y1="17" x2="12" y2="19" />
+                    <path d="M9 7h4.5a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3H15" />
+                    <path d="M10 19l2 4" />
+                    <path d="M14 19l-2 4" />
                   </svg>
                 ),
                 title: "Revenue Leakage",
@@ -754,9 +762,11 @@ export default function Home() {
                 bg: "rgba(251,191,36,.12)",
                 stroke: "#fbbf24",
                 icon: (
-                  <svg width="28" height="28" fill="none" stroke="#fbbf24" strokeWidth="1.8" viewBox="0 0 24 24">
-                    <path d="M9 12l2 2 4-4" />
-                    <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" />
+                  /* Shield with exclamation — compliance warning */
+                  <svg width="28" height="28" fill="none" stroke="#fbbf24" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M12 2l8 3v7c0 5-3.5 9-8 10C7.5 21 4 17 4 12V5l8-3z" />
+                    <line x1="12" y1="9" x2="12" y2="13" />
+                    <circle cx="12" cy="16" r=".6" fill="#fbbf24" />
                   </svg>
                 ),
                 title: "Compliance Gaps",
@@ -766,11 +776,11 @@ export default function Home() {
                 bg: "rgba(96,165,250,.12)",
                 stroke: "#60a5fa",
                 icon: (
-                  <svg width="28" height="28" fill="none" stroke="#60a5fa" strokeWidth="1.8" viewBox="0 0 24 24">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  /* Two speech bubbles facing each other — peer-to-peer */
+                  <svg width="28" height="28" fill="none" stroke="#60a5fa" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                    <line x1="9" y1="10" x2="15" y2="10" />
+                    <line x1="12" y1="7" x2="12" y2="13" />
                   </svg>
                 ),
                 title: "Peer-to-Peer Losses",
@@ -780,10 +790,12 @@ export default function Home() {
                 bg: "rgba(168,85,247,.12)",
                 stroke: "#a855f7",
                 icon: (
-                  <svg width="28" height="28" fill="none" stroke="#a855f7" strokeWidth="1.8" viewBox="0 0 24 24">
-                    <rect x="2" y="3" width="20" height="14" rx="2" />
-                    <path d="M8 21h8" />
-                    <path d="M12 17v4" />
+                  /* Hourglass — bottleneck / delays */
+                  <svg width="28" height="28" fill="none" stroke="#a855f7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M5 3h14" />
+                    <path d="M5 21h14" />
+                    <path d="M5 3l7 9-7 9" />
+                    <path d="M19 3l-7 9 7 9" />
                   </svg>
                 ),
                 title: "Operational Bottlenecks",
@@ -793,11 +805,12 @@ export default function Home() {
                 bg: "rgba(244,114,182,.12)",
                 stroke: "#f472b6",
                 icon: (
-                  <svg width="28" height="28" fill="none" stroke="#f472b6" strokeWidth="1.8" viewBox="0 0 24 24">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                    <polyline points="14 2 14 8 20 8" />
-                    <line x1="9" y1="13" x2="15" y2="13" />
-                    <line x1="9" y1="17" x2="15" y2="17" />
+                  /* Gavel — appeals & litigation */
+                  <svg width="28" height="28" fill="none" stroke="#f472b6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M14 10l-8 8a2 2 0 0 0 0 2.83l.17.17a2 2 0 0 0 2.83 0l8-8" />
+                    <path d="M10 14L20 4" />
+                    <path d="M18 2l4 4-2 2-4-4 2-2z" />
+                    <line x1="3" y1="21" x2="9" y2="21" />
                   </svg>
                 ),
                 title: "Appeals & Litigation",
