@@ -286,44 +286,18 @@ export default function Home() {
 
             {/* CTA Card */}
             <RevealOnScroll>
-              <div
-                className="adv-card adv-cta-card"
-                style={{
-                  background: "linear-gradient(135deg,#C8102E 0%,#a50d24 100%)",
-                  borderColor: "#C8102E",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  textAlign: "center",
-                }}
-              >
-                <div style={{ fontSize: "3.4rem", fontWeight: 900, color: "#fff", lineHeight: 1, marginBottom: 6 }}>
-                  190+
+              <div className="adv-cta-card">
+                <div className="adv-cta-stat">
+                  <span className="adv-cta-num" style={{ color: "#C8102E" }}>190+</span>
+                  <span className="adv-cta-lbl">National Clients</span>
                 </div>
-                <div style={{ fontSize: ".88rem", color: "rgba(255,255,255,.75)", marginBottom: 22, textTransform: "uppercase", letterSpacing: ".12em", fontWeight: 600 }}>
-                  National Clients
+                <div className="adv-cta-divider" />
+                <div className="adv-cta-stat">
+                  <span className="adv-cta-num" style={{ color: "#1B2A5B" }}>&lt;5%</span>
+                  <span className="adv-cta-lbl">Denial Rate Target</span>
                 </div>
-                <div style={{ height: 1, background: "rgba(255,255,255,.2)", width: "60%", margin: "0 auto 22px" }} />
-                <div style={{ fontSize: "3.4rem", fontWeight: 900, color: "#fff", lineHeight: 1, marginBottom: 6 }}>
-                  &lt;5%
-                </div>
-                <div style={{ fontSize: ".88rem", color: "rgba(255,255,255,.75)", marginBottom: 28, textTransform: "uppercase", letterSpacing: ".12em", fontWeight: 600 }}>
-                  Denial Rate Target
-                </div>
-                <Link
-                  href="/about"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 6,
-                    background: "#fff",
-                    color: "#C8102E",
-                    fontSize: "1.04rem",
-                    fontWeight: 700,
-                    padding: "10px 20px",
-                    borderRadius: 8,
-                    textDecoration: "none",
-                  }}
-                >
+                <div className="adv-cta-divider" />
+                <Link href="/about" className="adv-cta-btn">
                   Meet Our Team &rarr;
                 </Link>
               </div>
