@@ -341,7 +341,7 @@ footer::after { content: ''; position: absolute; top: 0; right: -200px; width: 6
 .hrc-tab[data-idx="1"].active { border-bottom-color: #34d399 }
 .hrc-tab[data-idx="2"].active { border-bottom-color: #fbbf24 }
 .hrc-body { position: relative; min-height: 520px }
-.hrc-pane { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity .4s ease; padding: 22px 20px 20px; display: flex; flex-direction: column; gap: 14px; overflow-y: auto }
+.hrc-pane { position: absolute; inset: 0; opacity: 0; pointer-events: none; transition: opacity .4s ease; padding: 22px 20px 20px; display: flex; flex-direction: column; gap: 14px; overflow-y: hidden }
 .hrc-pane.active { opacity: 1; pointer-events: all }
 .hrc-ph { display: flex; align-items: center; gap: 10px; margin-bottom: 2px }
 .hrc-ph-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0 }
