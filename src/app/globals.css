@@ -136,7 +136,33 @@ body {
 .fc-list { list-style: none; display: flex; flex-direction: column; gap: 8px; padding: 0; margin: 0 }
 .fc-list li { font-size: 1.04rem; color: #5A6E8A; display: flex; gap: 8px; line-height: 1.6 }
 .fc-list li::before { content: '→'; color: #2A3F7A; font-weight: 700; flex-shrink: 0 }
-@media(max-width:600px) { .feat-card { grid-template-columns: 1fr } .fc-img { aspect-ratio: 16/9 } }
+@media(max-width:600px) { .feat-card { grid-template-columns: 1fr } .fc-img { aspect-ratio: 16/9; min-height: 0; max-height: none } .fc-body { padding: 18px 20px } }
+
+/* ── SERVICE DETAIL: PAGE NAVIGATION ────────────────────── */
+.sd-svcnav-wrap { background: var(--off); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 28px 20px }
+.sd-svcnav-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: stretch; gap: 8px }
+.sd-svcnav-prev { display: flex; justify-content: flex-start; align-items: flex-start; flex: 1; min-width: 0 }
+.sd-svcnav-center { display: flex; justify-content: center; align-items: center; flex-shrink: 0; padding: 0 8px }
+.sd-svcnav-next { display: flex; justify-content: flex-end; align-items: flex-start; flex: 1; min-width: 0 }
+.sd-svcnav-link { display: flex; flex-direction: column; gap: 5px; text-decoration: none; min-width: 0; max-width: 100% }
+.sd-svcnav-link--right { text-align: right; align-items: flex-end }
+.sd-svcnav-label { font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--navy); white-space: nowrap; display: block }
+.sd-svcnav-arrow { display: inline; font-style: normal }
+.sd-svcnav-title { font-size: .92rem; font-weight: 600; color: var(--navy); line-height: 1.4; overflow-wrap: break-word; hyphens: auto }
+.sd-svcnav-all { font-size: .85rem; font-weight: 600; color: var(--navy); text-decoration: none; padding: 8px 16px; border: 1px solid rgba(42,63,122,.30); border-radius: 8px; white-space: nowrap; box-shadow: 0 0 8px rgba(42,63,122,.18); transition: border-color .2s, box-shadow .2s, background .2s }
+.sd-svcnav-all:hover { background: rgba(42,63,122,.06); border-color: rgba(42,63,122,.5); box-shadow: 0 0 14px rgba(42,63,122,.3) }
+@media (max-width: 480px) {
+  .sd-svcnav-wrap { padding: 20px 14px }
+  .sd-svcnav-inner { gap: 6px }
+  .sd-svcnav-title { font-size: .84rem }
+  .sd-svcnav-label { font-size: .7rem }
+  .sd-svcnav-all { font-size: .78rem; padding: 7px 12px }
+}
+
+/* ── SERVICE DETAIL: PROCESS GRID & INFO STRIP ──────────── */
+.sd-process-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 22px }
+.sd-info-strip { padding: 10px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap }
+@media (max-width: 600px) { .sd-process-grid { grid-template-columns: 1fr; gap: 14px } .sd-info-strip { padding: 10px 16px; flex-direction: column; align-items: flex-start; gap: 10px } }
 
 /* ── STATS BAR ───────────────────────────────────────────── */
 .stats-bar { background: rgba(27,42,91,0.97); padding: 56px 32px; position: relative; overflow: hidden }
@@ -990,6 +1016,7 @@ details[open] .ig-lbl-open { display: inline }
   .svc-grid-home { grid-template-columns: repeat(2,1fr); gap: 16px }
   .svc-tile { aspect-ratio: 4/3 }
   .sd-hgrid { grid-template-columns: 1fr }
+  .sd-htext { text-align: center; display: flex; flex-direction: column; align-items: center }
   .sd-hero { padding: 90px 20px 48px }
   .svc-nav-link { min-width: 0; flex: 1 }
   .engage-grid { grid-template-columns: 1fr; gap: 36px }

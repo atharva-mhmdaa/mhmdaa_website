@@ -52,7 +52,7 @@ export default async function PayorServicePage({ params }: PageProps) {
         }}
       >
         <div className="sd-hgrid">
-          <div>
+          <div className="sd-htext">
             <h1 className="sd-title">{service.title}</h1>
             <p className="sd-desc">{service.heroDescription}</p>
             <Link href="/payor-services" className="sd-hero-cta">
@@ -97,7 +97,7 @@ export default async function PayorServicePage({ params }: PageProps) {
 
       {/* ── INFO STRIP ────────────────────────────────────── */}
       {service.infoText && (
-        <div style={{ background: "#1B2A5B", borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "10px 32px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
+        <div className="sd-info-strip" style={{ background: "#1B2A5B", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.55)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
             <span style={{ fontSize: ".92rem", color: "rgba(255,255,255,0.72)" }}>{service.infoText}</span>
@@ -108,7 +108,7 @@ export default async function PayorServicePage({ params }: PageProps) {
 
       {/* ── OUR PROCESS ───────────────────────────────────── */}
       {service.processSteps && service.processSteps.length > 0 && (
-        <section className="section" style={{ background: "var(--off)", padding: "80px 32px" }}>
+        <section className="section" style={{ background: "var(--off)" }}>
           <div className="sc">
             <div className="sec-header c">
               <div className="sec-label">Our Process</div>
@@ -117,7 +117,7 @@ export default async function PayorServicePage({ params }: PageProps) {
                 Our approach relies on a comprehensive, multi-step process rooted in Reliable Care Organization (RCO) principles.
               </p>
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 22 }}>
+            <div className="sd-process-grid">
               {service.processSteps.map((step, i) => (
                 <div
                   key={step.title}
@@ -176,96 +176,29 @@ export default async function PayorServicePage({ params }: PageProps) {
       </section>
 
       {/* ── SERVICE NAVIGATION ────────────────────────────── */}
-      <div
-        style={{
-          background: "var(--off)",
-          borderTop: "1px solid var(--border)",
-          borderBottom: "1px solid var(--border)",
-          padding: "32px",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1280,
-            margin: "0 auto",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            gap: 24,
-            flexWrap: "wrap",
-          }}
-        >
-          {prev ? (
-            <Link
-              href={`/payor-services/${prev.slug}`}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 4,
-                textDecoration: "none",
-              }}
-            >
-              <span
-                style={{
-                  fontSize: ".78rem",
-                  fontWeight: 700,
-                  letterSpacing: ".1em",
-                  textTransform: "uppercase",
-                  color: "var(--mg)",
-                }}
-              >
-                ← Previous
-              </span>
-              <span style={{ fontSize: "1.05rem", fontWeight: 600, color: "var(--navy)" }}>
-                {prev.title}
-              </span>
+      <div className="sd-svcnav-wrap">
+        <div className="sd-svcnav-inner">
+          <div className="sd-svcnav-prev">
+            {prev ? (
+              <Link href={`/payor-services/${prev.slug}`} className="sd-svcnav-link">
+                <span className="sd-svcnav-label"><span className="sd-svcnav-arrow">←</span> Previous</span>
+                <span className="sd-svcnav-title">{prev.title}</span>
+              </Link>
+            ) : null}
+          </div>
+          <div className="sd-svcnav-center">
+            <Link href="/payor-services" className="sd-svcnav-all">
+              All Payor Services
             </Link>
-          ) : (
-            <div />
-          )}
-          <Link
-            href="/payor-services"
-            style={{
-              fontSize: ".88rem",
-              fontWeight: 600,
-              color: "var(--navy)",
-              textDecoration: "none",
-              padding: "8px 20px",
-              border: "1px solid var(--border)",
-              borderRadius: 8,
-            }}
-          >
-            All Payor Services
-          </Link>
-          {next ? (
-            <Link
-              href={`/payor-services/${next.slug}`}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 4,
-                textDecoration: "none",
-                textAlign: "right",
-              }}
-            >
-              <span
-                style={{
-                  fontSize: ".78rem",
-                  fontWeight: 700,
-                  letterSpacing: ".1em",
-                  textTransform: "uppercase",
-                  color: "var(--mg)",
-                }}
-              >
-                Next →
-              </span>
-              <span style={{ fontSize: "1.05rem", fontWeight: 600, color: "var(--navy)" }}>
-                {next.title}
-              </span>
-            </Link>
-          ) : (
-            <div />
-          )}
+          </div>
+          <div className="sd-svcnav-next">
+            {next ? (
+              <Link href={`/payor-services/${next.slug}`} className="sd-svcnav-link sd-svcnav-link--right">
+                <span className="sd-svcnav-label">Next <span className="sd-svcnav-arrow">→</span></span>
+                <span className="sd-svcnav-title">{next.title}</span>
+              </Link>
+            ) : null}
+          </div>
         </div>
       </div>
 
