@@ -561,13 +561,21 @@ footer::after { content: ''; position: absolute; top: 0; right: -200px; width: 6
 .svc-grid3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px }
 
 /* ── SERVICE BREADCRUMB NAV ─────────────────────────────── */
-.svc-breadcrumb-nav { background: var(--off); border-bottom: 1px solid var(--border); overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 0 32px }
-.svc-breadcrumb-nav::-webkit-scrollbar { display: none }
+.svc-breadcrumb-nav { background: var(--off); border-bottom: 1px solid var(--border); overflow-x: scroll; -webkit-overflow-scrolling: touch; scrollbar-width: auto; scrollbar-color: #2A3F7A #dde3f0; padding: 0 32px }
+.svc-breadcrumb-nav::-webkit-scrollbar { height: 8px }
+.svc-breadcrumb-nav::-webkit-scrollbar-track { background: #dde3f0; border-radius: 99px }
+.svc-breadcrumb-nav::-webkit-scrollbar-thumb { background: #2A3F7A; border-radius: 99px }
+.svc-breadcrumb-nav::-webkit-scrollbar-thumb:hover { background: #C8102E }
+@media (max-width: 780px) { .svc-breadcrumb-nav { overflow-x: auto; scrollbar-width: none } .svc-breadcrumb-nav::-webkit-scrollbar { display: none } }
 .svc-breadcrumb-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 0 }
 .svc-breadcrumb-item { font-size: .9rem; font-weight: 600; color: #5A6E8A; text-decoration: none; padding: 10px 14px; white-space: nowrap; border-bottom: 2px solid transparent; transition: all .2s; flex-shrink: 0 }
 .svc-breadcrumb-item:hover { color: var(--navy); border-bottom-color: rgba(42,63,122,.2) }
 .svc-breadcrumb-item.active { color: var(--navy); border-bottom-color: var(--red) }
 .svc-breadcrumb-num { display: none }
+
+/* ── SERVICE PROCESS GRID ───────────────────────────────── */
+.svc-process-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px }
+@media (max-width: 780px) { .svc-process-grid { grid-template-columns: 1fr; gap: 14px } }
 
 /* ── SERVICE OVERVIEW INFOGRAPHIC ───────────────────────── */
 .ig-wrap { background: linear-gradient(135deg,#2A3F7A 0%,#2A3F7A 100%); border-bottom: 3px solid #C8102E; position: relative; overflow: hidden }
@@ -586,6 +594,52 @@ details[open] .ig-lbl { display: none }
 details[open] .ig-lbl-open { display: inline }
 .ig-body { max-width: 1280px; margin: 0 auto; padding: 0 32px 36px }
 @media(max-width:900px) { .ig-body { padding: 0 16px 28px } .ig-header { padding: 0 16px } }
+@media(max-width:780px) {
+  .ig-header { padding: 10px 14px; gap: 8px; align-items: flex-start }
+  .ig-header > div { flex-direction: row; align-items: flex-start; gap: 8px; flex-wrap: nowrap }
+  .ig-badge { font-size: .6rem; padding: 3px 8px; flex-shrink: 0; margin-top: 2px }
+  .ig-title { font-size: .82rem; margin-left: 0; line-height: 1.4; white-space: normal }
+  .ig-section-label { justify-content: center !important; flex-direction: column !important; align-items: center !important; gap: 6px !important }
+  .ig-section-label > span:first-child { width: 28px !important; height: 3px !important; border-radius: 2px !important }
+}
+
+/* ── INFOGRAPHIC MOBILE RESPONSIVENESS ───────────────────── */
+.ig-card-header { padding: 28px 40px 24px }
+.ig-card-section { padding-left: 40px; padding-right: 40px }
+.ig-card-footer { padding: 18px 40px }
+.ig-card-title { font-size: 1.7rem }
+/* Inline cards inside timeline steps are hidden on desktop */
+.ig-step-inline-card { display: none }
+/* Separate cards section after timeline is always visible on desktop */
+.ig-timeline-cards-section { display: block }
+
+@media (max-width: 780px) {
+  .ig-card-header { padding: 16px !important; flex-direction: column !important; align-items: center !important; gap: 10px !important; text-align: center !important }
+  .ig-card-header > div { flex-direction: column !important; align-items: center !important; text-align: center !important }
+  .ig-card-section { padding-left: 14px !important; padding-right: 14px !important }
+  .ig-card-footer { padding: 14px !important; flex-wrap: wrap !important; justify-content: center !important; text-align: center !important }
+  .ig-card-title { font-size: 1.2rem !important; text-align: center !important }
+  .ig-steps-row { flex-direction: column !important; gap: 0 !important; align-items: stretch !important }
+  .ig-step-card { flex: none !important; width: 100% !important }
+  .ig-arrow { display: flex !important; justify-content: center !important; align-items: center !important; align-self: center !important; width: 100% !important; height: 28px; flex-shrink: 0; font-size: 0 !important; transform: none !important; color: transparent !important; margin-top: 0 !important }
+  .ig-arrow::before { content: '\2193'; color: #C8102E; font-size: 1.3rem }
+  .ig-step-item { flex: none !important; width: 100% !important; min-width: 0 !important;
+    flex-direction: column !important; align-items: center !important; gap: 8px !important; padding: 0 4px 4px !important }
+  .ig-step-item > div:first-child { width: 60px !important; height: 60px !important; min-width: 60px !important; font-size: .82rem !important; flex-shrink: 0 }
+  .ig-step-item > div:last-child { text-align: center !important; font-size: 1rem !important }
+  .ig-timeline-steps > .ig-arrow { justify-content: center !important; padding-left: 0 }
+  .ig-steps-row.ig-timeline-steps { max-width: 100% !important; margin-left: 0 !important; margin-right: 0 !important }
+  .ig-step-inline-card { display: block !important; text-align: left !important }
+  .ig-step-inline-card--stat { display: none !important }
+  .ig-timeline-cards-section { display: block !important }
+  .ig-cards-grid { grid-template-columns: 1fr 1fr !important }
+  .ig-cards-grid > div > div { text-align: center !important }
+}
+
+@media (max-width: 480px) {
+  .ig-cards-grid { grid-template-columns: 1fr !important }
+  .ig-cards-grid > div > div { text-align: center !important }
+}
 
 /* ── ENGAGE GRID (services hub) ──────────────────────────── */
 .engage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center }
@@ -1017,6 +1071,10 @@ details[open] .ig-lbl-open { display: inline }
   .svc-tile { aspect-ratio: 4/3 }
   .sd-hgrid { grid-template-columns: 1fr }
   .sd-htext { text-align: center; display: flex; flex-direction: column; align-items: center }
+  .sd-hgrid > div:first-child { text-align: center }
+  .sd-title { text-align: center }
+  .sd-desc { text-align: center }
+  .sd-hero-cta { display: block; width: fit-content; margin-left: auto; margin-right: auto }
   .sd-hero { padding: 90px 20px 48px }
   .svc-nav-link { min-width: 0; flex: 1 }
   .engage-grid { grid-template-columns: 1fr; gap: 36px }
@@ -1056,6 +1114,9 @@ details[open] .ig-lbl-open { display: inline }
   .contact-hero { padding: 90px 20px 48px }
   .about-hero { padding: 90px 20px 48px }
   .svc-hero { padding: 90px 20px 48px }
+  .svc-hero > div { text-align: center }
+  .svc-hero > div h1, .svc-hero > div p { margin-left: auto; margin-right: auto }
+  .svc-hero .hero-badge { margin-left: auto; margin-right: auto; width: fit-content }
   .svc-hero .btn-p { display: flex; justify-content: center; width: fit-content; margin-left: auto; margin-right: auto }
   .blue-highlight-box { flex-direction: column; align-items: stretch; text-align: center }
   .blue-highlight-box > div:first-child { display: flex !important; justify-content: center; align-items: center; margin-left: auto; margin-right: auto }
@@ -1069,6 +1130,11 @@ details[open] .ig-lbl-open { display: inline }
   .cs-page { padding: 100px 20px 60px }
   .blog-topic-grid { grid-template-columns: 1fr 1fr }
   .payor-hero { padding: 90px 20px 48px }
+  .payor-hero > div { text-align: center }
+  .payor-hero > div h1, .payor-hero > div p { margin-left: auto; margin-right: auto }
+  .payor-hero .hero-badge { margin-left: auto; margin-right: auto; width: fit-content }
+  .payor-hero > div > div { justify-content: center }
+  .payor-hero .btn-p { display: flex; justify-content: center; width: fit-content; margin-left: auto; margin-right: auto }
   .cred-bar { padding: 16px 20px }
   .cred-bar-inner { gap: 10px; justify-content: center; flex-wrap: wrap }
   .cb-item { font-size: .82rem; font-weight: 700; color: #2A3F7A; background: rgba(27,42,91,.07); border: 1.5px solid rgba(27,42,91,.18); padding: 7px 14px; border-radius: 100px; display: inline-flex; align-items: center; gap: 7px }

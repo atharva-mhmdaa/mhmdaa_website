@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { payorServices } from "@/data/payor-services";
 import CTABand from "@/components/ui/CTABand";
+import BreadcrumbNavScroller from "@/components/ui/BreadcrumbNavScroller";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -94,6 +95,7 @@ export default async function PayorServicePage({ params }: PageProps) {
           ))}
         </div>
       </nav>
+      <BreadcrumbNavScroller />
 
       {/* ── INFO STRIP ────────────────────────────────────── */}
       {service.infoText && (

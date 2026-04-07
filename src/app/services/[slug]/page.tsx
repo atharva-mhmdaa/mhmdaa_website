@@ -5,6 +5,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import CTABand from "@/components/ui/CTABand";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
+import BreadcrumbNavScroller from "@/components/ui/BreadcrumbNavScroller";
 import {
   providerServices,
   getServiceBySlug,
@@ -98,55 +99,55 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           ))}
         </div>
       </nav>
+      <BreadcrumbNavScroller />
 
       {/* Claim Submission – At a Glance Diagram */}
       {slug === "claim-submission" && (
         <div className="ig-wrap">
           <div className="ig-header" role="button" aria-label="Claim Submission service overview">
             <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
-              <span className="ig-badge">At a Glance</span>
-              <span className="ig-title">Claim Submission — Service Overview</span>
+              <span className="ig-title">Claim Submission</span>
             </div>
           </div>
           <div className="ig-body" style={{ maxWidth: "none", padding: 0 }}>
-            <div style={{ background: "#ffffff", borderRadius: "0 0 12px 12px", overflow: "hidden", fontFamily: "'Inter',sans-serif" }}>
+            <div className="ig-card" style={{ background: "#ffffff", borderRadius: "0 0 12px 12px", overflow: "hidden", fontFamily: "'Inter',sans-serif" }}>
               {/* Header */}
-              <div style={{ background: "#f0f4ff", padding: "28px 40px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "2px solid #C8102E" }}>
+              <div className="ig-card-header" style={{ background: "#f0f4ff", padding: "28px 40px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "2px solid #C8102E" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
                   <div style={{ width: 48, height: 48, background: "#eef2fb", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
                   </div>
                   <div>
-                    <div style={{ fontSize: "1.7rem", fontWeight: 800, color: "#2A3F7A", lineHeight: 1.1 }}>Claim Submission</div>
+                    <div className="ig-card-title" style={{ fontSize: "1.7rem", fontWeight: 800, color: "#2A3F7A", lineHeight: 1.1 }}>Claim Submission</div>
                     <div style={{ fontSize: ".96rem", color: "#344e7a", marginTop: 3 }}>Pre-Submission Model</div>
                   </div>
                 </div>
               </div>
               {/* Pre-Submission Workflow */}
-              <div style={{ padding: "28px 40px 0" }}>
-                <div style={{ fontSize: ".98rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#2A3F7A", marginBottom: 16, display: "flex", alignItems: "center", gap: 8 }}>
+              <div className="ig-card-section" style={{ padding: "28px 40px 0" }}>
+                <div className="ig-section-label" style={{ fontSize: ".98rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#2A3F7A", marginBottom: 16, display: "flex", alignItems: "center", gap: 8 }}>
                   <span style={{ width: 3, height: 14, background: "#C8102E", display: "inline-block", borderRadius: 2 }} />
                   Pre-Submission Workflow
                 </div>
-                <div style={{ display: "flex", gap: 8, alignItems: "stretch" }}>
+                <div className="ig-steps-row" style={{ display: "flex", gap: 8, alignItems: "stretch" }}>
                   {[
                     ["1","Policy Mapping","Every procedure mapped to exact payor documentation requirements.",false],
                     ["2","Clinical Validation","Clinical documentation is validated before the record is closed.",false],
                     ["3","Hard-Stop Edits","Logical triggers block submission if payor criteria are not 100% met.",false],
                   ].map(([num, title, desc], i) => (
                     <React.Fragment key={num as string}>
-                      <div style={{ flex: 1, background: "#eef2fb", border: "1px solid rgba(42,63,122,0.12)", borderRadius: 10, padding: 16 }}>
+                      <div className="ig-step-card" style={{ flex: 1, background: "#eef2fb", border: "1px solid rgba(42,63,122,0.12)", borderRadius: 10, padding: 16 }}>
                         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
                           <div style={{ width: 28, height: 28, borderRadius: "50%", background: "#2A3F7A", display: "flex", alignItems: "center", justifyContent: "center", fontSize: ".98rem", fontWeight: 800, color: "#fff", flexShrink: 0 }}>{num}</div>
                           <div style={{ fontSize: "1.02rem", fontWeight: 700, color: "#2A3F7A" }}>{title}</div>
                         </div>
                         <div style={{ fontSize: "1.04rem", color: "#344e7a", lineHeight: 1.5 }}>{desc}</div>
                       </div>
-                      <div style={{ color: "#C8102E", fontSize: "1.2rem", alignSelf: "center" }}>›</div>
+                      <div className="ig-arrow" style={{ color: "#C8102E", fontSize: "1.2rem", alignSelf: "center" }}>›</div>
                     </React.Fragment>
                   ))}
                   {/* Clean Claim – highlighted */}
-                  <div style={{ flex: 1, background: "rgba(200,16,46,0.06)", border: "2px solid #C8102E", borderRadius: 10, padding: 16 }}>
+                  <div className="ig-step-card" style={{ flex: 1, background: "rgba(200,16,46,0.06)", border: "2px solid #C8102E", borderRadius: 10, padding: 16 }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
                       <div style={{ width: 28, height: 28, borderRadius: "50%", background: "#C8102E", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -158,12 +159,12 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 </div>
               </div>
               {/* Before / After */}
-              <div style={{ padding: "20px 40px" }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+              <div className="ig-card-section" style={{ padding: "20px 40px" }}>
+                <div className="ig-cards-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
                   <div style={{ background: "#eef2fb", borderRadius: 12, padding: "24px 28px" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-                      <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#2d1f1f", border: "2px solid rgba(229,62,62,0.4)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8102E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                      <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#C8102E", border: "3px solid #C8102E", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 10px rgba(200,16,46,0.35)" }}>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
                       </div>
                       <div style={{ fontSize: ".98rem", fontWeight: 800, letterSpacing: ".1em", textTransform: "uppercase", color: "#344e7a" }}>BEFORE</div>
                     </div>
@@ -177,8 +178,8 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                   </div>
                   <div style={{ background: "rgba(22,163,74,0.06)", border: "2px solid #16a34a", borderRadius: 12, padding: "24px 28px" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-                      <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#1f2d2d", border: "2px solid rgba(22,163,74,0.6)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                      <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#16a34a", border: "3px solid #16a34a", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 10px rgba(22,163,74,0.35)" }}>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                       </div>
                       <div style={{ fontSize: ".98rem", fontWeight: 800, letterSpacing: ".1em", textTransform: "uppercase", color: "#16a34a" }}>AFTER</div>
                     </div>
@@ -193,7 +194,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 </div>
               </div>
               {/* Footer */}
-              <div style={{ background: "#f0f4ff", padding: "18px 40px", display: "flex", alignItems: "center", gap: 10, borderTop: "1px solid rgba(42,63,122,0.1)" }}>
+              <div className="ig-card-footer" style={{ background: "#f0f4ff", padding: "18px 40px", display: "flex", alignItems: "center", gap: 10, borderTop: "1px solid rgba(42,63,122,0.1)" }}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
                 <span style={{ fontSize: "1.04rem", color: "#2A3F7A" }}><strong>Fix the claim before it ever leaves the building.</strong></span>
               </div>
@@ -207,45 +208,44 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="ig-wrap">
           <div className="ig-header" role="button" aria-label="Coding service overview">
             <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
-              <span className="ig-badge">At a Glance</span>
-              <span className="ig-title">Coding &amp; Clinical Documentation Improvement (CDI) — Service Overview</span>
+              <span className="ig-title">Coding &amp; Clinical Documentation Improvement (CDI)</span>
             </div>
           </div>
           <div className="ig-body" style={{ maxWidth: "none", padding: 0 }}>
-            <div style={{ background: "#ffffff", borderRadius: "0 0 12px 12px", overflow: "hidden", fontFamily: "'Inter',sans-serif" }}>
+            <div className="ig-card" style={{ background: "#ffffff", borderRadius: "0 0 12px 12px", overflow: "hidden", fontFamily: "'Inter',sans-serif" }}>
               {/* Header */}
-              <div style={{ background: "#f0f4ff", padding: "28px 40px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "2px solid #C8102E" }}>
+              <div className="ig-card-header" style={{ background: "#f0f4ff", padding: "28px 40px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "2px solid #C8102E" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
                   <div style={{ width: 48, height: 48, background: "#eef2fb", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                   </div>
                   <div>
-                    <div style={{ fontSize: "1.7rem", fontWeight: 800, color: "#2A3F7A", lineHeight: 1.1 }}>Coding</div>
+                    <div className="ig-card-title" style={{ fontSize: "1.7rem", fontWeight: 800, color: "#2A3F7A", lineHeight: 1.1 }}>Coding</div>
                     <div style={{ fontSize: ".96rem", color: "#344e7a", marginTop: 3 }}>S.O.R.T. Framework — Repeatable Methodology</div>
                   </div>
                 </div>
               </div>
               {/* 5-Step Lifecycle */}
-              <div style={{ padding: "28px 40px 0" }}>
-                <div style={{ fontSize: ".98rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#2A3F7A", marginBottom: 16, display: "flex", alignItems: "center", gap: 8 }}>
+              <div className="ig-card-section" style={{ padding: "28px 40px 0" }}>
+                <div className="ig-section-label" style={{ fontSize: ".98rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#2A3F7A", marginBottom: 16, display: "flex", alignItems: "center", gap: 8 }}>
                   <span style={{ width: 3, height: 14, background: "#C8102E", display: "inline-block", borderRadius: 2 }} />
                   5-Step Methodology Lifecycle
                 </div>
-                <div style={{ display: "flex", alignItems: "flex-start", gap: 4 }}>
+                <div className="ig-steps-row ig-timeline-steps" style={{ display: "flex", alignItems: "flex-start", gap: 4 }}>
                   {[["1","Intake"],["2","Identify Criteria"],["3","Gap Analysis"],["4","Expert Clinical Review"],["5","QA"]].map(([num, label], i, arr) => (
                     <React.Fragment key={num}>
-                      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                      <div className="ig-step-item" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
                         <div style={{ width: 44, height: 44, borderRadius: "50%", background: "#2A3F7A", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.02rem", fontWeight: 800, color: "#fff" }}>{num}</div>
                         <div style={{ fontSize: ".96rem", fontWeight: 700, color: "#2A3F7A", textAlign: "center" }}>{label}</div>
                       </div>
-                      {i < arr.length - 1 && <div style={{ color: "#C8102E", fontSize: "1.2rem", alignSelf: "flex-start", marginTop: 12, flexShrink: 0 }}>›</div>}
+                      {i < arr.length - 1 && <div className="ig-arrow" style={{ color: "#C8102E", fontSize: "1.2rem", alignSelf: "flex-start", marginTop: 12, flexShrink: 0 }}>›</div>}
                     </React.Fragment>
                   ))}
                 </div>
               </div>
               {/* S.O.R.T. Cards */}
-              <div style={{ padding: "20px 40px" }}>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 12 }}>
+              <div className="ig-card-section" style={{ padding: "20px 40px" }}>
+                <div className="ig-cards-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 12 }}>
                   {[
                     ["S","Summary","Executive overview of patient condition and requested service."],
                     ["O","Objective Facts","Data only — vitals, lab values, imaging findings. No opinion."],
@@ -261,7 +261,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 </div>
               </div>
               {/* Footer */}
-              <div style={{ background: "#f0f4ff", padding: "18px 40px", display: "flex", alignItems: "center", gap: 10, borderTop: "1px solid rgba(42,63,122,0.1)" }}>
+              <div className="ig-card-footer" style={{ background: "#f0f4ff", padding: "18px 40px", display: "flex", alignItems: "center", gap: 10, borderTop: "1px solid rgba(42,63,122,0.1)" }}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
                 <span style={{ fontSize: "1.04rem", color: "#2A3F7A" }}>Transform subjective opinion into a defensible, auditable record.</span>
               </div>
@@ -275,39 +275,38 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="ig-wrap">
           <div className="ig-header" role="button" aria-label="Litigation & Expert Support service overview">
             <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
-              <span className="ig-badge">At a Glance</span>
-              <span className="ig-title">Litigation &amp; Expert Support — Overview</span>
+              <span className="ig-title">Litigation &amp; Expert Support</span>
             </div>
           </div>
           <div className="ig-body" style={{ maxWidth: "none", padding: 0 }}>
-            <div style={{ background: "#ffffff", borderRadius: "0 0 12px 12px", overflow: "hidden", fontFamily: "'Inter',sans-serif" }}>
+            <div className="ig-card" style={{ background: "#ffffff", borderRadius: "0 0 12px 12px", overflow: "hidden", fontFamily: "'Inter',sans-serif" }}>
               {/* Header */}
-              <div style={{ background: "#f0f4ff", padding: "28px 40px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "2px solid #C8102E" }}>
+              <div className="ig-card-header" style={{ background: "#f0f4ff", padding: "28px 40px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "2px solid #C8102E" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
                   <div style={{ width: 48, height: 48, background: "#eef2fb", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                   </div>
                   <div>
-                    <div style={{ fontSize: "1.7rem", fontWeight: 800, color: "#2A3F7A", lineHeight: 1.1 }}>Litigation &amp; Expert Support</div>
+                    <div className="ig-card-title" style={{ fontSize: "1.7rem", fontWeight: 800, color: "#2A3F7A", lineHeight: 1.1 }}>Litigation &amp; Expert Support</div>
                     <div style={{ fontSize: ".96rem", color: "#344e7a", marginTop: 3 }}>Forensic Analysis &amp; Regulatory Defense</div>
                   </div>
                 </div>
               </div>
               {/* Core Capabilities */}
-              <div style={{ padding: "28px 40px 0" }}>
-                <div style={{ fontSize: ".98rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#2A3F7A", marginBottom: 16, display: "flex", alignItems: "center", gap: 8 }}>
+              <div className="ig-card-section" style={{ padding: "28px 40px 0" }}>
+                <div className="ig-section-label" style={{ fontSize: ".98rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#2A3F7A", marginBottom: 16, display: "flex", alignItems: "center", gap: 8 }}>
                   <span style={{ width: 3, height: 14, background: "#C8102E", display: "inline-block", borderRadius: 2 }} />
                   Core Capabilities
                 </div>
-                <div style={{ display: "flex", gap: 8, alignItems: "stretch" }}>
+                <div className="ig-steps-row" style={{ display: "flex", gap: 8, alignItems: "stretch" }}>
                   {[
-                    { icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7a9a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>, iconBg: "#dce6f5", title: "Forensic Contract", desc: <>Evaluate network agreements for prompt-pay and <strong>No Surprises Act</strong> compliance.</>, highlight: false },
-                    { icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7a9a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>, iconBg: "#dce6f5", title: "Special Investigations Unit & Audit Defense", desc: "Challenge statistical validity of SIU audits and overpayment demands.", highlight: false },
-                    { icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>, iconBg: "#C8102E", title: "Expert Witness", desc: "Physician-led testimony on systemic payor processing gaps.", highlight: false },
-                    { icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7a9a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>, iconBg: "#dce6f5", title: "Regulatory Response", desc: "State insurance commission filings and prompt-pay violation documentation.", highlight: false },
+                    { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 15 12 9 6 15"/><line x1="4" y1="21" x2="20" y2="21"/><line x1="12" y1="3" x2="12" y2="9"/><line x1="7" y1="15" x2="4" y2="21"/><line x1="17" y1="15" x2="20" y2="21"/></svg>, iconBg: "#dce6f5", title: "Forensic Contract", desc: <>Evaluate network agreements for prompt-pay and <strong>No Surprises Act</strong> compliance.</>, highlight: false },
+                    { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/><line x1="12" y1="8" x2="12" y2="8"/></svg>, iconBg: "#dce6f5", title: "Special Investigations Unit & Audit Defense", desc: "Challenge statistical validity of SIU audits and overpayment demands.", highlight: false },
+                    { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/><rect x="10" y="10" width="4" height="3" rx="1"/></svg>, iconBg: "#C8102E", title: "Expert Witness", desc: "Physician-led testimony on systemic payor processing gaps.", highlight: false },
+                    { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>, iconBg: "#dce6f5", title: "Regulatory Response", desc: "State insurance commission filings and prompt-pay violation documentation.", highlight: false },
                   ].map((cap) => (
-                    <div key={cap.title} style={{ flex: 1, background: "#eef2fb", border: "1px solid rgba(42,63,122,0.12)", borderRadius: 10, padding: 16 }}>
-                      <div style={{ width: 36, height: 36, background: cap.iconBg, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 10 }}>{cap.icon}</div>
+                    <div className="ig-step-card" key={cap.title} style={{ flex: 1, background: "#eef2fb", border: "1px solid rgba(42,63,122,0.12)", borderRadius: 10, padding: 16 }}>
+                      <div style={{ width: 44, height: 44, background: cap.iconBg, borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>{cap.icon}</div>
                       <div style={{ fontSize: "1.04rem", fontWeight: 700, color: "#2A3F7A", marginBottom: 6 }}>{cap.title}</div>
                       <div style={{ fontSize: "1.04rem", color: "#344e7a", lineHeight: 1.5 }}>{cap.desc}</div>
                     </div>
@@ -315,34 +314,34 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 </div>
               </div>
               {/* 5-Step Defense Framework */}
-              <div style={{ padding: "20px 40px" }}>
+              <div className="ig-card-section" style={{ padding: "20px 40px" }}>
                 <div style={{ background: "#eef2fb", borderRadius: 12, padding: "24px 28px" }}>
-                  <div style={{ fontSize: ".98rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#2A3F7A", marginBottom: 20, display: "flex", alignItems: "center", gap: 8 }}>
+                  <div className="ig-section-label" style={{ fontSize: ".98rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#2A3F7A", marginBottom: 20, display: "flex", alignItems: "center", gap: 8 }}>
                     <span style={{ width: 3, height: 14, background: "#C8102E", display: "inline-block", borderRadius: 2 }} />
                     5-Step Defense Framework
                   </div>
-                  <div style={{ display: "flex", alignItems: "flex-start", gap: 0 }}>
+                  <div className="ig-steps-row ig-timeline-steps" style={{ display: "flex", alignItems: "flex-start", gap: 0 }}>
                     {[
-                      { num: "1", label: "Document", sub: "Capture all evidence", dim: true, red: false },
+                      { num: "1", label: "Document", sub: "Capture all evidence", dim: false, red: false },
                       { num: "2", label: "Analyze", sub: "Forensic contract review", dim: false, red: false },
                       { num: "3", label: "Expert Opinion", sub: "Physician testimony prepared", dim: false, red: false },
                       { num: "4", label: "File", sub: "Regulatory complaint submitted", dim: false, red: false },
                       { num: "5", label: "Resolve", sub: "Settlement or adjudication", dim: false, red: true },
                     ].map((step, i, arr) => (
                       <React.Fragment key={step.num}>
-                        <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                        <div className="ig-step-item" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
                           <div style={{ width: 44, height: 44, borderRadius: "50%", background: step.dim ? "#dce6f5" : "#2A3F7A", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.02rem", fontWeight: 800, color: "#fff" }}>{step.num}</div>
                           <div style={{ fontSize: ".96rem", fontWeight: 700, color: step.red ? "#C8102E" : "#2A3F7A", textAlign: "center" }}>{step.label}</div>
                           <div style={{ fontSize: ".84rem", color: "#344e7a", textAlign: "center" }}>{step.sub}</div>
                         </div>
-                        {i < arr.length - 1 && <div style={{ color: "#C8102E", fontSize: "1.2rem", alignSelf: "flex-start", marginTop: 12, flexShrink: 0 }}>›</div>}
+                        {i < arr.length - 1 && <div className="ig-arrow" style={{ color: "#C8102E", fontSize: "1.2rem", alignSelf: "flex-start", marginTop: 12, flexShrink: 0 }}>›</div>}
                       </React.Fragment>
                     ))}
                   </div>
                 </div>
               </div>
               {/* Footer */}
-              <div style={{ background: "#f0f4ff", padding: "18px 40px", display: "flex", alignItems: "center", gap: 10, borderTop: "1px solid rgba(42,63,122,0.1)" }}>
+              <div className="ig-card-footer" style={{ background: "#f0f4ff", padding: "18px 40px", display: "flex", alignItems: "center", gap: 10, borderTop: "1px solid rgba(42,63,122,0.1)" }}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
                 <span style={{ fontSize: "1.04rem", color: "#2A3F7A" }}>Every engagement builds documented leverage for current and future disputes.</span>
               </div>
@@ -356,69 +355,67 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="ig-wrap">
           <div className="ig-header" role="button" aria-label="Appeal Letter Writing service overview">
             <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
-              <span className="ig-badge">At a Glance</span>
-              <span className="ig-title">Appeal Letter Writing — Service Overview</span>
+              <span className="ig-title">Appeal Letter Writing</span>
             </div>
           </div>
           <div className="ig-body" style={{ maxWidth: "none", padding: 0 }}>
-            <div style={{ background: "#ffffff", borderRadius: "0 0 12px 12px", overflow: "hidden", fontFamily: "'Inter',sans-serif" }}>
+            <div className="ig-card" style={{ background: "#ffffff", borderRadius: "0 0 12px 12px", overflow: "hidden", fontFamily: "'Inter',sans-serif" }}>
               {/* Header */}
-              <div style={{ background: "#f0f4ff", padding: "28px 40px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "2px solid #C8102E" }}>
+              <div className="ig-card-header" style={{ background: "#f0f4ff", padding: "28px 40px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "2px solid #C8102E" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
                   <div style={{ width: 48, height: 48, background: "#eef2fb", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                   </div>
                   <div>
-                    <div style={{ fontSize: "1.7rem", fontWeight: 800, color: "#2A3F7A", lineHeight: 1.1 }}>Appeal Letter Writing</div>
+                    <div className="ig-card-title" style={{ fontSize: "1.7rem", fontWeight: 800, color: "#2A3F7A", lineHeight: 1.1 }}>Appeal Letter Writing</div>
                     <div style={{ fontSize: ".96rem", color: "#344e7a", marginTop: 3 }}>The Triple-A Strategy</div>
                   </div>
                 </div>
               </div>
               {/* Anatomy of a Professional Appeal */}
-              <div style={{ padding: "28px 40px 0" }}>
-                <div style={{ fontSize: ".98rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#2A3F7A", marginBottom: 16, display: "flex", alignItems: "center", gap: 8 }}>
+              <div className="ig-card-section" style={{ padding: "28px 40px 0" }}>
+                <div className="ig-section-label" style={{ fontSize: ".98rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#2A3F7A", marginBottom: 16, display: "flex", alignItems: "center", gap: 8 }}>
                   <span style={{ width: 3, height: 14, background: "#C8102E", display: "inline-block", borderRadius: 2 }} />
                   Anatomy of a Professional Appeal
                 </div>
-                <div style={{ display: "flex", gap: 8, alignItems: "stretch" }}>
+                <div className="ig-steps-row" style={{ display: "flex", gap: 8, alignItems: "stretch" }}>
                   {[
-                    { num: "1", title: "Header / Identifiers", desc: "Patient, claim, and provider info — NPI, Tax ID, Member ID, Date of Service, Claim Number.", highlight: false },
-                    { num: "2", title: "Opening Statement", desc: "Formally appeal; reference denial reason code from EOB. State Type of Appeal (Level 1, Expedited).", highlight: false },
-                    { num: "3", title: "Clinical Argument", desc: "Medical necessity + payor policy citations + standard of care.", highlight: true },
-                    { num: "4", title: "Conclusion & CTA", desc: "Request overturn and payment; include direct contact for the clinical representative.", highlight: false },
+                    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="7" y1="9" x2="17" y2="9"/><line x1="7" y1="13" x2="13" y2="13"/></svg>, title: "Header / Identifiers", desc: "Patient, claim, and provider info — NPI, Tax ID, Member ID, Date of Service, Claim Number.", highlight: false },
+                    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>, title: "Opening Statement", desc: "Formally appeal; reference denial reason code from EOB. State Type of Appeal (Level 1, Expedited).", highlight: false },
+                    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>, title: "Clinical Argument", desc: "Medical necessity + payor policy citations + standard of care.", highlight: true },
+                    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>, title: "Conclusion & CTA", desc: "Request overturn and payment; include direct contact for the clinical representative.", highlight: false },
                   ].map((step, i, arr) => (
-                    <React.Fragment key={step.num}>
-                      <div style={step.highlight ? { flex: 1, background: "rgba(200,16,46,0.06)", border: "2px solid #C8102E", borderRadius: 10, padding: 16 } : { flex: 1, background: "#eef2fb", border: "1px solid rgba(42,63,122,0.12)", borderRadius: 10, padding: 16 }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-                          <div style={{ width: 28, height: 28, borderRadius: "50%", background: step.highlight ? "#C8102E" : "#2A3F7A", display: "flex", alignItems: "center", justifyContent: "center", fontSize: ".98rem", fontWeight: 800, color: "#fff" }}>{step.num}</div>
+                    <React.Fragment key={step.title}>
+                      <div className="ig-step-card" style={step.highlight ? { flex: 1, background: "rgba(200,16,46,0.06)", border: "2px solid #C8102E", borderRadius: 10, padding: 16 } : { flex: 1, background: "#eef2fb", border: "1px solid rgba(42,63,122,0.12)", borderRadius: 10, padding: 16 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+                          <div style={{ width: 36, height: 36, borderRadius: 8, background: step.highlight ? "#C8102E" : "#2A3F7A", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: "#fff" }}>{step.icon}</div>
                           <div style={{ fontSize: "1.02rem", fontWeight: 700, color: step.highlight ? "#C8102E" : "#2A3F7A" }}>{step.title}</div>
                         </div>
                         <div style={{ fontSize: "1.04rem", color: "#344e7a", lineHeight: 1.5 }}>{step.desc}</div>
                       </div>
-                      {i < arr.length - 1 && <div style={{ color: "#C8102E", fontSize: "1.2rem", alignSelf: "center" }}>›</div>}
+                      {i < arr.length - 1 && <div className="ig-arrow" style={{ color: "#C8102E", fontSize: "1.2rem", alignSelf: "center" }}>›</div>}
                     </React.Fragment>
                   ))}
                 </div>
               </div>
               {/* Triple-A Cards */}
-              <div style={{ padding: "20px 40px" }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
+              <div className="ig-card-section" style={{ padding: "20px 40px" }}>
+                <div className="ig-cards-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
                   {[
-                    { letter: "A", title: "Accuracy", desc: "Ensuring coding alignment with clinical documentation to prevent technical denials.", highlight: false },
-                    { letter: "A", title: "Authority", desc: "The Qualified clinical signature — ensuring peer-to-peer credibility.", highlight: true },
-                    { letter: "A", title: "Attachments", desc: "Curated clinical evidence with 'Point-of-Interest' highlighting for rapid reviewer navigation.", highlight: false },
+                    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>, title: "Accuracy", desc: "Ensuring coding alignment with clinical documentation to prevent technical denials.", highlight: false },
+                    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>, title: "Authority", desc: "The Qualified clinical signature — ensuring peer-to-peer credibility.", highlight: true },
+                    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>, title: "Attachments", desc: "Curated clinical evidence with 'Point-of-Interest' highlighting for rapid reviewer navigation.", highlight: false },
                   ].map((card) => (
                     <div key={card.title} style={{ background: "#eef2fb", borderRadius: 12, padding: "24px 28px", border: card.highlight ? "2px solid #C8102E" : "none", position: "relative", overflow: "hidden" }}>
-                      <div style={{ fontSize: "3rem", fontWeight: 900, color: card.highlight ? "rgba(229,62,62,0.15)" : "rgba(255,255,255,0.06)", position: "absolute", top: 8, left: 16, lineHeight: 1, fontFamily: "serif" }}>{card.letter}</div>
+                      <div style={{ width: 40, height: 40, borderRadius: 10, background: card.highlight ? "#C8102E" : "#2A3F7A", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14, color: "#fff" }}>{card.icon}</div>
                       <div style={{ fontSize: "1.05rem", fontWeight: 700, color: card.highlight ? "#C8102E" : "#2A3F7A", marginBottom: 8, position: "relative" }}>{card.title}</div>
                       <div style={{ fontSize: ".96rem", color: "#344e7a", lineHeight: 1.65, position: "relative" }}>{card.desc}</div>
-                      <div style={{ width: 36, height: 3, background: "#C8102E", borderRadius: 2, marginTop: 16 }} />
                     </div>
                   ))}
                 </div>
               </div>
               {/* Footer */}
-              <div style={{ background: "#f0f4ff", padding: "18px 40px", display: "flex", alignItems: "center", gap: 10, borderTop: "1px solid rgba(42,63,122,0.1)" }}>
+              <div className="ig-card-footer" style={{ background: "#f0f4ff", padding: "18px 40px", display: "flex", alignItems: "center", gap: 10, borderTop: "1px solid rgba(42,63,122,0.1)" }}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
                 <span style={{ fontSize: "1.04rem", color: "#2A3F7A" }}>Appeal deadlines are strictly enforced — ranging from 30 to 180+ days depending on the payer and plan type.</span>
               </div>
@@ -432,31 +429,30 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="ig-wrap">
           <div className="ig-header" role="button" aria-label="Denial Management service overview">
             <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
-              <span className="ig-badge">At a Glance</span>
-              <span className="ig-title">Revenue Denial Management — Service Overview</span>
+              <span className="ig-title">Revenue Denial Management</span>
             </div>
           </div>
           <div className="ig-body" style={{ maxWidth: "none", padding: 0 }}>
-            <div style={{ background: "#ffffff", borderRadius: "0 0 12px 12px", overflow: "hidden", fontFamily: "'Inter',sans-serif" }}>
+            <div className="ig-card" style={{ background: "#ffffff", borderRadius: "0 0 12px 12px", overflow: "hidden", fontFamily: "'Inter',sans-serif" }}>
               {/* Header */}
-              <div style={{ background: "#f0f4ff", padding: "28px 40px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "2px solid #C8102E" }}>
+              <div className="ig-card-header" style={{ background: "#f0f4ff", padding: "28px 40px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "2px solid #C8102E" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
                   <div style={{ width: 48, height: 48, background: "#eef2fb", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
                   </div>
                   <div>
-                    <div style={{ fontSize: "1.7rem", fontWeight: 800, color: "#2A3F7A", lineHeight: 1.1 }}>Revenue Denial Management</div>
+                    <div className="ig-card-title" style={{ fontSize: "1.7rem", fontWeight: 800, color: "#2A3F7A", lineHeight: 1.1 }}>Revenue Denial Management</div>
                     <div style={{ fontSize: ".96rem", color: "#344e7a", marginTop: 3 }}>End-to-End Denial Prevention &amp; Recovery Protocol</div>
                   </div>
                 </div>
               </div>
               {/* The Cost of Denials */}
-              <div style={{ padding: "28px 40px 0" }}>
-                <div style={{ fontSize: ".98rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#2A3F7A", marginBottom: 16, display: "flex", alignItems: "center", gap: 8 }}>
+              <div className="ig-card-section" style={{ padding: "28px 40px 0" }}>
+                <div className="ig-section-label" style={{ fontSize: ".98rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#2A3F7A", marginBottom: 16, display: "flex", alignItems: "center", gap: 8 }}>
                   <span style={{ width: 3, height: 14, background: "#C8102E", display: "inline-block", borderRadius: 2 }} />
                   The Cost of Denials
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
+                <div className="ig-cards-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
                   <div style={{ background: "#eef2fb", border: "1px solid rgba(42,63,122,0.12)", borderRadius: 10, padding: 18 }}>
                     <div style={{ fontSize: "1.8rem", fontWeight: 900, color: "#2A3F7A", lineHeight: 1, marginBottom: 6 }}>9%</div>
                     <div style={{ fontSize: ".98rem", fontWeight: 600, color: "#344e7a", marginBottom: 4 }}>Initial Denial Rate</div>
@@ -480,13 +476,13 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 </div>
               </div>
               {/* Denial Management Lifecycle */}
-              <div style={{ padding: "20px 40px" }}>
+              <div className="ig-card-section" style={{ padding: "20px 40px" }}>
                 <div style={{ background: "#eef2fb", borderRadius: 12, padding: "24px 28px" }}>
-                  <div style={{ fontSize: ".98rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#2A3F7A", marginBottom: 20, display: "flex", alignItems: "center", gap: 8 }}>
+                  <div className="ig-section-label" style={{ fontSize: ".98rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#2A3F7A", marginBottom: 20, display: "flex", alignItems: "center", gap: 8 }}>
                     <span style={{ width: 3, height: 14, background: "#C8102E", display: "inline-block", borderRadius: 2 }} />
                     Denial Management Lifecycle
                   </div>
-                  <div style={{ display: "flex", alignItems: "flex-start", gap: 4 }}>
+                  <div className="ig-steps-row ig-timeline-steps" style={{ display: "flex", alignItems: "flex-start", gap: 4 }}>
                     {[
                       { num: "1", label: "Identify", sub: "Flag via 835 remittance codes", red: false },
                       { num: "2", label: "Categorize", sub: "Clinical vs. administrative bucket", red: false },
@@ -495,13 +491,13 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                       { num: "5", label: "Prevent", sub: "Update workflows, retrain staff", red: true },
                     ].map((step, i, arr) => (
                       <React.Fragment key={step.num}>
-                        <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                        <div className="ig-step-item" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
                           <div style={{ width: 40, height: 40, borderRadius: "50%", background: "#2A3F7A", border: "2px solid #2A3F7A", display: "flex", alignItems: "center", justifyContent: "center", fontSize: ".96rem", fontWeight: 800, color: "#fff" }}>{step.num}</div>
                           <div style={{ fontSize: "1.2rem", fontWeight: 800, color: step.red ? "#C8102E" : "#2A3F7A", textAlign: "center" }}>{step.label}</div>
                           <div style={{ fontSize: ".98rem", fontWeight: 700, color: "#3a5080", textAlign: "center" }}>{step.sub}</div>
                         </div>
                         {i < arr.length - 1 && (
-                          <div style={{ color: "#C8102E", fontSize: "1.2rem", alignSelf: "flex-start", marginTop: 10, flexShrink: 0 }}>›</div>
+                          <div className="ig-arrow" style={{ color: "#C8102E", fontSize: "1.2rem", alignSelf: "flex-start", marginTop: 10, flexShrink: 0 }}>›</div>
                         )}
                       </React.Fragment>
                     ))}
@@ -509,7 +505,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 </div>
               </div>
               {/* Footer */}
-              <div style={{ background: "#f0f4ff", padding: "18px 40px", display: "flex", alignItems: "center", gap: 10, borderTop: "1px solid rgba(42,63,122,0.1)" }}>
+              <div className="ig-card-footer" style={{ background: "#f0f4ff", padding: "18px 40px", display: "flex", alignItems: "center", gap: 10, borderTop: "1px solid rgba(42,63,122,0.1)" }}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
                 <span style={{ fontSize: "1.04rem", color: "#2A3F7A" }}>66% of denials are recoverable with the right process.</span>
               </div>
@@ -523,31 +519,30 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="ig-wrap">
           <div className="ig-header" role="button" aria-label="Concurrent Review service overview">
             <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
-              <span className="ig-badge">At a Glance</span>
-              <span className="ig-title">Concurrent Review — Service Overview</span>
+              <span className="ig-title">Concurrent Review</span>
             </div>
           </div>
           <div className="ig-body" style={{ maxWidth: "none", padding: 0 }}>
-            <div style={{ background: "#ffffff", borderRadius: "0 0 12px 12px", overflow: "hidden", fontFamily: "'Inter',sans-serif" }}>
+            <div className="ig-card" style={{ background: "#ffffff", borderRadius: "0 0 12px 12px", overflow: "hidden", fontFamily: "'Inter',sans-serif" }}>
               {/* Header */}
-              <div style={{ background: "#f0f4ff", padding: "28px 40px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "2px solid #C8102E" }}>
+              <div className="ig-card-header" style={{ background: "#f0f4ff", padding: "28px 40px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "2px solid #C8102E" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
                   <div style={{ width: 48, height: 48, background: "#eef2fb", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                   </div>
                   <div>
-                    <div style={{ fontSize: "1.7rem", fontWeight: 800, color: "#2A3F7A", lineHeight: 1.1 }}>Concurrent Review</div>
+                    <div className="ig-card-title" style={{ fontSize: "1.7rem", fontWeight: 800, color: "#2A3F7A", lineHeight: 1.1 }}>Concurrent Review</div>
                     <div style={{ fontSize: ".96rem", color: "#344e7a", marginTop: 3 }}>Real-Time Clinical &amp; Coding Validation</div>
                   </div>
                 </div>
               </div>
               {/* Three Pillars */}
-              <div style={{ padding: "28px 40px 0" }}>
-                <div style={{ fontSize: ".98rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#2A3F7A", marginBottom: 16, display: "flex", alignItems: "center", gap: 8 }}>
+              <div className="ig-card-section" style={{ padding: "28px 40px 0" }}>
+                <div className="ig-section-label" style={{ fontSize: ".98rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", color: "#2A3F7A", marginBottom: 16, display: "flex", alignItems: "center", gap: 8 }}>
                   <span style={{ width: 3, height: 14, background: "#C8102E", display: "inline-block", borderRadius: 2 }} />
                   Three Pillars of Alignment
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 10 }}>
+                <div className="ig-cards-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 10 }}>
                   <div style={{ background: "#eef2fb", border: "1px solid rgba(42,63,122,0.15)", borderRadius: 10, padding: 18 }}>
                     <div style={{ fontSize: "1.06rem", fontWeight: 700, color: "#2A3F7A", marginBottom: 8 }}>Clinical Alignment</div>
                     <div style={{ fontSize: "1.04rem", color: "#344e7a", lineHeight: 1.6 }}>Evaluate patient record against InterQual or MCG evidence-based criteria.</div>
@@ -563,8 +558,8 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 </div>
               </div>
               {/* Comparison + Outcomes */}
-              <div style={{ padding: "20px 40px" }}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+              <div className="ig-card-section" style={{ padding: "20px 40px" }}>
+                <div className="ig-cards-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
                   {/* Traditional vs Strict Alignment */}
                   <div style={{ background: "#eef2fb", borderRadius: 12, padding: "24px 28px" }}>
                     <div style={{ fontSize: "1.02rem", fontWeight: 700, color: "#2A3F7A", marginBottom: 16 }}>Traditional vs. Strict Alignment</div>
@@ -609,7 +604,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 </div>
               </div>
               {/* Footer */}
-              <div style={{ background: "#f0f4ff", padding: "18px 40px", display: "flex", alignItems: "center", gap: 10, borderTop: "1px solid rgba(42,63,122,0.1)" }}>
+              <div className="ig-card-footer" style={{ background: "#f0f4ff", padding: "18px 40px", display: "flex", alignItems: "center", gap: 10, borderTop: "1px solid rgba(42,63,122,0.1)" }}>
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
                 <span style={{ fontSize: "1.04rem", color: "#2A3F7A" }}>Engineer the &ldquo;Yes&rdquo; before submission.</span>
               </div>
@@ -622,50 +617,75 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       {svc.overview && (
         <div className="ig-wrap">
           <div className="ig-body">
-              <div style={{ background: "#fff", borderRadius: "0 0 12px 12px", overflow: "hidden", fontFamily: "'Inter', sans-serif" }}>
+              <div className="ig-card" style={{ background: "#fff", borderRadius: "0 0 12px 12px", overflow: "hidden", fontFamily: "'Inter', sans-serif" }}>
                 {/* Header */}
-                <div style={{ background: "#f0f4ff", padding: "28px 40px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "2px solid #C8102E" }}>
+                <div className="ig-card-header" style={{ background: "#f0f4ff", padding: "28px 40px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "2px solid #C8102E" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
                     <div style={{ width: 48, height: 48, background: "#eef2fb", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                      {slug === "authorization" && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>}
+                      {slug === "payor-notification" && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>}
+                      {slug === "p2p" && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/></svg>}
+                      {!["authorization","payor-notification","p2p"].includes(slug) && <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>}
                     </div>
                     <div>
-                      <div style={{ fontSize: "1.7rem", fontWeight: 800, color: "#2A3F7A", lineHeight: 1.1 }}>{svc.overview.title}</div>
+                      <div className="ig-card-title" style={{ fontSize: "1.7rem", fontWeight: 800, color: "#2A3F7A", lineHeight: 1.1 }}>{svc.overview.title}</div>
                       <div style={{ fontSize: ".96rem", color: "#344e7a", marginTop: 3 }}>{svc.overview.subtitle}</div>
                     </div>
                   </div>
                 </div>
                 {/* Workflow / Timeline */}
-                <div style={{ padding: "28px 40px 0" }}>
-                  <div style={{ fontSize: ".98rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase" as const, color: "#2A3F7A", marginBottom: svc.overview.variant === "timeline" ? 20 : 16, display: "flex", alignItems: "center", gap: 8 }}>
+                <div className="ig-card-section" style={{ padding: "28px 40px 0" }}>
+                  <div className="ig-section-label" style={{ fontSize: ".98rem", fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase" as const, color: "#2A3F7A", marginBottom: svc.overview.variant === "timeline" ? 20 : 16, display: "flex", alignItems: "center", gap: 8 }}>
                     <span style={{ width: 3, height: 14, background: "#C8102E", display: "inline-block", borderRadius: 2 }} />
                     {svc.overview.sectionLabel ?? "Optimized Workflow"}
                   </div>
                   {svc.overview.variant === "timeline" ? (
-                    <div style={{ display: "flex", alignItems: "flex-start", gap: 4, position: "relative" }}>
+                    <div className="ig-steps-row ig-timeline-steps" style={{ display: "flex", alignItems: "flex-start", gap: 4, position: "relative" }}>
                       {svc.overview.workflowSteps.map((step, i) => {
                         const last = i === svc.overview!.workflowSteps.length - 1;
                         const bgColor = step.color ?? (step.highlight || last ? "#C8102E" : "#2A3F7A");
-                        const titleColor = step.color ?? (step.highlight || last ? "#C8102E" : "#fff");
+                        const titleColor = step.color ?? (step.highlight || last ? "#C8102E" : "#2A3F7A");
                         const label = svc.overview!.timelineLabels?.[i] ?? String(step.num);
+                        const card = svc.overview!.cards[i];
                         return (
                           <React.Fragment key={step.num}>
-                            <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                            <div className="ig-step-item" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
                               <div style={{ width: 72, height: 72, borderRadius: "50%", background: bgColor, display: "flex", alignItems: "center", justifyContent: "center", fontSize: ".75rem", fontWeight: 800, color: "#fff", textAlign: "center" as const, lineHeight: 1.2 }}>{label}</div>
                               <div style={{ fontSize: "1.04rem", fontWeight: 700, color: titleColor, textAlign: "center" as const }}>{step.title}</div>
+                              {card && (
+                                <div className={`ig-step-inline-card${card.desc === "standard" || card.desc === "accelerated" ? " ig-step-inline-card--stat" : ""}`} style={{ background: "#eef2fb", borderRadius: 10, padding: "12px 14px", width: "100%", textAlign: "left" }}>
+                                  {card.desc === "standard" || card.desc === "accelerated" ? (() => {
+                                    const lines = card.title.split("\n");
+                                    const isAccel = card.desc === "accelerated";
+                                    return (
+                                      <>
+                                        <div style={{ fontSize: ".85rem", fontWeight: 800, letterSpacing: ".1em", textTransform: "uppercase" as const, color: isAccel ? "#344e7a" : "#4a5e8a", marginBottom: 4 }}>{lines[0]}</div>
+                                        <div style={{ fontSize: "1.8rem", fontWeight: 900, color: isAccel ? "#C8102E" : "#6b7a9a", lineHeight: 1, marginBottom: 4 }}>{lines[1]}</div>
+                                        <div style={{ fontSize: ".9rem", fontWeight: 700, color: "#2A3F7A", marginBottom: 6 }}>{lines[2]}</div>
+                                        <div style={{ fontSize: ".88rem", color: "#344e7a", lineHeight: 1.6 }}>{lines.slice(3).join("\n")}</div>
+                                      </>
+                                    );
+                                  })() : (
+                                    <>
+                                      <div style={{ fontSize: ".95rem", fontWeight: 700, color: "#2A3F7A", marginBottom: 4 }}>{card.title}</div>
+                                      <div style={{ fontSize: ".9rem", color: "#344e7a", lineHeight: 1.55 }}>{card.desc}</div>
+                                    </>
+                                  )}
+                                </div>
+                              )}
                             </div>
                             {i < svc.overview!.workflowSteps.length - 1 && (
-                              <div style={{ color: "#C8102E", fontSize: "1.2rem", alignSelf: "flex-start", marginTop: 24, flexShrink: 0 }}>›</div>
+                              <div className="ig-arrow" style={{ color: "#C8102E", fontSize: "1.2rem", alignSelf: "flex-start", marginTop: 24, flexShrink: 0 }}>›</div>
                             )}
                           </React.Fragment>
                         );
                       })}
                     </div>
                   ) : (
-                    <div style={{ display: "flex", gap: 8, alignItems: "stretch" }}>
+                    <div className="ig-steps-row" style={{ display: "flex", gap: 8, alignItems: "stretch" }}>
                       {svc.overview.workflowSteps.map((step, i) => (
                         <React.Fragment key={step.num}>
-                          <div style={step.highlight ? { flex: 1, background: "rgba(200,16,46,0.06)", border: "2px solid #C8102E", borderRadius: 10, padding: 16 } : { flex: 1, background: "#eef2fb", border: "1px solid rgba(42,63,122,0.12)", borderRadius: 10, padding: 16 }}>
+                          <div className="ig-step-card" style={step.highlight ? { flex: 1, background: "rgba(200,16,46,0.06)", border: "2px solid #C8102E", borderRadius: 10, padding: 16 } : { flex: 1, background: "#eef2fb", border: "1px solid rgba(42,63,122,0.12)", borderRadius: 10, padding: 16 }}>
                             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
                               {step.highlight ? (
                                 <div style={{ width: 28, height: 28, borderRadius: "50%", background: "#C8102E", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -679,7 +699,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                             <div style={{ fontSize: "1.04rem", color: "#344e7a", lineHeight: 1.5 }}>{step.desc}</div>
                           </div>
                           {i < svc.overview!.workflowSteps.length - 1 && (
-                            <div style={{ color: "#C8102E", fontSize: "1.2rem", alignSelf: "center" }}>›</div>
+                            <div className="ig-arrow" style={{ color: "#C8102E", fontSize: "1.2rem", alignSelf: "center" }}>›</div>
                           )}
                         </React.Fragment>
                       ))}
@@ -687,8 +707,8 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                   )}
                 </div>
                 {/* Cards */}
-                <div style={{ padding: "20px 40px" }}>
-                  <div style={{ display: "grid", gridTemplateColumns: `repeat(${svc.overview.cards.length === 3 ? 3 : 2}, 1fr)`, gap: 16 }}>
+                <div className={`ig-card-section${svc.overview.variant === "timeline" ? " ig-timeline-cards-section" : ""}`} style={{ padding: "20px 40px" }}>
+                  <div className="ig-cards-grid" style={{ display: "grid", gridTemplateColumns: `repeat(${svc.overview.cards.length === 3 ? 3 : 2}, 1fr)`, gap: 16 }}>
                     {svc.overview.cards.map((card) => {
                       if (card.desc === "standard" || card.desc === "accelerated") {
                         const lines = card.title.split("\n");
@@ -712,7 +732,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                   </div>
                 </div>
                 {/* Footer */}
-                <div style={{ background: "#f0f4ff", padding: "18px 40px", display: "flex", alignItems: "center", gap: 10, borderTop: "1px solid rgba(42,63,122,0.1)" }}>
+                <div className="ig-card-footer" style={{ background: "#f0f4ff", padding: "18px 40px", display: "flex", alignItems: "center", gap: 10, borderTop: "1px solid rgba(42,63,122,0.1)" }}>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
                   <span style={{ fontSize: "1.04rem", color: "#2A3F7A" }}>{svc.overview.footerText}</span>
                 </div>
@@ -737,7 +757,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 </p>
               </div>
             </RevealOnScroll>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 22 }}>
+            <div className="svc-process-grid">
               {svc.processSteps.map((step, i) => (
                 <RevealOnScroll key={step.title}>
                   <div
@@ -819,58 +839,31 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       />
 
       {/* Prev / Next Navigation */}
-      <section
-        style={{
-          padding: "48px 32px",
-          background: "var(--off)",
-          borderTop: "1px solid var(--border)",
-        }}
-      >
-        <div
-          className="sc"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "stretch",
-            gap: 20,
-          }}
-        >
-          {prevSvc ? (
-            <Link
-              href={`/services/${prevSvc.slug}`}
-              className="svc-nav-link"
-            >
-              <span className="svc-nav-dir">← Previous</span>
-              <span className="svc-nav-title">
-                {prevSvc.shortTitle}
-              </span>
+      <div className="sd-svcnav-wrap">
+        <div className="sd-svcnav-inner">
+          <div className="sd-svcnav-prev">
+            {prevSvc ? (
+              <Link href={`/services/${prevSvc.slug}`} className="sd-svcnav-link">
+                <span className="sd-svcnav-label"><span className="sd-svcnav-arrow">←</span> Previous</span>
+                <span className="sd-svcnav-title">{prevSvc.shortTitle}</span>
+              </Link>
+            ) : null}
+          </div>
+          <div className="sd-svcnav-center">
+            <Link href="/services" className="sd-svcnav-all">
+              All Provider Services
             </Link>
-          ) : (
-            <div />
-          )}
-          {nextSvc ? (
-            <Link
-              href={`/services/${nextSvc.slug}`}
-              className="svc-nav-link"
-              style={{ textAlign: "right" }}
-            >
-              <span className="svc-nav-dir">Next →</span>
-              <span className="svc-nav-title">
-                {nextSvc.shortTitle}
-              </span>
-            </Link>
-          ) : (
-            <Link
-              href="/services"
-              className="svc-nav-link"
-              style={{ textAlign: "right" }}
-            >
-              <span className="svc-nav-dir">Back to →</span>
-              <span className="svc-nav-title">All Services</span>
-            </Link>
-          )}
+          </div>
+          <div className="sd-svcnav-next">
+            {nextSvc ? (
+              <Link href={`/services/${nextSvc.slug}`} className="sd-svcnav-link sd-svcnav-link--right">
+                <span className="sd-svcnav-label">Next <span className="sd-svcnav-arrow">→</span></span>
+                <span className="sd-svcnav-title">{nextSvc.shortTitle}</span>
+              </Link>
+            ) : null}
+          </div>
         </div>
-      </section>
+      </div>
     </>
   );
 }
