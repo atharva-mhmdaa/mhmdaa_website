@@ -39,21 +39,21 @@ const LinkedInIcon = () => (
 );
 
 const providerLinks = [
-  { href: "/services/authorization", label: "Authorization" },
+  { href: "/provider-services/authorization", label: "Authorization" },
   {
-    href: "/services/payor-notification",
+    href: "/provider-services/payor-notification",
     label: "Payor Notification & Follow-up",
   },
-  { href: "/services/p2p", label: "Accelerated P2P" },
-  { href: "/services/concurrent-review", label: "Concurrent Review" },
+  { href: "/provider-services/p2p", label: "Accelerated P2P" },
+  { href: "/provider-services/concurrent-review", label: "Concurrent Review" },
   {
-    href: "/services/coding",
+    href: "/provider-services/coding",
     label: "Coding & Clinical Documentation Improvement (CDI)",
   },
-  { href: "/services/claim-submission", label: "Claim Submission" },
-  { href: "/services/denial-management", label: "Denial Management" },
-  { href: "/services/appeals", label: "Appeal Letter Writing" },
-  { href: "/services/litigation", label: "Litigation & Expert Support" },
+  { href: "/provider-services/claim-submission", label: "Claim Submission" },
+  { href: "/provider-services/denial-management", label: "Denial Management" },
+  { href: "/provider-services/appeals", label: "Appeal Letter Writing" },
+  { href: "/provider-services/litigation", label: "Litigation & Expert Support" },
 ];
 
 const payorLinks = [

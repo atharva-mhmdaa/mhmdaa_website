@@ -68,7 +68,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           <div>
             <h1 className="sd-title">{svc.title}</h1>
             <p className="sd-desc">{svc.heroDescription}</p>
-            <Link href="/services" className="sd-hero-cta">
+            <Link href="/provider-services" className="sd-hero-cta">
               Explore All Services →
             </Link>
           </div>
@@ -91,7 +91,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           {providerServices.map((s) => (
             <Link
               key={s.slug}
-              href={`/services/${s.slug}`}
+              href={`/provider-services/${s.slug}`}
               className={`svc-breadcrumb-item${s.slug === slug ? " active" : ""}`}
             >
               {s.shortTitle}
@@ -843,20 +843,20 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="sd-svcnav-inner">
           <div className="sd-svcnav-prev">
             {prevSvc ? (
-              <Link href={`/services/${prevSvc.slug}`} className="sd-svcnav-link">
+              <Link href={`/provider-services/${prevSvc.slug}`} className="sd-svcnav-link">
                 <span className="sd-svcnav-label"><span className="sd-svcnav-arrow">←</span> Previous</span>
                 <span className="sd-svcnav-title">{prevSvc.shortTitle}</span>
               </Link>
             ) : null}
           </div>
           <div className="sd-svcnav-center">
-            <Link href="/services" className="sd-svcnav-all">
+            <Link href="/provider-services" className="sd-svcnav-all">
               All Provider Services
             </Link>
           </div>
           <div className="sd-svcnav-next">
             {nextSvc ? (
-              <Link href={`/services/${nextSvc.slug}`} className="sd-svcnav-link sd-svcnav-link--right">
+              <Link href={`/provider-services/${nextSvc.slug}`} className="sd-svcnav-link sd-svcnav-link--right">
                 <span className="sd-svcnav-label">Next <span className="sd-svcnav-arrow">→</span></span>
                 <span className="sd-svcnav-title">{nextSvc.shortTitle}</span>
               </Link>

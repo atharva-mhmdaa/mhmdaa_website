@@ -269,7 +269,7 @@ export default function ServicesPage() {
           <div className="svc-grid3">
             {providerServices.map((svc) => (
               <RevealOnScroll key={svc.slug}>
-                <Link href={`/services/${svc.slug}`} className="svc-tile">
+                <Link href={`/provider-services/${svc.slug}`} className="svc-tile">
                   <Image
                     src={svc.tileImage}
                     alt={svc.title}

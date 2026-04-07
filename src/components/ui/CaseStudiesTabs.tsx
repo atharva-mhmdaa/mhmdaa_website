@@ -52,7 +52,7 @@ function ProviderCTA() {
           <Link href="/contact" className="btn-p" style={{ fontSize: "1rem", padding: "16px 38px" }}>
             Connect with an Expert &rarr;
           </Link>
-          <Link href="/services" className="btn-o" style={{ fontSize: "1rem", padding: "16px 38px", color: "#fff", borderColor: "rgba(255,255,255,.3)" }}>
+          <Link href="/provider-services" className="btn-o" style={{ fontSize: "1rem", padding: "16px 38px", color: "#fff", borderColor: "rgba(255,255,255,.3)" }}>
             Explore Our Services
           </Link>
         </div>

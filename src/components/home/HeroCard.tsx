@@ -183,7 +183,7 @@ export default function HeroCard() {
             >
               9 Integrated Service Lines
             </span>
-            <Link href="/services" style={{ color: "#93c5fd" }}>
+            <Link href="/provider-services" style={{ color: "#93c5fd" }}>
               View Provider Services &rarr;
             </Link>
           </div>
