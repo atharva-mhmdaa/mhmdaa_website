@@ -39,29 +39,29 @@ export default function Home() {
             </p>
             <ul className="hero-bullets">
               <li>
-                <span className="hb-label">Target:</span>
+                <span className="hb-label">Target</span>
                 <span className="hb-value">Denial rate below 5%</span>
               </li>
               <li>
-                <span className="hb-label">Provider Milestone:</span>
+                <span className="hb-label">Provider Milestone</span>
                 <span className="hb-value">
                   24/7 peer-to-peer operations — issues flagged &amp; resolved within 6 hours
                 </span>
               </li>
               <li>
-                <span className="hb-label">Payor Milestone:</span>
+                <span className="hb-label">Payor Milestone</span>
                 <span className="hb-value">
                   Independent clinical assessment delivered within 48 hours of case submission
                 </span>
               </li>
               <li>
-                <span className="hb-label">Standard:</span>
+                <span className="hb-label">Standard</span>
                 <span className="hb-value">
                   Evidence-based clinical justification
                 </span>
               </li>
               <li>
-                <span className="hb-label">Strategy:</span>
+                <span className="hb-label">Strategy</span>
                 <span className="hb-value">
                   Strategic payor&ndash;provider collaboration
                 </span>

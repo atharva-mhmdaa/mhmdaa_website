@@ -323,11 +323,12 @@ footer::after { content: ''; position: absolute; top: 0; right: -200px; width: 6
 .hero-h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem,4.5vw,3.8rem); font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 22px }
 .hero-h1 em { font-style: italic; color: #93c5fd }
 .hero-p { font-size: 1.15rem; color: rgba(255,255,255,.82); line-height: 1.85; margin-bottom: 32px; max-width: 580px }
-.hero-bullets { list-style: none; margin-bottom: 36px; display: flex; flex-direction: column; gap: 12px }
-.hero-bullets li { display: flex; flex-direction: column; gap: 2px; font-size: 1.06rem; color: rgba(255,255,255,.82); font-weight: 500; padding-left: 18px; position: relative }
-.hero-bullets li::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #C8102E; flex-shrink: 0; position: absolute; left: 0; top: 0.45em }
-.hb-label { color: #fff; font-weight: 700 }
-.hb-value { line-height: 1.55 }
+.hero-bullets { list-style: none; margin-bottom: 36px; display: flex; flex-direction: column; gap: 10px }
+.hero-bullets li { display: flex; flex-direction: column; gap: 3px; font-size: 1rem; color: rgba(255,255,255,.82); font-weight: 500; background: rgba(5,12,40,.75); border: 1px solid rgba(255,255,255,.14); border-radius: 10px; padding: 12px 16px 12px 20px; position: relative; overflow: hidden; transition: background .2s }
+.hero-bullets li::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #C8102E; border-radius: 10px 0 0 10px }
+.hero-bullets li:hover { background: rgba(5,12,40,.88) }
+.hb-label { color: #fff; font-weight: 700; font-size: .82rem; letter-spacing: .07em; text-transform: uppercase; opacity: .7; margin-bottom: 1px }
+.hb-value { line-height: 1.5; font-size: 1rem; color: #fff; font-weight: 500 }
 .hero-btns { display: flex; gap: 14px; flex-wrap: wrap }
 
 /* ── HERO RIGHT CARD ─────────────────────────────────────── */
@@ -1055,8 +1056,9 @@ details[open] .ig-lbl-open { display: inline }
   .hero-p { font-size: 1.05rem }
   .hero-btns { flex-direction: column; gap: 10px }
   .hero-btns a { width: 100%; justify-content: center; text-align: center }
-  .hero-bullets li { font-size: .97rem }
-  .hb-label { font-size: .92rem }
+  .hero-bullets li { font-size: .95rem }
+  .hb-label { font-size: .78rem }
+  .hb-value { font-size: .95rem }
   .why-adv-grid { grid-template-columns: 1fr 1fr; gap: 16px }
   .adv-card { padding: 24px 20px }
   .adv-icon { width: 46px; height: 46px; margin-bottom: 14px }
@@ -1306,11 +1308,11 @@ details[open] .ig-lbl-open { display: inline }
   .hrc-stat-card { padding: 14px 8px }
   .hero-p { font-size: .97rem; margin-bottom: 20px }
   .hero-bullets { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 24px }
-  .hero-bullets li { flex-direction: column; gap: 3px; font-size: .82rem; background: rgba(5,12,40,.82); border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 12px 14px; position: relative; overflow: hidden }
+  .hero-bullets li { flex-direction: column; gap: 3px; font-size: .82rem; background: rgba(5,12,40,.82); border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 12px 14px; position: relative; overflow: hidden; transition: none }
   .hero-bullets li::before { display: none }
-  .hero-bullets li::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 12px 0 0 12px; background: rgba(255,255,255,.4) }
+  .hero-bullets li::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; border-radius: 12px 0 0 12px; background: #C8102E }
   .hero-bullets li:nth-child(5) { grid-column: 1 / -1 }
-  .hb-label { min-width: 0; font-size: .68rem; color: rgba(255,255,255,.55); letter-spacing: .08em; text-transform: uppercase; font-weight: 700; margin-bottom: 2px }
+  .hb-label { min-width: 0; font-size: .68rem; color: rgba(255,255,255,.55); letter-spacing: .08em; text-transform: uppercase; font-weight: 700; margin-bottom: 2px; opacity: 1 }
   .hb-value { font-size: .84rem; color: #fff; line-height: 1.4; font-weight: 600 }
   .svc-grid3 { grid-template-columns: 1fr }
   .svc-grid-home { grid-template-columns: 1fr; gap: 14px }
