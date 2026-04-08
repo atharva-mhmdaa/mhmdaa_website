@@ -105,7 +105,7 @@ export default function PayorServicesPage() {
       <section className="payor-hero">
         <div style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
           <div className="hero-badge">
-            Payor Services
+            Services for Payors
           </div>
           <h1
             style={{

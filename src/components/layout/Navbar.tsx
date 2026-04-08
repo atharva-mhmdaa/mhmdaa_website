@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { href: "/about", label: "About Us" },
   { href: "/provider-services", label: "Services for Providers" },
   { href: "/payor-services", label: "Services for Payors" },
+  { href: "/healthcare-fraud-analysis", label: "Healthcare Fraud Analysis" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/blogs", label: "Blogs" },
   { href: "/careers", label: "Careers" },

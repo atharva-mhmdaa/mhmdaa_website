@@ -76,6 +76,7 @@ const companyLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
   { href: "/case-studies", label: "Case Studies" },
+  { href: "/healthcare-fraud-analysis", label: "Healthcare Fraud Analysis" },
   { href: "/blogs", label: "Blogs & Reports" },
   { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact Us" },
