@@ -227,6 +227,7 @@ export default function HealthcareFraudAnalysisPage() {
         }}
       >
         <div className="fraud-hgrid">
+          <div className="fhg-text">
           <RevealOnScroll direction="left">
             <div className="hero-badge">
               Healthcare Fraud Analysis
@@ -246,13 +247,16 @@ export default function HealthcareFraudAnalysisPage() {
               invisible to traditional monitoring, the cumulative data highlights
               a clear need for proactive measures to secure plan assets.
             </p>
-            <div className="cta-btns" style={{ justifyContent: "flex-start" }}>
+            {/* Desktop-only button */}
+            <div className="cta-btns fhg-btn-desk" style={{ justifyContent: "flex-start" }}>
               <Link href="/contact" className="btn-p">
                 Connect with our Experts &rarr;
               </Link>
             </div>
           </RevealOnScroll>
+          </div>
 
+          <div className="fhg-img">
           <RevealOnScroll direction="right">
             <div
               style={{
@@ -276,6 +280,14 @@ export default function HealthcareFraudAnalysisPage() {
               />
             </div>
           </RevealOnScroll>
+          </div>
+
+          {/* Mobile-only button — below image */}
+          <div className="fhg-btn-mob">
+            <Link href="/contact" className="btn-p">
+              Connect with our Experts &rarr;
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -588,15 +600,41 @@ export default function HealthcareFraudAnalysisPage() {
           </RevealOnScroll>
 
           <div className="fraud-contact-grid">
-            {/* text — order 1 on mobile */}
-            <RevealOnScroll direction="left">
-              <div className="fraud-protect-text">
+            {/* para 1 — order 1 on mobile */}
+            <div className="fcp-p1">
+              <RevealOnScroll direction="left">
                 <p className="sec-sub" style={{ maxWidth: "100%", marginBottom: "22px" }}>
                   The enforcement environment has never been more active, with
                   federal prosecutors securing longer sentences and recovering
                   larger sums. However, enforcement is reactive; by the time a
                   case reaches prosecution, millions have already been lost.
                 </p>
+              </RevealOnScroll>
+            </div>
+
+            {/* image — order 2 on mobile, spans right col on desktop */}
+            <div className="fcp-img">
+              <RevealOnScroll direction="right">
+                <div className="fraud-protect-img-wrap">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/fraud-protect.jpg"
+                    alt="MHMDAA team reviewing AI fraud detection analytics dashboard"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      display: "block",
+                      minHeight: "280px",
+                    }}
+                  />
+                </div>
+              </RevealOnScroll>
+            </div>
+
+            {/* paras 2 & 3 + desktop button — order 3 on mobile */}
+            <div className="fcp-p2">
+              <RevealOnScroll direction="left">
                 <p className="sec-sub" style={{ maxWidth: "100%", marginBottom: "22px" }}>
                   <strong style={{ color: "var(--navy)" }}>
                     Your plan&rsquo;s most valuable defense is prevention
@@ -608,33 +646,15 @@ export default function HealthcareFraudAnalysisPage() {
                   If your plan pays claims without forensic oversight, you are
                   losing money to fraud. The only question is how much.
                 </p>
-                {/* Desktop-only button — hidden on mobile */}
+                {/* Desktop-only button */}
                 <Link href="/contact" className="btn-p fraud-protect-btn-desk">
                   Connect with an Expert &rarr;
                 </Link>
-              </div>
-            </RevealOnScroll>
+              </RevealOnScroll>
+            </div>
 
-            {/* image — order 2 on mobile */}
-            <RevealOnScroll direction="right">
-              <div className="fraud-protect-img-wrap fraud-protect-img">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/fraud-protect.jpg"
-                  alt="MHMDAA team reviewing AI fraud detection analytics dashboard"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    display: "block",
-                    minHeight: "280px",
-                  }}
-                />
-              </div>
-            </RevealOnScroll>
-
-            {/* button — order 3 on mobile, hidden on desktop (shown inside text column via desktop grid) */}
-            <div className="fraud-protect-cta-mob">
+            {/* Mobile-only button — order 4 */}
+            <div className="fcp-btn">
               <Link href="/contact" className="btn-p">
                 Connect with an Expert &rarr;
               </Link>
