@@ -74,7 +74,7 @@ export default async function PayorServicePage({ params }: PageProps) {
               alt={service.title}
               fill
               sizes="(max-width: 900px) 100vw, 55vw"
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover", objectPosition: service.heroImagePosition ?? "center center" }}
               priority
             />
           </div>
@@ -152,7 +152,7 @@ export default async function PayorServicePage({ params }: PageProps) {
               <div className="feat-card" key={f.title}>
                 {f.image && (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={f.image} alt={f.title} className="fc-img" />
+                  <img src={f.image} alt={f.title} className={`fc-img${f.imgPositionMobile ? " fc-img--mob-pos" : ""}`} style={{ ...(f.imgPosition ? { objectPosition: f.imgPosition } : {}), ...(f.imgPositionMobile ? { ["--mob-pos" as string]: f.imgPositionMobile } : {}) } as React.CSSProperties} />
                 )}
                 {!f.image && (
                   <div

@@ -136,7 +136,7 @@ body {
 .fc-list { list-style: none; display: flex; flex-direction: column; gap: 8px; padding: 0; margin: 0 }
 .fc-list li { font-size: 1.04rem; color: #5A6E8A; display: flex; gap: 8px; line-height: 1.6 }
 .fc-list li::before { content: '→'; color: #2A3F7A; font-weight: 700; flex-shrink: 0 }
-@media(max-width:600px) { .feat-card { grid-template-columns: 1fr } .fc-img { aspect-ratio: 16/9; min-height: 0; max-height: none } .fc-body { padding: 18px 20px } }
+@media(max-width:600px) { .feat-card { grid-template-columns: 1fr } .fc-img { aspect-ratio: 16/9; min-height: 0; max-height: none; object-position: center 20% } .fc-img--mob-pos { object-position: var(--mob-pos) } .fc-body { padding: 18px 20px } }
 
 /* ── SERVICE DETAIL: PAGE NAVIGATION ────────────────────── */
 .sd-svcnav-wrap { background: var(--off); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 28px 20px }

@@ -6,11 +6,12 @@ export interface PayorService {
   description: string;
   heroDescription: string;
   heroImage: string;
+  heroImagePosition?: string;
   infoText?: string;
   infoBadge?: string;
   featuresSub?: string;
   processSteps?: { title: string; desc: string }[];
-  features: { title: string; desc: string; image?: string }[];
+  features: { title: string; desc: string; image?: string; imgPosition?: string; imgPositionMobile?: string }[];
   prevSlug: string | null;
   nextSlug: string | null;
 }
@@ -50,17 +51,17 @@ export const payorServices: PayorService[] = [
       {
         title: "Documentation Validation",
         desc: "Validate the admitting physician\u2019s contemporaneous documentation to ensure a reasonable expectation of a two-midnight stay is established based on the patient\u2019s presenting symptoms and clinical acuity.",
-        image: "/images/payor-two-midnight-71.jpg",
+        image: "/images/payor-two-midnight-71.png",
       },
       {
         title: "Evidence-Based Benchmarking",
         desc: "Benchmark patient clinical data against nationally recognized evidence-based criteria, such as InterQual and MCG, to verify that intensity of service and severity of illness meet specific inpatient thresholds.",
-        image: "/images/payor-two-midnight-72.jpg",
+        image: "/images/payor-two-midnight-72.png",
       },
       {
         title: "Policy & LOS Reconciliation",
         desc: "Evaluate cases against specific payor policies and reconcile actual length of stay against admission expectations to confirm all contractual and regulatory requirements are met before a claim is submitted.",
-        image: "/images/payor-two-midnight-73.jpg",
+        image: "/images/payor-two-midnight-73.png",
       },
     ],
     prevSlug: null,
@@ -75,7 +76,7 @@ export const payorServices: PayorService[] = [
       "Michael Hill MD and Associates — Inpatient vs. Observation Determination: Integrate standardized protocols into decision-making workflows to ensure clinical evidence at the point of admission accurately supports an inpatient level of care, proactively preventing status-related denials and ensuring reimbursement integrity.",
     heroDescription:
       "Integrate standardized protocols into decision-making workflows to ensure clinical evidence at the point of admission accurately supports an inpatient level of care, proactively preventing status-related denials and ensuring reimbursement integrity.",
-    heroImage: "/images/index-29.jpg",
+    heroImage: "/images/payor-inpatient-obs-hero.png",
     infoText: "Ensure every status determination is substantiated before claims are submitted.",
     infoBadge: "EVIDENCE-BASED",
     processSteps: [
@@ -101,17 +102,18 @@ export const payorServices: PayorService[] = [
       {
         title: "Clinical Marker Evaluation",
         desc: "Evaluate clinical markers, including acuity severity and treatment intensity, to determine if a patient\u2019s condition warrants inpatient admission or observation management.",
-        image: "/images/payor-inpatient-obs-58.jpg",
+        image: "/images/payor-inpatient-obs-58.png",
+        imgPosition: "center 70%",
       },
       {
         title: "Admission Benchmarking",
         desc: "Benchmark patient clinical data against nationally recognized evidence-based criteria like InterQual and Milliman at the time of admission to ensure consistent status determinations.",
-        image: "/images/payor-inpatient-obs-59.jpg",
+        image: "/images/payor-inpatient-obs-59.png",
       },
       {
         title: "Medical Decision Validation",
         desc: "Validate the admitting physician\u2019s documented medical decision-making to ensure clinical reasoning is substantiated by objective clinical evidence and the documented treatment plan.",
-        image: "/images/payor-inpatient-obs-60.jpg",
+        image: "/images/payor-inpatient-obs-60.png",
       },
     ],
     prevSlug: "two-midnight",
@@ -126,7 +128,7 @@ export const payorServices: PayorService[] = [
       "Michael Hill MD and Associates — DRG Clinical Validation: Apply physician-led review protocols to reconcile diagnostic and procedural codes with the clinical narrative, proactively identifying unsupported comorbidities to align reimbursement with actual patient acuity.",
     heroDescription:
       "Apply physician-led review protocols to reconcile diagnostic and procedural codes with the clinical narrative, proactively identifying unsupported comorbidities to align reimbursement with actual patient acuity.",
-    heroImage: "/images/payor-drg-validation-hero2.png",
+    heroImage: "/images/payor-drg-validation-hero.png",
     infoText: "Every claim aligned with actual patient acuity — transparent, defensible, and accurate.",
     infoBadge: "CODING INTEGRITY",
     processSteps: [
@@ -152,17 +154,17 @@ export const payorServices: PayorService[] = [
       {
         title: "High-Risk DRG Review",
         desc: "Prioritize high-risk DRG categories to systematically compare coded ICD-10 diagnoses and procedures against the objective medical record.",
-        image: "/images/payor-drg-validation-46.jpg",
+        image: "/images/payor-drg-validation-46.png",
       },
       {
         title: "CC/MCC Substantiation",
         desc: "Evaluate documented CC/MCC indicators through standardized workflows to ensure severity markers are backed by objective clinical evidence.",
-        image: "/images/payor-drg-validation-47.jpg",
+        image: "/images/payor-drg-validation-47.png",
       },
       {
         title: "Independent Physician Review",
         desc: "Deploy independent physician reviewers to verify that a patient\u2019s documented clinical acuity objectively aligns with the assigned DRG severity level.",
-        image: "/images/payor-drg-validation-48.jpg",
+        image: "/images/payor-drg-validation-48.png",
       },
     ],
     prevSlug: "inpatient-obs",
@@ -177,7 +179,8 @@ export const payorServices: PayorService[] = [
       "Michael Hill MD and Associates — ED Facility Methodology Review: Evaluate internal policies and clinical documentation to align hospital billing with national standards, ensuring that every facility level assignment is proportionate to the patient\u2019s clinical presentation.",
     heroDescription:
       "Evaluate internal policies and clinical documentation to align hospital billing with national standards, ensuring that every facility level assignment is proportionate to the patient\u2019s clinical presentation.",
-    heroImage: "/images/payor-ed-facility-hero-v2.png",
+    heroImage: "/images/payor-ed-facility-hero.png",
+    heroImagePosition: "center 15%",
     processSteps: [
       {
         title: "Analyze",
@@ -202,17 +205,17 @@ export const payorServices: PayorService[] = [
       {
         title: "Level Assignment Validation",
         desc: "Validate ED level assignments against internal systems and national industry benchmarks to confirm accurate execution of facility methodologies.",
-        image: "/images/payor-ed-facility-feat-1.jpg",
+        image: "/images/payor-ed-facility-feat-1.png",
       },
       {
         title: "E/M Level Assessment",
         desc: "Assess billed E/M levels independently against the documented complexity of medical decision-making to ensure the claim accurately reflects the intensity of service rendered.",
-        image: "/images/payor-ed-facility-feat-2.jpg",
+        image: "/images/payor-ed-facility-feat-2.png",
       },
       {
         title: "Disposition Analysis",
         desc: "Analyze the patient\u2019s final disposition using data-driven methods to ensure objective consistency between clinical outcomes and the billed facility level.",
-        image: "/images/payor-ed-facility-feat-3.jpg",
+        image: "/images/payor-ed-facility-feat-3.png",
       },
     ],
     prevSlug: "drg-validation",
@@ -227,7 +230,7 @@ export const payorServices: PayorService[] = [
       "Michael Hill MD and Associates — Line-Item Coding Compliance: Establish an error-resistant quality gate within the revenue cycle to align claim submissions with actual care delivered, ensuring clinical-to-financial precision and preventing revenue leakage.",
     heroDescription:
       "Establish an error-resistant quality gate within the revenue cycle to align claim submissions with actual care delivered, ensuring clinical-to-financial precision and preventing revenue leakage.",
-    heroImage: "/images/payor-line-item-hero-v2.png",
+    heroImage: "/images/payor-line-item-hero.png",
     infoText: "Every charge must reflect a documented clinical event — no exceptions.",
     infoBadge: "ZERO REVENUE LEAKAGE",
     processSteps: [
@@ -254,17 +257,17 @@ export const payorServices: PayorService[] = [
       {
         title: "CCI Compliance Analysis",
         desc: "Analyze procedure codes systematically to identify unbundled charges under Correct Coding Initiative (CCI) guidelines to withstand payor scrutiny.",
-        image: "/images/payor-line-item-feat-1.jpg",
+        image: "/images/payor-line-item-feat-1.png",
       },
       {
         title: "MUE Threshold Validation",
         desc: "Validate billed units against CMS-established Medically Unlikely Edit (MUE) thresholds to catch clinically implausible charges before they trigger denials.",
-        image: "/images/payor-line-item-feat-2.jpg",
+        image: "/images/payor-line-item-feat-2.png",
       },
       {
         title: "Line-Item Verification",
         desc: "Match every billed line item against physician documentation and the plan of care to ensure each charge accurately reflects a documented clinical event.",
-        image: "/images/payor-line-item-feat-3.jpg",
+        image: "/images/payor-line-item-feat-3.png",
       },
     ],
     prevSlug: "ed-facility",
@@ -279,7 +282,7 @@ export const payorServices: PayorService[] = [
       "Michael Hill MD and Associates — Provider Dispute & Appeal Support: Conduct independent, evidence-based clinical and administrative reviews to protect financial integrity against provider disputes and ensure that every resolution is grounded in defensible, transparent claim determinations.",
     heroDescription:
       "Conduct independent, evidence-based clinical and administrative reviews to protect financial integrity against provider disputes and ensure that every resolution is grounded in defensible, transparent claim determinations.",
-    heroImage: "/images/index-33.jpg",
+    heroImage: "/images/payor-dispute-appeal-hero.png",
     infoText: "Independent clinical reviews that protect payor financial integrity against provider disputes.",
     infoBadge: "DENIAL DEFENSE",
     processSteps: [
@@ -306,17 +309,18 @@ export const payorServices: PayorService[] = [
       {
         title: "Appeal Narrative Deconstruction",
         desc: "Deconstruct provider appeal narratives systematically to identify logical gaps, unsupported clinical assertions, and selective use of medical record data.",
-        image: "/images/payor-dispute-appeal-42.jpg",
+        image: "/images/payor-dispute-appeal-42.png",
+        imgPosition: "center 20%",
       },
       {
         title: "Policy Alignment",
         desc: "Align disputed claims with specific payor policies, contractual terms, and CMS guidelines to reinforce the original denial rationale.",
-        image: "/images/payor-dispute-appeal-43.jpg",
+        image: "/images/payor-dispute-appeal-43.png",
       },
       {
         title: "Independent Clinical Review",
         desc: "Utilize independent physician reviewers to conduct secondary clinical assessments, adding a layer of objective expertise to the dispute resolution process.",
-        image: "/images/payor-dispute-appeal-44.jpg",
+        image: "/images/payor-dispute-appeal-44.png",
       },
     ],
     prevSlug: "line-item",
@@ -331,7 +335,7 @@ export const payorServices: PayorService[] = [
       "Michael Hill MD and Associates — Expert Medical Opinion Reports: Deliver authoritative, physician-led analysis for high-stakes dispute resolution by integrating objective clinical evidence and industry benchmarks, generating formal reports structured for legal defensibility.",
     heroDescription:
       "Deliver authoritative, physician-led analysis for high-stakes dispute resolution by integrating objective clinical evidence and industry benchmarks, generating formal reports structured for legal defensibility.",
-    heroImage: "/images/index-34.jpg",
+    heroImage: "/images/payor-expert-opinions-hero.png",
     infoText: "Authoritative physician-led analysis built for legal defensibility and regulatory scrutiny.",
     infoBadge: "LITIGATION READY",
     processSteps: [
@@ -358,17 +362,18 @@ export const payorServices: PayorService[] = [
       {
         title: "Medical Necessity Assessment",
         desc: "Assess medical necessity by anchoring written conclusions to the patient\u2019s documented clinical condition, presenting symptoms, and evidence-based treatment guidelines.",
-        image: "/images/payor-expert-opinions-54.jpg",
+        image: "/images/payor-expert-opinions-54.png",
+        imgPosition: "center 65%",
       },
       {
         title: "Coding & Billing Evaluation",
         desc: "Evaluate diagnostic and procedure codes against the clinical record and CMS regulations to proactively identify miscoding, unbundling, or billing irregularities.",
-        image: "/images/payor-expert-opinions-55.jpg",
+        image: "/images/payor-expert-opinions-55.png",
       },
       {
         title: "Authoritative Report Preparation",
         desc: "Prepare detailed, authoritative reports formatted for arbitration and litigation by cross-referencing clinical decisions against nationally recognized standards of care.",
-        image: "/images/payor-expert-opinions-56.jpg",
+        image: "/images/payor-expert-opinions-56.png",
       },
     ],
     prevSlug: "dispute-appeal",
@@ -384,6 +389,7 @@ export const payorServices: PayorService[] = [
     heroDescription:
       "Identify structural weaknesses in opposing expert testimony through standardized, data-driven analysis and rigorous evidence mapping \u2014 equipping legal counsel with precise, targeted lines of questioning.",
     heroImage: "/images/payor-rebuttal-hero.png",
+    heroImagePosition: "center 80%",
     infoText: "Data-driven analysis that exposes structural weaknesses in opposing expert testimony.",
     infoBadge: "EVIDENCE MAPPING",
     processSteps: [
@@ -410,17 +416,19 @@ export const payorServices: PayorService[] = [
       {
         title: "Methodology Challenge",
         desc: "Analyze the opposing expert\u2019s stated methodology to identify unsupported analytical approaches or reliance on subjective clinical judgment that deviates from industry-standard benchmarks.",
-        image: "/images/payor-rebuttal-66.jpg",
+        image: "/images/payor-rebuttal-66.png",
       },
       {
         title: "Medical Record Audit",
         desc: "Conduct a medical record completeness review to detect instances of omitted or selectively cited documentation, ensuring no relevant clinical evidence was overlooked or excluded to skew the findings.",
-        image: "/images/payor-rebuttal-67.jpg",
+        image: "/images/payor-rebuttal-67.png",
+        imgPosition: "center 70%",
+        imgPositionMobile: "center 70%",
       },
       {
         title: "Evidence Mapping",
         desc: "Map every conclusion back to the supporting data using gap-detection protocols to generate precise, targeted lines of questioning that equip legal counsel for effective depositions and rebuttals.",
-        image: "/images/payor-rebuttal-68.jpg",
+        image: "/images/payor-rebuttal-68.png",
       },
     ],
     prevSlug: "expert-opinions",
@@ -435,7 +443,8 @@ export const payorServices: PayorService[] = [
       "Michael Hill MD and Associates — Demonstratives & Litigation Support: Distill complex clinical and financial datasets into clear, high-impact visual exhibits designed to educate factfinders in legal and administrative proceedings.",
     heroDescription:
       "Distill complex clinical and financial datasets into clear, high-impact visual exhibits designed to educate factfinders in legal and administrative proceedings.",
-    heroImage: "/images/index-36.jpg",
+    heroImage: "/images/payor-demonstratives-hero.png",
+    heroImagePosition: "center 15%",
     infoText: "Complex clinical data distilled into clear, persuasive visual exhibits for factfinders.",
     infoBadge: "VISUAL ADVOCACY",
     processSteps: [
@@ -462,17 +471,17 @@ export const payorServices: PayorService[] = [
       {
         title: "Clinical Timeline Mapping",
         desc: "Map chronological visual timelines that track a patient\u2019s clinical course against regulatory and contractual milestones to make complex care sequences immediately understandable.",
-        image: "/images/payor-demonstratives-38.jpg",
+        image: "/images/payor-demonstratives-38.png",
       },
       {
         title: "Process Map Design",
         desc: "Design detailed process maps that illustrate claim movement through the revenue cycle to pinpoint operational breakdowns and deviations from standardized workflows.",
-        image: "/images/payor-demonstratives-39.jpg",
+        image: "/images/payor-demonstratives-39.png",
       },
       {
         title: "Comparative Exhibit Development",
         desc: "Develop side-by-side comparative exhibits and financial impact summaries to structure a point-by-point analysis of provider actions versus payor positions.",
-        image: "/images/payor-demonstratives-40.jpg",
+        image: "/images/payor-demonstratives-40.png",
       },
     ],
     prevSlug: "rebuttal",
