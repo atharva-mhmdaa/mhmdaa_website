@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import ConditionalSiteChrome from "@/components/layout/ConditionalSiteChrome";
 import { Analytics } from "@vercel/analytics/next";
@@ -46,6 +47,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-1CKQXGG0L8"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-1CKQXGG0L8');
+          `}
+        </Script>
+      </head>
       <body>
         <ConditionalSiteChrome>{children}</ConditionalSiteChrome>
         <Analytics />
