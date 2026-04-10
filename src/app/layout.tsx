@@ -25,6 +25,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mhmdaa.com"),
   title: {
     default: "Michael Hill, MD & Associates",
     template: "%s | Michael Hill, MD & Associates",
