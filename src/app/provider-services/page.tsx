@@ -328,7 +328,7 @@ export default function ServicesPage() {
                     <em style={{ color: "#93c5fd" }}>from the Provider Side</em>
                   </h3>
                   <p style={{ fontSize: "1.04rem", color: "rgba(255,255,255,.82)", lineHeight: 1.85 }}>
-                    Our physician-led team is deployed when your revenue cycle faces credibility challenges that require clinical authority — not just administrative follow-up.
+                    Our physician-led team is deployed when your revenue cycle faces credibility challenges that require clinical authority - not just administrative follow-up.
                   </p>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
