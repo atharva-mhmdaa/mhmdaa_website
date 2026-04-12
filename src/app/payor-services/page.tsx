@@ -22,25 +22,31 @@ const pillars = [
     num: "01",
     label: "Medical Necessity",
     title: "Medical Necessity Validation",
-    desc: "Analyzing medical records against evidence-based standards and providing defensible clinical rationale to prove that denied or down-coded claims failed to meet medical necessity, effectively validating the Payor\u2019s decision not to reimburse for inappropriate or over-utilized care.",
+    desc: "Turn medical records into evidence-backed, defensible rationales that validate payer denials, claim denials or downcoding, ensuring reimbursement aligns with medical necessity and appropriate utilization.",
   },
   {
     num: "02",
-    label: "Level-of-Care",
-    title: "Site-of-Service Verification",
-    desc: "Detailed clinical reviews for ICU, ICU - Intermediate Level and NICU and ambulatory/hospital surgery to verify that the intensity of services matches the severity of illness, providing the evidence-based justification needed to challenge inappropriately coded claims or unnecessary inpatient stays in high-value litigation.",
+    label: "Acuity & Level of Care",
+    title: "Acuity & Level of Care Verification",
+    desc: "Verify ICU, intermediate ICU, and NICU service intensity against illness severity, providing evidence-based support to challenge inappropriate coding and unnecessary high-acuity stays.",
   },
   {
     num: "03",
-    label: "Billing Integrity",
-    title: "Contractual & Billing Integrity Analysis",
-    desc: "Line Item analysis to identify clinical billing patterns or unbundled services that violate Payor-Provider agreements, providing objective evidence to defend the Payor\u2019s contractual right to withhold reimbursement for services exceeding fair market value or agreed-upon standards.",
+    label: "Accelerated P2P",
+    title: "Accelerated P2P for Payors",
+    desc: "Defend denial integrity with specialty-matched, board-certified Specialists who provide 24/7, litigation-ready clinical rigor within 24 hours.",
   },
   {
     num: "04",
+    label: "Billing Integrity",
+    title: "Contractual & Billing Integrity Analysis",
+    desc: "Analyze line items to detect unbundling and billing patterns that breach Payor-Provider agreements, providing objective evidence to support withholding reimbursement for services exceeding contractual or fair-market standards.",
+  },
+  {
+    num: "05",
     label: "Regulatory Compliance",
     title: "Audit Defense & Star Rating Protection",
-    desc: "Validating that appeals and grievances processes were clinically fair and compliant with payor contractual appeal standards as well as CMS and NCQA standards, thereby mitigating the risk of regulatory fines and protecting the plan\u2019s Star Ratings.",
+    desc: "Validate appeals and grievance processes for clinical fairness and compliance with CMS, State DOH, NCQA, and URAC, mitigating regulatory risk and protecting Star Ratings.",
   },
 ];
 
@@ -111,18 +117,28 @@ export default function PayorServicesPage() {
           <h1
             style={{
               fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(2.2rem,4.5vw,3.6rem)",
+              fontSize: "clamp(2rem,3.8vw,3rem)",
               fontWeight: 700,
               color: "#fff",
               lineHeight: 1.12,
               marginBottom: 18,
-              maxWidth: 720,
             }}
           >
-            Defensible Medical-Legal
-            <br />
-            <em style={{ fontStyle: "italic", color: "#93c5fd" }}>Review for Payors</em>
+            Defensible Medical-Legal Review
           </h1>
+          <p
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "1.6rem",
+              fontStyle: "italic",
+              fontWeight: 600,
+              color: "#93c5fd",
+              marginBottom: 16,
+              letterSpacing: ".01em",
+            }}
+          >
+            Physician-led. Evidence-based. Outcome-driven.
+          </p>
           <p
             style={{
               fontSize: "1.15rem",
@@ -132,10 +148,7 @@ export default function PayorServicesPage() {
               maxWidth: 680,
             }}
           >
-            Physician-led, evidence-based analysis supporting accurate reimbursement, denial
-            integrity, and successful outcomes across appeals, arbitration, and litigation. We align
-            clinical evidence, coding accuracy, and regulatory standards to deliver objective,
-            defensible claim determinations.
+            We provide physician expert-led, evidence-based backbone for denial integrity and accurate reimbursement. By synthesizing clinical expertise with regulatory rigor, we deliver ironclad, objective determinations that withstand the scrutiny of appeals, arbitration, and litigation. Our reviews minimize friction and maximize defensibility, ensuring every claim is both clinically sound and legally robust.
           </p>
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
             <Link href="/contact" className="btn-p">
@@ -157,65 +170,75 @@ export default function PayorServicesPage() {
         </div>
       </div>
 
-      {/* ── HOW WE HELP ──────────────────────────────────── */}
+      {/* ── FIVE PILLARS ──────────────────────────────────── */}
       <section className="section" style={{ background: "var(--off)" }}>
         <div className="sc">
           <div className="sec-header c">
             <div className="sec-label">Our Value Proposition</div>
             <h2 className="sec-title">
-              How We Help <em>Payor Organizations</em>
+              How We Strengthen <em>Payor Organizations</em>
             </h2>
             <p className="sec-sub" style={{ maxWidth: 700 }}>
-              Four pillars of physician-led, evidence-based analysis supporting accurate
-              reimbursement, denial integrity, and successful outcomes across appeals, arbitration,
-              and litigation.
+              We provide physician-led, evidence-based analysis that drives accurate reimbursement and denial integrity through every stage of appeals, arbitration, and litigation.
             </p>
           </div>
-          <div className="pillars-grid">
-            {pillars.map((p, i) => (
-              <div
-                key={p.title}
-                style={{
-                  background: "#fff",
-                  border: "1px solid var(--border)",
-                  borderRadius: 16,
-                  padding: 28,
-                  borderTop: `4px solid ${i % 2 === 0 ? "var(--navy)" : "var(--red)"}`,
-                }}
-              >
+
+          {/* Pillars grid: 5 in a single row */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 16 }}>
+            {pillars.map((p, i) => {
+              const isNavy = i % 2 === 0;
+              const accent = isNavy ? "var(--navy)" : "var(--red)";
+              return (
                 <div
+                  key={p.title}
                   style={{
-                    fontSize: ".82rem",
-                    fontWeight: 700,
-                    letterSpacing: ".1em",
-                    textTransform: "uppercase",
-                    color: "var(--red)",
-                    marginBottom: 8,
+                    background: "#fff",
+                    borderRadius: 16,
+                    overflow: "hidden",
+                    boxShadow: "0 2px 12px rgba(27,42,91,.06)",
+                    borderTop: `4px solid ${accent}`,
+                    borderRight: "1px solid var(--border)",
+                    borderBottom: "1px solid var(--border)",
+                    borderLeft: "1px solid var(--border)",
+                    padding: "28px 32px",
                   }}
                 >
-                  {p.num} - {p.label}
+                  <div style={{ marginBottom: 10 }}>
+                    <div
+                      style={{
+                        fontSize: ".75rem",
+                        fontWeight: 700,
+                        letterSpacing: ".12em",
+                        textTransform: "uppercase",
+                        color: accent,
+                      }}
+                    >
+                      {p.label}
+                    </div>
+                  </div>
+                  <h3
+                    style={{
+                      fontSize: "1.18rem",
+                      fontWeight: 700,
+                      color: "var(--navy)",
+                      marginBottom: 10,
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {p.title}
+                  </h3>
+                  <p style={{ fontSize: "1.02rem", color: "var(--mg)", lineHeight: 1.8, margin: 0 }}>
+                    {p.desc}
+                  </p>
                 </div>
-                <h3
-                  style={{
-                    fontSize: "1.15rem",
-                    fontWeight: 700,
-                    color: "var(--navy)",
-                    marginBottom: 10,
-                  }}
-                >
-                  {p.title}
-                </h3>
-                <p style={{ fontSize: "1.04rem", color: "var(--mg)", lineHeight: 1.8 }}>
-                  {p.desc}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* ── 9 SERVICE TILES ──────────────────────────────── */}
-      <section className="section" id="payor-services">
+      <section className="section" id="payor-services" style={{ paddingBottom: 32 }}>
         <div className="sc">
           <div className="sec-header c">
             <div className="sec-label">Core Services</div>
@@ -248,19 +271,85 @@ export default function PayorServicesPage() {
         </div>
       </section>
 
+      {/* ── SEPARATOR ────────────────────────────────────── */}
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 32px", display: "flex", alignItems: "center", gap: 16 }}>
+        <div style={{ flex: 1, height: 1, background: "var(--border)" }} />
+        <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+          <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--navy)", opacity: 0.3, display: "inline-block" }} />
+          <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--red)", opacity: 0.5, display: "inline-block" }} />
+          <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--navy)", opacity: 0.3, display: "inline-block" }} />
+        </div>
+        <div style={{ flex: 1, height: 1, background: "var(--border)" }} />
+      </div>
+
+      {/* ── WHO WE SERVE / USE CASES ─────────────────────── */}
+      <section className="section" style={{ paddingTop: 32 }}>
+        <div className="sc">
+          <div className="who-we-serve-inner">
+            <div className="sec-header c" style={{ marginBottom: 32 }}>
+              <div className="sec-label">Engagement &amp; Use Cases</div>
+              <h2 className="sec-title">Who We <em>Serve</em></h2>
+              <p style={{ fontSize: "1.15rem", color: "var(--mg)", lineHeight: 1.85, maxWidth: 680, margin: "0 auto" }}>
+                Commercial and government Payors, Medicare Advantage plans, Third-Party Administrators (TPAs), and legal counsel engaged in healthcare disputes.
+              </p>
+            </div>
+            <h4 style={{ fontSize: "1.08rem", fontWeight: 700, color: "var(--navy)", marginBottom: 20, textAlign: "center" }}>When to Engage MHMDAA</h4>
+            <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
+              {[
+                "Denial defense requiring credible, evidence-based testimony on clinical decisions",
+                "Claims requiring Clinical Validation Audits, DRG Downgrades, Line Item Claim Analysis, and ED Facility Level Assignment Reviews",
+                "Level-of-care analysis and validation of clinical severity requirements",
+                "Claim disputes requiring clinical evidence for reimbursement",
+                "Alignment of clinical reality with administrative accuracy",
+              ].map((item, i) => {
+                const isNavy = i % 2 === 0;
+                const accent = isNavy ? "var(--navy)" : "var(--red)";
+                const iconBg = isNavy ? "rgba(27,42,91,.08)" : "rgba(200,16,46,.08)";
+                return (
+                  <div key={item} style={{
+                    background: "#fff",
+                    borderRadius: 16,
+                    padding: "20px",
+                    borderTop: `4px solid ${accent}`,
+                    borderRight: "1px solid var(--border)",
+                    borderBottom: "1px solid var(--border)",
+                    borderLeft: "1px solid var(--border)",
+                    boxShadow: "0 2px 12px rgba(27,42,91,.06)",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 12,
+                    width: 180,
+                    minWidth: 180,
+                    minHeight: 180,
+                  }}>
+                    <div style={{
+                      width: 32, height: 32, minWidth: 32, borderRadius: 8,
+                      background: iconBg, display: "flex", alignItems: "center", justifyContent: "center",
+                      margin: "0 auto",
+                    }}>
+                      <span style={{ color: accent, fontWeight: 800, fontSize: "1rem", lineHeight: 1 }}>&#10003;</span>
+                    </div>
+                    <p style={{ fontSize: ".92rem", color: "var(--dg)", margin: 0, lineHeight: 1.6, textAlign: "center" }}>{item}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── WHY PAYORS CHOOSE US ──────────────────────────── */}
       <section className="section why-payors-section" style={{ background: "#2A3F7A", padding: "96px 32px" }}>
         <div className="sc">
           <div className="sec-header c" style={{ marginBottom: 56 }}>
             <div className="sec-label" style={{ color: "#f87171" }}>
-              The MHMDAA Difference
+              THE MHMDAA DIFFERENCE — PRECISION AT THE POINT OF CHALLENGE.
             </div>
             <h2 className="sec-title" style={{ color: "#fff" }}>
-              Why Payors <em style={{ color: "#93c5fd" }}>Choose Us</em>
+              Why Choose <em style={{ color: "#93c5fd" }}>MHMDAA</em>
             </h2>
             <p className="sec-sub" style={{ color: "rgba(255,255,255,.84)" }}>
-              We operate at the intersection of clinical medicine, coding integrity, and legal
-              strategy.
+              We operate at the Nexus of Clinical Medicine, Coding Integrity, and Legal Strategy.
             </p>
           </div>
           <div
@@ -462,36 +551,6 @@ export default function PayorServicesPage() {
               </div>
             </div>
 
-          </div>
-        </div>
-      </section>
-
-      {/* ── WHO WE SERVE / USE CASES ─────────────────────── */}
-      <section className="section">
-        <div className="sc">
-          <div className="who-we-serve-inner">
-            <div className="sec-header c" style={{ marginBottom: 32 }}>
-              <div className="sec-label">Engagement &amp; Use Cases</div>
-              <h2 className="sec-title">Who We <em>Serve</em></h2>
-              <p style={{ fontSize: "1.15rem", color: "var(--mg)", lineHeight: 1.85, maxWidth: 680, margin: "0 auto" }}>
-                Commercial and government Payors, Medicare Advantage plans, Third-Party Administrators (TPAs), and legal counsel engaged in healthcare disputes.
-              </p>
-            </div>
-            <h4 className="who-serve-heading" style={{ fontSize: "1.08rem", fontWeight: 700, color: "var(--navy)", marginBottom: 14 }}>When to Engage MHMDAA</h4>
-            <div className="who-serve-list">
-              {[
-                "Denial defense requiring credible, evidence-based testimony on clinical decisions",
-                "Claims requiring Clinical Validation Audits, DRG Downgrades, Line Item Claim Analysis, and ED Facility Level Assignment Reviews",
-                "Level-of-care analysis and validation of clinical severity requirements",
-                "Claim disputes requiring clinical evidence for reimbursement",
-                "Alignment of clinical reality with administrative accuracy",
-              ].map((item) => (
-                <div key={item} style={{ display: "flex", gap: 12, alignItems: "flex-start", padding: 14, background: "var(--off)", borderRadius: 10, border: "1px solid var(--border)" }}>
-                  <span style={{ color: "var(--red)", fontWeight: 800, fontSize: "1.22rem", lineHeight: 1 }}>&#10003;</span>
-                  <p style={{ fontSize: "1.04rem", color: "var(--dg)", margin: 0, lineHeight: 1.65 }}>{item}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
