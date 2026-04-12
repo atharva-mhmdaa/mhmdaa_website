@@ -51,16 +51,15 @@ const pillars = [
 ];
 
 const services = [
-  { num: "01", title: "Litigation & Expert Support", slug: "litigation-expert-support", image: "/images/payor-tile-litigation-expert.png", teaser: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam." },
-  { num: "02", title: "Expert Medical Opinion Reports", slug: "expert-opinions", image: "/images/payor-tile-07-expert-opinions.png", teaser: "Deliver authoritative, physician-led analysis for high-stakes dispute resolution, generating formal reports structured specifically for legal defensibility and regulatory scrutiny." },
-  { num: "03", title: "Rebuttal Reports & Deposition Support", slug: "rebuttal", image: "/images/payor-tile-08-rebuttal.png", teaser: "Identify structural inaccuracies in opposing expert testimony through standardized, data-driven analysis \u2014 equipping legal counsel with precise, focus lines of questioning." },
-  { num: "04", title: "Demonstratives & Litigation Support", slug: "demonstratives", image: "/images/payor-tile-09-demonstratives.png", teaser: "We transform complex clinical and financial information into clear, compliant visual exhibits that make technical data understandable and actionable for fact finders." },
-  { num: "05", title: "Provider Dispute & Appeal Support", slug: "dispute-appeal", image: "/images/payor-tile-06-dispute-appeal.png", teaser: "Conduct independent, Physician-led, evidence-based clinical and administrative reviews to protect financial integrity against provider disputes through defensible, transparent claim determinations." },
-  { num: "06", title: "DRG Clinical Validation", slug: "drg-validation", image: "/images/payor-tile-03-drg-validation.png", teaser: "Proactively identifying unsupported comorbidities and sequencing discrepancies to ensure appropriate reimbursement reflect the actual acuity and resource utilization of the patient encounter." },
-  { num: "07", title: "Line-Item Coding Compliance", slug: "line-item", image: "/images/payor-tile-05-line-item.png", teaser: "Establish an error-resistant quality gate within the revenue cycle to align claim submissions with actual care delivered, preventing revenue leakage and ensuring billing transparency." },
-  { num: "08", title: "Two Midnight Rule Compliance", slug: "two-midnight", image: "/images/payor-tile-01-two-midnight.png", teaser: "Integrate standardized review protocols into admission workflows to establish a defensible clinical narrative \u2014 preventing status-related denials before a claim is ever submitted." },
-  { num: "09", title: "Inpatient vs. Observation Determination", slug: "inpatient-obs", image: "/images/payor-tile-02-inpatient-obs.png", teaser: "Apply rigorous threshold analysis and evidence-based benchmarking to ensure clinical evidence at the point of admission accurately supports an inpatient level of care." },
-  { num: "10", title: "ED Facility Level Methodology Review", slug: "ed-facility", image: "/images/payor-tile-04-ed-facility.png", teaser: "Our ED facility\u2011level methodology aligns billing with national standards by comparing documented and billed care to ensure accurate level assignment and strengthen revenue integrity." },
+  { num: "01", title: "Expert Medical Opinion Reports", slug: "expert-opinions", image: "/images/payor-tile-07-expert-opinions.png", teaser: "Deliver authoritative, physician-led analysis for high-stakes dispute resolution, generating formal reports structured specifically for legal defensibility and regulatory scrutiny." },
+  { num: "02", title: "Rebuttal Reports & Deposition Support", slug: "rebuttal", image: "/images/payor-tile-08-rebuttal.png", teaser: "Identify structural inaccuracies in opposing expert testimony through standardized, data-driven analysis \u2014 equipping legal counsel with precise, focus lines of questioning." },
+  { num: "03", title: "Demonstratives & Litigation Support", slug: "demonstratives", image: "/images/payor-tile-09-demonstratives.png", teaser: "We transform complex clinical and financial information into clear, compliant visual exhibits that make technical data understandable and actionable for fact finders." },
+  { num: "04", title: "Provider Dispute & Appeal Support", slug: "dispute-appeal", image: "/images/payor-tile-06-dispute-appeal.png", teaser: "Conduct independent, Physician-led, evidence-based clinical and administrative reviews to protect financial integrity against provider disputes through defensible, transparent claim determinations." },
+  { num: "05", title: "DRG Clinical Validation", slug: "drg-validation", image: "/images/payor-tile-03-drg-validation.png", teaser: "Proactively identifying unsupported comorbidities and sequencing discrepancies to ensure appropriate reimbursement reflect the actual acuity and resource utilization of the patient encounter." },
+  { num: "06", title: "Line-Item Coding Compliance", slug: "line-item", image: "/images/payor-tile-05-line-item.png", teaser: "Establish an error-resistant quality gate within the revenue cycle to align claim submissions with actual care delivered, preventing revenue leakage and ensuring billing transparency." },
+  { num: "07", title: "Two Midnight Rule Compliance", slug: "two-midnight", image: "/images/payor-tile-01-two-midnight.png", teaser: "Integrate standardized review protocols into admission workflows to establish a defensible clinical narrative \u2014 preventing status-related denials before a claim is ever submitted." },
+  { num: "08", title: "Inpatient vs. Observation Determination", slug: "inpatient-obs", image: "/images/payor-tile-02-inpatient-obs.png", teaser: "Apply rigorous threshold analysis and evidence-based benchmarking to ensure clinical evidence at the point of admission accurately supports an inpatient level of care." },
+  { num: "09", title: "ED Facility Level Methodology Review", slug: "ed-facility", image: "/images/payor-tile-04-ed-facility.png", teaser: "Our ED facility\u2011level methodology aligns billing with national standards by comparing documented and billed care to ensure accurate level assignment and strengthen revenue integrity." },
 ];
 
 const whyCards = [
@@ -243,14 +242,14 @@ export default function PayorServicesPage() {
           <div className="sec-header c">
             <div className="sec-label">Core Services</div>
             <h2 className="sec-title">
-              Ten Specialized <em>Service Lines</em>
+              Nine Specialized <em>Service Lines</em>
             </h2>
             <p className="sec-sub">
               Realigned to ensure accurate, timely, and sustainable reimbursement for Payors and
               managed care organizations.
             </p>
           </div>
-          <div className="svc-grid3">
+          <div className="svc-grid3-centered">
             {services.map((s) => (
               <Link href={`/payor-services/${s.slug}`} className="svc-tile" key={s.slug}>
                 <Image

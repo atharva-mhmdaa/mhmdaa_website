@@ -68,7 +68,6 @@ const LinkedInIcon = () => (
 // ];
 
 const payorLinks = [
-  { href: "/payor-services/litigation-expert-support", label: "Litigation & Expert Support" },
   { href: "/payor-services/expert-opinions", label: "Expert Medical Opinion Reports" },
   { href: "/payor-services/rebuttal", label: "Rebuttal Reports & Deposition Support" },
   { href: "/payor-services/demonstratives", label: "Demonstratives & Litigation Support" },

@@ -307,7 +307,8 @@ details[open] .fc-dropdown-chevron { transform: rotate(180deg) }
 .svc-tile:hover .svc-tile-cta { opacity: 1; transform: translateY(0) }
 
 /* ── SERVICE GRID HOME ───────────────────────────────────── */
-.svc-grid-home { display: grid; grid-template-columns: repeat(5,1fr); gap: 20px }
+.svc-grid-home { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center }
+.svc-grid-home > * { flex: 0 0 calc(20% - 16px); max-width: calc(20% - 16px) }
 .svc-tab-row { display: flex; justify-content: center; gap: 10px; margin-bottom: 36px }
 .svc-tab-btn-home { padding: 10px 28px; border-radius: 100px; border: 2px solid var(--navy); font-size: .9rem; font-weight: 700; cursor: pointer; transition: all .2s; letter-spacing: .04em; font-family: inherit; -webkit-tap-highlight-color: transparent; touch-action: manipulation }
 
@@ -585,6 +586,8 @@ details[open] .fc-dropdown-chevron { transform: rotate(180deg) }
 .svc-hero { background: linear-gradient(135deg,#1B2A5B 0%,#2A3F7A 55%,#1B2A5B 100%); padding: 220px 32px 90px; position: relative; overflow: hidden }
 .svc-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.016) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px); background-size: 60px 60px; pointer-events: none }
 .svc-grid3 { display: grid; grid-template-columns: repeat(5,1fr); gap: 24px }
+.svc-grid3-centered { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center }
+.svc-grid3-centered > * { flex: 0 0 calc(20% - 20px); max-width: calc(20% - 20px) }
 
 /* ── SERVICE BREADCRUMB NAV ─────────────────────────────── */
 .svc-breadcrumb-nav { background: var(--off); border-bottom: 1px solid var(--border); overflow-x: scroll; -webkit-overflow-scrolling: touch; scrollbar-width: auto; scrollbar-color: #2A3F7A #dde3f0; padding: 0 32px }
@@ -1097,7 +1100,9 @@ details[open] .ig-lbl-open { display: inline }
   .stats-strip-inner { grid-template-columns: repeat(3,1fr) }
   .stats-strip { padding: 28px 20px }
   .svc-grid3 { grid-template-columns: repeat(3,1fr) }
-  .svc-grid-home { grid-template-columns: repeat(3,1fr); gap: 16px }
+  .svc-grid3-centered > * { flex: 0 0 calc(33.333% - 16px); max-width: calc(33.333% - 16px) }
+  .svc-grid-home { gap: 16px }
+  .svc-grid-home > * { flex: 0 0 calc(33.333% - 11px); max-width: calc(33.333% - 11px) }
   .svc-tile { aspect-ratio: 4/3 }
   .sd-hgrid { grid-template-columns: 1fr }
   .sd-htext { text-align: center; display: flex; flex-direction: column; align-items: center }
@@ -1344,7 +1349,9 @@ details[open] .ig-lbl-open { display: inline }
   .hb-label { min-width: 0; font-size: .68rem; color: rgba(255,255,255,.55); letter-spacing: .08em; text-transform: uppercase; font-weight: 700; margin-bottom: 2px; opacity: 1 }
   .hb-value { font-size: .84rem; color: #fff; line-height: 1.4; font-weight: 600 }
   .svc-grid3 { grid-template-columns: 1fr }
-  .svc-grid-home { grid-template-columns: 1fr; gap: 14px }
+  .svc-grid3-centered > * { flex: 0 0 100%; max-width: 100% }
+  .svc-grid-home { gap: 14px }
+  .svc-grid-home > * { flex: 0 0 100%; max-width: 100% }
   .svc-tile { aspect-ratio: 16/10 }
   .svc-tile-body { padding: 0 18px 14px; bottom: 0 }
   .svc-tile-title { font-size: .95rem }
