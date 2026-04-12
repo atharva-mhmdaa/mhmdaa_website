@@ -1,53 +1,19 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
-const tabs = ["For Providers", "For Payors", "Our Impact"] as const;
+// HIDDEN — "For Providers" tab removed; re-enable when provider-services page is reactivated
+// const tabs = ["For Providers", "For Payors", "Our Impact"] as const;
+const tabs = ["How We Help", "Our Impact"] as const;
 
-const providerCards = [
-  {
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f87171" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M9 12l2 2 4-4" />
-        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z" />
-      </svg>
-    ),
-    name: "Front-End Strategy",
-    desc: "Authorization & status integrity aligned with Payor criteria at admission",
-  },
-  {
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f87171" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="7" width="20" height="14" rx="2" />
-        <path d="M16 7V5a2 2 0 0 0-4 0v2" />
-        <line x1="12" y1="12" x2="12" y2="16" />
-      </svg>
-    ),
-    name: "Revenue Protection",
-    desc: "Clinical Documentation Improvement coaching to prevent inappropriate DRG assignment before submission",
-  },
-  {
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f87171" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      </svg>
-    ),
-    name: "Tactical Defense",
-    desc: "Physician Peer to Peer advocacy & evidence-based appeals",
-  },
-  {
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f87171" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <line x1="12" y1="8" x2="12" y2="12" />
-        <line x1="12" y1="16" x2="12.01" y2="16" />
-      </svg>
-    ),
-    name: "Risk Mitigation",
-    desc: "Expert witness & litigation to ensure appropriate reimbursement",
-  },
-];
+// HIDDEN — re-enable when provider-services page is reactivated
+// const providerCards = [
+//   { name: "Front-End Strategy", desc: "Authorization & status integrity aligned with Payor criteria at admission" },
+//   { name: "Revenue Protection", desc: "Clinical Documentation Improvement coaching to prevent inappropriate DRG assignment before submission" },
+//   { name: "Tactical Defense", desc: "Physician Peer to Peer advocacy & evidence-based appeals" },
+//   { name: "Risk Mitigation", desc: "Expert witness & litigation to ensure appropriate reimbursement" },
+// ];
 
 const payorCards = [
   {
@@ -100,104 +66,45 @@ const impactStats = [
   { num: "190", color: "#f87171", label: "National\nClients" },
 ];
 
-const tabColors = ["#C8102E", "#34d399", "#fbbf24"];
+// HIDDEN — "#C8102E" was for the For Providers tab; re-add when reactivated
+const tabColors = ["#34d399", "#fbbf24"];
 
 export default function HeroCard() {
   const [active, setActive] = useState(0);
-  const tabsRef = useRef<HTMLDivElement>(null);
-  const activeRef = useRef(active);
-  activeRef.current = active;
 
-  const next = useCallback(() => {
-    setActive((prev) => (prev + 1) % tabs.length);
-  }, []);
+  const durations = [10000, 5000]; // "How We Help" = 10s, "Our Impact" = 5s
 
   useEffect(() => {
-    const id = setInterval(next, 10000);
-    return () => clearInterval(id);
-  }, [next]);
-
-  useEffect(() => {
-    const container = tabsRef.current;
-    if (!container) return;
-    const buttons = container.querySelectorAll<HTMLButtonElement>("button[data-idx]");
-    let touchHandled = false;
-    const cleanups: Array<() => void> = [];
-    buttons.forEach((btn) => {
-      const idx = parseInt(btn.getAttribute("data-idx") ?? "0", 10);
-      const onTouch = (e: Event) => { e.preventDefault(); touchHandled = true; setActive(idx); };
-      const onClick = () => { if (touchHandled) { touchHandled = false; return; } setActive(idx); };
-      btn.addEventListener("touchstart", onTouch, { passive: false });
-      btn.addEventListener("click", onClick);
-      cleanups.push(() => { btn.removeEventListener("touchstart", onTouch); btn.removeEventListener("click", onClick); });
-    });
-    return () => cleanups.forEach((fn) => fn());
-  }, []);
+    const id = setTimeout(() => {
+      setActive((prev) => (prev + 1) % tabs.length);
+    }, durations[active]);
+    return () => clearTimeout(id);
+  }, [active]);
 
   return (
     <div className="hero-card" style={{ marginTop: 0 }}>
-      <div className="hrc-tabs" ref={tabsRef}>
+      <div className="hrc-tabs">
         {tabs.map((label, i) => (
           <button
             key={i}
             className={`hrc-tab${i === active ? " active" : ""}`}
             data-idx={i}
+            onClick={() => setActive(i)}
+            style={{ touchAction: "manipulation" }}
           >
             {label}
           </button>
         ))}
       </div>
       <div className="hrc-body">
-        {/* Pane 1: For Providers */}
+        {/* Pane: For Providers — HIDDEN; re-enable when provider-services page is reactivated */}
+        {/* <div className={`hrc-pane${active === 0 ? " active" : ""}`}>
+          ...For Providers content...
+        </div> */}
+
+        {/* Pane 1: For Payors */}
         <div className={`hrc-pane${active === 0 ? " active" : ""}`}>
           <div>
-            <div className="hrc-ph">
-              <div className="hrc-ph-dot" style={{ background: "#C8102E" }} />
-              <div className="hrc-ph-lbl" style={{ color: "#f87171" }}>
-                For Providers
-              </div>
-            </div>
-            <div className="hrc-ph-title">How We Help Hospital Providers</div>
-          </div>
-          <div className="hfc-grid">
-            {providerCards.map((card, i) => (
-              <div className="hfc-card" key={i}>
-                <div
-                  className="hfc-icon-wrap"
-                  style={{ background: "rgba(200,16,46,.18)" }}
-                >
-                  {card.icon}
-                </div>
-                <div className="hfc-name">{card.name}</div>
-                <div className="hfc-desc">{card.desc}</div>
-              </div>
-            ))}
-          </div>
-          <div className="hrc-cta-row">
-            <span
-              style={{
-                fontSize: ".85rem",
-                color: "rgba(255,255,255,.5)",
-                fontWeight: 500,
-              }}
-            >
-              9 Integrated Service Lines
-            </span>
-            <Link href="/provider-services" style={{ color: "#93c5fd" }}>
-              View Provider Services &rarr;
-            </Link>
-          </div>
-        </div>
-
-        {/* Pane 2: For Payors */}
-        <div className={`hrc-pane${active === 1 ? " active" : ""}`}>
-          <div>
-            <div className="hrc-ph">
-              <div className="hrc-ph-dot" style={{ background: "#34d399" }} />
-              <div className="hrc-ph-lbl" style={{ color: "#34d399" }}>
-                For Payors
-              </div>
-            </div>
             <div className="hrc-ph-title">
               How We Help Payor Organizations
             </div>
@@ -227,20 +134,14 @@ export default function HeroCard() {
               Objective. Independent. Clinical.
             </span>
             <Link href="/payor-services" style={{ color: "#34d399" }}>
-              View Payor Services &rarr;
+              View Our Services &rarr;
             </Link>
           </div>
         </div>
 
-        {/* Pane 3: Our Impact */}
-        <div className={`hrc-pane${active === 2 ? " active" : ""}`}>
+        {/* Pane 2: Our Impact */}
+        <div className={`hrc-pane${active === 1 ? " active" : ""}`}>
           <div>
-            <div className="hrc-ph">
-              <div className="hrc-ph-dot" style={{ background: "#fbbf24" }} />
-              <div className="hrc-ph-lbl" style={{ color: "#fbbf24" }}>
-                Our Impact
-              </div>
-            </div>
             <div className="hrc-ph-title">Our Track Record in Numbers</div>
           </div>
           <div className="hrc-stat-grid">

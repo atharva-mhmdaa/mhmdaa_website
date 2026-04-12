@@ -14,10 +14,10 @@ export const metadata: Metadata = {
 
 const stats = [
   { target: 190, label: "National Clients\nServed" },
-  { target: 100, label: "Hospital Projects\nCompleted" },
   { target: 30, label: "Years of Consulting\nExperience" },
-  { target: 24, label: "UM Programs\nDeployed" },
-  { target: 50, label: "Clinical Documentation Improvement\nPrograms Deployed" },
+  { target: 12500, label: "Claims\nReviewed" },
+  { target: 125, label: "Lead Testifying Expert\nEngagements" },
+  { target: 250, label: "Expert\nDepositions" },
 ];
 
 const pillars = [

@@ -38,23 +38,18 @@ const LinkedInIcon = () => (
   </svg>
 );
 
-const providerLinks = [
-  { href: "/provider-services/authorization", label: "Authorization" },
-  {
-    href: "/provider-services/payor-notification",
-    label: "Payor Notification & Follow-up",
-  },
-  { href: "/provider-services/p2p", label: "Accelerated P2P" },
-  { href: "/provider-services/concurrent-review", label: "Concurrent Review" },
-  {
-    href: "/provider-services/coding",
-    label: "Coding & Clinical Documentation Improvement (CDI)",
-  },
-  { href: "/provider-services/claim-submission", label: "Claim Submission" },
-  { href: "/provider-services/denial-management", label: "Denial Management" },
-  { href: "/provider-services/appeals", label: "Appeal Letter Writing" },
-  { href: "/provider-services/litigation", label: "Litigation & Expert Support" },
-];
+// HIDDEN — re-enable when provider-services page is reactivated
+// const providerLinks = [
+//   { href: "/provider-services/authorization", label: "Authorization" },
+//   { href: "/provider-services/payor-notification", label: "Payor Notification & Follow-up" },
+//   { href: "/provider-services/p2p", label: "Accelerated P2P" },
+//   { href: "/provider-services/concurrent-review", label: "Concurrent Review" },
+//   { href: "/provider-services/coding", label: "Coding & Clinical Documentation Improvement (CDI)" },
+//   { href: "/provider-services/claim-submission", label: "Claim Submission" },
+//   { href: "/provider-services/denial-management", label: "Denial Management" },
+//   { href: "/provider-services/appeals", label: "Appeal Letter Writing" },
+//   { href: "/provider-services/litigation", label: "Litigation & Expert Support" },
+// ];
 
 const payorLinks = [
   { href: "/payor-services", label: "Payor Services Overview" },
@@ -142,15 +137,15 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Services for Providers */}
-          <div className="fc">
+          {/* Services for Providers — HIDDEN; re-enable when page is reactivated */}
+          {/* <div className="fc">
             <h5>Services for Providers</h5>
             {providerLinks.map((link) => (
               <Link key={link.href} href={link.href}>
                 {link.label}
               </Link>
             ))}
-          </div>
+          </div> */}
 
           {/* Services for Payors */}
           <div className="fc">

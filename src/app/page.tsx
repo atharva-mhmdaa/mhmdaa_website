@@ -22,54 +22,63 @@ export default function Home() {
         <HeroCarousel />
         <div className="hero-inner" style={{ position: "relative", zIndex: 3 }}>
           <div className="hero-text">
-            <div className="hero-badge">
-              Physician-Led Hospital Operations Consulting
+            <div
+              className="hero-badge"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                background: "rgba(200,16,46,.28)",
+                border: "1px solid rgba(200,16,46,.7)",
+                borderLeft: "none",
+                borderRadius: 100,
+                padding: "6px 18px",
+                color: "#fca5a5",
+              }}
+            >
+              <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#C8102E", flexShrink: 0, display: "inline-block" }} />
+              Physician-Led Billing Integrity & Claim Defense
             </div>
             <h1 className="hero-h1">
-              Transforming Hospital Revenue Integrity
-              <br />
-              Through <em>Clinical Excellence</em>
+              Aligning clinical evidence to deliver{" "}
+              <em>objective, defensible determinations.</em>
             </h1>
-            <p className="hero-p">
-              We help acute&#8209;care organizations build reliable,
-              standardized, and denial&#8209;resistant revenue cycle systems,
-              strengthening financial integrity, supporting caregivers, and
-              ensuring every patient&apos;s care is backed by accurate, timely,
-              and sustainable reimbursement.
-            </p>
+            <div style={{
+              background: "rgba(200,16,46,.08)",
+              border: "1px solid rgba(200,16,46,.25)",
+              borderRadius: 14,
+              padding: "20px 22px",
+              marginBottom: 24,
+            }}>
+              <svg width="28" height="20" viewBox="0 0 28 20" fill="none" style={{ marginBottom: 10, opacity: .5 }}>
+                <path d="M0 20V12C0 5.373 4.477 1.12 11 0l1.5 2.5C8.5 3.8 6.5 6.5 6 9h5v11H0zm16 0V12c0-6.627 4.477-10.88 11-12l1.5 2.5c-4 1.3-6 4-6.5 6.5H27v11H16z" fill="#fca5a5"/>
+              </svg>
+              <p style={{ margin: 0, fontStyle: "italic", fontSize: "1rem", color: "rgba(255,255,255,.9)", lineHeight: 1.8, fontWeight: 400 }}>
+                In an era of friction between automated Payor denials and provider over-coding, MHMDAA serves as the essential clinical intermediary. Our physician-led framework delivers the defensible evidence required to secure compliance.
+              </p>
+              <div style={{ marginTop: 14, display: "flex", alignItems: "center", gap: 10 }}>
+                <div style={{ width: 28, height: 2, background: "#C8102E", borderRadius: 2, flexShrink: 0 }} />
+                <span style={{ fontSize: ".82rem", fontWeight: 700, color: "#fca5a5", letterSpacing: ".06em" }}>Dr. Michael Hill</span>
+              </div>
+            </div>
+            <div style={{ fontSize: "1.15rem", fontWeight: 700, color: "#fff", marginBottom: 12, fontFamily: "'Playfair Display', serif" }}>
+              Key Operational Commitments
+            </div>
             <ul className="hero-bullets">
               <li>
-                <span className="hb-label">Target</span>
-                <span className="hb-value">Denial rate below 5%</span>
+                <span className="hb-label">Our Standard</span>
+                <span className="hb-value">Evidence-based clinical justification</span>
               </li>
               <li>
-                <span className="hb-label">Provider Milestone</span>
-                <span className="hb-value">
-                  24/7 peer-to-peer operations — issues flagged &amp; resolved within 6 hours
-                </span>
-              </li>
-              <li>
-                <span className="hb-label">Payor Milestone</span>
+                <span className="hb-label">Our Milestone</span>
                 <span className="hb-value">
                   Independent clinical assessment delivered within 48 hours of case submission
-                </span>
-              </li>
-              <li>
-                <span className="hb-label">Standard</span>
-                <span className="hb-value">
-                  Evidence-based clinical justification
-                </span>
-              </li>
-              <li>
-                <span className="hb-label">Strategy</span>
-                <span className="hb-value">
-                  Strategic payor&ndash;provider collaboration
                 </span>
               </li>
             </ul>
             <div className="hero-btns">
               <Link href="/contact" className="btn-p">
-                Get in touch
+                Connect with our Experts &rarr;
               </Link>
             </div>
           </div>
@@ -86,10 +95,10 @@ export default function Home() {
         <div className="stats-strip-inner">
           {[
             { target: 190, label: "National Clients\nServed" },
-            { target: 100, label: "Hospital Projects\nCompleted" },
             { target: 30, label: "Years of Consulting\nExperience" },
-            { target: 24, label: "UM Programs\nDeployed" },
-            { target: 50, label: "Clinical Documentation Improvement\nPrograms Deployed" },
+            { target: 12500, label: "Claims\nReviewed" },
+            { target: 125, label: "Lead Testifying Expert\nEngagements" },
+            { target: 250, label: "Expert\nDepositions" },
           ].map((stat, i) => (
             <RevealOnScroll key={i}>
               <div className="ss-item" style={{ "--sc": "#C8102E" } as React.CSSProperties}>
@@ -122,8 +131,8 @@ export default function Home() {
               </h2>
               <p className="sec-sub" style={{ maxWidth: 680, margin: "0 auto" }}>
                 Unlike traditional consulting firms, our organization is led by a
-                physician who brings firsthand clinical &amp; operational insight
-                into every revenue cycle decision.
+                physician who brings firsthand clinical and operational insight
+                to ensure billing integrity and objective claim validation.
               </p>
             </div>
           </RevealOnScroll>
@@ -152,9 +161,8 @@ export default function Home() {
                   <strong style={{ color: "#2A3F7A" }}>Factually Supported</strong>{" "}
                   or{" "}
                   <strong style={{ color: "#2A3F7A" }}>Policy-Driven</strong>.
-                  This systematic classification drives precision appeals and
-                  long-term denial pattern correction, increasing your
-                  hospital&apos;s operating margins at scale.
+                  This systematic classification ensures clinical accuracy and
+                  provides the foundation for defensible determinations.
                 </p>
                 <div className="adv-rule" />
               </div>
@@ -165,25 +173,25 @@ export default function Home() {
                 <div
                   className="adv-icon"
                   style={{
-                    background: "rgba(27,42,91,.08)",
-                    border: "1px solid rgba(27,42,91,.18)",
+                    background: "rgba(200,16,46,.1)",
+                    border: "1px solid rgba(200,16,46,.25)",
                   }}
                 >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" width="28" height="28">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#C8102E" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" width="28" height="28">
                     <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
                     <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
                   </svg>
                 </div>
                 <h4 className="adv-title">Bridging the Gap</h4>
                 <p style={{ fontSize: "1.2rem", fontStyle: "italic", color: "#C8102E", fontWeight: 700, marginBottom: 10, marginTop: -4, letterSpacing: ".01em" }}>
-                  Aligning Medical Judgement with Revenue Integrity
+                  Aligning Medical Judgment with Billing Integrity
                 </p>
                 <p className="adv-desc">
-                  We sit at the intersection of clinical care and financial
-                  performance, applying physician-led medical judgment where
-                  traditional firms apply only financial modeling. By resolving the
-                  friction between what clinicians document and what Payors
-                  reimburse, we protect your revenue at every stage of the cycle.
+                  We sit at the intersection of clinical care and claims
+                  adjudication, applying physician-led medical judgment where
+                  traditional firms apply only financial modeling. By resolving
+                  the friction between provider documentation and Payor policy,
+                  we ensure regulatory compliance and objective outcomes.
                 </p>
                 <div className="adv-rule" />
               </div>
@@ -194,11 +202,11 @@ export default function Home() {
                 <div
                   className="adv-icon"
                   style={{
-                    background: "rgba(27,42,91,.08)",
-                    border: "1px solid rgba(27,42,91,.18)",
+                    background: "rgba(200,16,46,.1)",
+                    border: "1px solid rgba(200,16,46,.25)",
                   }}
                 >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" width="28" height="28">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#C8102E" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" width="28" height="28">
                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                     <polyline points="22 4 12 14.01 9 11.01" />
                   </svg>
@@ -208,11 +216,12 @@ export default function Home() {
                   We identify variances in demonstrating medical necessity.
                 </p>
                 <p className="adv-desc">
-                  Our firm serves as an Independent Clinical Arbitrator, identifying
-                  variances in demonstrating medical necessity (Sepsis 3, Two
-                  Midnight Benchmark, or proprietary MCG/InterQual filters). Our
-                  assessments provide the legal and clinical evidentiary basis
-                  required to overturn unlawful recoupments.
+                  Our firm serves as an Independent Clinical Arbitrator,
+                  identifying variances in demonstrating medical necessity
+                  (Sepsis 3, Two Midnight Benchmark, or proprietary
+                  MCG/InterQual filters). Our assessments provide the legal and
+                  clinical evidentiary basis required to validate determinations
+                  and legally defend appropriate claim adjudications.
                 </p>
                 <div className="adv-rule" />
               </div>
@@ -234,20 +243,16 @@ export default function Home() {
                     <line x1="16" y1="17" x2="8" y2="17" />
                   </svg>
                 </div>
-                <h4 className="adv-title">Clinical Documentation</h4>
+                <h4 className="adv-title">Forensic Medical Audits</h4>
                 <p style={{ fontSize: "1.2rem", fontStyle: "italic", color: "#C8102E", fontWeight: 700, marginBottom: 10, marginTop: -4, letterSpacing: ".01em" }}>
                   We perform a Forensic Medical Audit.
                 </p>
                 <p className="adv-desc">
                   Our team conducts granular forensic reviews of clinical records,
-                  prioritizing high-risk DRGs and ensuring accurate CC/MCC capture
-                  on every encounter. The result is maximum appropriate
-                  reimbursement, fully defensible documentation, and a coding
-                  posture that withstands the most rigorous Payor scrutiny.
-                </p>
-                <p className="adv-desc" style={{ marginTop: 10 }}>
-                  Analyzing high-risk DRGs to ensure accurate coding and CC/MCC
-                  capture for maximum appropriate reimbursement every time.
+                  prioritizing high-risk DRGs to identify recurring provider error
+                  patterns and billing compliance gaps. The result is a fully
+                  defensible, evidence-based audit that legally validates
+                  appropriate reimbursement levels.
                 </p>
                 <div className="adv-rule" />
               </div>
@@ -258,27 +263,27 @@ export default function Home() {
                 <div
                   className="adv-icon"
                   style={{
-                    background: "rgba(27,42,91,.08)",
-                    border: "1px solid rgba(27,42,91,.18)",
+                    background: "rgba(200,16,46,.1)",
+                    border: "1px solid rgba(200,16,46,.25)",
                   }}
                 >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" width="28" height="28">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#C8102E" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" width="28" height="28">
                     <line x1="12" y1="3" x2="12" y2="21" />
                     <path d="M3 9l4.5 9H3" />
                     <path d="M16.5 9l4.5 9h-4.5" />
                     <line x1="3" y1="9" x2="21" y2="9" />
                   </svg>
                 </div>
-                <h4 className="adv-title">Recovery &amp; Appeals</h4>
+                <h4 className="adv-title">Litigation &amp; Defense</h4>
                 <p style={{ fontSize: "1.2rem", fontStyle: "italic", color: "#C8102E", fontWeight: 700, marginBottom: 10, marginTop: -4, letterSpacing: ".01em" }}>
-                  We are dedicated to recovering every dollar you are owed.
+                  We deliver clinical authority and legal precision.
                 </p>
                 <p className="adv-desc">
-                  Physician-authored clinical narratives, backed by expert testimony
-                  and litigation support, pursue every disputed determination
-                  through all stages of appeal. From Level I reconsiderations to
-                  federal court, MHMDAA delivers the clinical authority and legal
-                  precision required to prevail.
+                  Physician-authored clinical narratives, backed by expert
+                  testimony and litigation support, defend your adjudications
+                  through all stages of dispute. From Level I reconsiderations
+                  to federal court, MHMDAA delivers the clinical authority and
+                  legal precision required to prevail.
                 </p>
                 <div className="adv-rule" />
               </div>
@@ -316,9 +321,9 @@ export default function Home() {
                 Explore Our <em>Service Lines</em>
               </h2>
               <p className="sec-sub" style={{ maxWidth: 640, marginLeft: "auto", marginRight: "auto" }}>
-                A comprehensive suite of services protecting revenue integrity
-                across every stage of the patient journey, for both Providers and
-                Payors.
+                A comprehensive suite of services dedicated to ensuring billing
+                integrity, regulatory compliance, and objective, defensible
+                claim adjudications.
               </p>
             </div>
           </RevealOnScroll>

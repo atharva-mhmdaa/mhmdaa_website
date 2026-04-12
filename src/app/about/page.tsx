@@ -198,10 +198,10 @@ export default function AboutPage() {
         <div className="stats-strip-inner">
           {[
             { target: 190, label: "National Clients\nServed" },
-            { target: 100, label: "Hospital Projects\nCompleted" },
             { target: 30, label: "Years of Consulting\nExperience" },
-            { target: 24, label: "UM Programs\nDeployed" },
-            { target: 50, label: "Clinical Documentation Improvement\nPrograms Deployed" },
+            { target: 12500, label: "Claims\nReviewed" },
+            { target: 125, label: "Lead Testifying Expert\nEngagements" },
+            { target: 250, label: "Expert\nDepositions" },
           ].map((stat, i) => (
             <RevealOnScroll key={i}>
               <div className="ss-item" style={{ "--sc": "#C8102E" } as React.CSSProperties}>

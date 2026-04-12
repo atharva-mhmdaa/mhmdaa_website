@@ -168,14 +168,15 @@ function TileGrid({ services }: { services: ServiceTile[] }) {
 }
 
 export default function ServicesTabs() {
-  const [activeTab, setActiveTab] = useState<"prov" | "payor">("prov");
-  const provRef = useRef<HTMLButtonElement>(null);
+  // HIDDEN — "prov" tab removed; default changed to "payor". Re-enable when provider-services page is reactivated.
+  const [activeTab, setActiveTab] = useState<"prov" | "payor">("payor");
+  // const provRef = useRef<HTMLButtonElement>(null); // re-enable with provider tab
   const payorRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const provBtn = provRef.current;
+    // const provBtn = provRef.current; // re-enable with provider tab
     const payorBtn = payorRef.current;
-    if (!provBtn || !payorBtn) return;
+    if (!payorBtn) return;
 
     let touchHandled = false;
     const makeTouchHandler = (tab: "prov" | "payor") => (e: Event) => {
@@ -189,19 +190,19 @@ export default function ServicesTabs() {
       setActiveTab(tab);
     };
 
-    const provTouch = makeTouchHandler("prov");
-    const provClick = makeClickHandler("prov");
+    // const provTouch = makeTouchHandler("prov"); // re-enable with provider tab
+    // const provClick = makeClickHandler("prov"); // re-enable with provider tab
     const payorTouch = makeTouchHandler("payor");
     const payorClick = makeClickHandler("payor");
 
-    provBtn.addEventListener("touchstart", provTouch, { passive: false });
-    provBtn.addEventListener("click", provClick);
+    // provBtn.addEventListener("touchstart", provTouch, { passive: false }); // re-enable with provider tab
+    // provBtn.addEventListener("click", provClick); // re-enable with provider tab
     payorBtn.addEventListener("touchstart", payorTouch, { passive: false });
     payorBtn.addEventListener("click", payorClick);
 
     return () => {
-      provBtn.removeEventListener("touchstart", provTouch);
-      provBtn.removeEventListener("click", provClick);
+      // provBtn.removeEventListener("touchstart", provTouch); // re-enable with provider tab
+      // provBtn.removeEventListener("click", provClick); // re-enable with provider tab
       payorBtn.removeEventListener("touchstart", payorTouch);
       payorBtn.removeEventListener("click", payorClick);
     };
@@ -210,7 +211,8 @@ export default function ServicesTabs() {
   return (
     <>
       <div className="svc-tab-row">
-        <button
+        {/* For Providers tab — HIDDEN; re-enable when provider-services page is reactivated */}
+        {/* <button
           ref={provRef}
           className="svc-tab-btn-home"
           style={{
@@ -219,7 +221,7 @@ export default function ServicesTabs() {
           }}
         >
           For Providers
-        </button>
+        </button> */}
         <button
           ref={payorRef}
           className="svc-tab-btn-home"

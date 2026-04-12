@@ -59,7 +59,7 @@ export default function AnimatedCounter({
 
   return (
     <span ref={ref} className={className}>
-      {display}
+      {display.toLocaleString()}
       {suffix && <span className="stat-plus">{suffix}</span>}
     </span>
   );
