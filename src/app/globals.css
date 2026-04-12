@@ -109,7 +109,7 @@ body {
 .card img { transition: transform .5s cubic-bezier(.34,1.56,.64,1) }
 .card:hover img { transform: scale(1.06) }
 .card-grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px }
-.pillar-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px }
+.pillar-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; align-items: stretch }
 .card-grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 26px }
 
 /* ── FEATURE ─────────────────────────────────────────────── */
@@ -997,7 +997,8 @@ details[open] .ig-lbl-open { display: inline }
 
 .values-careers { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px }
 .vc-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 26px 22px; transition: all .3s; position: relative; overflow: hidden }
-.vc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg,var(--red),var(--blue)) }
+.vc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--red) }
+.vc-card.vc-card--blue::before { background: var(--navy) }
 .vc-card:hover { box-shadow: 0 12px 40px rgba(10,31,61,.1); transform: translateY(-4px) }
 .vc-card-title { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 9px }
 .vc-card-desc { font-size: 1.1rem; color: var(--mg); line-height: 1.7 }
