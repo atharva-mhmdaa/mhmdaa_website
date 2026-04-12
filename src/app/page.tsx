@@ -90,7 +90,7 @@ export default function Home() {
       {/* ══ SECTION 2: STATS STRIP ═══════════════════════════ */}
       <div className="stats-strip">
         <div className="stats-hdr">
-          <div className="stats-hdr-lbl">&#9679;&nbsp;&nbsp;Proven Impact</div>
+          <div className="sec-label" style={{ color: "#fff" }}>Proven Impact</div>
         </div>
         <div className="stats-strip-inner">
           {[
@@ -353,7 +353,135 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══ SECTION 6: MEET THE FOUNDER ══════════════════════ */}
+      {/* ══ SECTION 6: PERFORMANCE ASSESSMENT ════════════════ */}
+      <section className="section" style={{ background: "var(--off)" }}>
+        <div className="sc">
+          <RevealOnScroll>
+            <div className="sec-header c" style={{ marginBottom: 48 }}>
+              <div className="sec-label">Performance Assessment</div>
+              <h2 className="sec-title">
+                Identifying Operational <em>&amp; Compliance Gaps</em>
+              </h2>
+              <p className="sec-sub" style={{ maxWidth: 680, margin: "0 auto" }}>
+                Identify the vulnerabilities that compromise billing integrity,
+                especially the acute&#8209;care areas where provider error patterns
+                occur. Pinpoint your top operational challenges and see how
+                MHMDAA&apos;s physician&#8209;led approach directly addresses them
+                with clinically grounded, defensible claim analysis.
+              </p>
+            </div>
+          </RevealOnScroll>
+
+          <div className="perf-grid-home">
+            {[
+              {
+                bg: "rgba(200,16,46,.08)",
+                stroke: "#C8102E",
+                icon: (
+                  /* Clipboard with a cross / prior auth denied */
+                  <svg width="28" height="28" fill="none" stroke="#C8102E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+                    <line x1="9.5" y1="12.5" x2="14.5" y2="17.5" />
+                    <line x1="14.5" y1="12.5" x2="9.5" y2="17.5" />
+                  </svg>
+                ),
+                title: "Medical Necessity & Level-of-Care Disputes",
+                desc: "Friction surrounding prior authorizations, medical necessity, and designated care settings requires independent, evidence-based clinical justification to validate determinations.",
+              },
+              {
+                bg: "rgba(52,211,153,.12)",
+                stroke: "#34d399",
+                icon: (
+                  /* Magnifying glass over a document — forensic billing review */
+                  <svg width="28" height="28" fill="none" stroke="#34d399" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <circle cx="10.5" cy="14.5" r="2.5" />
+                    <line x1="12.5" y1="16.5" x2="15" y2="19" />
+                  </svg>
+                ),
+                title: "Billing Integrity Risks",
+                desc: "Recurring provider error patterns, coding inconsistencies, and compliance gaps violate payor agreements and demand rigorous forensic review.",
+              },
+              {
+                bg: "rgba(251,191,36,.12)",
+                stroke: "#fbbf24",
+                icon: (
+                  /* Shield with star — CMS/NCQA Star Ratings at risk */
+                  <svg width="28" height="28" fill="none" stroke="#fbbf24" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M12 2l8 3v7c0 5-3.5 9-8 10C7.5 21 4 17 4 12V5l8-3z" />
+                    <polygon points="12,7 13.2,10.2 16.5,10.2 13.9,12.3 14.9,15.5 12,13.6 9.1,15.5 10.1,12.3 7.5,10.2 10.8,10.2" fill="#fbbf24" stroke="none" />
+                  </svg>
+                ),
+                title: "Compliance & Regulatory Gaps",
+                desc: "Audit vulnerabilities, documentation deficiencies, and regulatory exposure increase institutional risk and threaten Star Ratings during CMS/NCQA audits.",
+              },
+              {
+                bg: "rgba(96,165,250,.12)",
+                stroke: "#60a5fa",
+                icon: (
+                  /* Scales of justice — arbitration / dispute classification */
+                  <svg width="28" height="28" fill="none" stroke="#60a5fa" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <line x1="12" y1="3" x2="12" y2="21" />
+                    <path d="M3 6l9-3 9 3" />
+                    <path d="M6 6l-3 6c0 1.66 1.34 3 3 3s3-1.34 3-3L6 6z" />
+                    <path d="M18 6l-3 6c0 1.66 1.34 3 3 3s3-1.34 3-3L18 6z" />
+                    <line x1="8" y1="21" x2="16" y2="21" />
+                  </svg>
+                ),
+                title: "Dispute Resolution Friction",
+                desc: "Breakdowns in clinical documentation and arbitration require an essential clinical intermediary to objectively classify reviews as either factually supported or policy-driven.",
+              },
+              {
+                bg: "rgba(168,85,247,.12)",
+                stroke: "#a855f7",
+                icon: (
+                  /* Hourglass — bottleneck / delays */
+                  <svg width="28" height="28" fill="none" stroke="#a855f7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M5 3h14" />
+                    <path d="M5 21h14" />
+                    <path d="M5 3l7 9-7 9" />
+                    <path d="M19 3l-7 9 7 9" />
+                  </svg>
+                ),
+                title: "Operational Bottlenecks",
+                desc: "Utilization review backlogs and slow concurrent reviews are crippling clinical operations and delaying objective claim adjudication.",
+              },
+              {
+                bg: "rgba(244,114,182,.12)",
+                stroke: "#f472b6",
+                icon: (
+                  /* Gavel — appeals & litigation */
+                  <svg width="28" height="28" fill="none" stroke="#f472b6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M14 10l-8 8a2 2 0 0 0 0 2.83l.17.17a2 2 0 0 0 2.83 0l8-8" />
+                    <path d="M10 14L20 4" />
+                    <path d="M18 2l4 4-2 2-4-4 2-2z" />
+                    <line x1="3" y1="21" x2="9" y2="21" />
+                  </svg>
+                ),
+                title: "Appeals & Litigation Exposure",
+                desc: "Documentation and arbitration disputes require forensic contract review, expert witness testimony, and regulatory guidance to legally defend appropriate adjudications.",
+              },
+            ].map((card, i) => (
+              <RevealOnScroll key={i}>
+                <div className="perf-card">
+                  <div
+                    className="perf-icon-wrap"
+                    style={{ background: card.bg }}
+                  >
+                    {card.icon}
+                  </div>
+                  <div className="perf-card-title">{card.title}</div>
+                  <div className="perf-card-desc">{card.desc}</div>
+                </div>
+              </RevealOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ SECTION 7: MEET THE FOUNDER ══════════════════════ */}
       <section
         className="cin-section cin-section-home"
         style={{ position: "relative", minHeight: 600, overflow: "hidden" }}
@@ -421,22 +549,21 @@ export default function Home() {
             <RevealOnScroll direction="right">
               <div className="cin-desktop-header">
                 <div
+                  className="hero-badge"
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
                     gap: 8,
-                    background: "rgba(200,16,46,.2)",
-                    border: "1px solid rgba(200,16,46,.45)",
-                    color: "#f87171",
-                    fontSize: ".8rem",
-                    fontWeight: 700,
-                    letterSpacing: ".14em",
-                    textTransform: "uppercase",
-                    padding: "5px 14px",
+                    background: "rgba(200,16,46,.28)",
+                    border: "1px solid rgba(200,16,46,.7)",
+                    borderLeft: "none",
                     borderRadius: 100,
+                    padding: "6px 18px",
+                    color: "#fca5a5",
                     marginBottom: 20,
                   }}
                 >
+                  <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#C8102E", flexShrink: 0, display: "inline-block" }} />
                   Our Founder
                 </div>
                 <h2
@@ -684,139 +811,10 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ══ SECTION 7: PERFORMANCE ASSESSMENT ════════════════ */}
-      <section className="section" style={{ background: "var(--off)" }}>
-        <div className="sc">
-          <RevealOnScroll>
-            <div className="sec-header c" style={{ marginBottom: 48 }}>
-              <div className="sec-label">Performance Assessment</div>
-              <h2 className="sec-title">
-                Where Is Your Revenue <em>Falling Through?</em>
-              </h2>
-              <p className="sec-sub" style={{ maxWidth: 680, margin: "0 auto" }}>
-                Identify the gaps that limit accurate reimbursement, especially the
-                acute&#8209;care areas where revenue leakage occurs. Then pinpoint
-                your top operational challenges and see how MHMDAA&apos;s
-                physician&#8209;led approach directly addresses them with
-                clinically grounded, defensible claim analysis.
-              </p>
-            </div>
-          </RevealOnScroll>
-
-          <div className="perf-grid-home">
-            {[
-              {
-                bg: "rgba(200,16,46,.08)",
-                stroke: "#C8102E",
-                icon: (
-                  /* Denied document: file with an X */
-                  <svg width="28" height="28" fill="none" stroke="#C8102E" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                    <polyline points="14 2 14 8 20 8" />
-                    <line x1="9.5" y1="12.5" x2="14.5" y2="17.5" />
-                    <line x1="14.5" y1="12.5" x2="9.5" y2="17.5" />
-                  </svg>
-                ),
-                title: "High Denial Rates",
-                desc: "Prior authorization denials, medical necessity disputes, and underpayments are impacting your appropriate reimbursement.",
-              },
-              {
-                bg: "rgba(52,211,153,.12)",
-                stroke: "#34d399",
-                icon: (
-                  /* Dollar sign leaking / draining out */
-                  <svg width="28" height="28" fill="none" stroke="#34d399" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                    <circle cx="12" cy="10" r="7" />
-                    <line x1="12" y1="1" x2="12" y2="3" />
-                    <line x1="12" y1="17" x2="12" y2="19" />
-                    <path d="M9 7h4.5a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3H15" />
-                    <path d="M10 19l2 4" />
-                    <path d="M14 19l-2 4" />
-                  </svg>
-                ),
-                title: "Revenue Leakage",
-                desc: "Missed charges, coding downgrades, and unresolved claims are leaving recoverable revenue on the table.",
-              },
-              {
-                bg: "rgba(251,191,36,.12)",
-                stroke: "#fbbf24",
-                icon: (
-                  /* Shield with exclamation — compliance warning */
-                  <svg width="28" height="28" fill="none" stroke="#fbbf24" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                    <path d="M12 2l8 3v7c0 5-3.5 9-8 10C7.5 21 4 17 4 12V5l8-3z" />
-                    <line x1="12" y1="9" x2="12" y2="13" />
-                    <circle cx="12" cy="16" r=".6" fill="#fbbf24" />
-                  </svg>
-                ),
-                title: "Compliance Gaps",
-                desc: "Audit vulnerabilities, documentation deficiencies, and regulatory exposure are increasing institutional risk.",
-              },
-              {
-                bg: "rgba(96,165,250,.12)",
-                stroke: "#60a5fa",
-                icon: (
-                  /* Two speech bubbles facing each other — peer-to-peer */
-                  <svg width="28" height="28" fill="none" stroke="#60a5fa" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                    <line x1="9" y1="10" x2="15" y2="10" />
-                    <line x1="12" y1="7" x2="12" y2="13" />
-                  </svg>
-                ),
-                title: "Peer-to-Peer Losses",
-                desc: "Breakdowns in documentation, appeals, and arbitration are driving avoidable revenue loss.",
-              },
-              {
-                bg: "rgba(168,85,247,.12)",
-                stroke: "#a855f7",
-                icon: (
-                  /* Hourglass — bottleneck / delays */
-                  <svg width="28" height="28" fill="none" stroke="#a855f7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                    <path d="M5 3h14" />
-                    <path d="M5 21h14" />
-                    <path d="M5 3l7 9-7 9" />
-                    <path d="M19 3l-7 9 7 9" />
-                  </svg>
-                ),
-                title: "Operational Bottlenecks",
-                desc: "Utilization review backlogs, slow concurrent reviews, and throughput delays are crippling clinical operations.",
-              },
-              {
-                bg: "rgba(244,114,182,.12)",
-                stroke: "#f472b6",
-                icon: (
-                  /* Gavel — appeals & litigation */
-                  <svg width="28" height="28" fill="none" stroke="#f472b6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                    <path d="M14 10l-8 8a2 2 0 0 0 0 2.83l.17.17a2 2 0 0 0 2.83 0l8-8" />
-                    <path d="M10 14L20 4" />
-                    <path d="M18 2l4 4-2 2-4-4 2-2z" />
-                    <line x1="3" y1="21" x2="9" y2="21" />
-                  </svg>
-                ),
-                title: "Appeals & Litigation",
-                desc: "Documentation, appeal, and arbitration failures are creating avoidable revenue loss.",
-              },
-            ].map((card, i) => (
-              <RevealOnScroll key={i}>
-                <div className="perf-card">
-                  <div
-                    className="perf-icon-wrap"
-                    style={{ background: card.bg }}
-                  >
-                    {card.icon}
-                  </div>
-                  <div className="perf-card-title">{card.title}</div>
-                  <div className="perf-card-desc">{card.desc}</div>
-                </div>
-              </RevealOnScroll>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ══ SECTION 8: CTA BAND ══════════════════════════════ */}
       <CTABand
         heading="Start a Conversation With Our Experts"
-        description="Partner with MHMDAA&rsquo;s physician-led team and take the first decisive step toward building a denial-resilient, financially sustainable hospital operation."
+        description="Partner with MHMDAA&rsquo;s physician-led team and take the first decisive step toward maintaining billing integrity, ensuring regulatory compliance, and delivering objective, defensible claim adjudications."
       />
     </>
   );

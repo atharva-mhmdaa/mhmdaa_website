@@ -26,7 +26,7 @@ export const payorServices: PayorService[] = [
       "Michael Hill MD and Associates — Litigation & Expert Support: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
     heroDescription:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    heroImage: "/images/payor-litigation-expert-hero.png",
+    heroImage: "/images/payor-litigation-expert-hero2.png",
     infoText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
     infoBadge: "LOREM IPSUM",
     processSteps: [
@@ -53,17 +53,17 @@ export const payorServices: PayorService[] = [
       {
         title: "Lorem Ipsum Feature One",
         desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.",
-        image: "/images/payor-litigation-expert-hero.png",
+        image: "/images/payor-litigation-feat-1.png",
       },
       {
         title: "Lorem Ipsum Feature Two",
         desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident deserunt mollit anim id est laborum.",
-        image: "/images/payor-litigation-expert-hero.png",
+        image: "/images/payor-litigation-feat-2.png",
       },
       {
         title: "Lorem Ipsum Feature Three",
         desc: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto.",
-        image: "/images/payor-litigation-expert-hero.png",
+        image: "/images/payor-litigation-feat-3.png",
       },
     ],
     prevSlug: null,

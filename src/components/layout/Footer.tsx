@@ -16,6 +16,22 @@ const PhoneIcon = () => (
   </svg>
 );
 
+const MailIcon = () => (
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#C8102E"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+    <polyline points="22,6 12,13 2,6" />
+  </svg>
+);
+
 const MapPinIcon = () => (
   <svg
     width="14"
@@ -52,26 +68,22 @@ const LinkedInIcon = () => (
 // ];
 
 const payorLinks = [
-  { href: "/payor-services", label: "Payor Services Overview" },
-  {
-    href: "/payor-services#concurrent",
-    label: "Concurrent Review Support",
-  },
-  {
-    href: "/payor-services#imc",
-    label: "Independent Medical Consultation",
-  },
-  {
-    href: "/payor-services#litigation",
-    label: "Litigation & SIU Support",
-  },
+  { href: "/payor-services/litigation-expert-support", label: "Litigation & Expert Support" },
+  { href: "/payor-services/expert-opinions", label: "Expert Medical Opinion Reports" },
+  { href: "/payor-services/rebuttal", label: "Rebuttal Reports & Deposition Support" },
+  { href: "/payor-services/demonstratives", label: "Demonstratives & Litigation Support" },
+  { href: "/payor-services/dispute-appeal", label: "Provider Dispute & Appeal Support" },
+  { href: "/payor-services/drg-validation", label: "DRG Clinical Validation" },
+  { href: "/payor-services/line-item", label: "Line-Item Coding Compliance" },
+  { href: "/payor-services/two-midnight", label: "Two Midnight Rule Compliance" },
+  { href: "/payor-services/inpatient-obs", label: "Inpatient vs. Observation Determination" },
+  { href: "/payor-services/ed-facility", label: "ED Facility Level Methodology Review" },
 ];
 
 const companyLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
   { href: "/case-studies", label: "Case Studies" },
-  { href: "/healthcare-fraud-analysis", label: "Healthcare Fraud Analysis" },
   { href: "/blogs", label: "Blogs & Reports" },
   { href: "/careers", label: "Careers" },
   { href: "/contact", label: "Contact Us" },
@@ -126,6 +138,14 @@ export default function Footer() {
               </div>
               <div className="fb-contact-item">
                 <div className="fb-contact-icon">
+                  <MailIcon />
+                </div>
+                <div className="fb-contact-text">
+                  <a href="mailto:info@mhmdaa.com">info@mhmdaa.com</a>
+                </div>
+              </div>
+              <div className="fb-contact-item">
+                <div className="fb-contact-icon">
                   <MapPinIcon />
                 </div>
                 <div className="fb-contact-text">
@@ -149,12 +169,8 @@ export default function Footer() {
 
           {/* Services for Payors */}
           <div className="fc">
-            <h5>Services for Payors</h5>
-            {payorLinks.map((link) => (
-              <Link key={link.href} href={link.href}>
-                {link.label}
-              </Link>
-            ))}
+            <h5><Link href="/payor-services" style={{ color: "inherit", textDecoration: "none" }}>Services for Payors</Link></h5>
+            <h5><Link href="/healthcare-fraud-analysis" style={{ color: "inherit", textDecoration: "none" }}>Healthcare Fraud Analysis</Link></h5>
           </div>
 
           {/* Company */}

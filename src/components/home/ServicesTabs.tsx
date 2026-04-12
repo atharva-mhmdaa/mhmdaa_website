@@ -84,7 +84,7 @@ const payorServices: ServiceTile[] = [
     title: "Litigation & Expert Support",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     href: "/payor-services/litigation-expert-support",
-    img: "/images/payor-litigation-expert-hero.png",
+    img: "/images/payor-tile-litigation-expert.png",
   },
   {
     num: "02",

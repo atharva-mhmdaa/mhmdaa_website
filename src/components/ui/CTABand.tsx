@@ -16,7 +16,7 @@ export default function CTABand({
   return (
     <section className="cta-band">
       <div className="cta-inner">
-        <h2>{heading}</h2>
+        <h2 style={{ whiteSpace: "nowrap" }}>{heading}</h2>
         {description && <p>{description}</p>}
         <div className="cta-btns">
           <Link href={buttonHref} className="btn-p">

@@ -45,7 +45,7 @@ const pillars = [
 ];
 
 const services = [
-  { num: "01", title: "Litigation & Expert Support", slug: "litigation-expert-support", image: "/images/payor-litigation-expert-hero.png", teaser: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam." },
+  { num: "01", title: "Litigation & Expert Support", slug: "litigation-expert-support", image: "/images/payor-tile-litigation-expert.png", teaser: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam." },
   { num: "02", title: "Expert Medical Opinion Reports", slug: "expert-opinions", image: "/images/payor-tile-07-expert-opinions.png", teaser: "Deliver authoritative, physician-led analysis for high-stakes dispute resolution, generating formal reports structured specifically for legal defensibility and regulatory scrutiny." },
   { num: "03", title: "Rebuttal Reports & Deposition Support", slug: "rebuttal", image: "/images/payor-tile-08-rebuttal.png", teaser: "Identify structural inaccuracies in opposing expert testimony through standardized, data-driven analysis \u2014 equipping legal counsel with precise, focus lines of questioning." },
   { num: "04", title: "Demonstratives & Litigation Support", slug: "demonstratives", image: "/images/payor-tile-09-demonstratives.png", teaser: "We transform complex clinical and financial information into clear, compliant visual exhibits that make technical data understandable and actionable for fact finders." },

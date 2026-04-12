@@ -20,12 +20,12 @@ const payorSteps: Step[] = [
   {
     num: 3,
     title: "Medical Necessity Validation",
-    desc: "We validate medical necessity by applying evidence-based criteria, industry standards, National Coverage Determinations (NCDs), payer-provider contracts, and applicable law. Our approach ensures that disputed claims are adjudicated with clinical integrity and regulatory precision.",
+    desc: "We validate medical necessity by applying evidence-based criteria, industry standards, National Coverage Determinations (NCDs), payor-provider contracts, and applicable law. Our approach ensures that disputed claims are adjudicated objectively and classified accurately as either Factually Supported or Policy-Driven.",
   },
   {
     num: 4,
     title: "Construct",
-    desc: "Clinical evidence and policy criteria are synthesized into a structured, physician-authored narrative. This defensible analysis explicitly links medical necessity to governing regulations, creating an airtight justification designed to withstand scrutiny during appeals, audits, or litigation.",
+    desc: "Clinical evidence and policy criteria are synthesized into a structured, physician-authored narrative. This defensible analysis explicitly links medical necessity to governing regulations, providing the legal and clinical evidentiary basis required to withstand scrutiny during provider appeals, arbitration, or CMS/NCQA audits.",
   },
 ];
 
