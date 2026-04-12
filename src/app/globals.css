@@ -436,8 +436,10 @@ details[open] .fc-dropdown-chevron { transform: rotate(180deg) }
 .about-hero { background: linear-gradient(135deg,#1B2A5B 0%,#2A3F7A 55%,#1B2A5B 100%); padding: 220px 32px 90px; position: relative; overflow: hidden }
 .about-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.016) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px); background-size: 60px 60px; pointer-events: none }
 .about-hero-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1 }
-.values-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px }
-.value-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 26px; transition: all .3s }
+.values-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; align-items: stretch }
+.values-grid .value-card-wrap { display: flex; flex-direction: column; height: 100% }
+.values-grid .value-card-wrap > * { height: 100% }
+.value-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 26px; transition: all .3s; height: 100%; box-sizing: border-box; display: flex; flex-direction: column }
 .value-card:hover { box-shadow: 0 8px 32px rgba(10,31,61,.1); transform: translateY(-3px) }
 .vc-icon { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px }
 .vc-title { font-size: 1.1rem; font-weight: 700; color: #2A3F7A; margin-bottom: 8px }

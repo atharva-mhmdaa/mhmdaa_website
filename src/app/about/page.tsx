@@ -96,46 +96,46 @@ const PAYOR_STEPS = [
 
 const VALUES = [
   {
-    title: "Integrity Has No Preferred Client",
-    desc: "We support providers and payors alike. That dual perspective is a strategic advantage, not a conflict. Healthcare doesn\u2019t need more partisanship\u2014it needs objective, honest brokers. We proudly serve in that role.",
+    title: "Clinical Integrity is Our North Star",
+    desc: "We provide Payors with unyielding clinical objectivity, ensuring every determination is rooted in medical fact rather than administrative convenience. We deliver the forensic clinical accuracy and defensible decision-making that health plans rely on to navigate a complex regulatory landscape.",
     color: "rgba(200,16,46,.1)",
     stroke: "#C8102E",
     icon: (
       <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C8102E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
       </svg>
     ),
   },
   {
-    title: "The Patient Is Always the Argument",
-    desc: "Denials arise from a mix of clinical, contractual, and operational issues. Yet behind every denial is a patient, and their documented care remains the foundation of any defensible determination.",
+    title: "The Clinical Record is the Source of Truth",
+    desc: "Payment integrity and medical necessity begin and end with the patient\u2019s clinical journey. We focus on the documented care as the ultimate foundation for every determination, ensuring that the Payor\u2019s logic is always anchored in the \u201cTruth of the Patient\u201d to maintain clinical and regulatory defensibility.",
     color: "rgba(27,42,91,.08)",
     stroke: "#2A3F7A",
     icon: (
       <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" />
       </svg>
     ),
   },
   {
-    title: "Data-Informed",
-    desc: "Data-informed behavior uses reliable quantitative and qualitative evidence to guide decisions while still considering context and professional judgment. Teams that routinely review outcomes, benchmarks, and trends can spot inequities, focus improvement efforts, and defend decisions transparently.",
+    title: "Data-Informed Precision",
+    desc: "We leverage reliable quantitative evidence and qualitative clinical insight to guide Payor strategy. By analyzing outcomes, benchmarks, and utilization trends, we empower health plans to identify systemic over-coding and inequities, providing the transparency needed to defend decisions and focus improvement efforts where they matter most.",
     color: "rgba(42,63,122,.08)",
     stroke: "#2A3F7A",
     icon: (
       <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" />
+        <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /><line x1="11" y1="8" x2="11" y2="14" /><line x1="8" y1="11" x2="14" y2="11" />
       </svg>
     ),
   },
   {
-    title: "Adaptability",
-    desc: "Adaptability is the capacity to adjust strategies, structures, and behaviors quickly in response to new information or changing conditions. Adaptive teams treat change as a continuous process, test small experiments, and scale what works instead of rigidly defending old ways of operating.",
+    title: "Agile Change Management",
+    desc: "In a rapidly shifting regulatory and market landscape, we help Payors pivot with speed and precision. We treat healthcare evolution as a continuous process by testing, refining, and scaling innovative strategies that allow our partners to lead the industry rather than simply react to it.",
     color: "rgba(5,150,105,.1)",
     stroke: "#059669",
     icon: (
       <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="23 4 23 10 17 10" /><polyline points="1 20 1 14 7 14" /><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+        <polyline points="13 17 18 12 13 7" /><polyline points="6 17 11 12 6 7" />
       </svg>
     ),
   },
@@ -175,9 +175,7 @@ export default function AboutPage() {
               marginBottom: "32px",
             }}
           >
-            A fast-growing, dynamic consulting firm operating on the cutting
-            edge of healthcare change management, with a clear focus on driving
-            additional value to hospitals.
+            MHMDAA is a high-reliability consulting firm dedicated to Payor-side clinical integrity. Through physician-led expertise and augmented intelligence, we resolve complex clinical disputes and protect health plans from systemic over-coding, ensuring that reimbursement is precisely aligned with the actual acuity of care.
           </p>
           <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
             <Link href="/contact" className="btn-p">
@@ -190,7 +188,7 @@ export default function AboutPage() {
       {/* 2. STATS BAR */}
       <div className="stats-strip">
         <div className="stats-hdr">
-          <div className="stats-hdr-lbl">&#9679;&nbsp;&nbsp;Proven Impact</div>
+          <div className="sec-label" style={{ color: "#fff" }}>Proven Impact</div>
         </div>
         <div className="stats-strip-inner">
           {[
@@ -226,65 +224,12 @@ export default function AboutPage() {
           <div className="sc">
             <RevealOnScroll>
               <div className="sec-header c mission-sec-header">
-                <div className="sec-label">Our Mission</div>
+                <div className="sec-label">Our Mission, Vision, Values</div>
                 <h2 className="sec-title">
                   Restoring <em>Clinical Authority</em>
                   <br />
                   to the Revenue Cycle
                 </h2>
-              </div>
-            </RevealOnScroll>
-
-            {/* Vision */}
-            <RevealOnScroll>
-              <div
-                className="mission-card"
-                style={{
-                  background: "linear-gradient(135deg,#f8fafc 0%,#f0f4ff 100%)",
-                  border: "1px solid rgba(27,42,91,.1)",
-                  borderRadius: "20px",
-                  position: "relative",
-                  overflow: "hidden",
-                }}
-              >
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    bottom: 0,
-                    width: "4px",
-                    background: "linear-gradient(to bottom,#C8102E,#a50d24)",
-                    borderRadius: "4px 0 0 4px",
-                  }}
-                />
-                <div
-                  style={{
-                    fontSize: ".8rem",
-                    fontWeight: 700,
-                    letterSpacing: ".16em",
-                    textTransform: "uppercase",
-                    color: "#C8102E",
-                    marginBottom: "16px",
-                  }}
-                >
-                  Vision
-                </div>
-                <p
-                  style={{
-                    fontSize: "1.1rem",
-                    color: "#2A3F7A",
-                    lineHeight: 1.85,
-                    fontWeight: 500,
-                  }}
-                >
-                  Our goal is to lead a systemic shift from reactive denial
-                  management to proactive revenue integrity, ensuring that
-                  administrative silos and regulatory nuances never undermine
-                  the delivery of high-quality patient care. We bridge the
-                  divide between payors and providers through data-backed
-                  transparency and clinical precision.
-                </p>
               </div>
             </RevealOnScroll>
 
@@ -347,18 +292,15 @@ export default function AboutPage() {
                       fontFamily: "'Playfair Display', serif",
                     }}
                   >
-                    &ldquo;Our mission is to restore clinical authority to the
-                    revenue cycle. By operating as an independent, physician-led
-                    arbitrator, we provide the sub-specialty expertise and
-                    forensic rigor necessary to resolve complex Payor-provider
-                    disputes at the source, ensuring that the{" "}
+                    &ldquo;Our mission is to restore clinical authority to
+                    Payor operations. By providing the sub-specialty expertise
+                    and forensic rigor necessary to validate complex claims at
+                    the source, we ensure that payment integrity is governed by
+                    the{" "}
                     <strong style={{ color: "#93c5fd", fontStyle: "normal" }}>
                       &lsquo;Truth of the Patient&rsquo;
                     </strong>{" "}
-                    is never lost in the{" "}
-                    <strong style={{ color: "#f87171", fontStyle: "normal" }}>
-                      &lsquo;Logic of the Algorithm&rsquo;
-                    </strong>.&rdquo;
+                    rather than the limitations of an algorithm.&rdquo;
                   </p>
                   <footer
                     style={{
@@ -388,6 +330,58 @@ export default function AboutPage() {
                     </cite>
                   </footer>
                 </blockquote>
+              </div>
+            </RevealOnScroll>
+
+            {/* Vision */}
+            <RevealOnScroll>
+              <div
+                className="mission-card"
+                style={{
+                  background: "linear-gradient(135deg,#f8fafc 0%,#f0f4ff 100%)",
+                  border: "1px solid rgba(27,42,91,.1)",
+                  borderRadius: "20px",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    bottom: 0,
+                    width: "4px",
+                    background: "linear-gradient(to bottom,#C8102E,#a50d24)",
+                    borderRadius: "4px 0 0 4px",
+                  }}
+                />
+                <div
+                  style={{
+                    fontSize: ".8rem",
+                    fontWeight: 700,
+                    letterSpacing: ".16em",
+                    textTransform: "uppercase",
+                    color: "#C8102E",
+                    marginBottom: "16px",
+                  }}
+                >
+                  Vision
+                </div>
+                <p
+                  style={{
+                    fontSize: "1.1rem",
+                    color: "#2A3F7A",
+                    lineHeight: 1.85,
+                    fontWeight: 500,
+                  }}
+                >
+                  To lead a systemic shift from reactive claims processing to
+                  proactive payment integrity, ensuring that administrative
+                  complexity and regulatory nuances never compromise the
+                  clinical accuracy of the Payor ecosystem. We replace friction
+                  with clinical precision and data-backed transparency.
+                </p>
               </div>
             </RevealOnScroll>
 
@@ -783,7 +777,6 @@ export default function AboutPage() {
                     <div className="team-name">{m.name}</div>
                     <div className="team-role">{m.role}</div>
                     <div className="team-cred">{m.cred}</div>
-                    <p className="team-desc">{m.desc}</p>
                   </div>
                 </div>
               </RevealOnScroll>
@@ -793,26 +786,6 @@ export default function AboutPage() {
       </section>
 
       {/* 7. HOSPITAL OPERATIONS IMAGE */}
-      <section style={{ padding: "0 32px 0" }}>
-        <div className="sc">
-          <div
-            style={{
-              borderRadius: "20px",
-              overflow: "hidden",
-              boxShadow: "0 12px 48px rgba(10,31,61,.12)",
-            }}
-          >
-            <Image
-              src="/images/about-7.jpg"
-              alt="Hospital Operations"
-              width={1280}
-              height={520}
-              style={{ width: "100%", height: "auto", display: "block" }}
-            />
-          </div>
-        </div>
-      </section>
-
       {/* 8. HOW WE DELIVER */}
       <section className="section" style={{ background: "#fff" }}>
         <div className="sc">
@@ -855,15 +828,17 @@ export default function AboutPage() {
           </RevealOnScroll>
           <div className="values-grid">
             {VALUES.map((v) => (
-              <RevealOnScroll key={v.title}>
-                <div className="value-card">
-                  <div className="vc-icon" style={{ background: v.color }}>
-                    {v.icon}
+              <div key={v.title} className="value-card-wrap">
+                <RevealOnScroll>
+                  <div className="value-card">
+                    <div className="vc-icon" style={{ background: v.color }}>
+                      {v.icon}
+                    </div>
+                    <h4 className="vc-title">{v.title}</h4>
+                    <p className="vc-desc">{v.desc}</p>
                   </div>
-                  <h4 className="vc-title">{v.title}</h4>
-                  <p className="vc-desc">{v.desc}</p>
-                </div>
-              </RevealOnScroll>
+                </RevealOnScroll>
+              </div>
             ))}
           </div>
         </div>
