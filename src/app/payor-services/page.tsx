@@ -68,33 +68,33 @@ const whyCards = [
     accent: "linear-gradient(90deg,#1B2A5B,#2A3F7A)",
     iconBg: "rgba(27,42,91,.08)",
     iconStroke: "#2A3F7A",
-    title: "Physician-Led,\nNot Algorithm-Driven",
-    p1: "MHMDAA prioritizes medical judgment over automated criteria. Each case involves an independent, clinician-driven record review, team dialogue, and detailed analysis.",
-    p2: "This collaborative model identifies the true clinical picture\u2014including severity, acuity, and provider intent\u2014often missed by algorithms. MHMDAA\u2019s evidence-based reasoning produces defensible analyses for arbitration, trial, and payor-level review.",
+    title: "Clinical Authority — Not Algorithms",
+    p1: "Independent, physician-led analysis that captures clinical nuance beyond automated determinations.",
+    p2: "",
   },
   {
     accent: "linear-gradient(90deg,#C8102E,#e8334a)",
     iconBg: "rgba(200,16,46,.08)",
     iconStroke: "#C8102E",
-    title: "Built for\nLegal Defensibility",
-    p1: "MHMDAA work products are designed to withstand scrutiny in court, arbitration, and regulatory proceedings. Each report follows a structured narrative integrating clinical reasoning, coding integrity, and national guidelines to meet evidentiary standards for AAA, AHLA, and federal courts.",
-    p2: "Every deliverable is audit- and litigation-ready, supporting adjudication and providing defensible, physician-authored analyses for payors in the event of disputes.",
+    title: "Built for Defensibility",
+    p1: "Litigation-ready work product designed to withstand rigorous judicial and regulatory scrutiny.",
+    p2: "",
   },
   {
     accent: "linear-gradient(90deg,#1B2A5B,#2A3F7A)",
     iconBg: "rgba(27,42,91,.08)",
     iconStroke: "#2A3F7A",
-    title: "Strict\nPolicy Alignment",
-    p1: "MHMDAA reviews are cross-referenced against payor-specific policies, contractual obligations, and CMS regulations. Our team maintains fluency in the criteria engines and coverage frameworks used by major payors\u2014including UnitedHealth, Cigna, BCBS, Molina, and AmeriHealth\u2014grounding every determination in precise case standards.",
-    p2: "This policy-anchored approach eliminates ambiguity and fuels fewer appeals. By explicitly referencing governing criteria, denials become structurally harder to overturn. Payors benefit from airtight determinations that protect adjudication integrity and reduce downstream vulnerability.",
+    title: "Absolute Policy Precision",
+    p1: "Definitive conclusions grounded in specific payer contracts, CMS regulations, and governing criteria.",
+    p2: "",
   },
   {
     accent: "linear-gradient(90deg,#C8102E,#e8334a)",
     iconBg: "rgba(200,16,46,.08)",
     iconStroke: "#C8102E",
-    title: "Repeatable\nMethodology",
-    p1: "MHMDAA applies a consistent, evidence-anchored framework to every case. By following standardized clinical abstraction protocols, we ensure uniform structure and quality across all reviews. This disciplined approach builds institutional trust, guaranteeing the same rigor for every case regardless of volume or complexity.",
-    p2: "This consistency reduces QA overhead and enables scalable deployment during high-volume periods. Standardized protocols also generate a reliable audit trail, allowing payors to demonstrate process integrity to regulators and counsel with confidence.",
+    title: "Scalable, Proven Methodology",
+    p1: "A disciplined, repeatable framework delivering consistent quality and a fully defensible audit trail.",
+    p2: "",
   },
 ];
 
@@ -293,47 +293,6 @@ export default function PayorServicesPage() {
                 Commercial and government Payors, Medicare Advantage plans, Third-Party Administrators (TPAs), and legal counsel engaged in healthcare disputes.
               </p>
             </div>
-            <h4 style={{ fontSize: "1.08rem", fontWeight: 700, color: "var(--navy)", marginBottom: 20, textAlign: "center" }}>When to Engage MHMDAA</h4>
-            <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
-              {[
-                "Denial defense requiring credible, evidence-based testimony on clinical decisions",
-                "Claims requiring Clinical Validation Audits, DRG Downgrades, Line Item Claim Analysis, and ED Facility Level Assignment Reviews",
-                "Level-of-care analysis and validation of clinical severity requirements",
-                "Claim disputes requiring clinical evidence for reimbursement",
-                "Alignment of clinical reality with administrative accuracy",
-              ].map((item, i) => {
-                const isNavy = i % 2 === 0;
-                const accent = isNavy ? "var(--navy)" : "var(--red)";
-                const iconBg = isNavy ? "rgba(27,42,91,.08)" : "rgba(200,16,46,.08)";
-                return (
-                  <div key={item} style={{
-                    background: "#fff",
-                    borderRadius: 16,
-                    padding: "20px",
-                    borderTop: `4px solid ${accent}`,
-                    borderRight: "1px solid var(--border)",
-                    borderBottom: "1px solid var(--border)",
-                    borderLeft: "1px solid var(--border)",
-                    boxShadow: "0 2px 12px rgba(27,42,91,.06)",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 12,
-                    width: 180,
-                    minWidth: 180,
-                    minHeight: 180,
-                  }}>
-                    <div style={{
-                      width: 32, height: 32, minWidth: 32, borderRadius: 8,
-                      background: iconBg, display: "flex", alignItems: "center", justifyContent: "center",
-                      margin: "0 auto",
-                    }}>
-                      <span style={{ color: accent, fontWeight: 800, fontSize: "1rem", lineHeight: 1 }}>&#10003;</span>
-                    </div>
-                    <p style={{ fontSize: ".92rem", color: "var(--dg)", margin: 0, lineHeight: 1.6, textAlign: "center" }}>{item}</p>
-                  </div>
-                );
-              })}
-            </div>
           </div>
         </div>
       </section>
@@ -348,7 +307,10 @@ export default function PayorServicesPage() {
             <h2 className="sec-title" style={{ color: "#fff" }}>
               Why Choose <em style={{ color: "#93c5fd" }}>MHMDAA</em>
             </h2>
-            <p className="sec-sub" style={{ color: "rgba(255,255,255,.84)" }}>
+            <p
+              className="sec-sub"
+              style={{ color: "rgba(255,255,255,.84)", maxWidth: "100%" }}
+            >
               We operate at the Nexus of Clinical Medicine, Coding Integrity, and Legal Strategy.
             </p>
           </div>
@@ -368,6 +330,9 @@ export default function PayorServicesPage() {
                   position: "relative",
                   overflow: "hidden",
                   boxShadow: "0 8px 32px rgba(0,0,0,.18)",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
                 }}
               >
                 <div
@@ -416,7 +381,7 @@ export default function PayorServicesPage() {
                     color: "#1B2A5B",
                     marginBottom: 14,
                     lineHeight: 1.3,
-                    whiteSpace: "pre-line",
+                    textAlign: "center",
                   }}
                 >
                   {w.title}
@@ -427,11 +392,97 @@ export default function PayorServicesPage() {
                     color: "#3A4D66",
                     lineHeight: 1.82,
                     marginBottom: 14,
+                    textAlign: "center",
                   }}
                 >
                   {w.p1}
                 </p>
-                <p style={{ fontSize: ".97rem", color: "#3A4D66", lineHeight: 1.82 }}>{w.p2}</p>
+                {w.p2 && <p style={{ fontSize: ".97rem", color: "#3A4D66", lineHeight: 1.82, textAlign: "center" }}>{w.p2}</p>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHEN TO ENGAGE MHMDAA ────────────────────────── */}
+      <section className="section" style={{ paddingTop: 72, paddingBottom: 72 }}>
+        <div className="sc">
+          <div className="sec-header c" style={{ marginBottom: 48 }}>
+            <div className="sec-label">Our Process</div>
+            <h2 className="sec-title" style={{ textAlign: "center" }}>When to Engage MHMDAA</h2>
+            <p className="sec-sub" style={{ textAlign: "center", margin: "16px auto 0", maxWidth: 760 }}>
+              Partner with MHMDAA&apos;s physician-led team to leverage our precise four-step review process. Take the first decisive step toward building a denial-resilient, financially sustainable future for your organizational operations.
+            </p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
+            {[
+              {
+                title: "Strategic Denial Defense",
+                desc: "When you require credible, physician-led testimony to defend clinical decisions against payer scrutiny.",
+                accent: "linear-gradient(90deg,#1B2A5B,#2A3F7A)",
+                numColor: "#2A3F7A",
+                numBg: "rgba(27,42,91,.08)",
+                num: "1",
+              },
+              {
+                title: "Acuity Validation",
+                desc: "When level-of-care or clinical severity requirements are challenged and demand expert medical verification.",
+                accent: "linear-gradient(90deg,#C8102E,#e8334a)",
+                numColor: "#C8102E",
+                numBg: "rgba(200,16,46,.08)",
+                num: "2",
+              },
+              {
+                title: "High-Stakes Claim Disputes",
+                desc: "When reimbursement hinges on a definitive, evidence-based clinical argument.",
+                accent: "linear-gradient(90deg,#1B2A5B,#2A3F7A)",
+                numColor: "#2A3F7A",
+                numBg: "rgba(27,42,91,.08)",
+                num: "3",
+              },
+              {
+                title: "Clinical-Administrative Alignment",
+                desc: "When you need to bridge the gap between complex medical reality and administrative accuracy.",
+                accent: "linear-gradient(90deg,#C8102E,#e8334a)",
+                numColor: "#C8102E",
+                numBg: "rgba(200,16,46,.08)",
+                num: "4",
+              },
+            ].map((card) => (
+              <div key={card.title} style={{
+                background: "#fff",
+                borderRadius: 20,
+                padding: "32px 28px",
+                position: "relative",
+                overflow: "hidden",
+                border: "1px solid var(--border)",
+                boxShadow: "0 4px 20px rgba(27,42,91,.08)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                textAlign: "center",
+              }}>
+                <div style={{
+                  position: "absolute", top: 0, left: 0, right: 0, height: 4,
+                  background: card.accent, borderRadius: "20px 20px 0 0",
+                }} />
+                <div style={{
+                  width: 48, height: 48, borderRadius: "50%",
+                  background: card.numBg, display: "flex", alignItems: "center",
+                  justifyContent: "center", marginBottom: 18,
+                }}>
+                  <span style={{
+                    color: card.numColor, fontWeight: 800, fontSize: "1.3rem",
+                    fontFamily: "'Playfair Display', serif", lineHeight: 1,
+                  }}>{card.num}</span>
+                </div>
+                <h3 style={{
+                  fontSize: "1.05rem", fontWeight: 700, color: "var(--navy)",
+                  marginBottom: 12, lineHeight: 1.35,
+                }}>{card.title}</h3>
+                <p style={{
+                  fontSize: ".93rem", color: "var(--mg)", lineHeight: 1.75, margin: 0,
+                }}>{card.desc}</p>
               </div>
             ))}
           </div>
@@ -439,7 +490,7 @@ export default function PayorServicesPage() {
       </section>
 
       {/* ── ACCELERATED P2P — PAYOR PERSPECTIVE ─────────── */}
-      <section className="section p2p-section" style={{ background: "#fff", padding: "96px 32px", position: "relative", overflow: "hidden" }}>
+      <section className="section p2p-section" style={{ background: "#fff", padding: "96px 32px 48px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: -80, right: -120, width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle,rgba(200,16,46,.04) 0%,transparent 70%)", pointerEvents: "none" }} />
         <div className="sc">
           <div className="p2p-layout" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "start" }}>
@@ -555,43 +606,14 @@ export default function PayorServicesPage() {
         </div>
       </section>
 
-      {/* ── 4-STEP REVIEW PROCESS ────────────────────────── */}
-      <section className="section">
-        <div className="sc">
-          <div className="sec-header c">
-            <div className="sec-label">Our Process</div>
-            <h2 className="sec-title">
-              Our 4-Step <em>Review Process</em>
-            </h2>
-          </div>
-          <div
-            className="process-grid"
-            style={{
-              border: "1px solid var(--border)",
-              borderRadius: "var(--rl)",
-              overflow: "hidden",
-            }}
-          >
-            {steps.map((s, i) => (
-              <React.Fragment key={s.num}>
-                <div className="process-step">
-                  <div className="ps-num">{s.num}</div>
-                  <h4 className="ps-title">{s.title}</h4>
-                  <p className="ps-desc">{s.desc}</p>
-                </div>
-                {i < steps.length - 1 && (
-                  <div className="ps-arrow" aria-hidden="true">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C8102E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="12" y1="5" x2="12" y2="19" />
-                      <polyline points="19 12 12 19 5 12" />
-                    </svg>
-                  </div>
-                )}
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
-      </section>
+
+      {/* ── TRANSFORM CTA ────────────────────────────────── */}
+      <CTABand
+        heading="Let's Transform Your Denial & Dispute Resolution"
+        description="Ready to reduce denials, strengthen reimbursement, and operationalize defensible decisions? Connect with our physician‑led team to get started."
+        showButton={false}
+        noBorder
+      />
 
       {/* ── CTA BAND ─────────────────────────────────────── */}
       <CTABand

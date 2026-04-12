@@ -200,7 +200,7 @@ body {
 .cta-band::before { content: ''; position: absolute; top: -60px; right: -60px; width: 320px; height: 320px; background: radial-gradient(circle,rgba(200,16,46,.06) 0%,transparent 70%); border-radius: 50% }
 .cta-band::after { content: ''; position: absolute; bottom: -60px; left: -60px; width: 320px; height: 320px; background: radial-gradient(circle,rgba(27,42,91,.05) 0%,transparent 70%); border-radius: 50% }
 .cta-inner { max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 1 }
-.cta-inner h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem,3.4vw,2.8rem); font-weight: 700; color: var(--navy); margin-bottom: 14px }
+.cta-inner h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem,2.4vw,2rem); font-weight: 700; color: var(--navy); margin-bottom: 14px; white-space: nowrap }
 .cta-inner p { font-size: 1.15rem; color: var(--mg); margin-bottom: 30px; line-height: 1.8 }
 .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap }
 .cta-band .btn-p { animation: pulseGlow 3s ease infinite }
@@ -1257,7 +1257,7 @@ details[open] .ig-lbl-open { display: inline }
   .adv-cta-num { font-size: 2rem }
   .cta-band { padding: 56px 20px }
   .cta-btns { flex-wrap: wrap; gap: 10px }
-  .cta-inner h2 { font-size: clamp(1.6rem,5vw,2.4rem) }
+  .cta-inner h2 { font-size: clamp(1rem,4vw,1.4rem); white-space: normal }
   .cta-inner p { font-size: 1.02rem }
   .stats-grid { grid-template-columns: repeat(2,1fr) }
   .stat-box { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08) }
