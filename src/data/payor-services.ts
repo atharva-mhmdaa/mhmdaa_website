@@ -18,8 +18,60 @@ export interface PayorService {
 
 export const payorServices: PayorService[] = [
   {
-    slug: "expert-opinions",
+    slug: "litigation-expert-support",
     number: "01",
+    shortTitle: "Litigation & Expert Support",
+    title: "Litigation & Expert Support",
+    description:
+      "Michael Hill MD and Associates — Litigation & Expert Support: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+    heroDescription:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    heroImage: "/images/payor-litigation-expert-hero.png",
+    infoText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+    infoBadge: "LOREM IPSUM",
+    processSteps: [
+      {
+        title: "Lorem",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+      },
+      {
+        title: "Ipsum",
+        desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+      },
+      {
+        title: "Dolor",
+        desc: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.",
+      },
+      {
+        title: "Amet",
+        desc: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt neque porro quisquam est.",
+      },
+    ],
+    featuresSub:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    features: [
+      {
+        title: "Lorem Ipsum Feature One",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation.",
+        image: "/images/payor-litigation-expert-hero.png",
+      },
+      {
+        title: "Lorem Ipsum Feature Two",
+        desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident deserunt mollit anim id est laborum.",
+        image: "/images/payor-litigation-expert-hero.png",
+      },
+      {
+        title: "Lorem Ipsum Feature Three",
+        desc: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto.",
+        image: "/images/payor-litigation-expert-hero.png",
+      },
+    ],
+    prevSlug: null,
+    nextSlug: "expert-opinions",
+  },
+  {
+    slug: "expert-opinions",
+    number: "02",
     shortTitle: "Expert Medical Opinions",
     title: "Expert Medical Opinion Reports",
     description:
@@ -67,12 +119,12 @@ export const payorServices: PayorService[] = [
         image: "/images/payor-expert-opinions-56.png",
       },
     ],
-    prevSlug: null,
+    prevSlug: "litigation-expert-support",
     nextSlug: "rebuttal",
   },
   {
     slug: "rebuttal",
-    number: "02",
+    number: "03",
     shortTitle: "Rebuttal & Deposition",
     title: "Rebuttal Reports & Deposition Support",
     description:
@@ -127,7 +179,7 @@ export const payorServices: PayorService[] = [
   },
   {
     slug: "demonstratives",
-    number: "03",
+    number: "04",
     shortTitle: "Demonstratives",
     title: "Demonstratives & Litigation Support",
     description:
@@ -180,7 +232,7 @@ export const payorServices: PayorService[] = [
   },
   {
     slug: "dispute-appeal",
-    number: "04",
+    number: "05",
     shortTitle: "Provider Dispute & Appeal",
     title: "Provider Dispute & Appeal Support",
     description:
@@ -233,7 +285,7 @@ export const payorServices: PayorService[] = [
   },
   {
     slug: "drg-validation",
-    number: "05",
+    number: "06",
     shortTitle: "DRG Clinical Validation",
     title: "DRG Clinical Validation",
     description:
@@ -284,7 +336,7 @@ export const payorServices: PayorService[] = [
   },
   {
     slug: "line-item",
-    number: "06",
+    number: "07",
     shortTitle: "Line-Item Compliance",
     title: "Line-Item Coding Compliance",
     description:
@@ -336,7 +388,7 @@ export const payorServices: PayorService[] = [
   },
   {
     slug: "two-midnight",
-    number: "07",
+    number: "08",
     shortTitle: "Two Midnight Rule",
     title: "Two Midnight Rule Compliance",
     infoText: "Establish a defensible clinical narrative before a denial can take hold.",
@@ -386,7 +438,7 @@ export const payorServices: PayorService[] = [
   },
   {
     slug: "inpatient-obs",
-    number: "08",
+    number: "09",
     shortTitle: "Inpatient vs. Observation",
     title: "Inpatient vs. Observation Determination",
     description:
@@ -438,7 +490,7 @@ export const payorServices: PayorService[] = [
   },
   {
     slug: "ed-facility",
-    number: "09",
+    number: "10",
     shortTitle: "ED Facility Review",
     title: "ED Facility Level Methodology Review",
     description:
