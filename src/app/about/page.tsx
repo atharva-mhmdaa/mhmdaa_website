@@ -846,6 +846,7 @@ export default function AboutPage() {
 
       {/* 10. CTA BAND */}
       <CTABand
+        heading="Start a Conversation with Our Experts"
         description="Partner with MHMDAA's physician-led team and take the first decisive step toward building a denial-resilient, financially sustainable hospital operation."
       />
     </>
