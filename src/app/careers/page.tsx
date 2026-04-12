@@ -245,7 +245,7 @@ export default async function CareersPage() {
                       }}
                     >
                       {c.title && <>
-                        <div style={{ fontSize: ".95rem", fontWeight: 700, color: "var(--navy)", marginBottom: 6 }}>{c.title}</div>
+                        <div style={{ fontSize: ".95rem", fontWeight: 700, color: "#C8102E", marginBottom: 6 }}>{c.title}</div>
                         <p style={{ fontSize: ".92rem", color: "var(--mg)", lineHeight: 1.7, margin: 0 }}>{c.desc}</p>
                       </>}
                     </div>
