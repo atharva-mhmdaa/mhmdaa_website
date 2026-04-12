@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
-import TabSwitcher from "@/components/ui/TabSwitcher";
 import CTABand from "@/components/ui/CTABand";
 
 
@@ -143,8 +142,6 @@ const VALUES = [
 ];
 
 export default function AboutPage() {
-  const [activeTab, setActiveTab] = useState("providers");
-
   return (
     <>
       {/* 1. ABOUT HERO */}
@@ -833,39 +830,15 @@ export default function AboutPage() {
             </div>
           </RevealOnScroll>
 
-          <TabSwitcher
-            tabs={[
-              { id: "providers", label: "For Providers" },
-              { id: "payors", label: "For Payors" },
-            ]}
-            activeTab={activeTab}
-            onTabChange={setActiveTab}
-            variant="approach"
-          />
-
-          {activeTab === "providers" && (
-            <div className="approach-grid">
-              {PROVIDER_STEPS.map((s) => (
-                <div key={s.num} className="ap-card">
-                  <div className="ap-num">{s.num}</div>
-                  <div className="ap-title">{s.title}</div>
-                  <p className="ap-desc">{s.desc}</p>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {activeTab === "payors" && (
-            <div className="approach-grid">
-              {PAYOR_STEPS.map((s) => (
-                <div key={s.num} className="ap-card">
-                  <div className="ap-num">{s.num}</div>
-                  <div className="ap-title">{s.title}</div>
-                  <p className="ap-desc">{s.desc}</p>
-                </div>
-              ))}
-            </div>
-          )}
+          <div className="approach-grid">
+            {PAYOR_STEPS.map((s) => (
+              <div key={s.num} className="ap-card">
+                <div className="ap-num">{s.num}</div>
+                <div className="ap-title">{s.title}</div>
+                <p className="ap-desc">{s.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -30,7 +30,7 @@ const PAYOR_SERVICES = [
   "Two Midnight Rule Compliance",
   "Inpatient vs. Observation Determination",
   "DRG Clinical Validation",
-  "ED Facility Methodology Review",
+  "ED Facility Level Methodology Review",
   "Line-Item Coding Compliance",
   "Provider Dispute & Appeal Support",
   "Expert Medical Opinion Reports",

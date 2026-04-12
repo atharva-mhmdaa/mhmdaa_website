@@ -1,36 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import TabSwitcher from "@/components/ui/TabSwitcher";
-
 interface Step {
   num: number;
   title: string;
   desc: string;
 }
-
-const providerSteps: Step[] = [
-  {
-    num: 1,
-    title: "Assess",
-    desc: "We perform comprehensive review of hospital strategy, operations, and revenue cycle to identify gaps and revenue opportunities.",
-  },
-  {
-    num: 2,
-    title: "Strategize",
-    desc: "Developing targeted action plans based on root cause analysis and clinical performance data unique to your facility.",
-  },
-  {
-    num: 3,
-    title: "Implement",
-    desc: "Deploying our nine integrated service lines with dedicated physician-led teams and technology for maximum impact.",
-  },
-  {
-    num: 4,
-    title: "Sustain",
-    desc: "Establishing feedback loops and performance metrics for lasting financial results and continuous revenue improvement.",
-  },
-];
 
 const payorSteps: Step[] = [
   {
@@ -55,11 +29,6 @@ const payorSteps: Step[] = [
   },
 ];
 
-const tabDefs = [
-  { id: "provider", label: "For Providers" },
-  { id: "payor", label: "For Payors" },
-];
-
 function StepGrid({ steps }: { steps: Step[] }) {
   return (
     <div className="approach-grid">
@@ -75,22 +44,9 @@ function StepGrid({ steps }: { steps: Step[] }) {
 }
 
 export default function ApproachTabs() {
-  const [activeTab, setActiveTab] = useState("provider");
-
   return (
-    <>
-      <TabSwitcher
-        tabs={tabDefs}
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-        variant="approach"
-      />
-      <div className={`appr-panel${activeTab === "provider" ? " active" : ""}`}>
-        <StepGrid steps={providerSteps} />
-      </div>
-      <div className={`appr-panel${activeTab === "payor" ? " active" : ""}`}>
-        <StepGrid steps={payorSteps} />
-      </div>
-    </>
+    <div className="appr-panel active">
+      <StepGrid steps={payorSteps} />
+    </div>
   );
 }
