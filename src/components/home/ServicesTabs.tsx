@@ -116,9 +116,9 @@ const payorServices: ServiceTile[] = [
   },
   {
     num: "06",
-    title: "Line-Item Coding Compliance",
+    title: "Payment Line-Item Claim Review",
     desc: "Audit procedure and diagnosis codes at the claim level to detect unbundling, upcoding, and documentation mismatches.",
-    href: "/payor-services/line-item",
+    href: "/payor-services/payment-line-item-claim-review",
     img: "/images/payor-tile-05-line-item.png",
   },
   {

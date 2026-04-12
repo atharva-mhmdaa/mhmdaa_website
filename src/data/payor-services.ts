@@ -280,15 +280,15 @@ export const payorServices: PayorService[] = [
       },
     ],
     prevSlug: "dispute-appeal",
-    nextSlug: "line-item",
+    nextSlug: "payment-line-item-claim-review",
   },
   {
-    slug: "line-item",
+    slug: "payment-line-item-claim-review",
     number: "06",
-    shortTitle: "Line-Item Compliance",
-    title: "Line-Item Coding Compliance",
+    shortTitle: "Payment Line-Item Claim Review",
+    title: "Payment Line-Item Claim Review",
     description:
-      "Michael Hill MD and Associates — Line-Item Coding Compliance: Establish an error-resistant quality gate within the revenue cycle to align claim submissions with actual care delivered, ensuring clinical-to-financial precision and preventing revenue leakage.",
+      "Michael Hill MD and Associates — Payment Line-Item Claim Review: Establish an error-resistant quality gate within the revenue cycle to align claim submissions with actual care delivered, ensuring clinical-to-financial precision and preventing revenue leakage.",
     heroDescription:
       "Establish an error-resistant quality gate within the revenue cycle to align claim submissions with actual care delivered, ensuring clinical-to-financial precision and preventing revenue leakage.",
     heroImage: "/images/payor-line-item-hero.png",
@@ -381,7 +381,7 @@ export const payorServices: PayorService[] = [
         image: "/images/payor-two-midnight-73.png",
       },
     ],
-    prevSlug: "line-item",
+    prevSlug: "payment-line-item-claim-review",
     nextSlug: "inpatient-obs",
   },
   {

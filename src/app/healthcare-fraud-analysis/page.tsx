@@ -359,7 +359,7 @@ export default function HealthcareFraudAnalysisPage() {
       </section>
 
       {/* ══ SECTION 2: FORENSIC STRIKE METHODOLOGY ═══════════ */}
-      <section className="section" id="methodology">
+      <section className="section" id="methodology" style={{ paddingBottom: 32 }}>
         <div className="sc">
           <div className="fs-intro-grid">
             <RevealOnScroll direction="left">
@@ -456,7 +456,7 @@ export default function HealthcareFraudAnalysisPage() {
       <section
         className="section"
         id="analytics"
-        style={{ background: "var(--off)" }}
+        style={{ background: "var(--off)", paddingTop: 32 }}
       >
         <div className="sc">
           <RevealOnScroll>
@@ -500,7 +500,7 @@ export default function HealthcareFraudAnalysisPage() {
       </section>
 
       {/* ══ SECTION 3: WHY CHOOSE MHMDAA ════════════════════ */}
-      <section className="section" id="why">
+      <section className="section" id="why" style={{ paddingBottom: 32 }}>
         <div className="sc">
           <RevealOnScroll>
             <div className="sec-header c">
@@ -537,57 +537,8 @@ export default function HealthcareFraudAnalysisPage() {
         </div>
       </section>
 
-      {/* ══ HOW WE COMPARE ══════════════════════════════════ */}
-      <section className="section" id="compare" style={{ background: "var(--off)" }}>
-        <div className="sc">
-          <RevealOnScroll>
-            <div className="sec-header c">
-              <div className="sec-label">COMPETITIVE ADVANTAGE</div>
-              <h2 className="sec-title">
-                How We <em>Compare</em>
-              </h2>
-              <p className="sec-sub" style={{ maxWidth: "720px", margin: "0 auto" }}>
-                MHMDAA delivers a cost-effective alternative to large consulting
-                firms and traditional investigators, combining physician-led
-                clinical review, seventeen AI detection modules, and
-                prosecution-ready findings.
-              </p>
-            </div>
-          </RevealOnScroll>
-
-          <RevealOnScroll>
-            <div className="compare-table-wrap">
-              <div className="compare-table-scroll">
-              <table className="compare-table">
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th>Large Consulting Firms</th>
-                    <th>Specialized Investigator Firms</th>
-                    <th>Offshore BPOs</th>
-                    <th style={{ background: "var(--red)", borderRadius: "0 16px 0 0" }}>MHMDAA</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {compareRows.map((row) => (
-                    <tr key={row.feature}>
-                      <td>{row.feature}</td>
-                      <td>{row.large}</td>
-                      <td>{row.specialized}</td>
-                      <td>{row.offshore}</td>
-                      <td className="mhmdaa-col">{row.mhmdaa}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              </div>
-            </div>
-          </RevealOnScroll>
-        </div>
-      </section>
-
       {/* ══ SECTION 4: PROTECT YOUR PLAN ════════════════════ */}
-      <section className="section" id="protect">
+      <section className="section" id="protect" style={{ paddingTop: 32 }}>
         <div className="sc">
           <RevealOnScroll>
             <div className="sec-header">

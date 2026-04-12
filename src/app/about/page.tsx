@@ -747,7 +747,7 @@ export default function AboutPage() {
       </div>
 
       {/* 6. TEAM CAPTAINS */}
-      <section className="section" style={{ background: "#f8fafc" }}>
+      <section className="section" style={{ background: "#f8fafc", paddingBottom: 32 }}>
         <div className="sc">
           <RevealOnScroll>
             <div className="sec-header c">
@@ -785,38 +785,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 7. HOSPITAL OPERATIONS IMAGE */}
-      {/* 8. HOW WE DELIVER */}
-      <section className="section" style={{ background: "#fff" }}>
-        <div className="sc">
-          <RevealOnScroll>
-            <div className="sec-header c">
-              <div className="sec-label">Our Approach</div>
-              <h2 className="sec-title">
-                How We <em>Deliver</em>
-              </h2>
-              <p className="sec-sub">
-                We use technology to enhance capabilities, increase operational
-                transparency, and improve healthcare delivery, driving
-                greater efficiency, accuracy, and overall system performance.
-              </p>
-            </div>
-          </RevealOnScroll>
-
-          <div className="approach-grid">
-            {PAYOR_STEPS.map((s) => (
-              <div key={s.num} className="ap-card">
-                <div className="ap-num">{s.num}</div>
-                <div className="ap-title">{s.title}</div>
-                <p className="ap-desc">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* 9. VALUES */}
-      <section className="section" style={{ background: "#f8fafc" }}>
+      <section className="section" style={{ background: "#f8fafc", paddingTop: 32, paddingBottom: 48 }}>
         <div className="sc">
           <RevealOnScroll>
             <div className="sec-header c">

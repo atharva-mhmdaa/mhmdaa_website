@@ -73,7 +73,7 @@ const payorLinks = [
   { href: "/payor-services/demonstratives", label: "Demonstratives & Litigation Support" },
   { href: "/payor-services/dispute-appeal", label: "Provider Dispute & Appeal Support" },
   { href: "/payor-services/drg-validation", label: "DRG Clinical Validation" },
-  { href: "/payor-services/line-item", label: "Line-Item Coding Compliance" },
+  { href: "/payor-services/payment-line-item-claim-review", label: "Payment Line-Item Claim Review" },
   { href: "/payor-services/two-midnight", label: "Two Midnight Rule Compliance" },
   { href: "/payor-services/inpatient-obs", label: "Inpatient vs. Observation Determination" },
   { href: "/payor-services/ed-facility", label: "ED Facility Level Methodology Review" },

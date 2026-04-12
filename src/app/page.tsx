@@ -61,21 +61,6 @@ export default function Home() {
                 <span style={{ fontSize: ".82rem", fontWeight: 700, color: "#fca5a5", letterSpacing: ".06em" }}>Dr. Michael Hill</span>
               </div>
             </div>
-            <div style={{ fontSize: "1.15rem", fontWeight: 700, color: "#fff", marginBottom: 12, fontFamily: "'Playfair Display', serif" }}>
-              Key Operational Commitments
-            </div>
-            <ul className="hero-bullets">
-              <li>
-                <span className="hb-label">Our Standard</span>
-                <span className="hb-value">Evidence-based clinical justification</span>
-              </li>
-              <li>
-                <span className="hb-label">Our Milestone</span>
-                <span className="hb-value">
-                  Independent clinical assessment delivered within 48 hours of case submission
-                </span>
-              </li>
-            </ul>
             <div className="hero-btns">
               <Link href="/contact" className="btn-p">
                 Connect with our Experts &rarr;
@@ -121,7 +106,7 @@ export default function Home() {
       </div>
 
       {/* ══ SECTION 3: WHY CHOOSE US ═════════════════════════ */}
-      <section className="section section-why-choose" style={{ background: "#fff", paddingTop: 96, paddingBottom: 40 }}>
+      <section className="section section-why-choose" style={{ background: "#fff", paddingTop: 96, paddingBottom: 32 }}>
         <div className="sc">
           <RevealOnScroll>
             <div className="sec-header c" style={{ marginBottom: 56 }}>
@@ -312,7 +297,7 @@ export default function Home() {
       </section>
 
       {/* ══ SECTION 4: OUR SERVICES (TABBED) ═════════════════ */}
-      <section className="section" id="services-section" style={{ paddingTop: 40, paddingBottom: 48 }}>
+      <section className="section" id="services-section" style={{ paddingTop: 32, paddingBottom: 32 }}>
         <div className="sc">
           <RevealOnScroll>
             <div className="sec-header c" style={{ marginBottom: 36 }}>
@@ -334,7 +319,7 @@ export default function Home() {
       </section>
 
       {/* ══ SECTION 5: HOW WE DELIVER ════════════════════════ */}
-      <section className="section" style={{ background: "#fff" }}>
+      <section className="section" style={{ background: "#fff", paddingTop: 32, paddingBottom: 32 }}>
         <div className="sc">
           <RevealOnScroll>
             <div className="sec-header c">
@@ -354,7 +339,7 @@ export default function Home() {
       </section>
 
       {/* ══ SECTION 6: PERFORMANCE ASSESSMENT ════════════════ */}
-      <section className="section" style={{ background: "var(--off)" }}>
+      <section className="section" style={{ background: "var(--off)", paddingTop: 32, paddingBottom: 32 }}>
         <div className="sc">
           <RevealOnScroll>
             <div className="sec-header c" style={{ marginBottom: 48 }}>
@@ -480,336 +465,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* ══ SECTION 7: MEET THE FOUNDER ══════════════════════ */}
-      <section
-        className="cin-section cin-section-home"
-        style={{ position: "relative", minHeight: 600, overflow: "hidden" }}
-      >
-        {/* Photo + overlays wrapped together */}
-        <div className="cin-photo-wrap">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/dr-hill-new.jpg"
-            alt="Dr. Michael Hill"
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "20% top",
-              display: "block",
-            }}
-          />
-          <div
-            className="cin-grad-r cin-grad-home"
-            style={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "linear-gradient(to right,rgba(10,20,55,0) 35%,rgba(10,20,55,.78) 55%,rgba(10,20,55,.97) 72%,rgba(10,20,55,1) 100%)",
-            }}
-          />
-          <div
-            className="cin-grad-bottom"
-            style={{
-              position: "absolute",
-              inset: 0,
-              background:
-                "linear-gradient(to top,rgba(10,20,55,.5) 0%,transparent 30%)",
-            }}
-          />
-
-          {/* Mobile-only: badge + name + quote overlaid on bottom of photo */}
-          <div className="cin-mobile-overlay">
-            <div className="cin-mobile-badge">Our Founder</div>
-            <div className="cin-mobile-name">Michael Hill, <em>MD</em></div>
-            <div className="cin-mobile-sub">Founder &amp; CEO &nbsp;&middot;&nbsp; UCLA-Trained Emergency Physician</div>
-            <div className="cin-quote-mobile">
-              <p>&ldquo;In an era of friction between automated Payor denials and provider over-coding, MHMDAA serves as the essential clinical intermediary. Our physician-led framework delivers the defensible evidence required to secure compliance and revenue in 2026.&rdquo;</p>
-              <cite>— Michael Hill, MD &nbsp;&middot;&nbsp; Founder &amp; CEO</cite>
-            </div>
-          </div>
-        </div>
-
-        <div
-          className="cin-inner cin-inner-home"
-          style={{
-            position: "relative",
-            zIndex: 2,
-            maxWidth: 1280,
-            margin: "0 auto",
-            padding: "90px 36px",
-            display: "flex",
-            justifyContent: "flex-end",
-          }}
-        >
-          <div className="cin-content cin-content-home" style={{ maxWidth: 540, width: "100%" }}>
-            <RevealOnScroll direction="right">
-              <div className="cin-desktop-header">
-                <div
-                  className="hero-badge"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 8,
-                    background: "rgba(200,16,46,.28)",
-                    border: "1px solid rgba(200,16,46,.7)",
-                    borderLeft: "none",
-                    borderRadius: 100,
-                    padding: "6px 18px",
-                    color: "#fca5a5",
-                    marginBottom: 20,
-                  }}
-                >
-                  <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#C8102E", flexShrink: 0, display: "inline-block" }} />
-                  Our Founder
-                </div>
-                <h2
-                  style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: "clamp(2rem,3.2vw,3rem)",
-                    fontWeight: 700,
-                    color: "#fff",
-                    lineHeight: 1.15,
-                    marginBottom: 6,
-                  }}
-                >
-                  Michael Hill,{" "}
-                  <em style={{ fontStyle: "italic", color: "#93c5fd" }}>MD</em>
-                </h2>
-                <p
-                  style={{
-                    fontSize: "1.04rem",
-                    color: "rgba(255,255,255,.78)",
-                    marginBottom: 22,
-                    letterSpacing: ".04em",
-                  }}
-                >
-                  Founder &amp; CEO &nbsp;&middot;&nbsp; Residency UCLA-Trained
-                  Emergency Physician &nbsp;&middot;&nbsp; UC Irvine School of
-                  Medicine
-                </p>
-              </div>
-
-              <blockquote
-                style={{
-                  background: "rgba(255,255,255,.06)",
-                  borderLeft: "3px solid #C8102E",
-                  padding: "18px 22px",
-                  borderRadius: "0 10px 10px 0",
-                  margin: "0 0 24px 0",
-                }}
-              >
-                <p
-                  style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontStyle: "italic",
-                    fontSize: "1.08rem",
-                    color: "rgba(255,255,255,.85)",
-                    lineHeight: 1.75,
-                    margin: 0,
-                  }}
-                >
-                  &ldquo;In an era of friction between automated Payor denials
-                  and provider over-coding, MHMDAA serves as the essential
-                  clinical intermediary. Our physician-led framework delivers
-                  the defensible evidence required to secure compliance and
-                  revenue in 2026.&rdquo;
-                </p>
-                <p
-                  style={{
-                    fontSize: "0.82rem",
-                    color: "rgba(255,255,255,.78)",
-                    marginTop: 10,
-                    fontStyle: "normal",
-                    fontWeight: 600,
-                  }}
-                >
-                  - Michael Hill, MD &nbsp;&middot;&nbsp; Founder &amp; CEO
-                </p>
-              </blockquote>
-
-              <p
-                style={{
-                  fontSize: "0.82rem",
-                  color: "rgba(255,255,255,.82)",
-                  lineHeight: 1.82,
-                  marginBottom: 16,
-                }}
-              >
-                Dr. Hill is a residency-trained emergency physician with{" "}
-                <strong style={{ color: "rgba(255,255,255,.85)" }}>
-                  30+ years
-                </strong>{" "}
-                of healthcare consulting experience. A former{" "}
-                <strong style={{ color: "rgba(255,255,255,.85)" }}>
-                  Managing Director at Navigant Consulting
-                </strong>{" "}
-                and operator of a 52-hospital, 250-physician emergency medicine
-                group, he has directed 100+ national hospital engagements with
-                annual revenue outcomes of{" "}
-                <strong style={{ color: "rgba(255,255,255,.85)" }}>
-                  $5M&ndash;$28M per initiative
-                </strong>
-                . Dr. Hill has worked with more than{" "}
-                <strong style={{ color: "rgba(255,255,255,.85)" }}>
-                  80 Case Management Departments
-                </strong>
-                , including operational redesign and training of case managers
-                and physicians on inpatient status determination, developed and
-                deployed Clinical Documentation Improvement (CDI) training
-                programs for physicians, coders, and utilization managers, and
-                designed and deployed{" "}
-                <strong style={{ color: "rgba(255,255,255,.85)" }}>
-                  14 utilization management programs
-                </strong>{" "}
-                across North America.
-              </p>
-              <p
-                style={{
-                  fontSize: "0.82rem",
-                  color: "rgba(255,255,255,.82)",
-                  lineHeight: 1.82,
-                  marginBottom: 24,
-                }}
-              >
-                As a{" "}
-                <strong style={{ color: "rgba(255,255,255,.85)" }}>
-                  clinical expert witness in 125+ arbitrations and litigations
-                </strong>
-                , Dr. Hill has testified on over{" "}
-                <strong style={{ color: "rgba(255,255,255,.85)" }}>
-                  12,500 claims
-                </strong>{" "}
-                spanning medical necessity, ICD-10/DRG coding, EMTALA, and
-                denial management, representing both Payors and health
-                systems before AAA, AHLA, and federal courts nationwide.
-              </p>
-
-              {/* Credential pills */}
-              <div
-                style={{
-                  display: "flex",
-                  gap: 8,
-                  flexWrap: "wrap",
-                  marginBottom: 28,
-                }}
-              >
-                {[
-                  "ACEP National Steering Committee",
-                  "Past President, CA-ACEP",
-                  "IHI & Joint Commission Speaker",
-                  "RWJ Patient Flow Advisor",
-                  "UCSF Asst. Professor",
-                ].map((cred) => (
-                  <span
-                    key={cred}
-                    style={{
-                      background: "rgba(255,255,255,.07)",
-                      border: "1px solid rgba(255,255,255,.14)",
-                      color: "rgba(255,255,255,.80)",
-                      fontSize: ".8rem",
-                      fontWeight: 600,
-                      padding: "5px 11px",
-                      borderRadius: 100,
-                    }}
-                  >
-                    {cred}
-                  </span>
-                ))}
-              </div>
-
-              {/* Stat mini-cards */}
-              <div
-                className="cin-stats"
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(4,1fr)",
-                  gap: 12,
-                  marginBottom: 32,
-                }}
-              >
-                {[
-                  { num: "12,500+", label: "Claims Reviewed" },
-                  { num: "125+", label: "Lead Testifying Expert" },
-                  { num: "250+", label: "Expert Depositions" },
-                  { num: "30+", label: "Years Consulting" },
-                ].map((s, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      background: "rgba(255,255,255,.07)",
-                      border: "1px solid rgba(255,255,255,.12)",
-                      borderRadius: 12,
-                      padding: "14px 8px",
-                      textAlign: "center",
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontSize: "1.55rem",
-                        fontWeight: 800,
-                        color: "#fff",
-                        lineHeight: 1,
-                      }}
-                    >
-                      {s.num}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: ".72rem",
-                        color: "rgba(255,255,255,.70)",
-                        marginTop: 5,
-                        lineHeight: 1.3,
-                      }}
-                    >
-                      {s.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA buttons */}
-              <div
-                className="cin-btns"
-                style={{ display: "flex", gap: 12, flexWrap: "wrap" }}
-              >
-                <Link href="/about#dr-hill" className="btn-p">
-                  Full Biography &rarr;
-                </Link>
-                <Link href="/contact" className="btn-o wh">
-                  Contact Our Team
-                </Link>
-              </div>
-            </RevealOnScroll>
-          </div>
-        </div>
-      </section>
-
-      {/* ══ MOBILE-ONLY: Founder bio below the cinematic section ══ */}
-      <div className="cin-bio-mobile">
-        <p>Dr. Hill is a residency-trained emergency physician with <strong>30+ years</strong> of healthcare consulting experience. A former <strong>Managing Director at Navigant Consulting</strong> and operator of a 52-hospital, 250-physician emergency medicine group, he has directed 100+ national hospital engagements with annual revenue outcomes of <strong>$5M&ndash;$28M per initiative</strong>. Dr. Hill has worked with more than <strong>80 Case Management Departments</strong>, including operational redesign and training of case managers and physicians on inpatient status determination, developed and deployed Clinical Documentation Improvement (CDI) training programs for physicians, coders, and utilization managers, and designed and deployed <strong>14 utilization management programs</strong> across North America.</p>
-        <p>As a <strong>clinical expert witness in 125+ arbitrations and litigations</strong>, Dr. Hill has testified on over <strong>12,500 claims</strong> spanning medical necessity, ICD-10/DRG coding, EMTALA, and denial management, representing both Payors and health systems before AAA, AHLA, and federal courts nationwide.</p>
-        <div className="cin-bio-pills">
-          {["ACEP National Steering Committee","Past President, CA-ACEP","IHI & Joint Commission Speaker","RWJ Patient Flow Advisor","UCSF Asst. Professor"].map((c) => (
-            <span key={c}>{c}</span>
-          ))}
-        </div>
-        <div className="cin-bio-stats">
-          {[{n:"12,500+",l:"Claims Reviewed"},{n:"125+",l:"Lead Testifying Expert"},{n:"250+",l:"Expert Depositions"},{n:"30+",l:"Years Consulting"}].map((s) => (
-            <div key={s.n} className="cin-bio-stat">
-              <div className="cin-bio-stat-num">{s.n}</div>
-              <div className="cin-bio-stat-lbl">{s.l}</div>
-            </div>
-          ))}
-        </div>
-        <div className="cin-bio-btns">
-          <Link href="/about#dr-hill" className="btn-p">Full Biography &rarr;</Link>
-          <Link href="/contact" className="btn-o wh">Contact Our Team</Link>
-        </div>
-      </div>
 
       {/* ══ SECTION 8: CTA BAND ══════════════════════════════ */}
       <CTABand

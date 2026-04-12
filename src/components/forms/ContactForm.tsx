@@ -31,7 +31,7 @@ const PAYOR_SERVICES = [
   "Inpatient vs. Observation Determination",
   "DRG Clinical Validation",
   "ED Facility Level Methodology Review",
-  "Line-Item Coding Compliance",
+  "Payment Line-Item Claim Review",
   "Provider Dispute & Appeal Support",
   "Expert Medical Opinion Reports",
   "Rebuttal Reports & Deposition Support",
