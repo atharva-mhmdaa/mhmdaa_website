@@ -69,10 +69,12 @@ function PayorCTA() {
       style={{
         position: "relative",
         overflow: "hidden",
-        background: "linear-gradient(135deg,#0c2340 0%,#1a4a7a 55%,#0c2340 100%)",
+        background: "linear-gradient(135deg,#0d1a35 0%,#1B2A5B 50%,#0d1a35 100%)",
+        borderTop: "none",
+        borderBottom: "none",
       }}
     >
-      <div style={{ position: "absolute", top: -80, right: -80, width: 400, height: 400, background: "radial-gradient(circle,rgba(14,165,233,.12) 0%,transparent 65%)", borderRadius: "50%", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", top: -80, right: -80, width: 400, height: 400, background: "radial-gradient(circle,rgba(200,16,46,.12) 0%,transparent 65%)", borderRadius: "50%", pointerEvents: "none" }} />
       <div style={{ position: "absolute", bottom: -80, left: -80, width: 400, height: 400, background: "radial-gradient(circle,rgba(255,255,255,.04) 0%,transparent 65%)", borderRadius: "50%", pointerEvents: "none" }} />
       <div className="cta-inner">
         <div
@@ -80,19 +82,19 @@ function PayorCTA() {
             display: "inline-flex",
             alignItems: "center",
             gap: 8,
-            background: "rgba(14,165,233,.15)",
-            border: "1px solid rgba(14,165,233,.35)",
+            background: "rgba(200,16,46,.15)",
+            border: "1px solid rgba(200,16,46,.35)",
             borderRadius: 100,
             padding: "6px 18px",
             fontSize: ".78rem",
             fontWeight: 700,
             letterSpacing: ".14em",
             textTransform: "uppercase" as const,
-            color: "#7dd3fc",
+            color: "#f87171",
             marginBottom: 22,
           }}
         >
-          &#9679;&nbsp; Expert Witness &amp; Payor Defense
+          &#9679;&nbsp; Real Hospitals. Real Results.
         </div>
         <h2
           style={{
@@ -104,54 +106,19 @@ function PayorCTA() {
             marginBottom: 18,
           }}
         >
-          Facing a Complex Dispute?{" "}
-          <em style={{ color: "#7dd3fc", fontStyle: "italic" }}>We&rsquo;ve Been There</em>
+          Hospitals Navigating Real Challenges.{" "}
+          <em style={{ color: "#f87171", fontStyle: "italic" }}>Real Outcomes.</em>
         </h2>
         <p style={{ fontSize: "1.04rem", color: "rgba(255,255,255,.78)", lineHeight: 1.75, maxWidth: 620, margin: "0 auto 32px" }}>
-          From AAA and AHLA arbitrations to AHCA administrative proceedings, our physician experts have testified in the nation&rsquo;s most complex payor disputes. Let us bring that forensic rigor to your case.
+          Each case study documents a real hospital navigating real pressures: denial backlogs, documentation gaps, and revenue loss. These are their stories, their decisions, and the outcomes that followed.
         </p>
         <div className="cta-btns">
-          <Link href="/contact" className="btn-p" style={{ fontSize: "1rem", padding: "16px 38px", background: "linear-gradient(135deg,#0ea5e9,#0284c7)" }}>
-            Engage Our Expert Team &rarr;
+          <Link href="/contact" className="btn-p" style={{ fontSize: "1rem", padding: "16px 38px" }}>
+            Connect with an Expert &rarr;
           </Link>
-          <Link href="/payor-services" className="btn-o" style={{ fontSize: "1rem", padding: "16px 38px", color: "#fff", borderColor: "rgba(255,255,255,.3)" }}>
-            Payor Services
+          <Link href="/services-for-providers" className="btn-o" style={{ fontSize: "1rem", padding: "16px 38px", color: "#fff", borderColor: "rgba(255,255,255,.3)" }}>
+            Explore Our Services
           </Link>
-        </div>
-        <div
-          className="pay-cta-stats"
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            gap: "32px",
-            marginTop: 48,
-            borderTop: "1px solid rgba(255,255,255,.1)",
-            paddingTop: 32,
-          }}
-        >
-          {[
-            { val: "12,500+", lbl: "Claims Reviewed" },
-            { val: "125+", lbl: "Expert Engagements" },
-            { val: "190+", lbl: "National Clients" },
-            { val: "250+", lbl: "Expert Depositions" },
-          ].map((s, i) => (
-            <div
-              key={s.lbl}
-              style={{
-                textAlign: "center",
-                paddingLeft: i > 0 ? 32 : 0,
-                borderLeft: i > 0 ? "1px solid rgba(255,255,255,.15)" : "none",
-              }}
-            >
-              <div style={{ fontSize: "1.8rem", fontWeight: 900, color: "#fff", lineHeight: 1 }}>
-                {s.val}
-              </div>
-              <div style={{ fontSize: ".82rem", color: "rgba(255,255,255,.6)", fontWeight: 600, marginTop: 6 }}>
-                {s.lbl}
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </div>
@@ -298,7 +265,8 @@ export default function CaseStudiesTabs({
 }: {
   caseStudies?: CaseStudyListRow[];
 }) {
-  const [activeTab, setActiveTab] = useState<"provider" | "payor">("provider");
+  // DEFAULT changed to "payor" — Provider tab hidden from UI (code kept for future use)
+  const [activeTab, setActiveTab] = useState<"provider" | "payor">("payor");
 
   // Provider filters
   const [provSearch, setProvSearch] = useState("");
@@ -383,6 +351,7 @@ export default function CaseStudiesTabs({
   return (
     <div ref={containerRef}>
       {/* ═══ TAB BAR ═══ */}
+      {/* Tab bar hidden — only Payor tab remains; restore both buttons when Provider is re-activated
       <div className="cs-tab-bar">
         <div className="cs-tab-bar-inner">
           <button
@@ -401,6 +370,7 @@ export default function CaseStudiesTabs({
           </button>
         </div>
       </div>
+      */}
 
       {/* ═══ PROVIDER TAB ═══ */}
       {activeTab === "provider" && (
@@ -530,8 +500,8 @@ export default function CaseStudiesTabs({
                   <input
                     className="qnav-search"
                     type="search"
-                    placeholder="Search payor cases..."
-                    aria-label="Search payor cases"
+                    placeholder=""
+                    aria-label="Search case studies"
                     value={paySearch}
                     onChange={(e) => setPaySearch(e.target.value)}
                   />

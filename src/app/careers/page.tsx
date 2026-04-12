@@ -221,9 +221,6 @@ export default async function CareersPage() {
                 className="card"
                 style={{ display: "flex", flexDirection: "column", borderTop: `4px solid ${p.borderColor}`, padding: "28px 26px 26px" }}
               >
-                <div style={{ fontSize: ".78rem", fontWeight: 700, letterSpacing: ".12em", textTransform: "uppercase", color: p.borderColor, marginBottom: 6 }}>
-                  {p.num}
-                </div>
                 <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.35rem", fontWeight: 700, color: "var(--navy)", marginBottom: 2, lineHeight: 1.25 }}>
                   {p.title}
                 </h3>
