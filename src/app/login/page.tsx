@@ -14,7 +14,11 @@ export default function LoginPage() {
         alignItems: 'center',
         justifyContent: 'center',
         background: 'linear-gradient(135deg, #1B2A5B 0%, #2A3F7A 55%, #1B2A5B 100%)',
-        padding: '32px 16px',
+        paddingTop: '120px',
+        paddingBottom: '48px',
+        paddingLeft: '16px',
+        paddingRight: '16px',
+        boxSizing: 'border-box',
       }}
     >
       <Suspense fallback={<div style={{ color: '#fff' }}>Loading...</div>}>
