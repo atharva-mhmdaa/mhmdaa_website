@@ -61,9 +61,16 @@ const whyCards = [
     accent: "linear-gradient(90deg,#1B2A5B,#2A3F7A)",
     iconBg: "rgba(27,42,91,.08)",
     iconStroke: "#2A3F7A",
-    title: "Clinical Authority — Not Algorithms",
+    title: "Clinical Authority - Not Algorithms",
     p1: "Independent, physician-led analysis that captures clinical nuance beyond automated determinations.",
     p2: "",
+    icon: (stroke: string) => (
+      <svg aria-hidden="true" width={26} height={26} viewBox="0 0 24 24" fill="none" stroke={stroke} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3" />
+        <path d="M8 15v1a6 6 0 0 0 6 6 6 6 0 0 0 6-6v-4" />
+        <circle cx="20" cy="10" r="2" />
+      </svg>
+    ),
   },
   {
     accent: "linear-gradient(90deg,#C8102E,#e8334a)",
@@ -72,6 +79,12 @@ const whyCards = [
     title: "Built for Defensibility",
     p1: "Litigation-ready work product designed to withstand rigorous judicial and regulatory scrutiny.",
     p2: "",
+    icon: (stroke: string) => (
+      <svg aria-hidden="true" width={26} height={26} viewBox="0 0 24 24" fill="none" stroke={stroke} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <polyline points="9 12 11 14 15 10" />
+      </svg>
+    ),
   },
   {
     accent: "linear-gradient(90deg,#1B2A5B,#2A3F7A)",
@@ -80,6 +93,13 @@ const whyCards = [
     title: "Absolute Policy Precision",
     p1: "Definitive conclusions grounded in specific payer contracts, CMS regulations, and governing criteria.",
     p2: "",
+    icon: (stroke: string) => (
+      <svg aria-hidden="true" width={26} height={26} viewBox="0 0 24 24" fill="none" stroke={stroke} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="12" r="6" />
+        <circle cx="12" cy="12" r="2" />
+      </svg>
+    ),
   },
   {
     accent: "linear-gradient(90deg,#C8102E,#e8334a)",
@@ -88,6 +108,13 @@ const whyCards = [
     title: "Scalable, Proven Methodology",
     p1: "A disciplined, repeatable framework delivering consistent quality and a fully defensible audit trail.",
     p2: "",
+    icon: (stroke: string) => (
+      <svg aria-hidden="true" width={26} height={26} viewBox="0 0 24 24" fill="none" stroke={stroke} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="12 2 2 7 12 12 22 7 12 2" />
+        <polyline points="2 17 12 22 22 17" />
+        <polyline points="2 12 12 17 22 12" />
+      </svg>
+    ),
   },
 ];
 
@@ -317,7 +344,7 @@ export default function PayorServicesPage() {
                 className="why-card"
                 style={{
                   background: "#fff",
-                  border: "1px solid rgba(255,255,255,.08)",
+                  border: "none",
                   borderRadius: 20,
                   padding: 40,
                   position: "relative",
@@ -352,20 +379,7 @@ export default function PayorServicesPage() {
                     marginBottom: 22,
                   }}
                 >
-                  <svg
-                    aria-hidden="true"
-                    width={26}
-                    height={26}
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke={w.iconStroke}
-                    strokeWidth={2}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
+                  {w.icon(w.iconStroke)}
                 </div>
                 <h3
                   style={{
@@ -484,20 +498,29 @@ export default function PayorServicesPage() {
 
 
       {/* ── TRANSFORM CTA ────────────────────────────────── */}
-      <CTABand
-        heading="Let's Transform Your Denial & Dispute Resolution"
-        description="Partner with MHMDAA's physician-led team to strengthen compliance, enhance defensibility, and build a more financially sustainable payor operation."
-        showButton={false}
-        noBorder
-      />
+      <section
+        className="cta-band"
+        style={{ borderTop: "none", borderBottom: "none" }}
+      >
+        <div className="cta-inner">
+          <h2>Let&apos;s Transform Your Denial &amp; Dispute Resolution</h2>
+          <p
+            style={{
+              color: "#000",
+              fontWeight: 700,
+              fontSize: "clamp(.95rem, 1.4vw, 1.1rem)",
+            }}
+          >
+            Partner with MHMDAA&apos;s physician-led team and take the first step towards building denial-resilient, sustainable financial payor operations.
+          </p>
+          <div className="cta-btns">
+            <Link href="/contact" className="btn-p">
+              Get in touch
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      {/* ── CTA BAND ─────────────────────────────────────── */}
-      <CTABand
-        heading="Start a Conversation With Our Experts"
-        description="Partner with MHMDAA's physician-led team and take the first decisive step toward building a denial-resilient, financially sustainable hospital operation."
-        buttonText="Get in touch"
-        buttonHref="/contact"
-      />
     </>
   );
 }
