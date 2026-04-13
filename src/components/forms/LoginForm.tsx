@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
-import Image from 'next/image';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
@@ -44,18 +43,7 @@ export default function LoginForm() {
   }
 
   return (
-    <div className="login-card" style={{ maxWidth: '440px' }}>
-      <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-        <Image
-          src="/images/logo.png"
-          alt="Michael Hill, MD & Associates"
-          width={180}
-          height={74}
-          priority
-          style={{ height: '74px', width: 'auto', margin: '0 auto' }}
-        />
-      </div>
-
+    <div className="login-card" style={{ maxWidth: '440px', width: '100%' }}>
       <h1
         style={{
           fontFamily: "'Playfair Display', serif",
@@ -63,21 +51,11 @@ export default function LoginForm() {
           fontWeight: 700,
           color: '#2A3F7A',
           textAlign: 'center',
-          marginBottom: '8px',
+          marginBottom: '28px',
         }}
       >
         Staff Portal
       </h1>
-      <p
-        style={{
-          textAlign: 'center',
-          color: '#5A6E8A',
-          fontSize: '.95rem',
-          marginBottom: '32px',
-        }}
-      >
-        Sign in with your staff credentials.
-      </p>
 
       {error && (
         <div
@@ -114,7 +92,7 @@ export default function LoginForm() {
             id="email"
             type="email"
             autoComplete="email"
-            placeholder="you@mhmdaa.com"
+            placeholder=""
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -159,7 +137,7 @@ export default function LoginForm() {
               id="password"
               type={showPassword ? 'text' : 'password'}
               autoComplete="current-password"
-              placeholder="Enter your password"
+              placeholder=""
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -232,6 +210,8 @@ export default function LoginForm() {
             cursor: loading ? 'not-allowed' : 'pointer',
             opacity: loading ? 0.7 : 1,
             transition: 'opacity .2s',
+            textAlign: 'center',
+            display: 'block',
           }}
         >
           {loading ? 'Signing in...' : 'Sign In'}
