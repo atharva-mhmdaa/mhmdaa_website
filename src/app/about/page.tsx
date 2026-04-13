@@ -472,22 +472,21 @@ export default function AboutPage() {
         <div className="cin-inner-about cin-inner-about-desktop">
           <RevealOnScroll direction="right" className="cin-content-about">
             <div
+              className="hero-badge"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                gap: "8px",
-                background: "rgba(200,16,46,.2)",
-                border: "1px solid rgba(200,16,46,.45)",
-                color: "#f87171",
-                fontSize: ".8rem",
-                fontWeight: 700,
-                letterSpacing: ".14em",
-                textTransform: "uppercase",
-                padding: "5px 14px",
-                borderRadius: "100px",
+                gap: 8,
+                background: "rgba(200,16,46,.28)",
+                border: "1px solid rgba(200,16,46,.7)",
+                borderLeft: "none",
+                borderRadius: 100,
+                padding: "6px 18px",
+                color: "#fca5a5",
                 marginBottom: "20px",
               }}
             >
+              <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#C8102E", flexShrink: 0, display: "inline-block" }} />
               Founder &amp; CEO
             </div>
             <h2
@@ -658,7 +657,22 @@ export default function AboutPage() {
         {/* Desktop content panel */}
         <div className="cin-inner-about cin-inner-about-desktop">
           <RevealOnScroll direction="right" className="cin-content-about">
-            <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(200,16,46,.2)", border: "1px solid rgba(200,16,46,.45)", color: "#f87171", fontSize: ".8rem", fontWeight: 700, letterSpacing: ".14em", textTransform: "uppercase", padding: "5px 14px", borderRadius: "100px", marginBottom: "20px" }}>
+            <div
+              className="hero-badge"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                background: "rgba(200,16,46,.28)",
+                border: "1px solid rgba(200,16,46,.7)",
+                borderLeft: "none",
+                borderRadius: 100,
+                padding: "6px 18px",
+                color: "#fca5a5",
+                marginBottom: "20px",
+              }}
+            >
+              <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#C8102E", flexShrink: 0, display: "inline-block" }} />
               Chief of Operations
             </div>
 
