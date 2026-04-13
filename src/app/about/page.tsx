@@ -224,112 +224,12 @@ export default function AboutPage() {
           <div className="sc">
             <RevealOnScroll>
               <div className="sec-header c mission-sec-header">
-                <div className="sec-label">Our Mission, Vision, Values</div>
+                <div className="sec-label">Our Vision, Mission, Values</div>
                 <h2 className="sec-title">
                   Restoring <em>Clinical Authority</em>
                   <br />
                   to the Revenue Cycle
                 </h2>
-              </div>
-            </RevealOnScroll>
-
-            {/* Mission Quote */}
-            <RevealOnScroll>
-              <div
-                className="mission-card"
-                style={{
-                  background: "linear-gradient(135deg,#0d1a35 0%,#2A3F7A 100%)",
-                  borderRadius: "20px",
-                  position: "relative",
-                  overflow: "hidden",
-                }}
-              >
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    bottom: 0,
-                    width: "4px",
-                    background: "linear-gradient(to bottom,#C8102E,#a50d24)",
-                    borderRadius: "4px 0 0 4px",
-                  }}
-                />
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "20px",
-                    right: "32px",
-                    fontSize: "5rem",
-                    fontWeight: 900,
-                    color: "rgba(255,255,255,.04)",
-                    lineHeight: 1,
-                    fontFamily: "'Playfair Display', serif",
-                  }}
-                >
-                  &ldquo;
-                </div>
-                <div
-                  style={{
-                    fontSize: ".8rem",
-                    fontWeight: 700,
-                    letterSpacing: ".16em",
-                    textTransform: "uppercase",
-                    color: "#f87171",
-                    marginBottom: "20px",
-                  }}
-                >
-                  Mission
-                </div>
-                <blockquote style={{ margin: 0, padding: 0, border: "none" }}>
-                  <p
-                    style={{
-                      fontSize: "1.1rem",
-                      fontStyle: "italic",
-                      color: "rgba(255,255,255,.92)",
-                      lineHeight: 1.88,
-                      marginBottom: "20px",
-                      fontFamily: "'Playfair Display', serif",
-                    }}
-                  >
-                    &ldquo;Our mission is to restore clinical authority to
-                    Payor operations. By providing the sub-specialty expertise
-                    and forensic rigor necessary to validate complex claims at
-                    the source, we ensure that payment integrity is governed by
-                    the{" "}
-                    <strong style={{ color: "#93c5fd", fontStyle: "normal" }}>
-                      &lsquo;Truth of the Patient&rsquo;
-                    </strong>{" "}
-                    rather than the limitations of an algorithm.&rdquo;
-                  </p>
-                  <footer
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "14px",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: "32px",
-                        height: "1px",
-                        background: "#C8102E",
-                      }}
-                    />
-                    <cite
-                      style={{
-                        fontSize: "1.04rem",
-                        fontWeight: 600,
-                        color: "rgba(255,255,255,.84)",
-                        fontStyle: "normal",
-                        letterSpacing: ".04em",
-                      }}
-                    >
-                      Michael Hill, MD &nbsp;&middot;&nbsp; Founder &amp; CEO,
-                      MHMDAA
-                    </cite>
-                  </footer>
-                </blockquote>
               </div>
             </RevealOnScroll>
 
@@ -382,6 +282,66 @@ export default function AboutPage() {
                   clinical accuracy of the Payor ecosystem. We replace friction
                   with clinical precision and data-backed transparency.
                 </p>
+              </div>
+            </RevealOnScroll>
+
+            {/* Mission Quote */}
+            <RevealOnScroll>
+              <div
+                className="mission-card"
+                style={{
+                  background: "linear-gradient(135deg,#0d1a35 0%,#2A3F7A 100%)",
+                  borderRadius: "20px",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    bottom: 0,
+                    width: "4px",
+                    background: "linear-gradient(to bottom,#C8102E,#a50d24)",
+                    borderRadius: "4px 0 0 4px",
+                  }}
+                />
+                <div
+                  style={{
+                    fontSize: ".8rem",
+                    fontWeight: 700,
+                    letterSpacing: ".16em",
+                    textTransform: "uppercase",
+                    color: "#f87171",
+                    marginBottom: "20px",
+                  }}
+                >
+                  Mission
+                </div>
+                <blockquote style={{ margin: 0, padding: 0, border: "none" }}>
+                  <p
+                    style={{
+                      fontSize: "1.1rem",
+                      fontStyle: "italic",
+                      color: "rgba(255,255,255,.92)",
+                      lineHeight: 1.85,
+                      marginBottom: 0,
+                      fontFamily: "'Playfair Display', serif",
+                      fontWeight: 500,
+                    }}
+                  >
+                    &ldquo;Our mission is to restore clinical authority to
+                    Payor operations. By providing the sub-specialty expertise
+                    and forensic rigor necessary to validate complex claims at
+                    the source, we ensure that payment integrity is governed by
+                    the{" "}
+                    <strong style={{ color: "#93c5fd", fontStyle: "normal" }}>
+                      &lsquo;Truth of the Patient&rsquo;
+                    </strong>{" "}
+                    rather than the limitations of an algorithm.&rdquo;
+                  </p>
+                </blockquote>
               </div>
             </RevealOnScroll>
 
@@ -831,7 +791,7 @@ export default function AboutPage() {
       {/* 10. CTA BAND */}
       <CTABand
         heading="Start a Conversation with Our Experts"
-        description="Partner with MHMDAA's physician-led team and take the first decisive step toward building a denial-resilient, financially sustainable hospital operation."
+        description="Partner with MHMDAA&apos;s physician-led team and take the first step towards building denial-resilient, sustainable financial payor operations."
       />
     </>
   );
