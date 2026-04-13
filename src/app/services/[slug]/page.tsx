@@ -24,12 +24,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-const featureColors = [
-  { bg: "linear-gradient(135deg,#2A3F7A,#2A3F7A)", color: "#fff" },
-  { bg: "linear-gradient(135deg,#C8102E,#a50d24)", color: "#fff" },
-  { bg: "linear-gradient(135deg,#059669,#10b981)", color: "#fff" },
-  { bg: "linear-gradient(135deg,#6d28d9,#7c3aed)", color: "#fff" },
-];
 
 export default async function PayorServicePage({ params }: PageProps) {
   const { slug } = await params;
@@ -126,7 +120,7 @@ export default async function PayorServicePage({ params }: PageProps) {
                   className="card"
                   style={{ borderTop: `4px solid ${i % 2 === 0 ? "#2A3F7A" : "#C8102E"}`, padding: "28px 26px" }}
                 >
-                  <div style={{ fontSize: ".75rem", fontWeight: 700, letterSpacing: ".13em", textTransform: "uppercase" as const, color: i % 2 === 0 ? "#2A3F7A" : "#C8102E", marginBottom: 10 }}>
+                  <div style={{ fontSize: "19px", fontWeight: 700, letterSpacing: ".13em", textTransform: "uppercase" as const, color: i % 2 === 0 ? "#2A3F7A" : "#C8102E", marginBottom: 10  }}>
                     {step.title}
                   </div>
                   <p style={{ fontSize: "1.04rem", color: "#5A6E8A", lineHeight: 1.72 }}>{step.desc}</p>
@@ -137,45 +131,6 @@ export default async function PayorServicePage({ params }: PageProps) {
         </section>
       )}
 
-      {/* ── FEATURE CARDS ─────────────────────────────────── */}
-      <section className="section" style={{ background: "#fff" }}>
-        <div className="sc">
-          <div className="sec-header c">
-            <div className="sec-label">Key Service Components</div>
-            <h2 className="sec-title">{service.title}</h2>
-            {service.featuresSub && (
-              <p className="sec-sub" style={{ marginLeft: "auto", marginRight: "auto" }}>{service.featuresSub}</p>
-            )}
-          </div>
-          <div className="feats-grid">
-            {service.features.map((f, i) => (
-              <div className="feat-card" key={f.title}>
-                {f.image && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={f.image} alt={f.title} className={`fc-img${f.imgPositionMobile ? " fc-img--mob-pos" : ""}`} style={{ ...(f.imgPosition ? { objectPosition: f.imgPosition } : {}), ...(f.imgPositionMobile ? { ["--mob-pos" as string]: f.imgPositionMobile } : {}) } as React.CSSProperties} />
-                )}
-                {!f.image && (
-                  <div
-                    className="feat-icon"
-                    style={{
-                      background: featureColors[i % featureColors.length].bg,
-                      color: featureColors[i % featureColors.length].color,
-                      fontWeight: 800,
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                )}
-                <div className="fc-body">
-                  <div className="fc-title">{f.title}</div>
-                  <p className="fc-desc">{f.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── SERVICE NAVIGATION ────────────────────────────── */}
       <div className="sd-svcnav-wrap">
