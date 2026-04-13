@@ -131,7 +131,7 @@ export default function ContactForm() {
                 <option key={s} value={s}>{s}</option>
               ))}
             </optgroup>
-            <optgroup label="Services for Payors">
+            <optgroup label="Services">
               {PAYOR_SERVICES.map((s) => (
                 <option key={s} value={s}>{s}</option>
               ))}

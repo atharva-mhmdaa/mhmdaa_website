@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
   // { href: "/provider-services", label: "Services for Providers" }, // HIDDEN — re-enable when page is reactivated
-  { href: "/payor-services", label: "Services for Payors" },
+  { href: "/services", label: "Services" },
   { href: "/healthcare-fraud-analysis", label: "Healthcare Fraud Analysis" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/blogs", label: "Blogs" },
@@ -20,11 +20,6 @@ const FONT_BASE = 17;
 const FONT_MIN = 13;
 const FONT_MAX = 22;
 
-const LinkedInIcon = () => (
-  <svg width="24" height="24" fill="#fff" viewBox="0 0 24 24">
-    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-  </svg>
-);
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -169,40 +164,6 @@ export default function Navbar() {
           />
         </Link>
 
-        <div
-          style={{
-            position: "absolute",
-            right: "70px",
-            top: "50%",
-            transform: "translateY(-50%)",
-          }}
-        >
-          <a
-            href="https://www.linkedin.com/company/michaelhillmdandassociates/"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="LinkedIn"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "48px",
-              height: "48px",
-              background: "transparent",
-              borderRadius: "8px",
-              transition: "background .2s",
-              textDecoration: "none",
-            }}
-            onMouseOver={(e) =>
-              (e.currentTarget.style.background = "rgba(255,255,255,.12)")
-            }
-            onMouseOut={(e) =>
-              (e.currentTarget.style.background = "transparent")
-            }
-          >
-            <LinkedInIcon />
-          </a>
-        </div>
 
         <button
           ref={hamRef}
@@ -242,6 +203,18 @@ export default function Navbar() {
           >
             A&#8722;
           </button>
+          <span
+            className="font-toggle-track"
+            title="Current text size"
+          >
+            <span
+              className="font-toggle-fill"
+              style={{
+                width: `${((fontSize - FONT_MIN) / (FONT_MAX - FONT_MIN)) * 100}%`,
+                background: fontSize === FONT_BASE ? "rgba(255,255,255,0.5)" : "#C8102E",
+              }}
+            />
+          </span>
           <button
             onClick={() => adjFont(1)}
             aria-label="Increase font size"

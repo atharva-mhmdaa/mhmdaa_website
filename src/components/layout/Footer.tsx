@@ -68,15 +68,15 @@ const LinkedInIcon = () => (
 // ];
 
 const payorLinks = [
-  { href: "/payor-services/expert-opinions", label: "Expert Medical Opinion Reports" },
-  { href: "/payor-services/rebuttal", label: "Rebuttal Reports & Deposition Support" },
-  { href: "/payor-services/demonstratives", label: "Demonstratives & Litigation Support" },
-  { href: "/payor-services/dispute-appeal", label: "Provider Dispute & Appeal Support" },
-  { href: "/payor-services/drg-validation", label: "DRG Clinical Validation" },
-  { href: "/payor-services/payment-line-item-claim-review", label: "Payment Line-Item Claim Review" },
-  { href: "/payor-services/two-midnight", label: "Two Midnight Rule Compliance" },
-  { href: "/payor-services/inpatient-obs", label: "Inpatient vs. Observation Determination" },
-  { href: "/payor-services/ed-facility", label: "ED Facility Level Methodology Review" },
+  { href: "/services/expert-opinions", label: "Expert Medical Opinion Reports" },
+  { href: "/services/rebuttal", label: "Rebuttal Reports & Deposition Support" },
+  { href: "/services/demonstratives", label: "Demonstratives & Litigation Support" },
+  { href: "/services/dispute-appeal", label: "Provider Dispute & Appeal Support" },
+  { href: "/services/drg-validation", label: "DRG Clinical Validation" },
+  { href: "/services/payment-line-item-claim-review", label: "Payment Line-Item Claim Review" },
+  { href: "/services/two-midnight", label: "Two Midnight Rule Compliance" },
+  { href: "/services/inpatient-obs", label: "Inpatient vs. Observation Determination" },
+  { href: "/services/ed-facility", label: "ED Facility Level Methodology Review" },
 ];
 
 const companyLinks = [
@@ -144,6 +144,19 @@ export default function Footer() {
                 </div>
               </div>
             </div>
+            <div style={{ marginTop: 24 }}>
+              <a
+                href="https://www.linkedin.com/company/michaelhillmdandassociates/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="LinkedIn"
+                style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 36, height: 36, background: "rgba(255,255,255,.1)", borderRadius: 8, transition: "background .2s" }}
+                onMouseOver={(e) => (e.currentTarget.style.background = "rgba(255,255,255,.2)")}
+                onMouseOut={(e) => (e.currentTarget.style.background = "rgba(255,255,255,.1)")}
+              >
+                <LinkedInIcon />
+              </a>
+            </div>
           </div>
 
           {/* Services for Providers — HIDDEN; re-enable when page is reactivated */}
@@ -156,10 +169,10 @@ export default function Footer() {
             ))}
           </div> */}
 
-          {/* Services for Payors */}
+          {/* Services */}
           <div className="fc">
-            <h5><Link href="/payor-services" style={{ color: "inherit", textDecoration: "none" }}>Services for Payors</Link></h5>
-            <h5><Link href="/healthcare-fraud-analysis" style={{ color: "inherit", textDecoration: "none" }}>Healthcare Fraud Analysis</Link></h5>
+            <h5 className="fc-h5--no-rule"><Link href="/services" style={{ color: "inherit", textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}><span style={{ display: "inline-block", width: 18, height: 2, background: "#C8102E", borderRadius: 2, flexShrink: 0 }} />Services</Link></h5>
+            <h5 className="fc-h5--no-rule"><Link href="/healthcare-fraud-analysis" style={{ color: "inherit", textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}><span style={{ display: "inline-block", width: 18, height: 2, background: "#C8102E", borderRadius: 2, flexShrink: 0 }} />Healthcare Fraud Analysis</Link></h5>
           </div>
 
           {/* Company */}
@@ -180,16 +193,6 @@ export default function Footer() {
         <p>
           &copy; 2026 Michael Hill, MD &amp; Associates. All rights reserved.
         </p>
-        <div className="footer-social">
-          <a
-            href="https://www.linkedin.com/company/michaelhillmdandassociates/"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="LinkedIn"
-          >
-            <LinkedInIcon />
-          </a>
-        </div>
       </div>
     </footer>
   );
