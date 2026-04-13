@@ -17,6 +17,20 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  async redirects() {
+    return [
+      {
+        source: "/payor-services",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/payor-services/:slug",
+        destination: "/services/:slug",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

@@ -126,16 +126,9 @@ export default function ContactForm() {
           <label htmlFor="service">Service of Interest</label>
           <select id="service" name="service" defaultValue="">
             <option value="" disabled>Select a service...</option>
-            <optgroup label="Services for Providers">
-              {PROVIDER_SERVICES.map((s) => (
-                <option key={s} value={s}>{s}</option>
-              ))}
-            </optgroup>
-            <optgroup label="Services for Payors">
-              {PAYOR_SERVICES.map((s) => (
-                <option key={s} value={s}>{s}</option>
-              ))}
-            </optgroup>
+            {PAYOR_SERVICES.map((s) => (
+              <option key={s} value={s}>{s}</option>
+            ))}
             <option value="Other">Other</option>
           </select>
         </div>

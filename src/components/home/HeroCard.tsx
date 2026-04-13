@@ -133,7 +133,7 @@ export default function HeroCard() {
             >
               Objective. Independent. Clinical.
             </span>
-            <Link href="/payor-services" style={{ color: "#34d399" }}>
+            <Link href="/services" style={{ color: "#34d399" }}>
               View Our Services &rarr;
             </Link>
           </div>
