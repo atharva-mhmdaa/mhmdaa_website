@@ -78,7 +78,7 @@ export const payorServices: PayorService[] = [
     description:
       "Michael Hill MD and Associates \u2014 Rebuttal Reports & Deposition Support: Identify structural weaknesses in opposing expert testimony through standardized, data-driven analysis and rigorous evidence mapping \u2014 equipping legal counsel with precise, targeted lines of questioning.",
     heroDescription:
-      "Identify structural weaknesses in opposing expert testimony through standardized, data-driven analysis and rigorous evidence mapping \u2014 equipping legal counsel with precise, targeted lines of questioning.",
+      "Identify structural weaknesses in opposing expert testimony through standardized, data-driven analysis and rigorous evidence mapping, equipping legal counsel with precise, targeted lines of questioning.",
     heroImage: "/images/payor-rebuttal-hero.png",
     heroImagePosition: "center 80%",
     infoText: "Data-driven analysis that exposes structural weaknesses in opposing expert testimony.",
@@ -403,7 +403,7 @@ export const payorServices: PayorService[] = [
       },
       {
         title: "Benchmark",
-        desc: "We encourage clients to cross-reference patient clinical data against InterQual, Milliman, and other nationally recognized evidence-based criteria at the time of admission to ensure consistent, reliable status determinations.",
+        desc: "We guide clients to benchmark patient clinical data against InterQual, Milliman, and other nationally recognized, evidence-based criteria at the point of admission to support consistent, reliable status determinations.",
       },
       {
         title: "Validate",
@@ -447,10 +447,12 @@ export const payorServices: PayorService[] = [
       "Evaluate internal policies and clinical documentation to align hospital billing with national standards, ensuring that every facility level assignment is proportionate to the patient\u2019s clinical presentation.",
     heroImage: "/images/payor-ed-facility-hero.png",
     heroImagePosition: "center 15%",
+    infoText: "Align billed facility levels with clinical reality - not administrative convenience.",
+    infoBadge: "FACILITY INTEGRITY",
     processSteps: [
       {
         title: "Analyze",
-        desc: "We evaluate whether documented interventions — including diagnostics and treatments — are proportionate to the patient's presenting acuity and treatment workflows.",
+        desc: "We evaluate whether documented interventions, including diagnostics and treatments, are proportionate to the patient's presenting acuity and treatment workflows.",
       },
       {
         title: "Validate",

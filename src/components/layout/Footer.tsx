@@ -104,23 +104,13 @@ export default function Footer() {
                 textDecoration: "none",
               }}
             >
-              <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  background: "#fff",
-                  borderRadius: "8px",
-                  padding: "5px 10px",
-                }}
-              >
-                <Image
-                  src="/images/logo.png"
-                  alt="Michael Hill, MD & Associates"
-                  width={160}
-                  height={66}
-                  style={{ height: "66px", width: "auto" }}
-                />
-              </span>
+              <Image
+                src="/images/logo.png"
+                alt="Michael Hill, MD & Associates"
+                width={160}
+                height={66}
+                style={{ height: "66px", width: "auto" }}
+              />
             </Link>
             <p className="fb-tagline">
               &ldquo;Restoring clinical authority to the revenue cycle,

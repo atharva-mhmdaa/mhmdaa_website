@@ -159,25 +159,14 @@ export default function Navbar() {
     >
       <div className="nav-top">
         <Link href="/" className="nav-logo">
-          <span
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              background: "#fff",
-              borderRadius: "10px",
-              padding: "6px 14px",
-              boxShadow: "0 2px 8px rgba(0,0,0,.08)",
-            }}
-          >
-            <Image
-              src="/images/logo.png"
-              alt="Michael Hill, MD & Associates"
-              width={210}
-              height={87}
-              priority
-              style={{ height: "87px", width: "auto" }}
-            />
-          </span>
+          <Image
+            src="/images/logo.png"
+            alt="Michael Hill, MD & Associates"
+            width={210}
+            height={87}
+            priority
+            style={{ height: "87px", width: "auto" }}
+          />
         </Link>
 
         <div
