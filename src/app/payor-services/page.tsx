@@ -32,12 +32,6 @@ const pillars = [
   },
   {
     num: "03",
-    label: "Accelerated P2P",
-    title: "Accelerated P2P for Payors",
-    desc: "Defend denial integrity with specialty-matched, board-certified Specialists who provide 24/7, litigation-ready clinical rigor within 24 hours.",
-  },
-  {
-    num: "04",
     label: "Billing Integrity",
     title: "Contractual & Billing Integrity Analysis",
     desc: "Analyze line items to detect unbundling and billing patterns that breach Payor-Provider agreements, providing objective evidence to support withholding reimbursement for services exceeding contractual or fair-market standards.",
@@ -182,8 +176,8 @@ export default function PayorServicesPage() {
             </p>
           </div>
 
-          {/* Pillars grid: 5 in a single row */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 16 }}>
+          {/* Pillars grid: 4 in a single row */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, maxWidth: 1100, margin: "0 auto" }}>
             {pillars.map((p, i) => {
               const isNavy = i % 2 === 0;
               const accent = isNavy ? "var(--navy)" : "var(--red)";
@@ -609,7 +603,7 @@ export default function PayorServicesPage() {
       {/* ── TRANSFORM CTA ────────────────────────────────── */}
       <CTABand
         heading="Let's Transform Your Denial & Dispute Resolution"
-        description="Ready to reduce denials, strengthen reimbursement, and operationalize defensible decisions? Connect with our physician‑led team to get started."
+        description="Partner with MHMDAA's physician-led team to strengthen compliance, enhance defensibility, and build a more financially sustainable payor operation."
         showButton={false}
         noBorder
       />
