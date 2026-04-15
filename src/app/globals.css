@@ -1018,7 +1018,7 @@ details[open] .ig-lbl-open { display: inline }
 .cb-item { font-size: 1.1rem; font-weight: 600; color: #2A3F7A; display: flex; align-items: center; gap: 8px }
 .cb-dot { width: 7px; height: 7px; background: #C8102E; border-radius: 50%; flex-shrink: 0 }
 .why-payors-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 28px }
-.pillars-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px }
+.pillars-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px }
 .p2p-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start }
 .why-card { padding: 40px }
 .why-payors-section { padding: 96px 32px }
@@ -1158,6 +1158,9 @@ details[open] .ig-lbl-open { display: inline }
   .svc-hero > div h1, .svc-hero > div p { margin-left: auto; margin-right: auto }
   .svc-hero .hero-badge { margin-left: auto; margin-right: auto; width: fit-content }
   .svc-hero .btn-p { display: flex; justify-content: center; width: fit-content; margin-left: auto; margin-right: auto }
+  .svc-hero-desc { text-align: left !important; margin-left: 0 !important; margin-right: auto }
+  .svc-hero > div p.svc-hero-desc { text-align: left !important; margin-left: 0 !important }
+  .who-serve-desc { text-align: left !important; margin-left: 0 !important }
   .blue-highlight-box { flex-direction: column; align-items: stretch; text-align: center }
   .blue-highlight-box > div:first-child { display: flex !important; justify-content: center; align-items: center; margin-left: auto; margin-right: auto }
   .cases-hero { padding: 90px 20px 48px }
@@ -1180,7 +1183,8 @@ details[open] .ig-lbl-open { display: inline }
   .cb-item { font-size: .82rem; font-weight: 700; color: #2A3F7A; background: rgba(27,42,91,.07); border: 1.5px solid rgba(27,42,91,.18); padding: 7px 14px; border-radius: 100px; display: inline-flex; align-items: center; gap: 7px }
   .cb-dot { width: 6px; height: 6px; background: #C8102E; border-radius: 50%; flex-shrink: 0 }
   .why-payors-2col { grid-template-columns: 1fr !important; gap: 20px !important }
-  .pillars-grid { grid-template-columns: 1fr !important; gap: 18px !important }
+  .pillars-grid { grid-template-columns: 1fr !important; gap: 14px !important }
+  .pillar-card { padding: 20px 18px !important; border-radius: 12px !important }
   .p2p-layout { grid-template-columns: 1fr !important; gap: 32px !important }
   .why-card { padding: 24px !important; text-align: center }
   .why-card .why-card-icon { margin-left: auto; margin-right: auto }
@@ -1280,6 +1284,7 @@ details[open] .ig-lbl-open { display: inline }
   .fb-brand { grid-column: 1 / -1 }
   .card-grid-3 { grid-template-columns: 1fr 1fr }
   .pillar-grid { grid-template-columns: 1fr 1fr }
+  .pillars-grid { grid-template-columns: repeat(2,1fr) !important }
   .card-grid-2 { grid-template-columns: 1fr }
   .feat { flex-direction: column; gap: 10px }
   .font-toggle { display: none }
@@ -1415,12 +1420,15 @@ details[open] .ig-lbl-open { display: inline }
   .blogs-hero { padding: 80px 16px 40px }
   .cs-page { padding: 90px 16px 52px }
   .svc-hero { padding: 80px 16px 40px }
+  .svc-hero > div p.svc-hero-desc { text-align: left !important; margin-left: 0 !important }
+  .who-serve-desc { text-align: left !important; margin-left: 0 !important }
   .cases-hero { padding: 80px 16px 40px }
   .payor-hero { padding: 80px 16px 40px }
   .cred-bar-inner { gap: 8px }
   .cb-item { font-size: .78rem; padding: 6px 12px }
   .why-payors-2col { grid-template-columns: 1fr !important; gap: 16px !important }
-  .pillars-grid { grid-template-columns: 1fr !important; gap: 14px !important }
+  .pillars-grid { grid-template-columns: 1fr !important; gap: 12px !important }
+  .pillar-card { padding: 18px 16px !important }
   .p2p-layout { grid-template-columns: 1fr !important; gap: 24px !important }
   .why-card { padding: 20px !important; text-align: center }
   .why-card .why-card-icon { margin-left: auto; margin-right: auto }
