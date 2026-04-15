@@ -69,12 +69,6 @@ export default async function DynamicCaseStudyPage({ params }: Props) {
   if (isPayor) {
     return (
       <div className="cs-page">
-        <Link href="/case-studies" className="cs-back">
-          ← Back to Case Studies
-        </Link>
-
-        <div className="cs-eyebrow">Payor Case Study</div>
-
         <h1 className="cs-title">{cs.title}</h1>
         {cs.subtitle && <h2 className="cs-subtitle">{cs.subtitle}</h2>}
         <div className="cs-divider" />
@@ -126,19 +120,19 @@ export default async function DynamicCaseStudyPage({ params }: Props) {
             </div>
           </div>
         )}
+
+        <div style={{ marginTop: 48, display: "flex", justifyContent: "center" }}>
+          <Link href="/case-studies" className="cs-back">
+            ← Back to Case Studies
+          </Link>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="cs-page">
-      <Link href="/case-studies" className="cs-back">
-        ← Back to Case Studies
-      </Link>
-
-      <div className="cs-eyebrow">Client Case Study</div>
-
-      <h1 className="cs-title">{cs.title}</h1>
+        <h1 className="cs-title">{cs.title}</h1>
       {cs.subtitle && <h2 className="cs-subtitle">{cs.subtitle}</h2>}
       <div className="cs-divider" />
 
@@ -174,6 +168,12 @@ export default async function DynamicCaseStudyPage({ params }: Props) {
           )}
         </div>
       )}
+
+      <div style={{ marginTop: 48, display: "flex", justifyContent: "center" }}>
+        <Link href="/case-studies" className="cs-back">
+          ← Back to Case Studies
+        </Link>
+      </div>
     </div>
   );
 }
