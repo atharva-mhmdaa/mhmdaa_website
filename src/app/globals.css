@@ -1312,6 +1312,36 @@ details[open] .ig-lbl-open { display: inline }
   .team-desc { font-size: .82rem; line-height: 1.58; text-align: left }
   .cin-section-home { min-height: 400px !important }
   .cin-content-home { max-width: 58% !important; width: 58% !important }
+
+  /* ── MOBILE TYPOGRAPHY ALIGNMENT ─────────────────────────
+     Headings/labels (red & blue) stay centered.
+     Body/paragraph text (grey) shifts to left for readability. */
+
+  /* Section headers — headings stay centred, body text goes left */
+  .sec-header.c .sec-sub { text-align: left !important; margin-left: 0 !important; margin-right: 0 !important }
+  .sec-sub { text-align: left !important }
+  .sec-body-text { text-align: left !important }
+  .cta-inner p { text-align: left }
+  .sec-header.c { text-align: center }
+  .sec-header.c .sec-title { text-align: center }
+  .sec-header.c .sec-label { text-align: center; margin-left: 0; margin-right: auto }
+
+  /* Advantage cards (.adv-card) — icon centred, title & red italic subheading centred, desc left */
+  .adv-icon { margin-left: auto; margin-right: auto }
+  .adv-title { text-align: center }
+  .adv-card > p:not(.adv-desc) { text-align: center }
+  .adv-desc { text-align: left }
+
+  /* Performance cards (.perf-card) — icon & title centred (desktop default), desc left */
+  .perf-card { align-items: center }
+  .perf-card-title { text-align: center }
+  .perf-card-desc { text-align: left }
+
+  /* "When to Engage" cards (.ap-card) — number & title centred, desc left */
+  .ap-card { text-align: left }
+  .ap-num { margin-left: auto; margin-right: auto }
+  .ap-card h3 { text-align: center }
+  .ap-desc { text-align: left }
 }
 
 @media (max-width: 560px) {
