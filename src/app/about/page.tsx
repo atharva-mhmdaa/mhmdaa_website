@@ -283,8 +283,11 @@ export default function AboutPage() {
                   To lead a systemic shift from reactive claims processing to
                   proactive payment integrity, ensuring that administrative
                   complexity and regulatory nuances never compromise the
-                  clinical accuracy of the Payor ecosystem. We replace friction
-                  with clinical precision and data-backed transparency.
+                  clinical accuracy of the Payor ecosystem. Through
+                  physician-led advocacy and augmented intelligence, MHMDAA
+                  resolves complex clinical disputes, ensuring that providers
+                  are paid for the acuity of care delivered and Payors are
+                  protected from systemic over-coding.
                 </p>
               </div>
             </RevealOnScroll>
@@ -334,11 +337,15 @@ export default function AboutPage() {
                       fontWeight: 500,
                     }}
                   >
-                    Our mission is to restore clinical authority to
-                    Payor operations. By providing the sub-specialty expertise
-                    and forensic rigor necessary to validate complex claims at
-                    the source, we ensure that payment integrity is governed by
-                    the{" "}
+                    MHMDAA is a{" "}
+                    <strong style={{ color: "#93c5fd", fontStyle: "normal" }}>
+                      high-reliability consulting firm
+                    </strong>{" "}
+                    dedicated to restoring integrity to the healthcare
+                    reimbursement cycle. By providing the sub-specialty
+                    expertise and forensic rigor necessary to validate complex
+                    claims at the source, we ensure that payment integrity is
+                    governed by the{" "}
                     <strong style={{ color: "#93c5fd", fontStyle: "normal" }}>
                       &lsquo;Truth of the Patient&rsquo;
                     </strong>{" "}
@@ -347,64 +354,38 @@ export default function AboutPage() {
                 </blockquote>
               </div>
             </RevealOnScroll>
-
-            {/* Firm Statement */}
-            <RevealOnScroll>
-              <div
-                className="mission-card"
-                style={{
-                  background: "linear-gradient(135deg,#f8fafc 0%,#f0f4ff 100%)",
-                  border: "1px solid rgba(27,42,91,.1)",
-                  borderRadius: "20px",
-                  marginBottom: "28px",
-                  position: "relative",
-                  overflow: "hidden",
-                }}
-              >
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    bottom: 0,
-                    width: "4px",
-                    background: "linear-gradient(to bottom,#C8102E,#a50d24)",
-                    borderRadius: "4px 0 0 4px",
-                  }}
-                />
-                <div
-                  style={{
-                    fontSize: ".8rem",
-                    fontWeight: 700,
-                    letterSpacing: ".16em",
-                    textTransform: "uppercase",
-                    color: "#C8102E",
-                    marginBottom: "16px",
-                  }}
-                >
-                  Firm Statement
-                </div>
-                <p
-                  style={{
-                    fontSize: "1.1rem",
-                    color: "#2A3F7A",
-                    lineHeight: 1.85,
-                    fontWeight: 500,
-                  }}
-                >
-                  MHMDAA is a{" "}
-                  <strong>high-reliability consulting firm</strong> dedicated to
-                  restoring integrity to the healthcare reimbursement cycle.
-                  Through physician-led advocacy and augmented intelligence,
-                  MHMDAA resolves complex clinical disputes, ensuring
-                  that providers are paid for the acuity of care delivered and
-                  Payors are protected from systemic over-coding.
-                </p>
-              </div>
-            </RevealOnScroll>
           </div>
         </section>
       </div>
+
+      {/* VALUES */}
+      <section className="section" style={{ background: "#f8fafc", paddingTop: 32, paddingBottom: 48 }}>
+        <div className="sc">
+          <RevealOnScroll>
+            <div className="sec-header c">
+              <div className="sec-label">Our Values</div>
+              <h2 className="sec-title">
+                What <em>Guides</em> Us
+              </h2>
+            </div>
+          </RevealOnScroll>
+          <div className="values-grid">
+            {VALUES.map((v) => (
+              <div key={v.title} className="value-card-wrap">
+                <RevealOnScroll>
+                  <div className="value-card">
+                    <div className="vc-icon" style={{ background: v.color }}>
+                      {v.icon}
+                    </div>
+                    <h4 className="vc-title">{v.title}</h4>
+                    <p className="vc-desc">{v.desc}</p>
+                  </div>
+                </RevealOnScroll>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* 4. DR. HILL CINEMATIC SECTION */}
       <section id="dr-hill" className="cin-section-about">
@@ -766,35 +747,6 @@ export default function AboutPage() {
                   </div>
                 </div>
               </RevealOnScroll>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 9. VALUES */}
-      <section className="section" style={{ background: "#f8fafc", paddingTop: 32, paddingBottom: 48 }}>
-        <div className="sc">
-          <RevealOnScroll>
-            <div className="sec-header c">
-              <div className="sec-label">Our Values</div>
-              <h2 className="sec-title">
-                What <em>Guides</em> Us
-              </h2>
-            </div>
-          </RevealOnScroll>
-          <div className="values-grid">
-            {VALUES.map((v) => (
-              <div key={v.title} className="value-card-wrap">
-                <RevealOnScroll>
-                  <div className="value-card">
-                    <div className="vc-icon" style={{ background: v.color }}>
-                      {v.icon}
-                    </div>
-                    <h4 className="vc-title">{v.title}</h4>
-                    <p className="vc-desc">{v.desc}</p>
-                  </div>
-                </RevealOnScroll>
-              </div>
             ))}
           </div>
         </div>
