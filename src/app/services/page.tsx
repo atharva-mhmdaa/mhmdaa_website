@@ -440,7 +440,7 @@ export default function PayorServicesPage() {
       >
         <div className="cta-inner">
           <h2>Let&apos;s Transform Your Denial &amp; Dispute Resolution</h2>
-          <p style={{ fontSize: "1.15rem", color: "var(--mg)", lineHeight: 1.85, maxWidth: 680, margin: "0 auto 40px" }}>
+          <p>
             Partner with MHMDAA&apos;s physician-led team and take the first step towards building denial-resilient, sustainable financial payor operations.
           </p>
           <div className="cta-btns">
