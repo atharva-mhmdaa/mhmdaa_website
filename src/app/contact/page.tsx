@@ -24,10 +24,10 @@ export default function ContactPage() {
               marginBottom: 14,
             }}
           >
-            Let&rsquo;s <em style={{ fontStyle: "italic", color: "#93c5fd" }}>Transform</em> Your Revenue Cycle
+            We&rsquo;re Ready to <em style={{ fontStyle: "italic", color: "#93c5fd" }}>Partner</em> with Your Health Plan
           </h1>
           <p style={{ fontSize: "1.15rem", color: "rgba(255,255,255,.82)", maxWidth: 580, lineHeight: 1.8 }}>
-            Ready to eliminate inefficiencies and drive sustainable performance? Connect with our physician-led experts to bridge the gap between provider reimbursement and payer requirements through proven, scalable solutions.
+            Expect a response within 24 hours to secure your strategic discovery consultation. We&rsquo;ll use this time to assess your specific claims validation vulnerabilities and map out a definitive path forward using our specialized, physician-led review framework.
           </p>
         </div>
       </section>
@@ -98,25 +98,6 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Trust block */}
-            <div
-              style={{
-                background: "linear-gradient(135deg,#f8fafc,#eef2ff)",
-                borderRadius: 14,
-                padding: 24,
-                marginTop: "auto",
-                border: "1px solid #e2e8f0",
-                borderLeft: "4px solid #C8102E",
-                marginBottom: 0,
-              }}
-            >
-              <p style={{ fontSize: "1.04rem", fontWeight: 700, color: "#2A3F7A", marginBottom: 8 }}>
-                &#10003; 190+ Hospitals Trust Our Expertise
-              </p>
-              <p style={{ fontSize: "1.04rem", color: "#3A4D66", lineHeight: 1.7 }}>
-                Join the growing number of healthcare organizations partnering with MHMDAA to restore clinical authority to their revenue cycle and eliminate denials.
-              </p>
-            </div>
 
           </div>
 
