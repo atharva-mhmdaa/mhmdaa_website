@@ -1193,14 +1193,20 @@ details[open] .ig-lbl-open { display: inline }
   .why-payors-2col { grid-template-columns: 1fr !important; gap: 20px !important }
   .pillars-grid { grid-template-columns: 1fr !important; gap: 14px !important }
   .pillar-card { padding: 20px 18px !important; border-radius: 12px !important }
+  .pillar-card > div:first-child { text-align: center }
+  .pillar-card h3 { text-align: center }
+  .pillar-card > p { text-align: left !important }
   .p2p-layout { grid-template-columns: 1fr !important; gap: 32px !important }
   .why-card { padding: 24px !important; text-align: center }
   .why-card .why-card-icon { margin-left: auto; margin-right: auto }
+  .why-card p { text-align: left !important }
   .why-payors-section { padding: 56px 20px !important }
   .p2p-section { padding: 56px 20px !important }
   .p2p-section .btn-p { display: flex; justify-content: center; width: 100% }
   .process-step { text-align: center }
   .ps-num { margin-left: auto; margin-right: auto }
+  .ps-title { text-align: center }
+  .ps-desc { text-align: left }
   .who-serve-list { grid-template-columns: 1fr !important }
   .who-serve-heading { text-align: center }
   .process-grid { grid-template-columns: 1fr !important; border-radius: 16px }
@@ -1341,11 +1347,19 @@ details[open] .ig-lbl-open { display: inline }
   .perf-card-title { text-align: center }
   .perf-card-desc { text-align: left }
 
-  /* "When to Engage" cards (.ap-card) — number & title centred, desc left */
+  /* "When to Engage" & approach cards (.ap-card) — number & title centred, desc left */
   .ap-card { text-align: left }
   .ap-num { margin-left: auto; margin-right: auto }
+  .ap-title { text-align: center }
   .ap-card h3 { text-align: center }
   .ap-desc { text-align: left }
+
+  /* Services page — pillar cards & why-choose cards */
+  .pillar-card > div:first-child { text-align: center }
+  .pillar-card h3 { text-align: center }
+  .pillar-card > p { text-align: left !important }
+  .why-card h3 { text-align: center }
+  .why-card p { text-align: left !important }
 }
 
 @media (max-width: 560px) {
@@ -1478,14 +1492,20 @@ details[open] .ig-lbl-open { display: inline }
   .why-payors-2col { grid-template-columns: 1fr !important; gap: 16px !important }
   .pillars-grid { grid-template-columns: 1fr !important; gap: 12px !important }
   .pillar-card { padding: 18px 16px !important }
+  .pillar-card > div:first-child { text-align: center }
+  .pillar-card h3 { text-align: center }
+  .pillar-card > p { text-align: left !important }
   .p2p-layout { grid-template-columns: 1fr !important; gap: 24px !important }
   .why-card { padding: 20px !important; text-align: center }
   .why-card .why-card-icon { margin-left: auto; margin-right: auto }
+  .why-card p { text-align: left !important }
   .why-payors-section { padding: 44px 16px !important }
   .p2p-section { padding: 44px 16px !important }
   .p2p-section .btn-p { display: flex; justify-content: center; width: 100% }
   .process-step { text-align: center }
   .ps-num { margin-left: auto; margin-right: auto }
+  .ps-title { text-align: center }
+  .ps-desc { text-align: left }
   .who-serve-list { grid-template-columns: 1fr !important }
   .who-serve-heading { text-align: center }
   .values-grid { grid-template-columns: 1fr }
