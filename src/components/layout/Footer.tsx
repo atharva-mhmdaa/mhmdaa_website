@@ -169,20 +169,22 @@ export default function Footer() {
             ))}
           </div> */}
 
-          {/* Services */}
-          <div className="fc">
-            <h5 className="fc-h5--no-rule"><Link href="/services" style={{ color: "inherit", textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}><span style={{ display: "inline-block", width: 18, height: 2, background: "#C8102E", borderRadius: 2, flexShrink: 0 }} />Services</Link></h5>
-            <h5 className="fc-h5--no-rule"><Link href="/healthcare-fraud-analysis" style={{ color: "inherit", textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}><span style={{ display: "inline-block", width: 18, height: 2, background: "#C8102E", borderRadius: 2, flexShrink: 0 }} />Healthcare Fraud Analysis</Link></h5>
-          </div>
+          <div className="footer-nav-mobile">
+            {/* Services */}
+            <div className="fc">
+              <h5 className="fc-h5--no-rule"><Link href="/services" style={{ color: "inherit", textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}><span style={{ display: "inline-block", width: 18, height: 2, background: "#C8102E", borderRadius: 2, flexShrink: 0 }} />Services</Link></h5>
+              <h5 className="fc-h5--no-rule"><Link href="/healthcare-fraud-analysis" style={{ color: "inherit", textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}><span style={{ display: "inline-block", width: 18, height: 2, background: "#C8102E", borderRadius: 2, flexShrink: 0 }} />Healthcare Fraud Analysis</Link></h5>
+            </div>
 
-          {/* Company */}
-          <div className="fc">
-            <h5>Company</h5>
-            {companyLinks.map((link) => (
-              <Link key={link.href} href={link.href}>
-                {link.label}
-              </Link>
-            ))}
+            {/* Company */}
+            <div className="fc">
+              <h5>Company</h5>
+              {companyLinks.map((link) => (
+                <Link key={link.href} href={link.href}>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>
