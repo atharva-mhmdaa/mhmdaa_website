@@ -9,7 +9,7 @@ interface DynamicPost {
   slug: string;
   excerpt: string | null;
   published_at: string | null;
-  pdf_url: string | null;
+  html_url: string | null;
   tags: string[] | null;
   cover_image_url: string | null;
   cover_image_position: number | null;
@@ -66,15 +66,10 @@ export default function BlogsContent({ dynamicPosts }: BlogsContentProps) {
 
         <div className="cs-grid">
           {dynamicPosts.map((post, i) => {
-            const href = post.pdf_url ?? `/blogs/${post.slug}`;
-            const isExternal = !!post.pdf_url;
-
             return (
               <a
                 key={post.id}
-                href={href}
-                target={isExternal ? '_blank' : undefined}
-                rel={isExternal ? 'noopener noreferrer' : undefined}
+                href={`/blogs/${post.slug}`}
                 className="cs-card"
                 style={{ textDecoration: 'none', color: 'inherit' }}
               >
@@ -113,7 +108,7 @@ export default function BlogsContent({ dynamicPosts }: BlogsContentProps) {
                 <div className="cs-card-body">
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 8 }}>
                     <span className="cs-badge" style={{ background: 'rgba(200,16,46,.1)', color: '#C8102E' }}>
-                      {post.pdf_url ? 'Report' : 'Article'}
+                      {'Article'}
                     </span>
                     {post.published_at && (
                       <span style={{ fontSize: '.75rem', color: '#94a3b8', fontWeight: 600, whiteSpace: 'nowrap', marginTop: 2 }}>
@@ -142,7 +137,7 @@ export default function BlogsContent({ dynamicPosts }: BlogsContentProps) {
 
                   <div className="cs-card-footer">
                     <span className="btn-p" style={{ fontSize: '.88rem', padding: '10px 20px', pointerEvents: 'none' }}>
-                      {post.pdf_url ? 'Read Report \u2192' : 'Read Article \u2192'}
+                      {'Read Article \u2192'}
                     </span>
                   </div>
                 </div>

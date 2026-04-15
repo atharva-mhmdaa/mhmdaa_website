@@ -7,6 +7,14 @@ import Image from 'next/image';
 import slugify from 'slugify';
 import { createClient } from '@/lib/supabase/client';
 
+const HTML_MAX_BYTES = 3 * 1024 * 1024; // 3 MB hard limit
+
+function formatBytes(bytes: number): string {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
+  return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+}
+
 export default function EditBlogPost() {
   const router = useRouter();
   const params = useParams();
@@ -14,7 +22,7 @@ export default function EditBlogPost() {
 
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);
-  const [uploadingPdf, setUploadingPdf] = useState(false);
+  const [uploadingHtml, setUploadingHtml] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
@@ -28,15 +36,16 @@ export default function EditBlogPost() {
   const [imagePosition, setImagePosition] = useState(50);
   const [isDraggingPosition, setIsDraggingPosition] = useState(false);
 
-  const [existingPdfUrl, setExistingPdfUrl] = useState<string | null>(null);
-  const [existingPdfName, setExistingPdfName] = useState<string>('');
-  const [newPdfFile, setNewPdfFile] = useState<File | null>(null);
+  const [existingHtmlUrl, setExistingHtmlUrl] = useState<string | null>(null);
+  const [existingHtmlName, setExistingHtmlName] = useState<string>('');
+  const [newHtmlFile, setNewHtmlFile] = useState<File | null>(null);
+  const [htmlSizeError, setHtmlSizeError] = useState('');
 
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState('');
   const [isPublished, setIsPublished] = useState(false);
 
-  const pdfRef = useRef<HTMLInputElement>(null);
+  const htmlRef = useRef<HTMLInputElement>(null);
   const imageRef = useRef<HTMLInputElement>(null);
   const previewContainerRef = useRef<HTMLDivElement>(null);
 
@@ -50,7 +59,7 @@ export default function EditBlogPost() {
         .single();
 
       if (fetchError || !data) {
-        setError('Blog post not found.');
+        setError('Blog post not found. It may have been deleted.');
         setLoading(false);
         return;
       }
@@ -59,10 +68,10 @@ export default function EditBlogPost() {
       setExcerpt(data.excerpt || '');
       setExistingCoverUrl(data.cover_image_url || null);
       setImagePosition(data.cover_image_position ?? 50);
-      setExistingPdfUrl(data.pdf_url || null);
-      if (data.pdf_url) {
-        const parts = data.pdf_url.split('/');
-        setExistingPdfName(decodeURIComponent(parts[parts.length - 1]));
+      setExistingHtmlUrl(data.html_url || null);
+      if (data.html_url) {
+        const parts = data.html_url.split('/');
+        setExistingHtmlName(decodeURIComponent(parts[parts.length - 1]));
       }
       setTags(data.tags || []);
       setIsPublished(data.is_published);
@@ -81,6 +90,26 @@ export default function EditBlogPost() {
     setNewImageFile(null);
     setImagePreview(null);
     if (imageRef.current) imageRef.current.value = '';
+  }
+
+  function handleHtmlSelect(file: File) {
+    setHtmlSizeError('');
+    const isHtml =
+      file.type === 'text/html' ||
+      file.name.toLowerCase().endsWith('.html') ||
+      file.name.toLowerCase().endsWith('.htm');
+    if (!isHtml) {
+      setHtmlSizeError('Please choose an HTML file (.html or .htm).');
+      return;
+    }
+    if (file.size > HTML_MAX_BYTES) {
+      setHtmlSizeError(
+        `This file is ${formatBytes(file.size)}, which is over the 3 MB limit. ` +
+        `Please reduce the file size by hosting images online instead of embedding them directly.`
+      );
+      return;
+    }
+    setNewHtmlFile(file);
   }
 
   function addTag(raw: string) {
@@ -128,8 +157,9 @@ export default function EditBlogPost() {
   }, [isDraggingPosition, handlePositionDrag]);
 
   async function handleSave(publish: boolean) {
-    if (!title.trim()) { setError('Title is required.'); return; }
-    if (!existingPdfUrl && !newPdfFile) { setError('A PDF file is required.'); return; }
+    if (!title.trim()) { setError('Please enter a title for your post.'); return; }
+    if (!existingHtmlUrl && !newHtmlFile) { setError('Please upload an HTML file before saving.'); return; }
+    if (htmlSizeError) { setError(htmlSizeError); return; }
 
     setSaving(true);
     setError('');
@@ -148,7 +178,7 @@ export default function EditBlogPost() {
       setUploadingImage(false);
 
       if (imgError) {
-        setError(`Image upload failed: ${imgError.message}`);
+        setError(`Cover image upload failed: ${imgError.message}. Please try again.`);
         setSaving(false);
         return;
       }
@@ -156,23 +186,23 @@ export default function EditBlogPost() {
       coverImageUrl = imgUrl.publicUrl;
     }
 
-    // Upload new PDF if provided
-    let pdfUrl = existingPdfUrl;
-    if (newPdfFile) {
-      setUploadingPdf(true);
-      const safeName = `${Date.now()}-${newPdfFile.name.replace(/\s+/g, '-')}`;
+    // Upload new HTML file if provided
+    let htmlUrl = existingHtmlUrl;
+    if (newHtmlFile) {
+      setUploadingHtml(true);
+      const safeName = `${Date.now()}-${newHtmlFile.name.replace(/\s+/g, '-')}`;
       const { data: uploadData, error: uploadError } = await supabase.storage
-        .from('blog-pdfs')
-        .upload(safeName, newPdfFile, { contentType: 'application/pdf', upsert: false });
-      setUploadingPdf(false);
+        .from('blog-html')
+        .upload(safeName, newHtmlFile, { contentType: 'text/html', upsert: false });
+      setUploadingHtml(false);
 
       if (uploadError) {
-        setError(`PDF upload failed: ${uploadError.message}`);
+        setError(`HTML file upload failed: ${uploadError.message}. Please try again.`);
         setSaving(false);
         return;
       }
-      const { data: urlData } = supabase.storage.from('blog-pdfs').getPublicUrl(uploadData.path);
-      pdfUrl = urlData.publicUrl;
+      const { data: urlData } = supabase.storage.from('blog-html').getPublicUrl(uploadData.path);
+      htmlUrl = urlData.publicUrl;
     }
 
     const slug = slugify(title, { lower: true, strict: true });
@@ -185,7 +215,7 @@ export default function EditBlogPost() {
         excerpt: excerpt.trim() || null,
         cover_image_url: coverImageUrl,
         cover_image_position: imagePosition,
-        pdf_url: pdfUrl,
+        html_url: htmlUrl,
         tags: tags.length > 0 ? tags : null,
         is_published: publish,
         published_at: publish ? new Date().toISOString() : null,
@@ -203,7 +233,7 @@ export default function EditBlogPost() {
   }
 
   async function handleDelete() {
-    if (!confirm('Are you sure you want to delete this blog post?')) return;
+    if (!confirm('Are you sure you want to permanently delete this blog post? This cannot be undone.')) return;
     setDeleting(true);
     const supabase = createClient();
     const { error: deleteError } = await supabase
@@ -221,11 +251,11 @@ export default function EditBlogPost() {
   }
 
   if (loading) {
-    return <div style={{ padding: '48px', textAlign: 'center', color: '#5A6E8A' }}>Loading blog post...</div>;
+    return <div style={{ padding: '48px', textAlign: 'center', color: '#5A6E8A' }}>Loading post…</div>;
   }
 
-  const isBusy = saving || uploadingPdf || uploadingImage;
-  const busyLabel = uploadingImage ? 'Uploading image…' : uploadingPdf ? 'Uploading PDF…' : 'Saving…';
+  const isBusy = saving || uploadingHtml || uploadingImage;
+  const busyLabel = uploadingImage ? 'Uploading cover image…' : uploadingHtml ? 'Uploading HTML file…' : 'Saving…';
   const previewSrc = imagePreview ?? existingCoverUrl ?? null;
 
   return (
@@ -235,18 +265,21 @@ export default function EditBlogPost() {
         ← Back to Dashboard
       </Link>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '28px', flexWrap: 'wrap', gap: '12px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap', gap: '12px' }}>
         <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.6rem', fontWeight: 700, color: '#2A3F7A' }}>
           Edit Blog Post
         </h1>
         <button type="button" onClick={handleDelete} disabled={deleting}
           style={{ background: 'none', border: '1px solid rgba(200,16,46,.3)', color: '#C8102E', padding: '8px 18px', borderRadius: '8px', fontSize: '.88rem', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>
-          {deleting ? 'Deleting…' : 'Delete'}
+          {deleting ? 'Deleting…' : '🗑 Delete Post'}
         </button>
       </div>
+      <p style={{ fontSize: '.9rem', color: '#64748b', marginBottom: '28px', lineHeight: 1.6 }}>
+        Update the details below. You can replace the HTML file at any time — the blog card and URL will stay the same.
+      </p>
 
       {error && (
-        <div style={{ background: 'rgba(200,16,46,.08)', border: '1px solid rgba(200,16,46,.2)', color: '#C8102E', padding: '10px 14px', borderRadius: '8px', fontSize: '.9rem', marginBottom: '18px' }}>
+        <div style={{ background: 'rgba(200,16,46,.08)', border: '1px solid rgba(200,16,46,.2)', color: '#C8102E', padding: '12px 16px', borderRadius: '8px', fontSize: '.9rem', marginBottom: '18px', lineHeight: 1.55 }}>
           {error}
         </div>
       )}
@@ -255,22 +288,24 @@ export default function EditBlogPost() {
 
         {/* Title */}
         <div className="fg" style={{ marginBottom: '16px' }}>
-          <label htmlFor="title">Post Title *</label>
+          <label htmlFor="title">Post Title <span style={{ color: '#C8102E' }}>*</span></label>
           <input id="title" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-          <span className="fg-hint">This is the headline shown on the public blog listing.</span>
+          <span className="fg-hint">The headline shown on the blog listing card. Changing the title will also update the page address (URL).</span>
         </div>
 
         {/* Excerpt */}
         <div className="fg" style={{ marginBottom: '16px' }}>
-          <label htmlFor="excerpt">Excerpt / Summary</label>
+          <label htmlFor="excerpt">Short Summary</label>
           <textarea id="excerpt" value={excerpt} onChange={(e) => setExcerpt(e.target.value)} rows={3} />
-          <span className="fg-hint">The short description readers see before clicking the card.</span>
+          <span className="fg-hint">The short description readers see on the card before clicking through.</span>
         </div>
 
         {/* Tags */}
         <div className="fg" style={{ marginBottom: '16px' }}>
-          <label>Tags</label>
-          <span className="fg-hint">Type a tag and press Enter or comma to add. Click × to remove.</span>
+          <label>Topic Tags</label>
+          <span className="fg-hint">
+            Type a topic and press <strong>Enter</strong> to add it. Click × on a tag to remove it.
+          </span>
           <div className="tag-pill-input">
             {tags.map((t) => (
               <span key={t} className="tag-pill">
@@ -285,13 +320,13 @@ export default function EditBlogPost() {
           </div>
         </div>
 
-        {/* Cover Image Upload */}
+        {/* Cover Image */}
         <div className="fg" style={{ marginBottom: '16px' }}>
-          <label>Cover / Grid Image</label>
+          <label>Card Preview Image</label>
           <span className="fg-hint">
             {existingCoverUrl && !newImageFile
-              ? 'Current cover image shown below. Click the drop zone to replace it.'
-              : 'Shown as the card preview on the blog listing. Leave blank for a gradient placeholder.'}
+              ? 'Your current image is shown below. Click the upload area to replace it.'
+              : 'This appears on the blog listing card. Leave blank for a colour background.'}
           </span>
 
           {previewSrc && (
@@ -309,8 +344,8 @@ export default function EditBlogPost() {
                   {imagePosition}%
                 </span>
               </div>
-              <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, padding: '6px 10px', background: 'linear-gradient(transparent, rgba(0,0,0,.5))', display: 'flex', alignItems: 'center', justifyContent: 'space-between', pointerEvents: 'none' }}>
-                <span style={{ color: 'rgba(255,255,255,.85)', fontSize: '.75rem', fontWeight: 500 }}>Drag to adjust focal point</span>
+              <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, padding: '6px 10px', background: 'linear-gradient(transparent, rgba(0,0,0,.5))', display: 'flex', alignItems: 'center', pointerEvents: 'none' }}>
+                <span style={{ color: 'rgba(255,255,255,.85)', fontSize: '.75rem', fontWeight: 500 }}>Drag up/down to adjust which part of the image is shown</span>
               </div>
               <button type="button" onClick={(e) => { e.stopPropagation(); clearNewImage(); }}
                 style={{ position: 'absolute', top: 8, right: 8, background: 'rgba(0,0,0,.55)', border: 'none', color: '#fff', borderRadius: '50%', width: 28, height: 28, cursor: 'pointer', fontSize: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2 }}>
@@ -328,10 +363,10 @@ export default function EditBlogPost() {
             </svg>
             <div>
               <div style={{ fontWeight: 600, color: '#1B2A5B', fontSize: '.95rem' }}>
-                {newImageFile ? newImageFile.name : existingCoverUrl ? 'Click to replace image' : 'Click to upload or drag & drop'}
+                {newImageFile ? newImageFile.name : existingCoverUrl ? 'Click to replace the image' : 'Click to choose an image, or drag & drop it here'}
               </div>
               <div style={{ fontSize: '.82rem', color: '#94a3b8', marginTop: 2 }}>
-                {newImageFile ? `${(newImageFile.size / 1024).toFixed(0)} KB` : 'JPG, PNG, WebP'}
+                {newImageFile ? `${formatBytes(newImageFile.size)}` : 'JPG, PNG, or WebP'}
               </div>
             </div>
           </div>
@@ -339,37 +374,55 @@ export default function EditBlogPost() {
             onChange={(e) => { const f = e.target.files?.[0]; if (f) handleImageSelect(f); }} />
         </div>
 
-        {/* PDF Upload */}
+        {/* HTML File Upload */}
         <div className="fg" style={{ marginBottom: '24px' }}>
-          <label>PDF Report</label>
+          <label>
+            HTML Page File <span style={{ color: '#C8102E' }}>*</span>
+          </label>
           <span className="fg-hint">
-            {existingPdfUrl ? 'Current PDF shown below. Upload a new file to replace it.' : 'Upload the PDF visitors open when they click the card.'}
+            {existingHtmlUrl
+              ? 'Your current HTML file is shown below. Upload a new file to replace it.'
+              : 'Upload the HTML file visitors will see when they click the blog card.'}
+            {' '}<strong>Maximum file size: 3 MB.</strong>
           </span>
 
-          {existingPdfUrl && !newPdfFile && (
+          {existingHtmlUrl && !newHtmlFile && (
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', background: '#f1f5f9', borderRadius: 8, marginBottom: 10, marginTop: 6 }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" />
+                <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
               </svg>
-              <a href={existingPdfUrl} target="_blank" rel="noopener noreferrer"
+              <a href={existingHtmlUrl} target="_blank" rel="noopener noreferrer"
                 style={{ fontSize: '.88rem', color: '#2A3F7A', fontWeight: 600, textDecoration: 'none', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                {existingPdfName || 'Current PDF'}
+                {existingHtmlName || 'Current HTML file — click to preview'}
               </a>
-              <span style={{ fontSize: '.78rem', color: '#94a3b8' }}>Click below to replace</span>
+              <span style={{ fontSize: '.78rem', color: '#94a3b8', flexShrink: 0 }}>Click below to replace</span>
             </div>
           )}
 
-          <div className="pdf-drop-zone" onClick={() => pdfRef.current?.click()}
+          {htmlSizeError && (
+            <div style={{ background: 'rgba(200,16,46,.07)', border: '1px solid rgba(200,16,46,.2)', color: '#C8102E', padding: '10px 14px', borderRadius: '8px', fontSize: '.86rem', marginTop: 8, lineHeight: 1.55 }}>
+              ⚠️ {htmlSizeError}
+            </div>
+          )}
+
+          <div className="pdf-drop-zone" onClick={() => htmlRef.current?.click()}
             onDragOver={(e) => e.preventDefault()}
-            onDrop={(e) => { e.preventDefault(); const f = e.dataTransfer.files?.[0]; if (f?.type === 'application/pdf') setNewPdfFile(f); }}>
-            {newPdfFile ? (
+            onDrop={(e) => {
+              e.preventDefault();
+              const f = e.dataTransfer.files?.[0];
+              if (f) handleHtmlSelect(f);
+            }}
+            style={{ marginTop: (htmlSizeError || (existingHtmlUrl && !newHtmlFile)) ? 8 : undefined }}>
+            {newHtmlFile ? (
               <>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" />
+                  <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
                 </svg>
                 <div>
-                  <div style={{ fontWeight: 600, color: '#1B2A5B', fontSize: '.95rem' }}>{newPdfFile.name}</div>
-                  <div style={{ fontSize: '.8rem', color: '#94a3b8', marginTop: 2 }}>{(newPdfFile.size / 1024 / 1024).toFixed(2)} MB — click to change</div>
+                  <div style={{ fontWeight: 600, color: '#1B2A5B', fontSize: '.95rem' }}>{newHtmlFile.name}</div>
+                  <div style={{ fontSize: '.8rem', color: '#94a3b8', marginTop: 2 }}>
+                    {formatBytes(newHtmlFile.size)} of 3 MB limit — click to change
+                  </div>
                 </div>
               </>
             ) : (
@@ -379,23 +432,41 @@ export default function EditBlogPost() {
                 </svg>
                 <div>
                   <div style={{ fontWeight: 600, color: '#1B2A5B', fontSize: '.95rem' }}>
-                    {existingPdfUrl ? 'Click to replace PDF' : 'Click to upload or drag & drop'}
+                    {existingHtmlUrl ? 'Click to replace the HTML file' : 'Click to choose your HTML file, or drag & drop it here'}
                   </div>
-                  <div style={{ fontSize: '.82rem', color: '#94a3b8', marginTop: 2 }}>PDF files only</div>
+                  <div style={{ fontSize: '.82rem', color: '#94a3b8', marginTop: 2 }}>.html files only · Max 3 MB</div>
                 </div>
               </>
             )}
           </div>
-          <input ref={pdfRef} type="file" accept=".pdf,application/pdf" style={{ display: 'none' }}
-            onChange={(e) => { const f = e.target.files?.[0]; if (f) setNewPdfFile(f); }} />
+          <input ref={htmlRef} type="file" accept=".html,.htm,text/html" style={{ display: 'none' }}
+            onChange={(e) => { const f = e.target.files?.[0]; if (f) handleHtmlSelect(f); }} />
+
+          <div style={{ marginTop: 14, background: '#f0f4ff', border: '1px solid #c7d2fe', borderRadius: 10, padding: '14px 16px' }}>
+            <div style={{ fontWeight: 700, color: '#2A3F7A', fontSize: '.85rem', marginBottom: 8 }}>
+              ✅ Tips for a successful upload
+            </div>
+            <ul style={{ margin: 0, padding: '0 0 0 18px', color: '#3D4F63', fontSize: '.83rem', lineHeight: 1.75 }}>
+              <li>Open the HTML file in your browser first — if it looks right there, it will look right on the website.</li>
+              <li>All styles and fonts must be <strong>inside</strong> the HTML file or loaded from the internet (e.g. Google Fonts links are fine).</li>
+              <li>Images must use full web addresses (starting with <code>https://</code>), not file names like <code>photo.jpg</code>.</li>
+              <li>Do <strong>not</strong> upload a folder — only the single <code>.html</code> file.</li>
+              <li>If your file is over 3 MB, it is likely because images are embedded. Host them online and link to them instead.</li>
+            </ul>
+          </div>
         </div>
 
-        <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end', flexWrap: 'wrap' }}>
           <button type="button" className="btn-o" onClick={() => handleSave(false)} disabled={isBusy}>Save as Draft</button>
           <button type="button" className="btn-p" onClick={() => handleSave(true)} disabled={isBusy}>
-            {isBusy ? busyLabel : isPublished ? 'Update & Publish' : 'Publish Now'}
+            {isBusy ? busyLabel : isPublished ? 'Update & Keep Published' : 'Publish Now'}
           </button>
         </div>
+
+        <p style={{ fontSize: '.8rem', color: '#94a3b8', marginTop: 14, textAlign: 'right', lineHeight: 1.5 }}>
+          <strong>Draft</strong> — saves changes but hides the post from the public.&nbsp;
+          <strong>Publish</strong> — makes the post live on the blog.
+        </p>
       </div>
     </>
   );

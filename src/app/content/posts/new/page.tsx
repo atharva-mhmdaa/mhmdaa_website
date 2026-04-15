@@ -7,10 +7,18 @@ import Image from 'next/image';
 import slugify from 'slugify';
 import { createClient } from '@/lib/supabase/client';
 
+const HTML_MAX_BYTES = 3 * 1024 * 1024; // 3 MB hard limit
+
+function formatBytes(bytes: number): string {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
+  return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+}
+
 export default function NewBlogPost() {
   const router = useRouter();
   const [saving, setSaving] = useState(false);
-  const [uploadingPdf, setUploadingPdf] = useState(false);
+  const [uploadingHtml, setUploadingHtml] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
   const [error, setError] = useState('');
 
@@ -20,11 +28,12 @@ export default function NewBlogPost() {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [imagePosition, setImagePosition] = useState(50);
   const [isDraggingPosition, setIsDraggingPosition] = useState(false);
-  const [pdfFile, setPdfFile] = useState<File | null>(null);
+  const [htmlFile, setHtmlFile] = useState<File | null>(null);
+  const [htmlSizeError, setHtmlSizeError] = useState('');
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState('');
 
-  const pdfRef = useRef<HTMLInputElement>(null);
+  const htmlRef = useRef<HTMLInputElement>(null);
   const imageRef = useRef<HTMLInputElement>(null);
   const previewContainerRef = useRef<HTMLDivElement>(null);
 
@@ -32,6 +41,26 @@ export default function NewBlogPost() {
     if (!file.type.startsWith('image/')) return;
     setImageFile(file);
     setImagePreview(URL.createObjectURL(file));
+  }
+
+  function handleHtmlSelect(file: File) {
+    setHtmlSizeError('');
+    const isHtml =
+      file.type === 'text/html' ||
+      file.name.toLowerCase().endsWith('.html') ||
+      file.name.toLowerCase().endsWith('.htm');
+    if (!isHtml) {
+      setHtmlSizeError('Please choose an HTML file (.html or .htm).');
+      return;
+    }
+    if (file.size > HTML_MAX_BYTES) {
+      setHtmlSizeError(
+        `This file is ${formatBytes(file.size)}, which is over the 3 MB limit. ` +
+        `Please reduce the file size by hosting images online instead of embedding them directly.`
+      );
+      return;
+    }
+    setHtmlFile(file);
   }
 
   function addTag(raw: string) {
@@ -79,8 +108,9 @@ export default function NewBlogPost() {
   }, [isDraggingPosition, handlePositionDrag]);
 
   async function handleSubmit(publish: boolean) {
-    if (!title.trim()) { setError('Title is required.'); return; }
-    if (!pdfFile) { setError('Please upload a PDF file.'); return; }
+    if (!title.trim()) { setError('Please enter a title for your post.'); return; }
+    if (!htmlFile) { setError('Please upload an HTML file before saving.'); return; }
+    if (htmlSizeError) { setError(htmlSizeError); return; }
 
     setSaving(true);
     setError('');
@@ -89,7 +119,7 @@ export default function NewBlogPost() {
     const { data: { user } } = await supabase.auth.getUser();
 
     if (!user) {
-      setError('Not authenticated. Please sign in again.');
+      setError('You are not signed in. Please sign in and try again.');
       setSaving(false);
       return;
     }
@@ -106,7 +136,7 @@ export default function NewBlogPost() {
       setUploadingImage(false);
 
       if (imgError) {
-        setError(`Image upload failed: ${imgError.message}`);
+        setError(`Cover image upload failed: ${imgError.message}. Please try again.`);
         setSaving(false);
         return;
       }
@@ -114,21 +144,21 @@ export default function NewBlogPost() {
       coverImageUrl = imgUrl.publicUrl;
     }
 
-    // Upload PDF
-    setUploadingPdf(true);
-    const safePdfName = `${Date.now()}-${pdfFile.name.replace(/\s+/g, '-')}`;
+    // Upload HTML file
+    setUploadingHtml(true);
+    const safeHtmlName = `${Date.now()}-${htmlFile.name.replace(/\s+/g, '-')}`;
     const { data: uploadData, error: uploadError } = await supabase.storage
-      .from('blog-pdfs')
-      .upload(safePdfName, pdfFile, { contentType: 'application/pdf', upsert: false });
-    setUploadingPdf(false);
+      .from('blog-html')
+      .upload(safeHtmlName, htmlFile, { contentType: 'text/html', upsert: false });
+    setUploadingHtml(false);
 
     if (uploadError) {
-      setError(`PDF upload failed: ${uploadError.message}`);
+      setError(`HTML file upload failed: ${uploadError.message}. Please try again.`);
       setSaving(false);
       return;
     }
 
-    const { data: urlData } = supabase.storage.from('blog-pdfs').getPublicUrl(uploadData.path);
+    const { data: urlData } = supabase.storage.from('blog-html').getPublicUrl(uploadData.path);
     const slug = slugify(title, { lower: true, strict: true });
 
     const { error: insertError } = await supabase.from('blog_posts').insert({
@@ -138,7 +168,7 @@ export default function NewBlogPost() {
       excerpt: excerpt.trim() || null,
       cover_image_url: coverImageUrl,
       cover_image_position: imagePosition,
-      pdf_url: urlData.publicUrl,
+      html_url: urlData.publicUrl,
       tags: tags.length > 0 ? tags : null,
       content: null,
       is_published: publish,
@@ -155,8 +185,8 @@ export default function NewBlogPost() {
     router.refresh();
   }
 
-  const isBusy = saving || uploadingPdf || uploadingImage;
-  const busyLabel = uploadingImage ? 'Uploading image…' : uploadingPdf ? 'Uploading PDF…' : 'Saving…';
+  const isBusy = saving || uploadingHtml || uploadingImage;
+  const busyLabel = uploadingImage ? 'Uploading cover image…' : uploadingHtml ? 'Uploading HTML file…' : 'Saving…';
 
   return (
     <>
@@ -165,12 +195,16 @@ export default function NewBlogPost() {
         ← Back to Dashboard
       </Link>
 
-      <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.6rem', fontWeight: 700, color: '#2A3F7A', marginBottom: '28px' }}>
+      <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.6rem', fontWeight: 700, color: '#2A3F7A', marginBottom: '8px' }}>
         New Blog Post
       </h1>
+      <p style={{ fontSize: '.9rem', color: '#64748b', marginBottom: '28px', lineHeight: 1.6 }}>
+        Fill in the details below and upload your HTML page. Once published, a card will
+        automatically appear on the blog and visitors will be taken to your custom page.
+      </p>
 
       {error && (
-        <div style={{ background: 'rgba(200,16,46,.08)', border: '1px solid rgba(200,16,46,.2)', color: '#C8102E', padding: '10px 14px', borderRadius: '8px', fontSize: '.9rem', marginBottom: '18px' }}>
+        <div style={{ background: 'rgba(200,16,46,.08)', border: '1px solid rgba(200,16,46,.2)', color: '#C8102E', padding: '12px 16px', borderRadius: '8px', fontSize: '.9rem', marginBottom: '18px', lineHeight: 1.55 }}>
           {error}
         </div>
       )}
@@ -179,24 +213,30 @@ export default function NewBlogPost() {
 
         {/* Title */}
         <div className="fg" style={{ marginBottom: '16px' }}>
-          <label htmlFor="title">Post Title *</label>
+          <label htmlFor="title">Post Title <span style={{ color: '#C8102E' }}>*</span></label>
           <input id="title" type="text" value={title} onChange={(e) => setTitle(e.target.value)}
-            placeholder="e.g. Denials Management 2026 — MHMDAA Landscape Report" />
-          <span className="fg-hint">This is the headline shown on the public blog listing.</span>
+            placeholder="e.g. Denials Management Trends — 2026 Overview" />
+          <span className="fg-hint">
+            This becomes the headline on the blog listing card and is used to create the page address (URL).
+            Choose something clear and descriptive.
+          </span>
         </div>
 
         {/* Excerpt */}
         <div className="fg" style={{ marginBottom: '16px' }}>
-          <label htmlFor="excerpt">Excerpt / Summary</label>
+          <label htmlFor="excerpt">Short Summary</label>
           <textarea id="excerpt" value={excerpt} onChange={(e) => setExcerpt(e.target.value)}
-            placeholder="A brief 1–2 sentence summary shown on the card below the title…" rows={3} />
-          <span className="fg-hint">Keep it concise — readers see this before clicking through.</span>
+            placeholder="A 1–2 sentence description that readers see on the card before clicking through…" rows={3} />
+          <span className="fg-hint">Keep it short and engaging — this is what convinces someone to click and read.</span>
         </div>
 
         {/* Tags */}
         <div className="fg" style={{ marginBottom: '16px' }}>
-          <label>Tags</label>
-          <span className="fg-hint">Type a tag and press Enter or comma to add. Click × to remove.</span>
+          <label>Topic Tags</label>
+          <span className="fg-hint">
+            Type a topic and press <strong>Enter</strong> to add it. Click the × on any tag to remove it.
+            Example: <em>Revenue Cycle</em>, <em>Denials</em>, <em>Compliance</em>
+          </span>
           <div className="tag-pill-input">
             {tags.map((t) => (
               <span key={t} className="tag-pill">
@@ -213,8 +253,11 @@ export default function NewBlogPost() {
 
         {/* Cover Image Upload */}
         <div className="fg" style={{ marginBottom: '16px' }}>
-          <label>Cover / Grid Image</label>
-          <span className="fg-hint">Shown as the card preview image on the blog listing. Leave blank for a gradient placeholder.</span>
+          <label>Card Preview Image</label>
+          <span className="fg-hint">
+            This image appears on the blog listing card. If you skip it, a stylised
+            colour background will be used instead. Accepted formats: JPG, PNG, WebP.
+          </span>
 
           {imagePreview && (
             <div
@@ -232,7 +275,7 @@ export default function NewBlogPost() {
                 </span>
               </div>
               <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, padding: '6px 10px', background: 'linear-gradient(transparent, rgba(0,0,0,.5))', display: 'flex', alignItems: 'center', justifyContent: 'space-between', pointerEvents: 'none' }}>
-                <span style={{ color: 'rgba(255,255,255,.85)', fontSize: '.75rem', fontWeight: 500 }}>Drag to adjust focal point</span>
+                <span style={{ color: 'rgba(255,255,255,.85)', fontSize: '.75rem', fontWeight: 500 }}>Drag up/down to adjust which part of the image is shown</span>
               </div>
               <button type="button" onClick={(e) => { e.stopPropagation(); setImageFile(null); setImagePreview(null); setImagePosition(50); if (imageRef.current) imageRef.current.value = ''; }}
                 style={{ position: 'absolute', top: 8, right: 8, background: 'rgba(0,0,0,.55)', border: 'none', color: '#fff', borderRadius: '50%', width: 28, height: 28, cursor: 'pointer', fontSize: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2 }}>
@@ -250,10 +293,10 @@ export default function NewBlogPost() {
             </svg>
             <div>
               <div style={{ fontWeight: 600, color: '#1B2A5B', fontSize: '.95rem' }}>
-                {imageFile ? imageFile.name : 'Click to upload or drag & drop'}
+                {imageFile ? imageFile.name : 'Click to choose an image, or drag & drop it here'}
               </div>
               <div style={{ fontSize: '.82rem', color: '#94a3b8', marginTop: 2 }}>
-                {imageFile ? `${(imageFile.size / 1024).toFixed(0)} KB — click to replace` : 'JPG, PNG, WebP'}
+                {imageFile ? `${formatBytes(imageFile.size)} — click to replace` : 'JPG, PNG, or WebP'}
               </div>
             </div>
           </div>
@@ -261,21 +304,41 @@ export default function NewBlogPost() {
             onChange={(e) => { const f = e.target.files?.[0]; if (f) handleImageSelect(f); }} />
         </div>
 
-        {/* PDF Upload */}
+        {/* HTML File Upload */}
         <div className="fg" style={{ marginBottom: '24px' }}>
-          <label>PDF Report *</label>
-          <span className="fg-hint">Upload the PDF that visitors will open when they click the card.</span>
-          <div className="pdf-drop-zone" onClick={() => pdfRef.current?.click()}
+          <label>
+            HTML Page File <span style={{ color: '#C8102E' }}>*</span>
+          </label>
+          <span className="fg-hint">
+            Upload the HTML file for your blog post. This is the page visitors will see when they click the card.
+            <strong> Maximum file size: 3 MB.</strong>{' '}
+            If your file is too large, move images to an online host (e.g. Google Drive, Imgur) and link to them instead of embedding them directly.
+          </span>
+
+          {htmlSizeError && (
+            <div style={{ background: 'rgba(200,16,46,.07)', border: '1px solid rgba(200,16,46,.2)', color: '#C8102E', padding: '10px 14px', borderRadius: '8px', fontSize: '.86rem', marginTop: 8, lineHeight: 1.55 }}>
+              ⚠️ {htmlSizeError}
+            </div>
+          )}
+
+          <div className="pdf-drop-zone" onClick={() => htmlRef.current?.click()}
             onDragOver={(e) => e.preventDefault()}
-            onDrop={(e) => { e.preventDefault(); const f = e.dataTransfer.files?.[0]; if (f?.type === 'application/pdf') setPdfFile(f); }}>
-            {pdfFile ? (
+            onDrop={(e) => {
+              e.preventDefault();
+              const f = e.dataTransfer.files?.[0];
+              if (f) handleHtmlSelect(f);
+            }}
+            style={{ marginTop: htmlSizeError ? 8 : undefined }}>
+            {htmlFile ? (
               <>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2A3F7A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" />
+                  <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
                 </svg>
                 <div>
-                  <div style={{ fontWeight: 600, color: '#1B2A5B', fontSize: '.95rem' }}>{pdfFile.name}</div>
-                  <div style={{ fontSize: '.8rem', color: '#94a3b8', marginTop: 2 }}>{(pdfFile.size / 1024 / 1024).toFixed(2)} MB — click to replace</div>
+                  <div style={{ fontWeight: 600, color: '#1B2A5B', fontSize: '.95rem' }}>{htmlFile.name}</div>
+                  <div style={{ fontSize: '.8rem', color: '#94a3b8', marginTop: 2 }}>
+                    {formatBytes(htmlFile.size)} of 3 MB limit — click to replace
+                  </div>
                 </div>
               </>
             ) : (
@@ -284,22 +347,43 @@ export default function NewBlogPost() {
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" />
                 </svg>
                 <div>
-                  <div style={{ fontWeight: 600, color: '#1B2A5B', fontSize: '.95rem' }}>Click to upload or drag & drop</div>
-                  <div style={{ fontSize: '.82rem', color: '#94a3b8', marginTop: 2 }}>PDF files only</div>
+                  <div style={{ fontWeight: 600, color: '#1B2A5B', fontSize: '.95rem' }}>Click to choose your HTML file, or drag & drop it here</div>
+                  <div style={{ fontSize: '.82rem', color: '#94a3b8', marginTop: 2 }}>.html files only · Max 3 MB</div>
                 </div>
               </>
             )}
           </div>
-          <input ref={pdfRef} type="file" accept=".pdf,application/pdf" style={{ display: 'none' }}
-            onChange={(e) => { const f = e.target.files?.[0]; if (f) setPdfFile(f); }} />
+          <input ref={htmlRef} type="file" accept=".html,.htm,text/html" style={{ display: 'none' }}
+            onChange={(e) => { const f = e.target.files?.[0]; if (f) handleHtmlSelect(f); }} />
+
+          {/* Tips for non-technical users */}
+          <div style={{ marginTop: 14, background: '#f0f4ff', border: '1px solid #c7d2fe', borderRadius: 10, padding: '14px 16px' }}>
+            <div style={{ fontWeight: 700, color: '#2A3F7A', fontSize: '.85rem', marginBottom: 8 }}>
+              ✅ Tips for a successful upload
+            </div>
+            <ul style={{ margin: 0, padding: '0 0 0 18px', color: '#3D4F63', fontSize: '.83rem', lineHeight: 1.75 }}>
+              <li>Open the HTML file in your browser first — if it looks right there, it will look right on the website.</li>
+              <li>All styles and fonts must be <strong>inside</strong> the HTML file or loaded from the internet (e.g. Google Fonts links are fine).</li>
+              <li>Images must use full web addresses (starting with <code>https://</code>), not file names like <code>photo.jpg</code>.</li>
+              <li>Do <strong>not</strong> upload a folder — only the single <code>.html</code> file.</li>
+              <li>If your file is over 3 MB, it is likely because images are embedded. Host them online and link to them instead.</li>
+            </ul>
+          </div>
         </div>
 
-        <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
-          <button type="button" className="btn-o" onClick={() => handleSubmit(false)} disabled={isBusy}>Save as Draft</button>
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end', flexWrap: 'wrap' }}>
+          <button type="button" className="btn-o" onClick={() => handleSubmit(false)} disabled={isBusy}>
+            {isBusy && !saving ? busyLabel : 'Save as Draft'}
+          </button>
           <button type="button" className="btn-p" onClick={() => handleSubmit(true)} disabled={isBusy}>
             {isBusy ? busyLabel : 'Publish Now'}
           </button>
         </div>
+
+        <p style={{ fontSize: '.8rem', color: '#94a3b8', marginTop: 14, textAlign: 'right', lineHeight: 1.5 }}>
+          <strong>Draft</strong> — saved but hidden from the public.&nbsp;
+          <strong>Publish</strong> — live immediately on the blog.
+        </p>
       </div>
     </>
   );
