@@ -62,6 +62,10 @@ body {
 .navbar.scrolled .nav-top { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0 }
 .nav-logo { display: flex; align-items: center; text-decoration: none; transition: opacity .2s }
 .nav-logo:hover { opacity: .88 }
+@media (min-width: 781px) {
+  .nav-logo img { height: 100px !important; width: auto !important }
+  .navbar.scrolled .nav-logo img { height: 60px !important }
+}
 .nav-bottom {
   max-width: 1400px; margin: 0 auto; padding: 4px 36px 14px;
   display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 2px;

@@ -107,8 +107,8 @@ export default function Footer() {
               <Image
                 src="/images/logo.png"
                 alt="Michael Hill, MD & Associates"
-                width={160}
-                height={66}
+                width={1024}
+                height={285}
                 style={{ height: "66px", width: "auto" }}
               />
             </Link>
