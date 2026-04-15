@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { createClient } from '@/lib/supabase/server';
@@ -42,34 +42,13 @@ export default async function BlogPostPage({ params }: Props) {
 
   if (!post) notFound();
 
-  // HTML-file posts: render a full-screen iframe that proxies the file
-  // through our own API route so it is served with the correct content-type.
+  // HTML-file posts: redirect the browser directly to the proxy route.
+  // The proxy serves the file with the correct Content-Type so the browser
+  // renders it as a standalone full-page HTML document — no site chrome,
+  // no iframe stacking-context issues. The proxy independently validates
+  // the slug and checks is_published, so security is unchanged.
   if (post.html_url) {
-    return (
-      <iframe
-        src={`/api/blogs/html/${slug}`}
-        // sandbox isolates the iframe from the parent origin.
-        // Without allow-same-origin the iframe is treated as a null origin,
-        // so scripts inside it cannot read mhmdaa.com cookies, localStorage,
-        // or the parent DOM — even though we proxy from our own domain.
-        // allow-scripts  : let the page run its own JS
-        // allow-forms    : let contact / subscribe forms work
-        // allow-popups   : let <a target="_blank"> links open new tabs
-        // allow-top-navigation-by-user-activation : let explicit link clicks
-        //                  navigate the top-level page (e.g. "Back to site")
-        // allow-modals   : let alert/confirm dialogs work
-        sandbox="allow-scripts allow-forms allow-popups allow-top-navigation-by-user-activation allow-modals"
-        style={{
-          position: 'fixed',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          border: 'none',
-          zIndex: 9999,
-        }}
-        title={post.title}
-      />
-    );
+    redirect(`/api/blogs/html/${slug}`);
   }
 
   // Legacy rich-text content posts render inline
