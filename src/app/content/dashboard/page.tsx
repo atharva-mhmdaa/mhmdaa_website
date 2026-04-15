@@ -38,11 +38,16 @@ export default async function ContentDashboard() {
             Manage your articles. Published posts appear on the public blog page.
           </p>
         </div>
-        {hasPosts && (
-          <Link href="/content/posts/new" className="btn-p" style={{ whiteSpace: 'nowrap' }}>
-            + New post
+        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+          <Link href="/content/instructions" className="btn-o" style={{ whiteSpace: 'nowrap' }}>
+            Instructions
           </Link>
-        )}
+          {hasPosts && (
+            <Link href="/content/posts/new" className="btn-p" style={{ whiteSpace: 'nowrap' }}>
+              + New post
+            </Link>
+          )}
+        </div>
       </div>
 
       {hasPosts && (

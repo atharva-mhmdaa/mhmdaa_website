@@ -42,6 +42,9 @@ export default async function ContentLayout({
             <Link href="/content/case-studies" className="dash-nav-link">
               Case Studies
             </Link>
+            <Link href="/content/instructions" className="dash-nav-link">
+              Instructions
+            </Link>
           </nav>
 
           <SidebarFooter />

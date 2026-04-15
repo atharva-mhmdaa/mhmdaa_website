@@ -1,4 +1,4 @@
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { createClient } from '@/lib/supabase/server';
@@ -35,19 +35,44 @@ export default async function BlogPostPage({ params }: Props) {
   const supabase = await createClient();
   const { data: post } = await supabase
     .from('blog_posts')
-    .select('*')
+    .select('id, title, slug, excerpt, content, cover_image_url, published_at, html_url')
     .eq('slug', slug)
     .eq('is_published', true)
     .single();
 
   if (!post) notFound();
 
-  // PDF posts redirect directly to the PDF
-  if (post.pdf_url) {
-    redirect(post.pdf_url);
+  // HTML-file posts: render a full-screen iframe that proxies the file
+  // through our own API route so it is served with the correct content-type.
+  if (post.html_url) {
+    return (
+      <iframe
+        src={`/api/blogs/html/${slug}`}
+        // sandbox isolates the iframe from the parent origin.
+        // Without allow-same-origin the iframe is treated as a null origin,
+        // so scripts inside it cannot read mhmdaa.com cookies, localStorage,
+        // or the parent DOM — even though we proxy from our own domain.
+        // allow-scripts  : let the page run its own JS
+        // allow-forms    : let contact / subscribe forms work
+        // allow-popups   : let <a target="_blank"> links open new tabs
+        // allow-top-navigation-by-user-activation : let explicit link clicks
+        //                  navigate the top-level page (e.g. "Back to site")
+        // allow-modals   : let alert/confirm dialogs work
+        sandbox="allow-scripts allow-forms allow-popups allow-top-navigation-by-user-activation allow-modals"
+        style={{
+          position: 'fixed',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          border: 'none',
+          zIndex: 9999,
+        }}
+        title={post.title}
+      />
+    );
   }
 
-  // Legacy HTML content posts render inline
+  // Legacy rich-text content posts render inline
   return (
     <>
       <div className="blogs-hero" style={{ paddingBottom: '60px' }}>
