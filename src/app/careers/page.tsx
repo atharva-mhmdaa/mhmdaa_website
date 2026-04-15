@@ -215,7 +215,7 @@ export default async function CareersPage() {
             <div className="sec-label">Our Values</div>
             <h2 className="sec-title">What We Stand <em>For</em></h2>
             <p className="sec-sub">
-              The principles that guide everything we do — for our clients, our colleagues, and our communities.
+              The principles that guide everything we do, for our clients, our colleagues, and our communities.
             </p>
           </div>
 
@@ -229,7 +229,7 @@ export default async function CareersPage() {
                 <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.35rem", fontWeight: 700, color: "var(--navy)", marginBottom: 2, lineHeight: 1.25 }}>
                   {p.title}
                 </h3>
-                <div style={{ fontSize: ".88rem", fontWeight: 600, color: "var(--mg)", textTransform: "uppercase", letterSpacing: ".08em", marginBottom: 14 }}>
+                <div className="pillar-subtitle" style={{ fontSize: ".88rem", fontWeight: 600, color: "var(--mg)", textTransform: "uppercase", letterSpacing: ".08em", marginBottom: 14 }}>
                   {p.subtitle}
                 </div>
                 <p style={{ fontSize: "1rem", color: "var(--mg)", lineHeight: 1.8, marginBottom: 22, minHeight: "9rem" }}>

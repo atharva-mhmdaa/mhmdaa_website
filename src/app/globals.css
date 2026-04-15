@@ -1170,9 +1170,9 @@ details[open] .ig-lbl-open { display: inline }
   .blue-highlight-box { flex-direction: column; align-items: stretch; text-align: center }
   .blue-highlight-box > div:first-child { display: flex !important; justify-content: center; align-items: center; margin-left: auto; margin-right: auto }
   .cases-hero { padding: 90px 20px 48px }
-  .cases-hero > div { display: flex; flex-direction: column; align-items: center; text-align: center }
-  .cases-hero > div > div:first-child { margin-left: auto; margin-right: auto }
-  .cases-hero > div > div:last-child { justify-content: center; width: 100% }
+  .cases-hero > div { display: flex; flex-direction: column; align-items: flex-start; text-align: left }
+  .cases-hero > div > div:first-child { margin-left: 0; margin-right: auto }
+  .cases-hero > div > div:last-child { justify-content: flex-start; width: 100% }
   .cases-hero-desc { text-align: left !important; margin-left: 0 !important }
   .cases-tab-desc { text-align: left !important; margin-left: 0 !important }
   .blogs-hero { padding: 90px 20px 48px }
@@ -1251,6 +1251,10 @@ details[open] .ig-lbl-open { display: inline }
   .values-careers { grid-template-columns: repeat(2,1fr) }
   .job-highlights { grid-template-columns: 1fr }
   .job-card { padding: 24px 20px }
+  /* Pillar cards — centre-align title & subtitle on mobile */
+  .pillar-grid .card h3 { text-align: center }
+  .pillar-grid .card .pillar-subtitle { text-align: center }
+  .pillar-grid .card > p { text-align: left }
 }
 
 @media (max-width: 768px) {
@@ -3144,7 +3148,7 @@ details[open] .ig-lbl-open { display: inline }
 @media (max-width: 900px) {
   /* Hero — text → image → button */
   .fraud-hero { padding: 160px 28px 64px }
-  .fraud-hgrid { display: flex; flex-direction: column; gap: 20px; text-align: center }
+  .fraud-hgrid { display: flex; flex-direction: column; gap: 20px; text-align: left }
   .fhg-heading        { order: 1 }
   .fhg-img            { order: 2 }
   .fhg-subtitle-block { order: 3 }
@@ -3153,7 +3157,7 @@ details[open] .ig-lbl-open { display: inline }
   .fraud-title { font-size: clamp(2rem, 5.5vw, 2.8rem) }
   .fraud-subtitle { max-width: 100%; font-size: 1.08rem; margin-left: 0 !important; margin-right: auto; text-align: left !important; margin-bottom: 14px !important }
   .fraud-para-left { text-align: left !important; margin-left: 0 !important }
-  .fraud-hgrid .hero-badge { margin-left: auto; margin-right: auto }
+  .fraud-hgrid .hero-badge { margin-left: 0; margin-right: auto }
   .fraud-hgrid .cta-btns { justify-content: center !important }
 
   /* Stats strip */
