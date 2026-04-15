@@ -23,7 +23,6 @@ const PILLARS = [
       { title: "Integrity", desc: "We represent our capabilities honestly, observe appropriate confidentiality, and only make promises we can keep no exceptions." },
       { title: "Partnership", desc: "We take the long-term view in our relationships, built on respect, honesty, mutual support, and a team-oriented approach that delivers results." },
       { title: "Client Comes First", desc: "We measure our success by our clients\u2019 success. In all trade-offs, the client\u2019s interest always comes first. We make all our resources available to serve them." },
-      { title: "Inclusion", desc: "We embrace different perspectives and draw strength from diversity of thought, background, and experience." },
     ],
   },
   {

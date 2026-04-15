@@ -5,7 +5,6 @@ import HeroCard from "@/components/home/HeroCard";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import ServicesTabs from "@/components/home/ServicesTabs";
-import ApproachTabs from "@/components/home/ApproachTabs";
 import CTABand from "@/components/ui/CTABand";
 
 export const metadata: Metadata = {
@@ -318,23 +317,56 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══ SECTION 5: HOW WE DELIVER ════════════════════════ */}
+      {/* ══ SECTION 5: WHEN TO ENGAGE ════════════════════════ */}
       <section className="section" style={{ background: "#fff", paddingTop: 32, paddingBottom: 32 }}>
         <div className="sc">
           <RevealOnScroll>
-            <div className="sec-header c">
+            <div className="sec-header c" style={{ marginBottom: 48 }}>
               <div className="sec-label">Our Approach</div>
-              <h2 className="sec-title">
-                How We <em>Deliver</em>
-              </h2>
-              <p className="sec-sub" style={{ maxWidth: 640, marginLeft: "auto", marginRight: "auto" }}>
-                We use technology to enhance capabilities, increase operational
-                transparency, and improve healthcare delivery, driving greater
-                efficiency, accuracy, and overall system performance.
-              </p>
+              <h2 className="sec-title" style={{ textAlign: "center" }}>When to Engage MHMDAA</h2>
+              <div style={{ textAlign: "center", margin: "16px auto 0" }}>
+                <strong style={{ display: "block", whiteSpace: "nowrap" }}>Partner with MHMDAA&apos;s physician-led team to leverage our precise four-step review process.</strong>
+                <p className="sec-sub" style={{ maxWidth: 760, margin: "8px auto 0" }}>
+                  Take the first decisive step toward building a denial-resilient, financially sustainable future for your organizational operations.
+                </p>
+              </div>
             </div>
           </RevealOnScroll>
-          <ApproachTabs />
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
+            {[
+              {
+                title: "Strategic Denial Defense",
+                desc: "When you require credible, physician-led testimony to defend clinical decisions against payer scrutiny.",
+                num: "1",
+              },
+              {
+                title: "Acuity Validation",
+                desc: "When level-of-care or clinical severity requirements are challenged and demand expert medical verification.",
+                num: "2",
+              },
+              {
+                title: "High-Stakes Claim Disputes",
+                desc: "When reimbursement hinges on a definitive, evidence-based clinical argument.",
+                num: "3",
+              },
+              {
+                title: "Clinical-Administrative Alignment",
+                desc: "When you need to bridge the gap between complex medical reality and administrative accuracy.",
+                num: "4",
+              },
+            ].map((card) => (
+              <div key={card.title} className="ap-card">
+                <div className="ap-num">{card.num}</div>
+                <h3 style={{
+                  fontSize: "1.05rem", fontWeight: 700, color: "var(--navy)",
+                  marginBottom: 12, lineHeight: 1.35,
+                }}>{card.title}</h3>
+                <p style={{
+                  fontSize: ".93rem", color: "var(--mg)", lineHeight: 1.75, margin: 0,
+                }}>{card.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

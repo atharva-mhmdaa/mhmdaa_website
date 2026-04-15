@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import CTABand from "@/components/ui/CTABand";
+import ApproachTabs from "@/components/home/ApproachTabs";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -411,88 +412,21 @@ export default function PayorServicesPage() {
         </div>
       </section>
 
-      {/* ── WHEN TO ENGAGE MHMDAA ────────────────────────── */}
+      {/* ── HOW WE DELIVER ────────────────────────────────── */}
       <section className="section" style={{ paddingTop: 72, paddingBottom: 72 }}>
         <div className="sc">
           <div className="sec-header c" style={{ marginBottom: 48 }}>
             <div className="sec-label">Our Process</div>
-            <h2 className="sec-title" style={{ textAlign: "center" }}>When to Engage MHMDAA</h2>
-            <p className="sec-sub" style={{ textAlign: "center", margin: "16px auto 0", maxWidth: 760 }}>
-              Partner with MHMDAA&apos;s physician-led team to leverage our precise four-step review process. Take the first decisive step toward building a denial-resilient, financially sustainable future for your organizational operations.
+            <h2 className="sec-title" style={{ textAlign: "center" }}>
+              How We <em>Deliver</em>
+            </h2>
+            <p className="sec-sub" style={{ textAlign: "center", margin: "16px auto 0", maxWidth: 640 }}>
+              We use technology to enhance capabilities, increase operational
+              transparency, and improve healthcare delivery, driving greater
+              efficiency, accuracy, and overall system performance.
             </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
-            {[
-              {
-                title: "Strategic Denial Defense",
-                desc: "When you require credible, physician-led testimony to defend clinical decisions against payer scrutiny.",
-                accent: "linear-gradient(90deg,#1B2A5B,#2A3F7A)",
-                numColor: "#2A3F7A",
-                numBg: "rgba(27,42,91,.08)",
-                num: "1",
-              },
-              {
-                title: "Acuity Validation",
-                desc: "When level-of-care or clinical severity requirements are challenged and demand expert medical verification.",
-                accent: "linear-gradient(90deg,#C8102E,#e8334a)",
-                numColor: "#C8102E",
-                numBg: "rgba(200,16,46,.08)",
-                num: "2",
-              },
-              {
-                title: "High-Stakes Claim Disputes",
-                desc: "When reimbursement hinges on a definitive, evidence-based clinical argument.",
-                accent: "linear-gradient(90deg,#1B2A5B,#2A3F7A)",
-                numColor: "#2A3F7A",
-                numBg: "rgba(27,42,91,.08)",
-                num: "3",
-              },
-              {
-                title: "Clinical-Administrative Alignment",
-                desc: "When you need to bridge the gap between complex medical reality and administrative accuracy.",
-                accent: "linear-gradient(90deg,#C8102E,#e8334a)",
-                numColor: "#C8102E",
-                numBg: "rgba(200,16,46,.08)",
-                num: "4",
-              },
-            ].map((card) => (
-              <div key={card.title} style={{
-                background: "#fff",
-                borderRadius: 20,
-                padding: "32px 28px",
-                position: "relative",
-                overflow: "hidden",
-                border: "1px solid var(--border)",
-                boxShadow: "0 4px 20px rgba(27,42,91,.08)",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                textAlign: "center",
-              }}>
-                <div style={{
-                  position: "absolute", top: 0, left: 0, right: 0, height: 4,
-                  background: card.accent, borderRadius: "20px 20px 0 0",
-                }} />
-                <div style={{
-                  width: 48, height: 48, borderRadius: "50%",
-                  background: card.numBg, display: "flex", alignItems: "center",
-                  justifyContent: "center", marginBottom: 18,
-                }}>
-                  <span style={{
-                    color: card.numColor, fontWeight: 800, fontSize: "1.3rem",
-                    fontFamily: "'Playfair Display', serif", lineHeight: 1,
-                  }}>{card.num}</span>
-                </div>
-                <h3 style={{
-                  fontSize: "1.05rem", fontWeight: 700, color: "var(--navy)",
-                  marginBottom: 12, lineHeight: 1.35,
-                }}>{card.title}</h3>
-                <p style={{
-                  fontSize: ".93rem", color: "var(--mg)", lineHeight: 1.75, margin: 0,
-                }}>{card.desc}</p>
-              </div>
-            ))}
-          </div>
+          <ApproachTabs />
         </div>
       </section>
 
@@ -500,17 +434,11 @@ export default function PayorServicesPage() {
       {/* ── TRANSFORM CTA ────────────────────────────────── */}
       <section
         className="cta-band"
-        style={{ borderTop: "none", borderBottom: "none" }}
+        style={{ borderTop: "none", borderBottom: "none", paddingTop: 40 }}
       >
         <div className="cta-inner">
           <h2>Let&apos;s Transform Your Denial &amp; Dispute Resolution</h2>
-          <p
-            style={{
-              color: "#000",
-              fontWeight: 700,
-              fontSize: "clamp(.95rem, 1.4vw, 1.1rem)",
-            }}
-          >
+          <p style={{ fontSize: "1.15rem", color: "var(--mg)", lineHeight: 1.85, maxWidth: 680, margin: "0 auto 40px" }}>
             Partner with MHMDAA&apos;s physician-led team and take the first step towards building denial-resilient, sustainable financial payor operations.
           </p>
           <div className="cta-btns">

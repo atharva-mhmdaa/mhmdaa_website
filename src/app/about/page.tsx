@@ -56,6 +56,7 @@ const TEAM_MEMBERS = [
     cred: "RN, BSN",
     photo: "/images/about-3.jpg",
     desc: "Jenna is a seasoned clinical review leader with over 15 years of nursing experience and a specialized focus on revenue cycle operations and hospital claim denials. Her background spans medical-surgical and cardiac care, informing her deep understanding of complex hospital operations and Payor policies. She excels in evaluating medical necessity determinations, inpatient admissions, and DRG disputes, applying evidence-based criteria to develop defensible findings. Her collaborative approach with utilization management and revenue cycle teams ensures rigorous adherence to regulatory and contractual reimbursement requirements.",
+    bio: "Jenna leverages over 15 years of nursing experience in medical-surgical and cardiac care, paired with more than five years specializing in revenue cycle operations and hospital claim denials. Jenna has deep expertise in evaluating clinical documentation and applying evidence-based criteria ensures defensible findings and regulatory compliance in complex payor–provider disputes.",
   },
   {
     name: "Lynnette Carlisle",
@@ -63,6 +64,7 @@ const TEAM_MEMBERS = [
     cred: "RN, BSN",
     photo: "/images/about-4.jpg",
     desc: "Lynnette brings extensive frontline clinical expertise from Level I and II trauma centers, critical care, and post-acute settings to MHMDAA\u2019s client operations. Specializing in high-acuity ICU, cardiology, and neurology, she translates direct patient care experience into precise medical necessity reviews and payment integrity investigations. Lynnette has completed hundreds of clinical audits, supporting both provider and Payor positions in denial management and appeals strategy. Her deep knowledge of MDS assessments and documentation standards ensures accurate level-of-care determinations and regulatory compliance throughout the patient stay.",
+    bio: "Lynnette is a Registered Nurse with over a decade of experience in high-acuity trauma and critical care settings, specializing in medical necessity reviews using InterQual and MCG criteria. Lynnette\u2019s extensive expertise in payment integrity investigations and pre- and post-service evaluations provides payors with robust, evidence-based determinations for complex appeals and audits.",
   },
   {
     name: "Dee Abbaiahvari",
@@ -70,6 +72,7 @@ const TEAM_MEMBERS = [
     cred: "RN, BSN, MS",
     photo: "/images/about-5.jpg",
     desc: "With over 15 years of healthcare leadership experience, Dee specializes in clinical transformation and Payor-provider dispute resolution. They possess a unique expertise in clinical-technical architecture and documentation integrity, consistently achieving 100% regulatory compliance in complex clinical models. Dee applies advanced clinical analysis to high-cost denial disputes using InterQual, MCG, and CMS guidelines to optimize reimbursement outcomes. Their background in leading large multidisciplinary teams and authoring automated compliance dashboards drives data-driven, defensible results for executive stakeholders.",
+    bio: "Dee offers over 15 years of clinical and operational leadership experience, with a proven track record of achieving 100% regulatory compliance in complex clinical models. As an InterQual Certified Instructor, she provides advanced clinical analysis and clinical-technical architecture to resolve high-cost denial disputes and optimize reimbursement workflows.",
   },
   {
     name: "Mindy Geesaman",
@@ -77,6 +80,7 @@ const TEAM_MEMBERS = [
     cred: "MSN, RN, CCM",
     photo: "/images/about-6.jpg",
     desc: "Mindy is a Certified Case Manager with two decades of clinical experience across acute medical-surgical, pediatric, and neonatal intensive care units. She specializes in complex case management and interdisciplinary coordination, conducting over 500 clinical reviews annually to support medical necessity appeals and utilization disputes. Mindy\u2019s expertise includes DRG validation and the preparation of written determinations for legal proceedings and audits. By bridging clinical documentation with CMS Conditions of Participation and Payor policies, she promotes consistent guideline application and superior reimbursement outcomes.",
+    bio: "Mindy brings 20 years of diverse clinical experience across medical-surgical, pediatric, and neonatal intensive care settings to her role in medical necessity review. She specializes in conducting over 500 complex clinical reviews annually, utilizing InterQual and MCG guidelines to support accurate payment integrity and defensible outcomes for payor positions.",
   },
 ];
 
@@ -323,15 +327,14 @@ export default function AboutPage() {
                   <p
                     style={{
                       fontSize: "1.1rem",
-                      fontStyle: "italic",
+                      fontStyle: "normal",
                       color: "rgba(255,255,255,.92)",
                       lineHeight: 1.85,
                       marginBottom: 0,
-                      fontFamily: "'Playfair Display', serif",
                       fontWeight: 500,
                     }}
                   >
-                    &ldquo;Our mission is to restore clinical authority to
+                    Our mission is to restore clinical authority to
                     Payor operations. By providing the sub-specialty expertise
                     and forensic rigor necessary to validate complex claims at
                     the source, we ensure that payment integrity is governed by
@@ -339,7 +342,7 @@ export default function AboutPage() {
                     <strong style={{ color: "#93c5fd", fontStyle: "normal" }}>
                       &lsquo;Truth of the Patient&rsquo;
                     </strong>{" "}
-                    rather than the limitations of an algorithm.&rdquo;
+                    rather than the limitations of an algorithm.
                   </p>
                 </blockquote>
               </div>
@@ -751,6 +754,15 @@ export default function AboutPage() {
                     <div className="team-name">{m.name}</div>
                     <div className="team-role">{m.role}</div>
                     <div className="team-cred">{m.cred}</div>
+                    {m.bio && (
+                      <p style={{
+                        fontSize: ".9rem",
+                        color: "var(--mg)",
+                        lineHeight: 1.75,
+                        marginTop: 12,
+                        textAlign: "left",
+                      }}>{m.bio}</p>
+                    )}
                   </div>
                 </div>
               </RevealOnScroll>
