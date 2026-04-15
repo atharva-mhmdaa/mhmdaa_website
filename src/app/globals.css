@@ -798,8 +798,8 @@ details[open] .ig-lbl-open { display: inline }
 .careers-hero { background: linear-gradient(135deg,#1B2A5B 0%,#2A3F7A 55%,#1B2A5B 100%); padding: 220px 32px 90px; position: relative; overflow: hidden }
 .careers-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.016) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px); background-size: 60px 60px; pointer-events: none }
 .ch-wrap { max-width: 1280px; margin: 0 auto; position: relative; z-index: 2 }
-.careers-why-img { grid-column: 2; grid-row: 1 / span 2; align-self: stretch }
-.careers-why-img img { height: 100%; object-fit: cover }
+.careers-why-img { border-radius: 20px; overflow: hidden }
+.careers-why-section { padding-top: 56px !important; padding-bottom: 56px !important }
 .job-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 36px 40px; box-shadow: 0 4px 24px rgba(27,42,91,.08); max-width: 900px; margin: 0 auto; border-top: 4px solid #C8102E }
 .job-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 20px; flex-wrap: wrap }
 .job-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(200,16,46,.1); color: #C8102E; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 5px 12px; border-radius: 30px; margin-bottom: 10px }
@@ -1253,6 +1253,7 @@ details[open] .ig-lbl-open { display: inline }
   .cin-bio-mobile-about { display: block !important }
   .ab-stat-grid { grid-template-columns: repeat(2,1fr) }
   .careers-hero { padding: 90px 20px 48px }
+  .careers-why-section { padding-top: 96px !important; padding-bottom: 96px !important }
   .careers-why-grid { grid-template-columns: 1fr !important; gap: 24px !important }
   .careers-why-grid { display: flex !important; flex-direction: column !important; gap: 20px !important }
   .careers-why-top    { order: 1 }
