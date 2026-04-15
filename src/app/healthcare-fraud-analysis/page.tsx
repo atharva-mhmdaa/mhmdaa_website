@@ -227,7 +227,8 @@ export default function HealthcareFraudAnalysisPage() {
         }}
       >
         <div className="fraud-hgrid">
-          <div className="fhg-text">
+          {/* Heading block — always first */}
+          <div className="fhg-text fhg-heading">
           <RevealOnScroll direction="left">
             <div className="hero-badge">
               Healthcare Fraud Analysis
@@ -238,24 +239,10 @@ export default function HealthcareFraudAnalysisPage() {
                 Health Plans
               </em>
             </h1>
-            <p className="fraud-subtitle">
-              The erosion of healthcare funds through improper claims is a
-              multi-billion-dollar challenge facing America&rsquo;s workforce.
-              Self-insured healthcare plans, especially those within the port
-              and maritime industries, face unique risks due to their
-              comprehensive benefit structures. While these issues are often
-              invisible to traditional monitoring, the cumulative data highlights
-              a clear need for proactive measures to secure plan assets.
-            </p>
-            {/* Desktop-only button */}
-            <div className="cta-btns fhg-btn-desk" style={{ justifyContent: "flex-start" }}>
-              <Link href="/contact" className="btn-p">
-                Connect with our Experts &rarr;
-              </Link>
-            </div>
           </RevealOnScroll>
           </div>
 
+          {/* Image */}
           <div className="fhg-img">
           <RevealOnScroll direction="right">
             <div
@@ -282,7 +269,28 @@ export default function HealthcareFraudAnalysisPage() {
           </RevealOnScroll>
           </div>
 
-          {/* Mobile-only button — below image */}
+          {/* Subtitle + desktop button block */}
+          <div className="fhg-text fhg-subtitle-block">
+          <RevealOnScroll direction="left">
+            <p className="fraud-subtitle">
+              The erosion of healthcare funds through improper claims is a
+              multi-billion-dollar challenge facing America&rsquo;s workforce.
+              Self-insured healthcare plans, especially those within the port
+              and maritime industries, face unique risks due to their
+              comprehensive benefit structures. While these issues are often
+              invisible to traditional monitoring, the cumulative data highlights
+              a clear need for proactive measures to secure plan assets.
+            </p>
+            {/* Desktop-only button */}
+            <div className="cta-btns fhg-btn-desk" style={{ justifyContent: "flex-start" }}>
+              <Link href="/contact" className="btn-p">
+                Connect with our Experts &rarr;
+              </Link>
+            </div>
+          </RevealOnScroll>
+          </div>
+
+          {/* Mobile-only button — below subtitle */}
           <div className="fhg-btn-mob">
             <Link href="/contact" className="btn-p">
               Connect with our Experts &rarr;
@@ -369,7 +377,7 @@ export default function HealthcareFraudAnalysisPage() {
                   The Forensic Strike&trade;{" "}
                   <em>Methodology</em>
                 </h2>
-                <p className="sec-sub" style={{ maxWidth: "560px" }}>
+                <p className="sec-sub fraud-para-left" style={{ maxWidth: "560px" }}>
                   MHMDAA was built to give health plans the forensic intelligence
                   needed to detect, document, and eliminate healthcare fraud
                   before it drains another dollar. We combine{" "}
@@ -421,7 +429,7 @@ export default function HealthcareFraudAnalysisPage() {
                 A 3-Year Subscription to{" "}
                 <em style={{ fontStyle: "italic" }}>Continuous Protection</em>
               </h3>
-              <p className="sec-sub" style={{ maxWidth: "900px", marginBottom: 0 }}>
+              <p className="sec-sub fraud-para-left" style={{ maxWidth: "900px", marginBottom: 0 }}>
                 The Forensic Strike&#8482; engagement is not a one-time
                 audit&mdash;it is a structured, three-year subscription
                 commitment designed to deliver compounding protection. The first
@@ -465,7 +473,7 @@ export default function HealthcareFraudAnalysisPage() {
               <h2 className="sec-title">
                 The Digital Dragnet&trade; <em>Analytics Engine</em>
               </h2>
-              <p className="sec-sub" style={{ maxWidth: "740px", margin: "0 auto" }}>
+              <p className="sec-sub fraud-para-left" style={{ maxWidth: "740px", margin: "0 auto" }}>
                 At the core of every Forensic Strike engagement is The Digital
                 Dragnet&trade;, our AI-driven analytics engine purpose-built to
                 detect complex fraud schemes in health plans. Seventeen detection
@@ -508,7 +516,7 @@ export default function HealthcareFraudAnalysisPage() {
               <h2 className="sec-title">
                 What Sets Us <em>Apart</em>
               </h2>
-              <p className="sec-sub" style={{ maxWidth: "720px", margin: "0 auto" }}>
+              <p className="sec-sub fraud-para-left" style={{ maxWidth: "720px", margin: "0 auto" }}>
                 The healthcare fraud consulting landscape is crowded. Our model
                 combines investigative rigor, clinical insight, and sophisticated
                 data analytics purpose-built for the unique challenges of health
@@ -554,7 +562,7 @@ export default function HealthcareFraudAnalysisPage() {
             {/* para 1 — order 1 on mobile */}
             <div className="fcp-p1">
               <RevealOnScroll direction="left">
-                <p className="sec-sub" style={{ maxWidth: "100%", marginBottom: "22px" }}>
+                <p className="sec-sub fraud-para-left" style={{ maxWidth: "100%", marginBottom: "22px" }}>
                   The enforcement environment has never been more active, with
                   federal prosecutors securing longer sentences and recovering
                   larger sums. However, enforcement is reactive; by the time a
@@ -586,14 +594,14 @@ export default function HealthcareFraudAnalysisPage() {
             {/* paras 2 & 3 + desktop button — order 3 on mobile */}
             <div className="fcp-p2">
               <RevealOnScroll direction="left">
-                <p className="sec-sub" style={{ maxWidth: "100%", marginBottom: "22px" }}>
+                <p className="sec-sub fraud-para-left" style={{ maxWidth: "100%", marginBottom: "22px" }}>
                   <strong style={{ color: "var(--navy)" }}>
                     Your plan&rsquo;s most valuable defense is prevention
                   </strong>
                   : identifying fraud at the point of claim submission, before a
                   single dollar leaves the trust fund.
                 </p>
-                <p className="sec-sub" style={{ maxWidth: "100%", marginBottom: "36px" }}>
+                <p className="sec-sub fraud-para-left" style={{ maxWidth: "100%", marginBottom: "36px" }}>
                   If your plan pays claims without forensic oversight, you are
                   losing money to fraud. The only question is how much.
                 </p>

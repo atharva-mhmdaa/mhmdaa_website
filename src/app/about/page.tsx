@@ -732,9 +732,11 @@ export default function AboutPage() {
                     className="team-photo"
                   />
                   <div className="team-info">
-                    <div className="team-name">{m.name}</div>
-                    <div className="team-role">{m.role}</div>
-                    <div className="team-cred">{m.cred}</div>
+                    <div className="team-header-block">
+                      <div className="team-name">{m.name}</div>
+                      <div className="team-role">{m.role}</div>
+                      <div className="team-cred">{m.cred}</div>
+                    </div>
                     {m.bio && (
                       <p style={{
                         fontSize: ".9rem",

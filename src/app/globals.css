@@ -35,7 +35,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
-html { scroll-behavior: smooth; scroll-padding-top: 210px }
+html { scroll-behavior: smooth; scroll-padding-top: 210px; overflow-x: hidden }
 body {
   font-family: 'Inter', sans-serif;
   background: #fff;
@@ -211,6 +211,7 @@ footer::before { content: ''; display: block; height: 3px; background: linear-gr
 footer::after { content: ''; position: absolute; top: 0; right: -200px; width: 600px; height: 600px; background: radial-gradient(ellipse,rgba(200,16,46,.06) 0%,transparent 70%); pointer-events: none }
 .footer-inner { max-width: 1280px; margin: 0 auto; padding: 64px 32px 0 }
 .footer-grid { display: grid; grid-template-columns: 2fr 1.2fr 1.4fr; gap: 56px; margin-bottom: 56px }
+.footer-nav-mobile { display: contents }
 .fb-tagline { font-size: 1rem; line-height: 1.85; margin-top: 18px; color: rgba(255,255,255,.82); max-width: 300px; font-style: italic }
 .fb-contact { margin-top: 28px; display: flex; flex-direction: column; gap: 10px }
 .fb-contact-item { display: flex; align-items: flex-start; gap: 10px }
@@ -283,6 +284,7 @@ details[open] .fc-dropdown-chevron { transform: rotate(180deg) }
 
 /* ── APPROACH GRID ───────────────────────────────────────── */
 .approach-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px }
+.engage-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px }
 .ap-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 26px 22px; text-align: center; transition: all .3s; position: relative; overflow: hidden }
 .ap-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--red) }
 .ap-card:hover { box-shadow: 0 8px 32px rgba(10,31,61,.1); transform: translateY(-3px) }
@@ -1016,7 +1018,7 @@ details[open] .ig-lbl-open { display: inline }
 .cb-item { font-size: 1.1rem; font-weight: 600; color: #2A3F7A; display: flex; align-items: center; gap: 8px }
 .cb-dot { width: 7px; height: 7px; background: #C8102E; border-radius: 50%; flex-shrink: 0 }
 .why-payors-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 28px }
-.pillars-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px }
+.pillars-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px }
 .p2p-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start }
 .why-card { padding: 40px }
 .why-payors-section { padding: 96px 32px }
@@ -1090,6 +1092,7 @@ details[open] .ig-lbl-open { display: inline }
   .hero-bullets li { font-size: .95rem }
   .hb-label { font-size: .78rem }
   .hb-value { font-size: .95rem }
+  .engage-grid { grid-template-columns: repeat(2, 1fr); gap: 16px }
   .why-adv-grid { grid-template-columns: 1fr 1fr; gap: 16px }
   .adv-card { padding: 24px 20px }
   .adv-icon { width: 46px; height: 46px; margin-bottom: 14px }
@@ -1155,6 +1158,9 @@ details[open] .ig-lbl-open { display: inline }
   .svc-hero > div h1, .svc-hero > div p { margin-left: auto; margin-right: auto }
   .svc-hero .hero-badge { margin-left: auto; margin-right: auto; width: fit-content }
   .svc-hero .btn-p { display: flex; justify-content: center; width: fit-content; margin-left: auto; margin-right: auto }
+  .svc-hero-desc { text-align: left !important; margin-left: 0 !important; margin-right: auto }
+  .svc-hero > div p.svc-hero-desc { text-align: left !important; margin-left: 0 !important }
+  .who-serve-desc { text-align: left !important; margin-left: 0 !important }
   .blue-highlight-box { flex-direction: column; align-items: stretch; text-align: center }
   .blue-highlight-box > div:first-child { display: flex !important; justify-content: center; align-items: center; margin-left: auto; margin-right: auto }
   .cases-hero { padding: 90px 20px 48px }
@@ -1177,7 +1183,8 @@ details[open] .ig-lbl-open { display: inline }
   .cb-item { font-size: .82rem; font-weight: 700; color: #2A3F7A; background: rgba(27,42,91,.07); border: 1.5px solid rgba(27,42,91,.18); padding: 7px 14px; border-radius: 100px; display: inline-flex; align-items: center; gap: 7px }
   .cb-dot { width: 6px; height: 6px; background: #C8102E; border-radius: 50%; flex-shrink: 0 }
   .why-payors-2col { grid-template-columns: 1fr !important; gap: 20px !important }
-  .pillars-grid { grid-template-columns: 1fr !important; gap: 18px !important }
+  .pillars-grid { grid-template-columns: 1fr !important; gap: 14px !important }
+  .pillar-card { padding: 20px 18px !important; border-radius: 12px !important }
   .p2p-layout { grid-template-columns: 1fr !important; gap: 32px !important }
   .why-card { padding: 24px !important; text-align: center }
   .why-card .why-card-icon { margin-left: auto; margin-right: auto }
@@ -1207,14 +1214,14 @@ details[open] .ig-lbl-open { display: inline }
   .cin-grad-about { background: linear-gradient(to right, rgba(10,20,55,.02) 0%, rgba(10,20,55,.45) 36%, rgba(10,20,55,.92) 56%, rgba(10,20,55,1) 76%) !important; position: absolute !important; inset: 0 !important; z-index: 1 }
   .cin-grad-bottom-about { display: none }
   /* Overlay: right-aligned, text in right 55% only */
-  .cin-mobile-overlay-about { display: flex !important; flex-direction: column; justify-content: center; align-items: flex-start; position: absolute; top: 0; bottom: 0; right: 0; width: 57%; z-index: 2; padding: 20px 16px 20px 10px }
-  .cin-mob-badge { display: inline-flex; align-items: center; background: rgba(200,16,46,.25); border: 1px solid rgba(200,16,46,.5); color: #f87171; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; margin-bottom: 8px; width: fit-content }
+  .cin-mobile-overlay-about { display: flex !important; flex-direction: column; justify-content: flex-start; align-items: flex-start; position: absolute; top: 0; bottom: 0; right: 0; width: 57%; z-index: 2; padding: 12px 20px 28px 10px; overflow: hidden }
+  .cin-mob-badge { display: inline-flex; align-items: center; background: rgba(200,16,46,.25); border: 1px solid rgba(200,16,46,.5); color: #f87171; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; margin-bottom: 8px; width: fit-content; max-width: 100% }
   .cin-mob-name { font-family: 'Playfair Display', serif; font-size: clamp(1.15rem,4vw,1.6rem); font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 4px }
   .cin-mob-name em { font-style: italic; color: #93c5fd }
   .cin-mob-sub { font-size: .7rem; color: rgba(255,255,255,.65); margin-bottom: 12px; line-height: 1.4 }
-  .cin-mob-quote { border-left: 2px solid #C8102E; padding: 8px 12px; background: rgba(255,255,255,.06); backdrop-filter: blur(8px); border-radius: 0 8px 8px 0 }
+  .cin-mob-quote { border-left: 2px solid #C8102E; padding: 8px 10px 10px; background: rgba(255,255,255,.06); backdrop-filter: blur(8px); border-radius: 0 8px 8px 0; overflow: visible }
   .cin-mob-quote p { font-size: .72rem; font-style: italic; color: rgba(255,255,255,.88); line-height: 1.6; margin: 0 0 5px }
-  .cin-mob-quote cite { font-size: .64rem; color: rgba(255,255,255,.58); font-style: normal; font-weight: 600 }
+  .cin-mob-quote cite { font-size: .64rem; color: rgba(255,255,255,.58); font-style: normal; font-weight: 600; display: block; white-space: normal; word-break: break-word }
   .cin-inner-about-desktop { display: none !important }
   .cin-bio-mobile-about { display: block !important }
   .ab-stat-grid { grid-template-columns: repeat(2,1fr) }
@@ -1277,13 +1284,17 @@ details[open] .ig-lbl-open { display: inline }
   .fb-brand { grid-column: 1 / -1 }
   .card-grid-3 { grid-template-columns: 1fr 1fr }
   .pillar-grid { grid-template-columns: 1fr 1fr }
+  .pillars-grid { grid-template-columns: repeat(2,1fr) !important }
   .card-grid-2 { grid-template-columns: 1fr }
   .feat { flex-direction: column; gap: 10px }
   .font-toggle { display: none }
   .fb-tagline { max-width: 100% }
-  .team-grid { grid-template-columns: repeat(2,1fr); gap: 12px }
-  .team-photo { height: 160px }
-  .team-info { padding: 10px 10px 14px; text-align: left }
+  .team-grid { grid-template-columns: repeat(2,1fr); gap: 12px; align-items: stretch }
+  .team-grid > * { display: flex; flex-direction: column }
+  .team-card { display: flex; flex-direction: column; height: 100% }
+  .team-photo { height: 160px; width: 100%; object-fit: cover; object-position: center top; flex-shrink: 0 }
+  .team-info { padding: 10px 10px 14px; text-align: left; display: flex; flex-direction: column; flex: 1 }
+  .team-header-block { min-height: 72px }
   .team-name { font-size: 1rem; text-align: center }
   .team-role { font-size: .82rem; text-align: center }
   .team-cred { font-size: .78rem; margin-bottom: 8px; text-align: center }
@@ -1302,26 +1313,40 @@ details[open] .ig-lbl-open { display: inline }
   .qnav-sort-wrap { flex-direction: column; align-items: flex-start; gap: 6px; width: 100% }
   .qnav-sort { width: 100% }
   .qnav-count { margin-left: 0; font-size: .8rem }
+  /* ── FOOTER MOBILE ── */
+  .footer-inner { padding: 44px 20px 0 }
   .footer-grid { grid-template-columns: 1fr; gap: 0; margin-bottom: 0 }
-  .footer-inner { padding: 40px 20px 0 }
-  .footer-bottom { padding: 18px 20px 22px; flex-direction: column; align-items: center; text-align: center; gap: 14px }
-  .footer-divider { padding: 0 20px }
 
-  /* Brand block */
-  .fb-brand { padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.1); margin-bottom: 8px; text-align: center; display: flex; flex-direction: column; align-items: center }
-  .fb-tagline { font-size: .92rem; text-align: center; margin-top: 14px }
-  .fb-contact { margin-top: 20px; gap: 10px; width: 100% }
+  /* Brand block — centered, full-width */
+  .fb-brand {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+    margin-bottom: 0;
+  }
+  .fb-tagline { font-size: .9rem; text-align: center; margin-top: 12px; max-width: 300px; line-height: 1.6 }
+  .fb-contact { margin-top: 20px; gap: 12px; width: 100%; max-width: 280px }
   .fb-contact-item { justify-content: flex-start }
+  .fb-contact-icon { width: 30px; height: 30px; flex-shrink: 0 }
+  .fb-contact-text { font-size: .88rem }
 
-  /* Link columns — horizontal 2-col grid */
-  .fc { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,.08) }
-  .fc:last-child { border-bottom: none; padding-bottom: 16px }
-  .fc h5 { font-size: .78rem; margin-bottom: 14px }
-  .fc a { font-size: .88rem; margin-bottom: 8px }
+  /* Nav link columns — 2-col grid side by side */
+  .footer-nav-mobile { display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 24px 0 8px }
+  .footer-nav-mobile .fc:first-child { border-right: 1px solid rgba(255,255,255,.1); padding-right: 20px }
+  .footer-nav-mobile .fc:last-child { padding-left: 20px }
+  .fc { padding: 16px 0 0; border-bottom: none }
+  .fc:last-child { border-bottom: none; padding-bottom: 0 }
+  .fc h5 { font-size: .7rem; letter-spacing: .12em; margin-bottom: 12px; color: rgba(255,255,255,.5) }
+  .fc h5::after { display: none }
+  .fc a { font-size: .86rem; margin-bottom: 9px; color: rgba(255,255,255,.78); padding: 2px 0 }
+  .fc a::before { display: none }
+  .fc a:hover { padding-left: 0 }
 
-  /* Footer bottom */
-  .footer-social a { width: 40px; height: 40px }
-  .footer-bottom p { font-size: .76rem }
+  /* Divider + bottom */
+  .footer-divider { padding: 0; margin: 0 20px }
+  .footer-bottom { padding: 16px 20px 24px; flex-direction: column; align-items: center; text-align: center; gap: 10px }
+  .footer-social a { width: 38px; height: 38px }
+  .footer-bottom p { font-size: .74rem }
 
   .stats-grid { grid-template-columns: repeat(2,1fr) }
   .section { padding: 48px 16px }
@@ -1332,7 +1357,8 @@ details[open] .ig-lbl-open { display: inline }
   .pay-cta-stats > div:first-child { border-top: none; padding-top: 0 }
   .sec-label { font-size: .78rem }
   .btn-p, .btn-o { padding: 12px 22px; font-size: .97rem }
-  .hero-inner { padding: 100px 16px 40px; gap: 22px }
+  .hero-inner { padding: 100px 16px 40px; gap: 22px; grid-template-columns: 1fr }
+  .hero-card { display: none }
   .hero-carousel-dots { display: none }
   .hero-badge { font-size: .72rem; margin-bottom: 16px }
   .hero-h1 { font-size: clamp(1.8rem,7vw,2.5rem) }
@@ -1367,6 +1393,7 @@ details[open] .ig-lbl-open { display: inline }
   .ss-num { font-size: 2.4rem }
   .ss-item { padding: 24px 16px 20px; border-radius: 16px }
   .ss-label { font-size: .7rem }
+  .engage-grid { grid-template-columns: 1fr; gap: 12px }
   .why-adv-grid { grid-template-columns: 1fr; gap: 10px; margin-bottom: 0 }
   .adv-card { padding: 18px 16px }
   .adv-rule { margin-top: 12px }
@@ -1393,12 +1420,15 @@ details[open] .ig-lbl-open { display: inline }
   .blogs-hero { padding: 80px 16px 40px }
   .cs-page { padding: 90px 16px 52px }
   .svc-hero { padding: 80px 16px 40px }
+  .svc-hero > div p.svc-hero-desc { text-align: left !important; margin-left: 0 !important }
+  .who-serve-desc { text-align: left !important; margin-left: 0 !important }
   .cases-hero { padding: 80px 16px 40px }
   .payor-hero { padding: 80px 16px 40px }
   .cred-bar-inner { gap: 8px }
   .cb-item { font-size: .78rem; padding: 6px 12px }
   .why-payors-2col { grid-template-columns: 1fr !important; gap: 16px !important }
-  .pillars-grid { grid-template-columns: 1fr !important; gap: 14px !important }
+  .pillars-grid { grid-template-columns: 1fr !important; gap: 12px !important }
+  .pillar-card { padding: 18px 16px !important }
   .p2p-layout { grid-template-columns: 1fr !important; gap: 24px !important }
   .why-card { padding: 20px !important; text-align: center }
   .why-card .why-card-icon { margin-left: auto; margin-right: auto }
@@ -1417,14 +1447,15 @@ details[open] .ig-lbl-open { display: inline }
   .ps-arrow { display: flex; justify-content: center; align-items: center; padding: 2px 0; background: #fff; border-left: 1px solid #e2e8f0; border-right: 1px solid #e2e8f0 }
   .pg-3 { grid-template-columns: 1fr }
   #perfGrid { grid-template-columns: 1fr !important; gap: 14px !important }
-  .team-grid { grid-template-columns: repeat(2,1fr); gap: 8px }
+  .team-grid { grid-template-columns: repeat(2,1fr); gap: 8px; align-items: stretch }
   .team-photo { height: 130px }
+  .team-header-block { min-height: 66px }
   .team-name { font-size: .92rem }
   .team-role { font-size: .76rem }
   .team-cred { font-size: .72rem }
   .team-desc { font-size: .78rem; text-align: left }
   .cin-section-about { min-height: 360px !important }
-  .cin-mobile-overlay-about { width: 60%; padding: 16px 14px 16px 8px }
+  .cin-mobile-overlay-about { width: 60%; padding: 10px 18px 28px 8px; overflow: hidden }
   .cin-mob-name { font-size: clamp(1rem,5vw,1.35rem) }
   .cin-mob-sub { font-size: .65rem }
   .cin-mob-quote p { font-size: .68rem }
@@ -2776,11 +2807,16 @@ details[open] .ig-lbl-open { display: inline }
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.1fr 1fr;
-  gap: 56px;
-  align-items: center;
+  grid-template-rows: auto auto;
+  gap: 0 56px;
+  align-items: start;
   position: relative;
   z-index: 1;
 }
+.fhg-heading      { grid-column: 1; grid-row: 1 }
+.fhg-img          { grid-column: 2; grid-row: 1 / 3; align-self: center }
+.fhg-subtitle-block { grid-column: 1; grid-row: 2 }
+.fhg-btn-mob      { display: none }
 .fraud-title {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.2rem, 4vw, 3.4rem);
@@ -3036,13 +3072,15 @@ details[open] .ig-lbl-open { display: inline }
 @media (max-width: 900px) {
   /* Hero — text → image → button */
   .fraud-hero { padding: 160px 28px 64px }
-  .fraud-hgrid { display: flex; flex-direction: column; gap: 28px; text-align: center }
-  .fhg-text     { order: 1 }
-  .fhg-img      { order: 2 }
-  .fhg-btn-mob  { order: 3; text-align: center; display: block }
+  .fraud-hgrid { display: flex; flex-direction: column; gap: 20px; text-align: center }
+  .fhg-heading        { order: 1 }
+  .fhg-img            { order: 2 }
+  .fhg-subtitle-block { order: 3 }
+  .fhg-btn-mob        { order: 4; text-align: center; display: block }
   .fhg-btn-desk { display: none }
   .fraud-title { font-size: clamp(2rem, 5.5vw, 2.8rem) }
-  .fraud-subtitle { max-width: 100%; font-size: 1.08rem; margin-left: auto; margin-right: auto }
+  .fraud-subtitle { max-width: 100%; font-size: 1.08rem; margin-left: 0 !important; margin-right: auto; text-align: left !important; margin-bottom: 14px !important }
+  .fraud-para-left { text-align: left !important; margin-left: 0 !important }
   .fraud-hgrid .hero-badge { margin-left: auto; margin-right: auto }
   .fraud-hgrid .cta-btns { justify-content: center !important }
 
@@ -3063,16 +3101,19 @@ details[open] .ig-lbl-open { display: inline }
   /* Phase cards */
   .phase-grid { grid-template-columns: repeat(2, 1fr); gap: 16px }
   .phase-card { text-align: center }
+  .phase-card p { text-align: left }
   .phase-num { margin-left: auto; margin-right: auto }
 
   /* Module cards */
   .module-grid { grid-template-columns: repeat(2, 1fr); gap: 16px }
   .module-card { text-align: center }
+  .module-card p { text-align: left }
   .module-icon { margin-left: auto; margin-right: auto }
 
   /* Why cards */
   .fraud-why-grid { grid-template-columns: 1fr 1fr; gap: 16px }
   .fraud-why-grid .card { text-align: center }
+  .fraud-why-grid .card p { text-align: left }
   .fraud-why-grid .feat-icon { margin-left: auto; margin-right: auto }
 
   /* Protect your plan — p1 → image → p2 → button on mobile */
@@ -3119,13 +3160,17 @@ details[open] .ig-lbl-open { display: inline }
 @media (max-width: 680px) {
   .fraud-hero { padding: 130px 20px 52px }
   .fraud-title { font-size: clamp(1.75rem, 6.5vw, 2.4rem) }
-  .fraud-subtitle { font-size: 1rem; line-height: 1.75 }
+  .fraud-subtitle { font-size: 1rem; line-height: 1.75; text-align: left !important; margin-left: 0 !important }
+  .fraud-para-left { text-align: left !important; margin-left: 0 !important }
   .phase-grid { grid-template-columns: 1fr; gap: 14px }
   .module-grid { grid-template-columns: 1fr; gap: 14px }
   .fraud-why-grid { grid-template-columns: 1fr; gap: 14px }
   .fraud-why-grid .card { padding: 26px 22px }
+  .fraud-why-grid .card p { text-align: left }
   .phase-card { padding: 22px 18px }
+  .phase-card p { text-align: left }
   .module-card { padding: 22px 18px }
+  .module-card p { text-align: left }
   .fraud-quote { padding: 22px 20px; font-size: .97rem; line-height: 1.8; text-align: left }
   .fraud-stat-num { font-size: 2.2rem }
   .compare-table { min-width: 520px }

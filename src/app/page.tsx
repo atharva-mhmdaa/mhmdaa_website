@@ -325,14 +325,14 @@ export default function Home() {
               <div className="sec-label">Our Approach</div>
               <h2 className="sec-title" style={{ textAlign: "center" }}>When to Engage MHMDAA</h2>
               <div style={{ textAlign: "center", margin: "16px auto 0" }}>
-                <strong style={{ display: "block", whiteSpace: "nowrap" }}>Partner with MHMDAA&apos;s physician-led team to leverage our precise four-step review process.</strong>
+                <strong style={{ display: "block" }}>Partner with MHMDAA&apos;s physician-led team to leverage our precise four-step review process.</strong>
                 <p className="sec-sub" style={{ maxWidth: 760, margin: "8px auto 0" }}>
                   Take the first decisive step toward building a denial-resilient, financially sustainable future for your organizational operations.
                 </p>
               </div>
             </div>
           </RevealOnScroll>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
+          <div className="engage-grid">
             {[
               {
                 title: "Strategic Denial Defense",

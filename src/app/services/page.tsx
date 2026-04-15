@@ -161,6 +161,7 @@ export default function PayorServicesPage() {
             Physician-led. Evidence-based. Outcome-driven.
           </p>
           <p
+            className="svc-hero-desc"
             style={{
               fontSize: "1.15rem",
               color: "rgba(255,255,255,.82)",
@@ -205,13 +206,14 @@ export default function PayorServicesPage() {
           </div>
 
           {/* Pillars grid: 4 in a single row */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16, maxWidth: 1100, margin: "0 auto" }}>
+          <div className="pillars-grid" style={{ maxWidth: 1100, margin: "0 auto" }}>
             {pillars.map((p, i) => {
               const isNavy = i % 2 === 0;
               const accent = isNavy ? "var(--navy)" : "var(--red)";
               return (
                 <div
                   key={p.title}
+                  className="pillar-card"
                   style={{
                     background: "#fff",
                     borderRadius: 16,
@@ -310,7 +312,7 @@ export default function PayorServicesPage() {
             <div className="sec-header c" style={{ marginBottom: 32 }}>
               <div className="sec-label">Engagement &amp; Use Cases</div>
               <h2 className="sec-title">Who We <em>Serve</em></h2>
-              <p style={{ fontSize: "1.15rem", color: "var(--mg)", lineHeight: 1.85, maxWidth: 680, margin: "0 auto" }}>
+              <p className="who-serve-desc" style={{ fontSize: "1.15rem", color: "var(--mg)", lineHeight: 1.85, maxWidth: 680, margin: "0 auto" }}>
                 Commercial and government Payors, Medicare Advantage plans, Third-Party Administrators (TPAs), and legal counsel engaged in healthcare disputes.
               </p>
             </div>
