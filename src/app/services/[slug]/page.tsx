@@ -50,11 +50,8 @@ export default async function PayorServicePage({ params }: PageProps) {
           <div className="sd-htext">
             <h1 className="sd-title">{service.title}</h1>
             <p className="sd-desc">{service.heroDescription}</p>
-            <Link href="/services" className="sd-hero-cta">
-              Explore All Services →
-            </Link>
           </div>
-          <div
+          <div className="sd-himg"
             style={{
               borderRadius: "var(--rl)",
               overflow: "hidden",
@@ -72,6 +69,9 @@ export default async function PayorServicePage({ params }: PageProps) {
               priority
             />
           </div>
+          <Link href="/services" className="sd-hero-cta sd-hero-cta-btn">
+            Explore All Services →
+          </Link>
         </div>
       </section>
 
@@ -94,11 +94,11 @@ export default async function PayorServicePage({ params }: PageProps) {
       {/* ── INFO STRIP ────────────────────────────────────── */}
       {service.infoText && (
         <div className="sd-info-strip" style={{ background: "#1B2A5B", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.55)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.55)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 5 }}><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
             <span style={{ fontSize: ".92rem", color: "rgba(255,255,255,0.72)" }}>{service.infoText}</span>
           </div>
-          <div style={{ background: "#e53e3e", color: "#fff", fontSize: ".68rem", fontWeight: 800, letterSpacing: ".12em", textTransform: "uppercase", padding: "6px 14px", borderRadius: 5, whiteSpace: "nowrap", flexShrink: 0 }}>{service.infoBadge ?? "PROACTIVE, NOT REACTIVE"}</div>
+          <div className="sd-info-badge" style={{ background: "#e53e3e", color: "#fff", fontSize: ".68rem", fontWeight: 800, letterSpacing: ".12em", textTransform: "uppercase", padding: "6px 14px", borderRadius: 5, whiteSpace: "nowrap", flexShrink: 0 }}>{service.infoBadge ?? "PROACTIVE, NOT REACTIVE"}</div>
         </div>
       )}
 
