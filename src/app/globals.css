@@ -790,6 +790,8 @@ details[open] .ig-lbl-open { display: inline }
 .careers-hero { background: linear-gradient(135deg,#1B2A5B 0%,#2A3F7A 55%,#1B2A5B 100%); padding: 220px 32px 90px; position: relative; overflow: hidden }
 .careers-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.016) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px); background-size: 60px 60px; pointer-events: none }
 .ch-wrap { max-width: 1280px; margin: 0 auto; position: relative; z-index: 2 }
+.careers-why-img { grid-column: 2; grid-row: 1 / span 2; align-self: stretch }
+.careers-why-img img { height: 100%; object-fit: cover }
 .job-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 36px 40px; box-shadow: 0 4px 24px rgba(27,42,91,.08); max-width: 900px; margin: 0 auto; border-top: 4px solid #C8102E }
 .job-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin-bottom: 20px; flex-wrap: wrap }
 .job-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(200,16,46,.1); color: #C8102E; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 5px 12px; border-radius: 30px; margin-bottom: 10px }
@@ -1206,6 +1208,8 @@ details[open] .ig-lbl-open { display: inline }
   .process-step:last-child { border-bottom: none }
   .ps-arrow { display: flex; justify-content: center; align-items: center; padding: 2px 0; background: #fff; border-left: 1px solid #e2e8f0; border-right: 1px solid #e2e8f0 }
   .values-grid { grid-template-columns: 1fr 1fr }
+  .vc-icon { margin-left: auto; margin-right: auto }
+  .vc-title { text-align: center }
   .vc-desc { text-align: left }
   #perfGrid { grid-template-columns: repeat(2,1fr) !important; gap: 18px !important }
   .pg-3 { grid-template-columns: 1fr 1fr }
@@ -1312,6 +1316,36 @@ details[open] .ig-lbl-open { display: inline }
   .team-desc { font-size: .82rem; line-height: 1.58; text-align: left }
   .cin-section-home { min-height: 400px !important }
   .cin-content-home { max-width: 58% !important; width: 58% !important }
+
+  /* ── MOBILE TYPOGRAPHY ALIGNMENT ─────────────────────────
+     Headings/labels (red & blue) stay centered.
+     Body/paragraph text (grey) shifts to left for readability. */
+
+  /* Section headers — headings stay centred, body text goes left */
+  .sec-header.c .sec-sub { text-align: left !important; margin-left: 0 !important; margin-right: 0 !important }
+  .sec-sub { text-align: left !important }
+  .sec-body-text { text-align: left !important }
+  .cta-inner p { text-align: left }
+  .sec-header.c { text-align: center }
+  .sec-header.c .sec-title { text-align: center }
+  .sec-header.c .sec-label { text-align: center; margin-left: 0; margin-right: auto }
+
+  /* Advantage cards (.adv-card) — icon centred, title & red italic subheading centred, desc left */
+  .adv-icon { margin-left: auto; margin-right: auto }
+  .adv-title { text-align: center }
+  .adv-card > p:not(.adv-desc) { text-align: center }
+  .adv-desc { text-align: left }
+
+  /* Performance cards (.perf-card) — icon & title centred (desktop default), desc left */
+  .perf-card { align-items: center }
+  .perf-card-title { text-align: center }
+  .perf-card-desc { text-align: left }
+
+  /* "When to Engage" cards (.ap-card) — number & title centred, desc left */
+  .ap-card { text-align: left }
+  .ap-num { margin-left: auto; margin-right: auto }
+  .ap-card h3 { text-align: center }
+  .ap-desc { text-align: left }
 }
 
 @media (max-width: 560px) {
@@ -1455,6 +1489,8 @@ details[open] .ig-lbl-open { display: inline }
   .who-serve-list { grid-template-columns: 1fr !important }
   .who-serve-heading { text-align: center }
   .values-grid { grid-template-columns: 1fr }
+  .vc-icon { margin-left: auto; margin-right: auto }
+  .vc-title { text-align: center }
   .vc-desc { text-align: left }
   .process-grid { grid-template-columns: 1fr !important; border-radius: 14px }
   .process-step { border-right: none !important; border-bottom: 1px solid #e2e8f0; padding: 24px 20px }
