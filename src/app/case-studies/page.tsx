@@ -55,6 +55,7 @@ export default async function CaseStudiesPage() {
             <em style={{ fontStyle: "italic", color: "#93c5fd" }}>Proven in the Field.</em>
           </h1>
           <p
+            className="cases-hero-desc"
             style={{
               fontSize: "1.15rem",
               color: "rgba(255,255,255,.82)",

@@ -157,8 +157,8 @@ export default function Navbar() {
           <Image
             src="/images/logo.png"
             alt="Michael Hill, MD & Associates"
-            width={210}
-            height={87}
+            width={1024}
+            height={285}
             priority
             style={{ height: "87px", width: "auto" }}
           />

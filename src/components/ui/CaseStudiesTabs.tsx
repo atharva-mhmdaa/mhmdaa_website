@@ -109,7 +109,7 @@ function PayorCTA() {
           Hospitals Navigating Real Challenges.{" "}
           <em style={{ color: "#f87171", fontStyle: "italic" }}>Real Outcomes.</em>
         </h2>
-        <p style={{ fontSize: "1.04rem", color: "rgba(255,255,255,.78)", lineHeight: 1.75, maxWidth: 620, margin: "0 auto 32px" }}>
+        <p className="cases-tab-desc" style={{ fontSize: "1.04rem", color: "rgba(255,255,255,.78)", lineHeight: 1.75, maxWidth: 620, margin: "0 auto 32px" }}>
           Each case study documents a real hospital navigating real pressures: denial backlogs, documentation gaps, and revenue loss. These are their stories, their decisions, and the outcomes that followed.
         </p>
         <div className="cta-btns">
@@ -548,7 +548,7 @@ export default function CaseStudiesTabs({
                 <h2 className="sec-title">
                   Expert Witness &amp; Payor <em>Representation</em>
                 </h2>
-                <p className="sec-sub" style={{ maxWidth: 640, margin: "0 auto" }}>
+                <p className="sec-sub cases-tab-desc" style={{ maxWidth: 640, margin: "0 auto" }}>
                   Physician-led expert witness engagements representing payors in complex payment
                   disputes, medical necessity arbitrations, and utilization management reviews.
                 </p>

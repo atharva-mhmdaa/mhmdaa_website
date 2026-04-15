@@ -14,8 +14,8 @@ export default function StaffMinimalHeader() {
         <Image
           src="/images/logo.png"
           alt="Michael Hill, MD & Associates"
-          width={160}
-          height={66}
+          width={1024}
+          height={285}
           style={{ height: '38px', width: 'auto' }}
           priority
         />

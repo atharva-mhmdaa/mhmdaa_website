@@ -62,6 +62,10 @@ body {
 .navbar.scrolled .nav-top { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0 }
 .nav-logo { display: flex; align-items: center; text-decoration: none; transition: opacity .2s }
 .nav-logo:hover { opacity: .88 }
+@media (min-width: 781px) {
+  .nav-logo img { height: 100px !important; width: auto !important }
+  .navbar.scrolled .nav-logo img { height: 60px !important }
+}
 .nav-bottom {
   max-width: 1400px; margin: 0 auto; padding: 4px 36px 14px;
   display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 2px;
@@ -1167,6 +1171,8 @@ details[open] .ig-lbl-open { display: inline }
   .cases-hero > div { display: flex; flex-direction: column; align-items: center; text-align: center }
   .cases-hero > div > div:first-child { margin-left: auto; margin-right: auto }
   .cases-hero > div > div:last-child { justify-content: center; width: 100% }
+  .cases-hero-desc { text-align: left !important; margin-left: 0 !important }
+  .cases-tab-desc { text-align: left !important; margin-left: 0 !important }
   .blogs-hero { padding: 90px 20px 48px }
   .cc-grid { grid-template-columns: 1fr }
   .cs-grid { grid-template-columns: 1fr }
@@ -1226,7 +1232,12 @@ details[open] .ig-lbl-open { display: inline }
   .cin-bio-mobile-about { display: block !important }
   .ab-stat-grid { grid-template-columns: repeat(2,1fr) }
   .careers-hero { padding: 90px 20px 48px }
-  .careers-why-grid { grid-template-columns: 1fr !important; gap: 36px !important }
+  .careers-why-grid { grid-template-columns: 1fr !important; gap: 24px !important }
+  .careers-why-grid { display: flex !important; flex-direction: column !important; gap: 20px !important }
+  .careers-why-top    { order: 1 }
+  .careers-why-img    { order: 2; border-radius: 16px !important }
+  .careers-why-bottom { order: 3 }
+  .careers-why-title { white-space: normal !important; font-size: clamp(1.4rem, 5vw, 2rem) !important }
   .values-careers { grid-template-columns: repeat(2,1fr) }
   .job-highlights { grid-template-columns: 1fr }
   .job-card { padding: 24px 20px }
@@ -1416,6 +1427,8 @@ details[open] .ig-lbl-open { display: inline }
   .sd-hero { padding: 80px 16px 40px }
   .contact-hero { padding: 80px 16px 40px }
   .careers-hero { padding: 80px 16px 40px }
+  .careers-why-grid { display: flex !important; flex-direction: column !important; gap: 16px !important }
+  .careers-why-title { white-space: normal !important; font-size: clamp(1.3rem, 5.5vw, 1.8rem) !important }
   .about-hero { padding: 80px 16px 40px }
   .blogs-hero { padding: 80px 16px 40px }
   .cs-page { padding: 90px 16px 52px }
@@ -1423,6 +1436,8 @@ details[open] .ig-lbl-open { display: inline }
   .svc-hero > div p.svc-hero-desc { text-align: left !important; margin-left: 0 !important }
   .who-serve-desc { text-align: left !important; margin-left: 0 !important }
   .cases-hero { padding: 80px 16px 40px }
+  .cases-hero-desc { text-align: left !important; margin-left: 0 !important }
+  .cases-tab-desc { text-align: left !important; margin-left: 0 !important }
   .payor-hero { padding: 80px 16px 40px }
   .cred-bar-inner { gap: 8px }
   .cb-item { font-size: .78rem; padding: 6px 12px }
