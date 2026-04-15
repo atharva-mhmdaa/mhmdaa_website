@@ -115,19 +115,34 @@ export default async function CareersPage() {
       <section className="section" style={{ background: "var(--off)" }}>
         <div className="sc">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }} className="careers-why-grid">
-            <div>
+
+            {/* col 1 top: label → h2 → intro para */}
+            <div className="careers-why-top">
               <div className="sec-label">Why Work With Us</div>
-              <h2 className="sec-title" style={{ fontSize: "clamp(1.5rem, 2.4vw, 2.2rem)", whiteSpace: "nowrap" }}>
+              <h2 className="sec-title careers-why-title" style={{ fontSize: "clamp(1.5rem, 2.4vw, 2.2rem)" }}>
                 Why Work at Michael Hill, MD <em>&amp; Associates?</em>
               </h2>
-
               <p style={{ fontSize: "1.22rem", fontWeight: 700, color: "var(--navy)", fontFamily: "'Playfair Display', serif", fontStyle: "italic", marginBottom: 12, lineHeight: 1.4 }}>
                 Drive Change. Define the Future.
               </p>
-              <p style={{ fontSize: "1.04rem", color: "var(--mg)", lineHeight: 1.85, marginBottom: 28 }}>
+              <p style={{ fontSize: "1.04rem", color: "var(--mg)", lineHeight: 1.85, marginBottom: 0 }}>
                 We don&apos;t just consult; we partner. We tackle our clients&apos; most difficult challenges to create a lasting, measurable impact. Our mission is to help organizations think, plan, and act differently, accelerating growth and enabling them to own their future rather than being disrupted by it.
               </p>
+            </div>
 
+            {/* col 2: image spanning both rows on desktop */}
+            <div className="careers-why-img" style={{ borderRadius: 20, overflow: "hidden" }}>
+              <Image
+                src="/images/careers-team.jpg"
+                alt="MHMDAA consulting team"
+                width={560}
+                height={380}
+                style={{ width: "100%", height: "auto", display: "block" }}
+              />
+            </div>
+
+            {/* col 1 bottom: mindset + button */}
+            <div className="careers-why-bottom">
               <div style={{ borderLeft: "3px solid var(--red)", paddingLeft: 18, marginBottom: 28 }}>
                 <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(1.4rem, 2vw, 1.9rem)", fontWeight: 700, color: "var(--navy)", marginBottom: 8, lineHeight: 1.2 }}>
                   The Michael Hill Mindset
@@ -150,20 +165,11 @@ export default async function CareersPage() {
                   </div>
                 </div>
               </div>
-
               <Link href="/contact" className="btn-p">
                 Get In Touch &rarr;
               </Link>
             </div>
-            <div style={{ borderRadius: 20, overflow: "hidden" }}>
-              <Image
-                src="/images/careers-team.jpg"
-                alt="MHMDAA consulting team"
-                width={560}
-                height={380}
-                style={{ width: "100%", height: "auto", display: "block" }}
-              />
-            </div>
+
           </div>
         </div>
       </section>
