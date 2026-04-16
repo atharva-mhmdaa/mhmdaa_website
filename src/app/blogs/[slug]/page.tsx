@@ -48,7 +48,7 @@ export default async function BlogPostPage({ params }: Props) {
   // no iframe stacking-context issues. The proxy independently validates
   // the slug and checks is_published, so security is unchanged.
   if (post.html_url) {
-    redirect(`/api/blogs/html/${slug}`);
+    redirect(`/view/blogs/html/${slug}`);
   }
 
   // Legacy rich-text content posts render inline
